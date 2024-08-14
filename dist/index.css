@@ -555,7 +555,8 @@ body {
 }
 .btn--default,
 .btn--primary {
-  background-color: hsl(var(--primary) / 1);
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--primary) / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
   color: hsl(var(--primary-foreground) / var(--tw-text-opacity));
   transition-property: filter;

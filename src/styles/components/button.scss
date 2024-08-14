@@ -11,7 +11,7 @@
         }
 
         &--default, &--primary {
-            @apply bg-primary/100 text-primary-foreground transition-[filter];
+            @apply bg-primary text-primary-foreground transition-[filter];
 
             &:hover {
                 @apply brightness-[.9];

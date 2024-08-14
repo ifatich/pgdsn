@@ -12,7 +12,6 @@
 /out/
 
 /dist/index.mjs
-/dist/index.d.ts
 /dist/index.d.mts
 
 /test
