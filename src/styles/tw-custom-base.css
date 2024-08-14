@@ -1,0 +1,13 @@
+@import "base/colors.scss";
+@import "base/sizes.css";
+@import "base/theme.css";
+
+@layer base {
+    * {
+        @apply border-border font-regular;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}

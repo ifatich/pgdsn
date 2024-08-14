@@ -1,13 +1,3 @@
-import React, { useRef } from "react";
-import { Button } from "./ui/button";
+import "../../src/styles/globals.css";
 
-export type IndexProps = { };
-
-export const Index: React.FC<IndexProps> = ({ }) => {
-
-  return (
-    <Button variant={'default'} size={'default'}>Click me!</Button>
-  );
-};
-
-export default Index;
+export { Button } from "./ui/button";

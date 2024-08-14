@@ -1,0 +1,60 @@
+@layer components {
+    .inp {
+        @apply text-omicron font-regular flex h-11 w-full rounded-md border border-input bg-background/[0%] px-3 py-2 ring-offset-background
+        focus-ring-none transition-[width] duration-500;
+
+        &[aria-invalid=true] {
+            &:focus-visible {
+                @apply border-destructive-on-text;
+            }
+        }
+
+        &--hover-focus {
+            &:hover {
+                @apply border-input-focus;
+            }
+        }
+
+        &:focus-visible {
+            @apply border-input-focus;
+        }
+
+        &:disabled {
+            @apply cursor-not-allowed opacity-50;
+        }
+
+        &::placeholder {
+            @apply text-muted-foreground;
+        }
+
+        &:file {
+            @apply border-0 bg-primary/[0%];
+        }
+
+        &--sm {
+            @apply rounded-sm h-7 text-sigma;
+        }
+
+        &--md {
+            @apply rounded-md h-9 text-omicron;
+        }
+
+        &--lg {
+            @apply rounded-md h-11;
+        }
+
+        &--xl {
+            @apply rounded-lg h-14;
+        }
+
+        &--remove-arrow {
+            -moz-appearance: textfield;
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+    }
+}

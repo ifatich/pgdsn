@@ -1,0 +1,193 @@
+@layer components {
+    .btn {
+        @apply text-omicron !leading-none text-foreground font-bold inline-flex items-center justify-center whitespace-nowrap rounded-md ring-offset-background brightness-100 transition-colors;
+
+        &:not(.nav-menu__item):not(.inp):not(.as-input) {
+            @apply focus-ring;
+        }
+
+        &:disabled {
+            @apply opacity-50 pointer-events-none;
+        }
+
+        &--default, &--primary {
+            @apply bg-primary/100 text-primary-foreground transition-[filter];
+
+            &:hover {
+                @apply brightness-[.9];
+            }
+
+            &:active {
+                @apply brightness-[.85];
+            }
+        }
+
+        &--destructive {
+            @apply bg-destructive text-destructive-foreground;
+
+            &:hover {
+                @apply bg-destructive/[90%];
+            }
+
+            &:active {
+                @apply bg-destructive/[70%];
+            }
+        }
+
+        &--outline {
+            @apply border border-input bg-primary/[0%];
+
+            &:hover {
+                @apply border-primary/[80%];
+            }
+
+            &:active {
+                @apply bg-primary/[10%];
+            }
+        }
+
+        &--secondary {
+            @apply bg-secondary text-secondary-foreground transition-[filter];
+
+            &:hover {
+                @apply brightness-95;
+            }
+
+            &:active {
+                @apply brightness-90;
+            }
+        }
+
+        &--ghost {
+            @apply bg-foreground/[0%] border-0;
+
+            &:hover {
+                @apply bg-foreground/[8%];
+            }
+
+            &:active {
+                @apply bg-foreground/[20%];
+            }
+        }
+
+        &--ghost-fab {
+            @apply bg-foreground/[5%] border-0;
+
+            &:hover {
+                @apply bg-foreground/[15%];
+            }
+
+            &:active {
+                @apply bg-foreground/[20%];
+            }
+        }
+
+        &--link {
+            @apply text-omicron text-primary-on-text !py-0 !px-1 !h-full w-fit;
+
+            &:hover {
+                @apply text-primary/[90%];
+            }
+
+            &:active {
+                @apply bg-primary/[10%] text-primary/[90%];
+            }
+        }
+
+        &--sm {
+            @apply rounded-sm h-7 w-auto px-2 text-sigma;
+
+            &.btn--fixed {
+                @apply min-h-[1.75rem] min-w-[1.75rem];
+            }
+        }
+
+        &--md {
+            @apply rounded-md h-9 w-auto px-3 text-omicron;
+
+            &.btn--fixed {
+                @apply min-h-[2.25rem] min-w-[2.25rem];
+            }
+        }
+
+        &--lg {
+            @apply rounded-md h-11 w-auto px-4;
+
+            &.btn--fixed {
+                @apply min-h-[2.75rem] min-w-[2.75rem];
+            }
+        }
+
+        &--xl {
+            @apply rounded-lg h-14 w-auto px-4;
+
+            &.btn--fixed {
+                @apply min-h-[3.5rem] min-w-[3.5rem];
+            }
+        }
+
+        &--icon-sm {
+            @apply h-7 w-7;
+
+            &.btn--fixed {
+                @apply min-h-[1.75rem] min-w-[1.75rem];
+            }
+
+            .icon {
+                @apply mr-0;
+            }
+        }
+
+        &--icon-md {
+            @apply h-9 w-9;
+
+            &.btn--fixed {
+                @apply min-h-[2.25rem] min-w-[2.25rem];
+            }
+
+            .icon {
+                @apply mr-0;
+            }
+        }
+
+        &--icon-lg {
+            @apply h-11 w-11;
+
+            &.btn--fixed {
+                @apply min-h-[2.75rem] min-w-[2.75rem];
+            }
+
+            .icon {
+                @apply mr-0;
+            }
+        }
+
+        &--icon-xl {
+            @apply h-14 w-14;
+
+            &.btn--fixed {
+                @apply min-h-[3.5rem] min-w-[3.5rem];
+            }
+
+            .icon {
+                @apply mr-0;
+            }
+        }
+
+        &--fab {
+            @apply h-14 w-14 rounded-full overflow-hidden transition;
+
+            &.btn--fixed {
+                @apply min-h-[3.5rem] min-w-[3.5rem];
+            }
+        }
+
+        &--block {
+            @apply w-full;
+        }
+
+        span {
+            @apply font-weight-inherit text-color-inherit text-size-inherit;
+        }
+    }
+}

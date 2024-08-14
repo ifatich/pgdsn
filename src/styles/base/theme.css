@@ -1,0 +1,60 @@
+@layer base {
+    :root {
+        --background: var(--white);
+        --foreground: var(--text-primary);
+        --foreground-primary: var(--text-primary);
+        --foreground-secondary: var(--text-secondary);
+        --foreground-tertiary: var(--text-tertiary);
+        --foreground-green: var(--text-green);
+        --card: var(--white);
+        --card-foreground: var(--text-primary);
+        --popover: var(--white);
+        --popover-foreground: var(--text-primary);
+        --primary: var(--lime-50);
+        --primary-on-text: var(--primary);
+        --primary-foreground: var(--text-white);
+        --secondary: var(--black-20);
+        --secondary-foreground: var(--text-primary);
+        --muted: var(--black-20);
+        --muted-foreground: var(--text-muted);
+        --accent: var(--black-20);
+        --accent-foreground: var(--text-primary);
+        --destructive: var(--red-50);
+        --destructive-on-text: var(--red-50);
+        --destructive-foreground: var(--text-white);
+        --border: var(--black-20);
+        --input: var(--border);
+        --input-focus: var(--primary);
+        --ring: var(--primary);
+        --radius: 0.5rem;
+    }
+
+    .dark {
+        --background: 172 100% 1%;
+        --foreground: var(--text-white);
+        --foreground-primary: var(--text-white);
+        --foreground-secondary: 0 0% 53%;
+        --foreground-tertiary: 0 0% 60%;
+        --foreground-green: var(--text-green);
+        --card: 172 100% 3%;
+        --card-foreground: 0 0% 95%;
+        --popover: 172 100% 4%;
+        --popover-foreground: 0 0% 80%;
+        --primary: var(--lime-60);
+        --primary-on-text: var(--primary);
+        --primary-foreground: var(--text-white);
+        --secondary: 240 3.7% 15.9%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 0 0% 15%;
+        --muted-foreground: 240 5% 64.9%;
+        --accent: 12 6.5% 15.1%;
+        --accent-foreground: 0 0% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-on-text: var(--red-20);
+        --destructive-foreground: 0 85.7% 97.3%;
+        --border: 172 100% 7%;
+        --input: var(--border);
+        --input-focus: var(--primary);
+        --ring: var(--primary);
+    }
+}

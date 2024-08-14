@@ -1,0 +1,84 @@
+@layer components {
+    .syariah-pattern {
+        @apply z-0 overflow-hidden inline-block
+        rounded-full
+        absolute
+        transition-all
+        duration-500;
+        --syariah-pattern-size: 100vw;
+
+        &--admin-layout {
+            @apply top-[calc(var(--syariah-pattern-size)/3*-1)]
+            xs:top-[calc(var(--syariah-pattern-size)/2*-1)]
+            sm:top-[calc(var(--syariah-pattern-size)/2*-1)]
+            left-0
+            sm:left-0
+            md:left-[calc(2rem+var(--sidebar-width)+var(--sidebar-hide-append-syariah-pattern-width)-var(--syariah-pattern-size)/3)]
+            lg:left-[calc(2rem+var(--sidebar-width)+var(--sidebar-hide-append-syariah-pattern-width)-var(--syariah-pattern-size)/3)]
+            xl:left-[calc(2rem+var(--sidebar-width)+var(--sidebar-hide-append-syariah-pattern-width)-var(--syariah-pattern-size)/3)]
+            2xl:left-[calc(var(--sidebar-width)+var(--sidebar-hide-append-syariah-pattern-width)-var(--syariah-pattern-size)/3+(100vw-1400px)/2)]
+            opacity-30 dark:opacity-40 xs:opacity-60 dark:xs:opacity-80 sm:opacity-20 dark:sm:opacity-30 ;
+
+            @media (min-width: theme('screens.sm')) {
+                --syariah-pattern-size: 60vw;
+            }
+
+            @media (min-width: theme('screens.md')) {
+                --syariah-pattern-size: 400px;
+            }
+        }
+
+        &--auth-layout {
+            @apply top-[calc(var(--syariah-pattern-size)/3*-1)]
+            xs:top-[calc(var(--syariah-pattern-size)/2*-1)]
+            sm:top-[calc(50%-var(--syariah-pattern-size))]
+            left-0
+            sm:left-[calc(50%-var(--syariah-pattern-size)*.75)]
+            opacity-40 dark:opacity-50 sm:opacity-30 dark:sm:opacity-40;
+
+            @media (min-width: theme('screens.sm')) {
+                --syariah-pattern-size: 400px;
+            }
+        }
+
+        &--error-layout {
+            @apply top-[calc(var(--syariah-pattern-size)/3*-1)]
+            sm:top-[calc(50vh-var(--footer-height)-var(--syariah-pattern-size)*0.5)]
+            xs:top-[calc(var(--syariah-pattern-size)/2*-1)]
+            left-0
+            sm:left-[calc(50vw-var(--syariah-pattern-size)*.75)]
+            opacity-40 dark:opacity-50 sm:opacity-30 dark:sm:opacity-40;
+
+            @media (min-width: theme('screens.sm')) {
+                --syariah-pattern-size: 400px;
+            }
+        }
+
+        &__img {
+            @apply w-[var(--syariah-pattern-size)]
+            block border border-background
+            rounded-full
+            animate-spin
+            select-none drag-none;
+            animation-duration: 30s;
+            animation-play-state: paused;
+            -webkit-animation-play-state: paused;
+
+            &--spinning {
+                animation-play-state: running;
+                -webkit-animation-play-state: running;
+            }
+        }
+
+        &:after {
+            @apply block w-full h-full rounded-full absolute top-0 left-0;
+            content: "";
+            background: radial-gradient(ellipse at center, hsl(var(--background) / 0) 0%, hsl(var(--background) / 1) 70%, hsl(var(--background) / 1) 100%);
+        }
+
+        @media (max-width: theme('screens.sm')) {
+            -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+        }
+    }
+}

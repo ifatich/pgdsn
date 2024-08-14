@@ -1,0 +1,106 @@
+@layer components {
+    .data-table {
+        @apply space-y-4 w-full;
+
+        &__toolbar {
+            @apply flex items-center justify-between w-full overflow-auto px-1 py-2;
+
+            &__filter-wrapper {
+                @apply flex flex-1 items-center space-x-2 mr-2;
+            }
+
+            &__reset-filter {
+                @apply text-omicron font-regular;
+            }
+
+            &__config-wrapper {
+                @apply flex items-center space-x-2;
+            }
+
+            &__per-page-trigger {
+                @apply btn--outline btn--lg min-w-[4.5rem];
+            }
+
+            &__per-page-item:not(:disabled):not([data-disabled]) {
+                @apply cursor-pointer;
+            }
+
+            &__column_item_label {
+                @apply text-omicron;
+            }
+
+            &__column_item {
+                @apply capitalize cursor-pointer text-omicron;
+            }
+        }
+
+        &__tb-wrapper {
+            @apply rounded-md border;
+        }
+
+        &__column-header {
+            @apply flex items-center space-x-2;
+
+            &__sortable {
+                @apply -ml-3 mr-3 h-9 data-[state=open]:bg-accent w-full justify-start;
+
+                &__indicator {
+                    @apply mr-1 text-muted-foreground/70;
+
+                    &.asc, &.desc {
+                        @apply text-primary;
+                    }
+                }
+            }
+
+            &__options {
+
+                &__item {
+                    @apply btn--ghost;
+
+                    &:hover {
+                        @apply cursor-pointer;
+                    }
+
+                    &__icon {
+                        @apply mr-2 h-3.5 w-3.5 text-muted-foreground/70;
+                    }
+                }
+            }
+        }
+
+        &__action {
+            &__trigger {
+
+                &[data-state=open] {
+                    @apply bg-muted;
+                }
+            }
+
+            &__item-header {
+                @apply !text-foreground !opacity-100 text-omicron;
+            }
+        }
+
+        &__context {
+            &__item-header {
+                @apply !text-foreground !opacity-100 text-omicron;
+            }
+        }
+
+        &__pagination {
+            @apply flex items-center justify-start xs:justify-center space-x-2 px-1 py-2 overflow-auto;
+
+            &__page-info {
+                @apply flex items-center space-x-2 !ml-4 !mr-2;
+
+                &__label {
+                    @apply text-muted-foreground mr-2;
+
+                    &__page-size {
+                    }
+                }
+            }
+        }
+    }
+}

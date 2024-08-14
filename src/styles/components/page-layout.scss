@@ -1,0 +1,73 @@
+@layer component {
+    :root {
+        --nav-height: 3.5rem;
+        --footer-height: 4rem;
+        --top-loader-height: 2px;
+        --sidebar-width: 240px;
+        --sidebar-hide-append-syariah-pattern-width: 0rem;
+    }
+
+    .layout {
+        @apply relative flex flex-col;
+
+        &__body {
+            @apply container flex-1 items-start md:grid md:grid-cols-[var(--sidebar-width)_minmax(0,1fr)] gap-4 md:gap-2 -mt-1 mb-14;
+
+            &--transitioning {
+                @apply transition-all duration-200;
+            }
+
+            &--close-sidebar {
+                --sidebar-width: 0px;
+                --sidebar-hide-append-syariah-pattern-width: 4rem;
+
+                .sidebar {
+                    @apply invisible;
+                }
+            }
+        }
+
+        &__content {
+            @apply z-[1] relative py-6 mx-auto w-full min-w-0 min-h-[calc(100vh-var(--nav-height)-var(--footer-height)+.25rem)];
+        }
+    }
+
+    .auth-layout {
+        @apply flex flex-col justify-between w-full h-full absolute top-0 bottom-0 left-0 right-0 z-[1] relative;
+
+        &__container {
+            @apply xs:flex xs:flex-col xs:items-center !h-full overflow-auto xs:!h-[calc(100vh-var(--footer-height)-.25rem)];
+
+            &__card {
+                @apply !shadow-none !border-0 xs:!shadow-sm xs:!border xs:!w-[320px] sm:!w-[350px] m-auto;
+
+                &__footer {
+
+                    &--multiple-block {
+                        @apply flex-col sm:flex-row;
+
+                        & > *:not(:last-child) {
+                            @apply mr-0 mb-2 sm:flex-row sm:mr-2 sm:mb-0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .logging-out-backdrop {
+        @apply !backdrop-blur-sm bg-backdrop-blur top-0 left-0 right-0 bottom-0 fixed w-full h-full z-50 transition-opacity opacity-100 duration-500;
+    }
+
+    .error-layout {
+        @apply auth-layout;
+
+        &__container {
+            @apply auth-layout__container;
+
+            &__card {
+                @apply auth-layout__container__card;
+            }
+        }
+    }
+}

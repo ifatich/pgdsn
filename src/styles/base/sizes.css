@@ -1,0 +1,32 @@
+@layer base {
+    :root {
+        --72-alpha: 4.5rem;
+        --60-beta: 3.75rem;
+        --48-gamma: 3rem;
+        --36-delta: 2.25rem;
+        --30-epsilon: 1.875rem;
+        --24-zeta: 1.5rem;
+        --20-kappa: 1.25rem;
+        --18-lambda: 1.125rem;
+        --16-omicron: 1rem;
+        --14-sigma: 0.875rem;
+        --12-omega: 0.75rem;
+        --10-atom: 0.625rem;
+
+        --72-alpha-line-height: 6.75rem;
+        --60-beta-line-height: 5.625rem;
+        --48-gamma-line-height: 4.5rem;
+        --36-delta-line-height: 3.375rem;
+        --30-epsilon-line-height: 2.75rem;
+        --24-zeta-line-height: 2.25rem;
+        --20-kappa-line-height: 1.875rem;
+        --18-lambda-line-height: 1.625rem;
+        --16-omicron-line-height: 1.5rem;
+        --14-sigma-line-height: 1.25rem;
+        --12-omega-line-height: 1.125rem;
+        --10-atom-line-height: 0.875rem;
+
+        --bold: 800;
+        --regular: 600;
+    }
+}

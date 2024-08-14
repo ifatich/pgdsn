@@ -1,0 +1,22 @@
+@layer components {
+    .skeleton {
+        @apply rounded-md bg-foreground/[0%] transition-[background-color] duration-500;
+
+        & > * {
+            @apply opacity-100 transition-[opacity] duration-500;
+        }
+
+        &--loading {
+            @apply animate-pulse bg-foreground/[12%];
+            animation-duration: 1s;
+        }
+
+        &--hide-child {
+            @apply h-[fit-content] pointer-events-none;
+
+            & > * {
+                @apply opacity-0;
+            }
+        }
+    }
+}

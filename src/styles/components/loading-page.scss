@@ -1,0 +1,21 @@
+@layer components {
+    :root {
+        --loading-page-size: 160px;
+        --loading-page-margin-top: calc(var(--nav-height) + 1.5rem + 4.75rem + 3rem);
+    }
+
+    .loading-page {
+        @apply flex flex-col items-center justify-center h-screen w-full absolute top-0 right-0 bottom-0 left-0 z-[0];
+
+        &--admin {
+            @apply bg-background max-h-[calc(100vh-var(--loading-page-margin-top))] mt-[calc(var(--loading-page-margin-top)-var(--nav-height))];
+        }
+
+        img {
+            @apply w-[var(--loading-page-size)] h-[var(--loading-page-size)]
+            select-none drag-none
+            animate-pulse;
+            animation-duration: 3s;
+        }
+    }
+}

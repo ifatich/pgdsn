@@ -1,0 +1,29 @@
+@layer components {
+    .card {
+        @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+
+        &__header {
+            @apply flex flex-col p-6 mb-3;
+        }
+
+        &__title {
+            @apply text-epsilon font-bold tracking-tight;
+        }
+
+        &__description {
+            @apply text-omicron font-regular text-foreground-tertiary;
+
+            &--highlight {
+                @apply text-omicron font-bold text-primary-on-text;
+            }
+        }
+
+        &__content {
+            @apply p-6 pt-0;
+        }
+
+        &__footer {
+            @apply flex items-center p-6 pt-0 mt-3;
+        }
+    }
+}

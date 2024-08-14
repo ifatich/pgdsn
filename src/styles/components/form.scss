@@ -1,0 +1,26 @@
+@layer components {
+    .form {
+        @apply space-y-1;
+
+        &__label {
+            @apply text-omicron font-bold
+            peer-disabled:cursor-not-allowed;
+
+            &--error {
+            }
+        }
+
+        &__item {
+            @apply space-y-1.5;
+        }
+
+        &__description {
+            @apply text-omega text-muted-foreground;
+        }
+
+        &__message {
+            @apply text-omega font-regular text-destructive-on-text;
+            min-height: var(--12-omega-line-height);
+        }
+    }
+}

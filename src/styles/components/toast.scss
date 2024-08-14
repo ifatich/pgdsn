@@ -1,0 +1,38 @@
+@layer components {
+    [data-sonner-toast] {
+        @apply p-5 text-white text-sigma flex items-center gap-3 rounded-lg shadow-sm w-[var(--width)] border border-background/[20%];
+
+        [data-title] {
+            @apply text-omicron;
+        }
+
+        [data-description] {
+            @apply !text-white/[90%];
+        }
+
+        [data-icon] {
+            svg {
+                @apply w-7 h-7;
+            }
+        }
+    }
+
+    .sonner {
+        &--error {
+            @apply bg-destructive;
+        }
+
+        &--success {
+            @apply bg-lime-50;
+        }
+
+        &--warning {
+            @apply bg-orange-50;
+        }
+
+        &--info {
+            @apply bg-blue-50;
+        }
+
+    }
+}

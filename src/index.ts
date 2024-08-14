@@ -1,3 +1,3 @@
-export { Index } from "./components";
+import "./styles/globals.css"
 
-export type { IndexProps } from "./components";
+export { Button } from "./components/ui/button";

@@ -1,0 +1,99 @@
+@layer components {
+    .select {
+
+        &__label {
+            @apply py-1.5 pl-8 pr-2 text-omicron font-bold;
+        }
+
+        &__trigger {
+            @apply flex h-10 items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-omicron ring-offset-background
+            focus-ring;
+
+            &::placeholder {
+                @apply text-muted-foreground;
+            }
+
+            &:disabled {
+                @apply cursor-not-allowed opacity-50;
+            }
+        }
+
+        &__trigger-chevron {
+            @apply chevron-down;
+        }
+
+        &__content {
+            @apply relative z-50 min-w-[8rem] overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md;
+
+            &[data-state=open] {
+                @apply animate-in fade-in-0 zoom-in-95;
+            }
+
+            &[data-state=closed] {
+                @apply animate-out fade-out-0 zoom-out-95;
+            }
+
+            &[data-slide=top] {
+                @apply slide-in-from-bottom-2;
+            }
+
+            &[data-slide=bottom] {
+                @apply slide-in-from-top-2;
+            }
+
+            &[data-slide=left] {
+                @apply slide-in-from-right-2;
+            }
+
+            &[data-slide=right] {
+                @apply slide-in-from-left-2;
+            }
+
+            &.popper {
+                &[data-slide=top] {
+                    @apply -translate-y-1;
+                }
+
+                &[data-slide=bottom] {
+                    @apply translate-y-1;
+                }
+
+                &[data-slide=left] {
+                    @apply -translate-x-1;
+                }
+
+                &[data-slide=right] {
+                    @apply translate-x-1;
+                }
+            }
+
+            &__viewport {
+                @apply p-1;
+
+                &.popper {
+                    @apply h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)];
+                }
+            }
+        }
+
+        &__item {
+            @apply relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-omicron outline-none;
+
+            &[data-disabled] {
+                @apply pointer-events-none opacity-50;
+            }
+
+            &:focus {
+                @apply bg-foreground/10 text-foreground;
+            }
+
+            &__indicator {
+                @apply absolute left-2 flex h-3.5 w-3.5 items-center justify-center;
+            }
+        }
+
+        &__separator {
+            @apply -mx-1 my-1 h-px bg-muted;
+        }
+    }
+}

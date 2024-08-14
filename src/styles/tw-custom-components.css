@@ -1,0 +1,17 @@
+@import "/components/loading-page.scss";
+@import "/components/skeleton.scss";
+@import "/components/icon.scss";
+@import "/components/button.scss";
+@import "/components/label.scss";
+@import "/components/card.scss";
+@import "/components/form.scss";
+@import "/components/input.scss";
+@import "/components/select.scss";
+@import "/components/table.scss";
+@import "/components/infotip.scss";
+@import "/components/toast.scss";
+@import "/components/data-table.scss";
+@import "/components/dropdown-menu.scss";
+@import "/components/page-layout.scss";
+@import "/components/syariah-pattern.scss";
+@import "/components/custom/content-state.scss";

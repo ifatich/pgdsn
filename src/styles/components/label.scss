@@ -1,0 +1,19 @@
+@layer components {
+    .label {
+        &--positive {
+            @apply bg-lime-50/[20%] dark:bg-lime-50/[40%];
+        }
+
+        &--negative {
+            @apply bg-destructive/[20%] dark:bg-destructive/[50%];
+        }
+
+        &--warning {
+            @apply bg-yellow-50/[20%] dark:bg-yellow-50/[40%];
+        }
+
+        &--neutral {
+            @apply bg-blue-50/[20%] dark:bg-blue-50/[40%];
+        }
+    }
+}

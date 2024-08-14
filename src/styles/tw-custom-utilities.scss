@@ -1,0 +1,70 @@
+@layer utilities {
+    .middle-of-screen {
+        @apply w-screen h-screen flex items-center justify-center;
+    }
+
+    .flex-right {
+        @apply flex flex-col items-end;
+    }
+
+    .container {
+        @apply px-2 xs:px-6 md:px-8;
+    }
+
+    .invert-on-dark {
+        @apply dark:invert dark:grayscale dark:brightness-50;
+    }
+
+    .focus-ring {
+        &:focus-visible {
+            @apply outline-none ring-2 ring-ring ring-offset-0 !important;
+        }
+    }
+
+    .focus-ring-none {
+        &:focus-visible {
+            @apply outline-none ring-offset-0 ring-2 ring-primary/[0%] !important;
+        }
+    }
+
+    .as-input {
+        @apply inp inp--hover-focus;
+    }
+
+    .chevron-down {
+        @apply ml-1 h-4 w-4 opacity-50 transition duration-200;
+
+        [data-state=open] & {
+            @apply rotate-180;
+        }
+    }
+
+    .bg-backdrop-blur {
+        @apply !bg-background/[40%] dark:!bg-background/[60%];
+    }
+
+    .fab {
+        @apply fixed z-10 top-auto right-6 bottom-6 left-auto;
+    }
+
+    .reset-fab {
+        @apply relative z-auto top-auto right-auto bottom-auto left-auto;
+    }
+
+    .drag-none {
+        user-drag: none;
+        -webkit-user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+
+    .has-fade-out {
+        @apply transition-opacity duration-500 opacity-100;
+    }
+
+    .faded-out {
+        @apply !opacity-[0%];
+    }
+}

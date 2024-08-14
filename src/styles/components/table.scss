@@ -1,0 +1,45 @@
+@layer components {
+    .table {
+        @apply w-full caption-bottom text-omicron;
+
+        &__wrapper {
+            @apply relative w-full overflow-auto;
+        }
+
+        &__header {
+            @apply [&_tr]:border-b;
+        }
+
+        &__body {
+            @apply [&_tr:last-child]:border-0;
+        }
+
+        &__footer {
+            @apply bg-primary font-regular text-primary-foreground;
+        }
+
+        &__row {
+            @apply border-b transition-colors data-[state=selected]:bg-muted;
+
+            &:not(.no-data):not(.header):hover {
+                @apply bg-muted/50;
+            }
+        }
+
+        &__head {
+            @apply h-12 px-2 text-left align-middle [&:has([role=checkbox])]:pr-0 first:pl-3;
+
+            &, & > div, button, button span {
+                @apply text-omicron text-card-foreground font-bold;
+            }
+        }
+
+        &__cell {
+            @apply px-2 py-4 align-top [&:has([role=checkbox])]:pr-0 first:pl-3;
+        }
+
+        &__caption {
+            @apply mt-4 text-omicron text-muted-foreground;
+        }
+    }
+}
