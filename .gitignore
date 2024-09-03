@@ -6,6 +6,7 @@
 
 # testing
 /coverage
+/test
 
 # next.js
 /.next/
@@ -13,8 +14,6 @@
 
 /dist/index.mjs
 /dist/index.d.mts
-
-/test/
 
 package-lock.json
 
