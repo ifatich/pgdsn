@@ -14,11 +14,10 @@
 /dist/index.mjs
 /dist/index.d.mts
 
-/test
+/test/
 
 package-lock.json
 
-# production
 # production
 /build
 
