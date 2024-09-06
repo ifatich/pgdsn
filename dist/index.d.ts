@@ -24,7 +24,7 @@ declare const InfoTipDescription: React.ForwardRefExoticComponent<React.HTMLAttr
 
 interface ToastProps {
     isToastOpen: boolean;
-    setToastOpen: () => void;
+    setToastOpen: (isToastOpen: boolean) => void;
     children: React.ReactNode;
 }
 declare const Toast: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & VariantProps<(props?: ({

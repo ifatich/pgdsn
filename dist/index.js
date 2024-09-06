@@ -187,6 +187,7 @@ var InfoTipDescription = React.forwardRef(({ className, ...props }, ref) => /* @
 InfoTipDescription.displayName = "InfoTipDescription";
 
 // src/components/ui/toast.tsx
+var import_react2 = require("react");
 var import_class_variance_authority3 = require("class-variance-authority");
 var React2 = __toESM(require("react"));
 var import_jsx_runtime3 = require("react/jsx-runtime");
@@ -213,27 +214,67 @@ var toastVariants = (0, import_class_variance_authority3.cva)(
   }
 );
 var Toast = React2.forwardRef(({ className, variant, type, isToastOpen, setToastOpen, children, ...props }, ref) => {
-  const [visible, setVisible] = React2.useState(isToastOpen);
+  const [animationState, setAnimationState] = (0, import_react2.useState)(null);
+  ;
+  const [isOpacityZero, setOpacityZero] = (0, import_react2.useState)(true);
+  ;
+  (0, import_react2.useEffect)(() => {
+    setOpacityZero(!isOpacityZero);
+    setAnimationState("animation-enter");
+    console.log(isToastOpen);
+  }, []);
+  function handleClose() {
+    if (type === "mobile") {
+      setTimeout(() => setOpacityZero(!isOpacityZero), 300);
+    } else {
+      setOpacityZero(!isOpacityZero);
+    }
+    setAnimationState(null);
+    setTimeout(() => setToastOpen(isToastOpen), 300);
+    console.log(isToastOpen);
+  }
   if (!isToastOpen) return null;
   return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(import_jsx_runtime3.Fragment, { children: [
-    type === "mobile" && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "overlay bg-black-80 opacity-50 w-screen h-screen z-1 fixed inset-0" }),
+    type === "mobile" && /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: cn("overlay", isOpacityZero ? "opacity-0" : "opacity-50") }),
     /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)(
       "div",
       {
         "data-sonner-toast": true,
         ref,
         role: "toast",
-        className: cn(toastVariants({ variant, type }), className),
+        className: cn(
+          toastVariants({ variant, type }),
+          className,
+          type === "mobile" && animationState,
+          isOpacityZero ? "opacity-0" : "opacity-100"
+        ),
         ...props,
         children: [
           /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "inline-block items-center", children }),
           /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
             "button",
             {
-              onClick: setToastOpen,
-              className: "text-gray-500 hover:text-gray-700 focus:outline-none",
+              onClick: handleClose,
               "aria-label": "Close",
-              children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("svg", { fill: cn(toastVariants({ variant })), className: "h-5 w-5", role: "button", viewBox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("g", { id: "filled=false", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("path", { id: "Combined Shape", fillRule: "evenodd", clipRule: "evenodd", d: "M17.0219 6.27576C17.4969 5.88357 18.2013 5.90971 18.6458 6.3542C19.1181 6.82646 19.1181 7.59215 18.6458 8.06441L14.2102 12.5L18.6458 16.9356C19.1181 17.4079 19.1181 18.1735 18.6458 18.6458C18.2013 19.0903 17.4969 19.1164 17.0219 18.7242L16.9356 18.6458L12.5 14.2102L8.06441 18.6458L7.97814 18.7242C7.50308 19.1164 6.79868 19.0903 6.3542 18.6458C5.88193 18.1735 5.88193 17.4079 6.3542 16.9356L10.7898 12.5L6.3542 8.06441C5.88193 7.59215 5.88193 6.82646 6.3542 6.3542C6.79868 5.90971 7.50308 5.88357 7.97814 6.27576L8.06441 6.3542L12.5 10.7898L16.9356 6.3542L17.0219 6.27576Z" }) }) })
+              children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+                "svg",
+                {
+                  fill: cn(toastVariants({ variant })),
+                  className: "h-5 w-5",
+                  role: "button",
+                  viewBox: "0 0 24 24",
+                  xmlns: "http://www.w3.org/2000/svg",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("g", { id: "filled=false", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+                    "path",
+                    {
+                      id: "Combined Shape",
+                      fillRule: "evenodd",
+                      clipRule: "evenodd",
+                      d: "M17.0219 6.27576C17.4969 5.88357 18.2013 5.90971 18.6458 6.3542C19.1181 6.82646 19.1181 7.59215 18.6458 8.06441L14.2102 12.5L18.6458 16.9356C19.1181 17.4079 19.1181 18.1735 18.6458 18.6458C18.2013 19.0903 17.4969 19.1164 17.0219 18.7242L16.9356 18.6458L12.5 14.2102L8.06441 18.6458L7.97814 18.7242C7.50308 19.1164 6.79868 19.0903 6.3542 18.6458C5.88193 18.1735 5.88193 17.4079 6.3542 16.9356L10.7898 12.5L6.3542 8.06441C5.88193 7.59215 5.88193 6.82646 6.3542 6.3542C6.79868 5.90971 7.50308 5.88357 7.97814 6.27576L8.06441 6.3542L12.5 10.7898L16.9356 6.3542L17.0219 6.27576Z"
+                    }
+                  ) })
+                }
+              )
             }
           )
         ]
@@ -241,7 +282,6 @@ var Toast = React2.forwardRef(({ className, variant, type, isToastOpen, setToast
     )
   ] });
 });
-Toast.displayName = "toast";
 var ToastTitle = React2.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("h5", { "data-title": true, ref, className: cn("__title", className), ...props }));
 ToastTitle.displayName = "toastTitle";
 var ToastDescription = React2.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { "data-description": true, ref, className: cn("__description", className), ...props }));

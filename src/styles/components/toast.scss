@@ -1,59 +1,67 @@
 @layer components {
     [data-sonner-toast] {
-        @apply p-3 text-white text-sigma flex gap-3 w-[var(--width)] justify-between items-start;
-
-        [data-title] {
-            @apply text-omicron;
-        }
-
-        [data-description] {
-            @apply !text-white/[90%];
-        }
-
-        [data-icon] {
-            svg {
-                @apply w-7 h-7;
-            }
-        }
-
+      @apply p-3 text-white text-sigma flex gap-3 w-[var(--width)] justify-between items-start transition-opacity duration-200 ease-in-out;
+  
+      [data-title] {
+        @apply text-omicron;
+      }
+  
+      [data-description] {
+        @apply !text-white/[90%];
+      }
+  
+      [data-icon] {
         svg {
-            @apply fill-red-50;
-            fill: currentColor
+          @apply w-7 h-7;
         }
+      }
+  
+      svg {
+        @apply fill-red-50;
+        fill: currentColor;
+      }
     }
-
+  
     .sonner {
-        &--error {
-            @apply bg-destructive;
+      &--error {
+        @apply bg-destructive;
+      }
+  
+      &--success {
+        @apply bg-lime-50;
+      }
+  
+      &--warning {
+        @apply bg-orange-50;
+      }
+  
+      &--info {
+        @apply bg-blue-50;
+      }
+  
+      &--mobile {
+        @apply rounded-tl-lg rounded-tr-lg bottom-0 fixed z-20 w-full transition-transform transform duration-200 ease-in-out translate-y-[50px];
+  
+        &.animation-enter {
+          @apply translate-y-0;
         }
-
-        &--success {
-            @apply bg-lime-50;
-        }
-
-        &--warning {
-            @apply bg-orange-50;
-        }
-
-        &--info {
-            @apply bg-blue-50;
-        }
-
-        &--mobile{
-            @apply rounded-tl-lg rounded-tr-lg bottom-0 fixed z-10 w-full
-        }
-
-        &--desktop{
-            @apply rounded-lg
-        }
-
+      }
+  
+      &--desktop {
+        @apply rounded-lg;
+      }
     }
-
+  
     .__title {
-        @apply mb-1 text-omicron font-bold leading-none tracking-tight;
+      @apply mb-1 text-omicron font-bold leading-none tracking-tight;
+    }
+  
+    .__description {
+      @apply text-sigma font-regular [&_p]:leading-relaxed;
     }
 
-    .__description {
-        @apply text-sigma font-regular [&_p]:leading-relaxed;
+    .overlay{
+        @apply bg-black-80 w-screen h-screen z-10 fixed inset-0 transition-opacity duration-200 ease-in-out
     }
-}
+  }
+  

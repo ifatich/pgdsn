@@ -938,6 +938,9 @@ body {
   line-height: var(--14-sigma-line-height);
   --tw-text-opacity: 1;
   color: hsl(var(--text-white) / var(--tw-text-opacity));
+  transition-property: opacity;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 [data-sonner-toast] [data-title] {
   font-size: var(--16-omicron);
@@ -973,10 +976,19 @@ body {
 .sonner--mobile {
   position: fixed;
   bottom: 0px;
-  z-index: 10;
+  z-index: 20;
   width: 100%;
+  --tw-translate-y: 50px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   border-top-left-radius: var(--radius);
   border-top-right-radius: var(--radius);
+  transition-property: transform;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sonner--mobile.animation-enter {
+  --tw-translate-y: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .sonner--desktop {
   border-radius: var(--radius);
@@ -996,6 +1008,18 @@ body {
 }
 .__description p {
   line-height: 1.625;
+}
+.overlay {
+  position: fixed;
+  inset: 0px;
+  z-index: 10;
+  height: 100vh;
+  width: 100vw;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--black-80) / var(--tw-bg-opacity));
+  transition-property: opacity;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 @layer component {
   :root {
@@ -1224,12 +1248,6 @@ body {
 .visible {
   visibility: visible;
 }
-.fixed {
-  position: fixed;
-}
-.inset-0 {
-  inset: 0px;
-}
 .block {
   display: block;
 }
@@ -1245,17 +1263,11 @@ body {
 .h-full {
   height: 100%;
 }
-.h-screen {
-  height: 100vh;
-}
 .w-5 {
   width: 1.25rem;
 }
 .w-full {
   width: 100%;
-}
-.w-screen {
-  width: 100vw;
 }
 @keyframes reverse-spin {
   from {
@@ -1268,12 +1280,14 @@ body {
 .items-center {
   align-items: center;
 }
-.bg-black-80 {
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--black-80) / var(--tw-bg-opacity));
-}
 .bg-black-80\/50 {
   background-color: hsl(var(--black-80) / 0.5);
+}
+.opacity-0 {
+  opacity: 0;
+}
+.opacity-100 {
+  opacity: 1;
 }
 .opacity-50 {
   opacity: 0.5;
