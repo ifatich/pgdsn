@@ -803,25 +803,141 @@ body {
   font-weight: inherit;
   color: inherit;
 }
+.infotip {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-radius: var(--radius);
+  padding: 0.75rem;
+}
+.infotip > svg + div {
+  --tw-translate-y: -3px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.infotip > svg {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  --tw-text-opacity: 1;
+  color: hsl(var(--foreground) / var(--tw-text-opacity));
+}
+.infotip > svg ~ * {
+  padding-left: 2.5rem;
+}
+.infotip--error {
+  background-color: hsl(var(--destructive) / 0.1);
+  background-size: contain;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+.infotip--error:is(.dark *) {
+  background-color: hsl(var(--destructive) / 8%);
+}
+.infotip--error {
+  background-image: url(https://bucket.pegadaian.co.id/design-system-salt-bucket/assets/images/aksen-red.svg);
+}
+.infotip--error svg {
+  fill: hsl(var(--red-50) / 1);
+  color: hsl(var(--destructive) / 0.9);
+}
+.infotip--error svg:is(.dark *) {
+  color: hsl(var(--destructive) / 0.7);
+}
+.infotip--error svg {
+  fill: currentColor;
+}
+.infotip--success {
+  background-color: hsl(var(--lime-50) / 0.1);
+  background-size: contain;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+.infotip--success:is(.dark *) {
+  background-color: hsl(var(--lime-50) / 8%);
+}
+.infotip--success {
+  background-image: url(https://ifatich4.github.io/img/aksen-green.83b1e1cd.svg);
+}
+.infotip--success svg {
+  color: hsl(var(--lime-50) / 0.9);
+}
+.infotip--success svg:is(.dark *) {
+  color: hsl(var(--lime-50) / 0.7);
+}
+.infotip--success svg {
+  fill: currentColor;
+}
+.infotip--warning {
+  background-color: hsl(var(--orange-50) / 0.1);
+  background-size: contain;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+.infotip--warning:is(.dark *) {
+  background-color: hsl(var(--orange-50) / 8%);
+}
+.infotip--warning {
+  background-image: url(https://bucket.pegadaian.co.id/design-system-salt-bucket/assets/images/aksen-yellow.svg);
+}
+.infotip--warning svg {
+  color: hsl(var(--orange-50) / 0.9);
+}
+.infotip--warning svg:is(.dark *) {
+  color: hsl(var(--orange-50) / 0.7);
+}
+.infotip--warning svg {
+  fill: currentColor;
+}
+.infotip--info {
+  background-color: hsl(var(--blue-50) / 0.1);
+  background-size: contain;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+.infotip--info:is(.dark *) {
+  background-color: hsl(var(--blue-50) / 8%);
+}
+.infotip--info {
+  background-image: url(https://ifatich4.github.io/img/aksen-blue.9555dc63.svg);
+}
+.infotip--info svg {
+  color: hsl(var(--blue-50) / 0.9);
+}
+.infotip--info svg:is(.dark *) {
+  color: hsl(var(--blue-50) / 0.7);
+}
+.infotip--info svg {
+  fill: currentColor;
+}
+.infotip__title {
+  margin-bottom: 0.25rem;
+  font-size: var(--16-omicron);
+  line-height: var(--16-omicron-line-height);
+  font-weight: var(--bold);
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+.infotip__description {
+  font-size: var(--14-sigma);
+  line-height: var(--14-sigma-line-height);
+  font-weight: var(--regular);
+}
+.infotip__description p {
+  line-height: 1.625;
+}
 [data-sonner-toast] {
   display: flex;
   width: var(--width);
-  align-items: center;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 0.75rem;
-  border-radius: var(--radius);
-  border-width: 1px;
-  border-color: hsl(var(--background) / 20%);
-  padding: 1.25rem;
+  padding: 0.75rem;
   font-size: var(--14-sigma);
   line-height: var(--14-sigma-line-height);
   --tw-text-opacity: 1;
   color: hsl(var(--text-white) / var(--tw-text-opacity));
-  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-  box-shadow:
-    var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000),
-    var(--tw-shadow);
 }
 [data-sonner-toast] [data-title] {
   font-size: var(--16-omicron);
@@ -833,6 +949,53 @@ body {
 [data-sonner-toast] [data-icon] svg {
   height: 1.75rem;
   width: 1.75rem;
+}
+[data-sonner-toast] svg {
+  fill: hsl(var(--red-50) / 1);
+  fill: currentColor;
+}
+.sonner--error {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--destructive) / var(--tw-bg-opacity));
+}
+.sonner--success {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--lime-50) / var(--tw-bg-opacity));
+}
+.sonner--warning {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--orange-50) / var(--tw-bg-opacity));
+}
+.sonner--info {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--blue-50) / var(--tw-bg-opacity));
+}
+.sonner--mobile {
+  position: fixed;
+  bottom: 0px;
+  z-index: 10;
+  width: 100%;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+.sonner--desktop {
+  border-radius: var(--radius);
+}
+.__title {
+  margin-bottom: 0.25rem;
+  font-size: var(--16-omicron);
+  line-height: var(--16-omicron-line-height);
+  font-weight: var(--bold);
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+.__description {
+  font-size: var(--14-sigma);
+  line-height: var(--14-sigma-line-height);
+  font-weight: var(--regular);
+}
+.__description p {
+  line-height: 1.625;
 }
 @layer component {
   :root {
@@ -1055,11 +1218,44 @@ body {
     }
   }
 }
+.\!visible {
+  visibility: visible !important;
+}
+.visible {
+  visibility: visible;
+}
+.fixed {
+  position: fixed;
+}
+.inset-0 {
+  inset: 0px;
+}
 .block {
   display: block;
 }
+.inline-block {
+  display: inline-block;
+}
 .inline {
   display: inline;
+}
+.h-5 {
+  height: 1.25rem;
+}
+.h-full {
+  height: 100%;
+}
+.h-screen {
+  height: 100vh;
+}
+.w-5 {
+  width: 1.25rem;
+}
+.w-full {
+  width: 100%;
+}
+.w-screen {
+  width: 100vw;
 }
 @keyframes reverse-spin {
   from {
@@ -1068,6 +1264,19 @@ body {
 }
 .animate-reverse-spin {
   animation: reverse-spin 1s linear infinite;
+}
+.items-center {
+  align-items: center;
+}
+.bg-black-80 {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--black-80) / var(--tw-bg-opacity));
+}
+.bg-black-80\/50 {
+  background-color: hsl(var(--black-80) / 0.5);
+}
+.opacity-50 {
+  opacity: 0.5;
 }
 .outline {
   outline-style: solid;
@@ -1079,4 +1288,8 @@ body {
   bottom: 1.5rem;
   left: auto;
   z-index: 10;
+}
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
