@@ -1,0 +1,29 @@
+@layer components {
+    .modal {
+        @apply flex flex-col rounded-md shadow-md bg-white max-w-[360px] max-h-screen fixed top-1/2 left-1/2 z-10 transform -translate-x-1/2 -translate-y-1/2;
+
+    }
+    
+    .modal-header{
+        @apply flex flex-row border-b border-b-black-20 p-4 rounded-t-md;
+
+        h4{
+            @apply flex flex-grow;
+        }
+    }
+
+    .modal-dismiss{
+        @apply block;
+    }
+
+    .modal-non-dismiss{
+        @apply hidden;
+    }
+
+    .modal-body{
+        @apply p-4 flex flex-col gap-6 max-h;
+    }
+    .modal-footer{
+        @apply px-4 pb-4 flex flex-col gap-2;
+    }
+}

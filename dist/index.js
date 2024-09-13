@@ -34,6 +34,10 @@ __export(src_exports, {
   InfoTipDescription: () => InfoTipDescription,
   InfoTipTitle: () => InfoTipTitle,
   Infotip: () => Infotip,
+  Modal: () => Modal,
+  ModalBody: () => ModalBody,
+  ModalFooter: () => ModalFooter,
+  ModalHeader: () => ModalHeader,
   Toast: () => Toast,
   ToastDescription: () => ToastDescription,
   ToastTitle: () => ToastTitle
@@ -286,12 +290,69 @@ var ToastTitle = React2.forwardRef(({ className, ...props }, ref) => /* @__PURE_
 ToastTitle.displayName = "toastTitle";
 var ToastDescription = React2.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { "data-description": true, ref, className: cn("__description", className), ...props }));
 ToastDescription.displayName = "toastDescription";
+
+// src/components/ui/modal.tsx
+var import_class_variance_authority4 = require("class-variance-authority");
+var import_react3 = require("react");
+var import_jsx_runtime4 = require("react/jsx-runtime");
+var modalHeaderVariant = (0, import_class_variance_authority4.cva)(
+  "",
+  {
+    variants: {
+      dismiss: {
+        true: "modal-dismiss",
+        false: "modal-non-dismiss"
+      }
+    },
+    defaultVariants: {
+      dismiss: true
+    }
+  }
+);
+var Modal = (0, import_react3.forwardRef)(({ className, children, ...props }, ref) => {
+  const [visible, setVisible] = (0, import_react3.useState)(true);
+  const [animationState, setAnimationState] = (0, import_react3.useState)(null);
+  ;
+  const [isOpacityZero, setOpacityZero] = (0, import_react3.useState)(false);
+  if (!visible) return null;
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(import_jsx_runtime4.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { className: "bg-black-80 opacity-50 w-screen h-screen z-10 fixed inset-0 transition-opacity duration-200 ease-in-out" }),
+    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
+      "div",
+      {
+        ref,
+        role: "modal",
+        className: cn("modal", className),
+        ...props,
+        children
+      }
+    )
+  ] });
+});
+Modal.displayName = "modal";
+var ModalHeader = (0, import_react3.forwardRef)(
+  ({ className, onClose, dismiss, ...props }, ref) => {
+    return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: cn("modal-header", className), ...props, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h4", { ref, ...props }),
+      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("svg", { onClick: onClose, className: cn(modalHeaderVariant({ dismiss }), className), width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("g", { id: "filled=false", children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("path", { id: "Combined Shape", fillRule: "evenodd", clipRule: "evenodd", d: "M17.0219 6.27576C17.4969 5.88357 18.2013 5.90971 18.6458 6.3542C19.1181 6.82646 19.1181 7.59215 18.6458 8.06441L14.2102 12.5L18.6458 16.9356C19.1181 17.4079 19.1181 18.1735 18.6458 18.6458C18.2013 19.0903 17.4969 19.1164 17.0219 18.7242L16.9356 18.6458L12.5 14.2102L8.06441 18.6458L7.97814 18.7242C7.50308 19.1164 6.79868 19.0903 6.3542 18.6458C5.88193 18.1735 5.88193 17.4079 6.3542 16.9356L10.7898 12.5L6.3542 8.06441C5.88193 7.59215 5.88193 6.82646 6.3542 6.3542C6.79868 5.90971 7.50308 5.88357 7.97814 6.27576L8.06441 6.3542L12.5 10.7898L16.9356 6.3542L17.0219 6.27576Z", fill: "#58585B" }) }) })
+    ] });
+  }
+);
+ModalHeader.displayName = "ModalHeader";
+var ModalBody = (0, import_react3.forwardRef)(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { ref, className: cn("modal-body", className), ...props }));
+ModalBody.displayName = "ModalBody";
+var ModalFooter = (0, import_react3.forwardRef)(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { ref, className: cn("modal-footer", className), ...props }));
+ModalFooter.displayName = "ModalFooter";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Button,
   InfoTipDescription,
   InfoTipTitle,
   Infotip,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
   Toast,
   ToastDescription,
   ToastTitle

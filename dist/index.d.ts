@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React$1 from 'react';
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 import * as class_variance_authority_dist_types from 'class-variance-authority/dist/types';
 import { VariantProps } from 'class-variance-authority';
@@ -14,24 +14,36 @@ interface ButtonPropsType extends ButtonHTMLAttributes<HTMLButtonElement>, Varia
     children?: ReactNode;
     isLoading?: boolean;
 }
-declare const Button: React.ForwardRefExoticComponent<ButtonPropsType & React.RefAttributes<HTMLButtonElement>>;
+declare const Button: React$1.ForwardRefExoticComponent<ButtonPropsType & React$1.RefAttributes<HTMLButtonElement>>;
 
-declare const Infotip: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & VariantProps<(props?: ({
+declare const Infotip: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLDivElement> & VariantProps<(props?: ({
     variant?: "default" | "error" | "success" | "warning" | "info" | null | undefined;
-} & class_variance_authority_dist_types.ClassProp) | undefined) => string> & React.RefAttributes<HTMLDivElement>>;
-declare const InfoTipTitle: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLHeadingElement> & React.RefAttributes<HTMLHeadingElement>>;
-declare const InfoTipDescription: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLParagraphElement> & React.RefAttributes<HTMLParagraphElement>>;
+} & class_variance_authority_dist_types.ClassProp) | undefined) => string> & React$1.RefAttributes<HTMLDivElement>>;
+declare const InfoTipTitle: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLHeadingElement> & React$1.RefAttributes<HTMLHeadingElement>>;
+declare const InfoTipDescription: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLParagraphElement> & React$1.RefAttributes<HTMLParagraphElement>>;
 
 interface ToastProps {
     isToastOpen: boolean;
     setToastOpen: (isToastOpen: boolean) => void;
-    children: React.ReactNode;
+    children: React$1.ReactNode;
 }
-declare const Toast: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & VariantProps<(props?: ({
+declare const Toast: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLDivElement> & VariantProps<(props?: ({
     variant?: "default" | "error" | "success" | "warning" | "info" | null | undefined;
     type?: "mobile" | "desktop" | null | undefined;
-} & class_variance_authority_dist_types.ClassProp) | undefined) => string> & ToastProps & React.RefAttributes<HTMLDivElement>>;
-declare const ToastTitle: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLHeadingElement> & React.RefAttributes<HTMLHeadingElement>>;
-declare const ToastDescription: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLParagraphElement> & React.RefAttributes<HTMLParagraphElement>>;
+} & class_variance_authority_dist_types.ClassProp) | undefined) => string> & ToastProps & React$1.RefAttributes<HTMLDivElement>>;
+declare const ToastTitle: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLHeadingElement> & React$1.RefAttributes<HTMLHeadingElement>>;
+declare const ToastDescription: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLParagraphElement> & React$1.RefAttributes<HTMLParagraphElement>>;
 
-export { Button, InfoTipDescription, InfoTipTitle, Infotip, Toast, ToastDescription, ToastTitle };
+interface ModalProps {
+    children: React.ReactNode;
+}
+declare const Modal: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLDivElement> & ModalProps & React$1.RefAttributes<HTMLDivElement>>;
+declare const ModalHeader: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLHeadingElement> & VariantProps<(props?: ({
+    dismiss?: boolean | null | undefined;
+} & class_variance_authority_dist_types.ClassProp) | undefined) => string> & {
+    onClose: () => void;
+} & React$1.RefAttributes<HTMLDivElement>>;
+declare const ModalBody: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLHeadingElement> & React$1.RefAttributes<HTMLDivElement>>;
+declare const ModalFooter: React$1.ForwardRefExoticComponent<React$1.HTMLAttributes<HTMLHeadingElement> & React$1.RefAttributes<HTMLDivElement>>;
+
+export { Button, InfoTipDescription, InfoTipTitle, Infotip, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle };

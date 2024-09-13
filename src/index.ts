@@ -3,5 +3,23 @@ import "./styles/globals.css"
 import { Button } from './components/ui/button'; 
 import { Infotip, InfoTipTitle, InfoTipDescription } from "./components/ui/infotip";
 import { Toast, ToastDescription, ToastTitle } from "./components/ui/toast";
-export { Button, Infotip, InfoTipTitle, InfoTipDescription, Toast, ToastDescription, ToastTitle };
+import { Modal, ModalBody, ModalFooter, ModalHeader } from "./components/ui/modal";
+
+// Export
+export { 
+    Button,
+
+    Infotip,
+    InfoTipTitle,
+    InfoTipDescription,
+    
+    Toast,
+    ToastDescription,
+    ToastTitle,
+    
+    Modal,
+    ModalBody,
+    ModalFooter,
+    ModalHeader
+};
 
