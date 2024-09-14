@@ -1,6 +1,6 @@
 import { cn } from "../../lib/utils"
 import { cva, type VariantProps } from "class-variance-authority"
-import * as React from "react"
+import { useState, forwardRef }  from "react"
 
 const infotipVariants = cva(
   "infotip",
@@ -20,25 +20,31 @@ const infotipVariants = cva(
   }
 )
 
-const Infotip = React.forwardRef<
+const Infotip = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof infotipVariants>
 >(({ className, variant, children, ...props }, ref) => {
-  const [visible, setVisible] = React.useState(true)
+  const [isOpacityZero, setOpacityZero] = useState(false)
+  const [visible, setVisible] = useState(true)
   if (!visible) return null
+
+  function handleClose(){ 
+    setOpacityZero(!isOpacityZero)
+    setTimeout(() => setVisible(false),200)
+  }
 
   return (
     <div
       ref={ref}
       role="infotip"
-      className={cn(infotipVariants({ variant }), className)}
+      className={cn(infotipVariants({ variant }), isOpacityZero ? "opacity-0" : "opacity-100", className)}
       {...props}
     >
        <div className="inline-block items-center">
        {children}
        </div>
       <button
-        onClick={() => setVisible(false)}
+        onClick={handleClose}
         className="text-gray-500 hover:text-gray-700 focus:outline-none"
         aria-label="Close"
       >
@@ -54,7 +60,7 @@ const Infotip = React.forwardRef<
 })
 Infotip.displayName = "infotip"
 
-const InfoTipTitle = React.forwardRef<
+const InfoTipTitle = forwardRef<
   HTMLHeadingElement,
   React.HTMLAttributes<HTMLHeadingElement>
 >(({ className, ...props }, ref) => (
@@ -62,7 +68,7 @@ const InfoTipTitle = React.forwardRef<
 ))
 InfoTipTitle.displayName = "InfoTipTitle"
 
-const InfoTipDescription = React.forwardRef<
+const InfoTipDescription = forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (

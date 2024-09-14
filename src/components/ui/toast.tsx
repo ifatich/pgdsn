@@ -5,24 +5,19 @@ import { cva, type VariantProps } from "class-variance-authority"
 import * as React from "react"
 
 const toastVariants = cva(
-  "sonner",
+  "toast",
   {
     variants: {
       variant: {
-        default: "sonner--info",
-        error: "sonner--error",
-        success: "sonner--success",
-        warning: "sonner--warning",  
-        info: "sonner--info",
+        default: "toast--info",
+        error: "toast--error",
+        success: "toast--success",
+        warning: "toast--warning",  
+        info: "toast--info",
       },
-      type: {
-        mobile: "sonner--mobile",
-        desktop: "sonner--desktop",
-      }
     },
     defaultVariants: {
       variant: "default",
-      type: "desktop",
     },
   }
 )
@@ -36,7 +31,7 @@ interface ToastProps {
 const Toast = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof toastVariants> & ToastProps
->(({ className, variant, type, isToastOpen, setToastOpen, children, ...props }, ref) => {
+>(({ className, variant, isToastOpen, setToastOpen, children, ...props }, ref) => {
   const [animationState, setAnimationState] = useState<string | null>(null);;
   const [isOpacityZero, setOpacityZero] =useState(true);;
 
@@ -47,11 +42,7 @@ const Toast = React.forwardRef<
   }, []);
 
   function handleClose(){
-    if(type==="mobile"){
-      setTimeout(() => setOpacityZero(!isOpacityZero), 300);
-    } else{
-      setOpacityZero(!isOpacityZero)
-    }
+    setOpacityZero(!isOpacityZero)
     setAnimationState(null);
     setTimeout(() => setToastOpen(isToastOpen), 300);
     console.log(isToastOpen)
@@ -61,16 +52,15 @@ const Toast = React.forwardRef<
 
   return (
     <>
-      {type === "mobile" && <div className={cn("overlay", (isOpacityZero? "opacity-0" : "opacity-50"))} />}
+      {/* {type === "mobile" && <div className={cn("overlay", (isOpacityZero? "opacity-0" : "opacity-50"))} />} */}
       <div
-        data-sonner-toast
+        data-toast
         ref={ref}
         role="toast"
         className={cn(
-          toastVariants({ variant, type }),
+          toastVariants({ variant }),
           className,
-          type === "mobile" && animationState,
-          (isOpacityZero? "opacity-0" : "opacity-100")
+          animationState
         )}
         {...props}
       >

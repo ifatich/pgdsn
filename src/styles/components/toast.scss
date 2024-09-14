@@ -1,6 +1,6 @@
 @layer components {
-    [data-sonner-toast] {
-      @apply p-3 text-white text-sigma flex gap-3 w-[var(--width)] justify-between items-start transition-opacity duration-200 ease-in-out;
+    [data-toast] {
+      @apply p-3 text-white text-sigma flex gap-3 sm:w-[var(--width)] justify-between items-start transition-all duration-200 ease-in-out rounded-t-md sm:rounded-lg bottom-0 sm:bottom-auto fixed sm:relative w-full translate-y-[100px] sm:translate-y-0 opacity-0;
   
       [data-title] {
         @apply text-omicron;
@@ -20,9 +20,13 @@
         @apply fill-red-50;
         fill: currentColor;
       }
+
+      &.animation-enter {
+        @apply translate-y-0 opacity-100;
+      }
     }
   
-    .sonner {
+    .toast {
       &--error {
         @apply bg-destructive;
       }
@@ -37,18 +41,6 @@
   
       &--info {
         @apply bg-blue-50;
-      }
-  
-      &--mobile {
-        @apply rounded-tl-lg rounded-tr-lg bottom-0 fixed z-20 w-full transition-transform transform duration-200 ease-in-out translate-y-[50px];
-  
-        &.animation-enter {
-          @apply translate-y-0;
-        }
-      }
-  
-      &--desktop {
-        @apply rounded-lg;
       }
     }
   

@@ -1,6 +1,6 @@
 @layer components {
     .infotip {
-        @apply flex flex-row items-start justify-between w-full rounded-lg p-3 [&>svg~*]:pl-10 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground ;
+        @apply flex flex-row items-start justify-between w-full rounded-lg p-3 [&>svg~*]:pl-10 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground transition-opacity duration-200;
         
         &--error {
             @apply bg-destructive/10 dark:bg-destructive/[8%] bg-no-repeat bg-right-top bg-contain;

@@ -1,19 +1,33 @@
 @layer components {
     .modal {
-        @apply flex flex-col rounded-md shadow-md bg-white max-w-[360px] max-h-screen fixed top-1/2 left-1/2 z-10 transform -translate-x-1/2 -translate-y-1/2;
+        @apply absolute rounded-t-md shadow-md bg-white max-h-screen bottom-0 z-10 sm:bottom-auto sm:rounded-md sm:w-[360px] transition-all duration-500 md:duration-300 ease-in-out ;
+
+        
+        &:has(.disable){
+            @apply bg-black-60;
+        }
+
+        &.animation-enter{
+            @apply opacity-100 translate-y-0;
+        }
+
+        &.animation-exit{
+            @apply md:opacity-0 translate-y-[700px] md:translate-y-[-50px];
+        }
 
     }
+
+    .overlay{
+        @apply bg-black-80 w-screen h-screen z-10 fixed inset-0 transition-opacity duration-200 ease-in-out;
+    }
+      
     
     .modal-header{
-        @apply flex flex-row border-b border-b-black-20 p-4 rounded-t-md;
-
-        h4{
-            @apply flex flex-grow;
-        }
+        @apply flex flex-row border-b border-b-black-20 py-4 pr-10 pl-4 rounded-t-md;
     }
 
     .modal-dismiss{
-        @apply block;
+        @apply block absolute top-4 right-4;
     }
 
     .modal-non-dismiss{
@@ -21,7 +35,7 @@
     }
 
     .modal-body{
-        @apply p-4 flex flex-col gap-6 max-h;
+        @apply p-4 flex flex-col gap-4;
     }
     .modal-footer{
         @apply px-4 pb-4 flex flex-col gap-2;
