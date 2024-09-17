@@ -1,8 +1,6 @@
 import { cn } from "../../lib/utils"
-import { useState, useEffect} from "react"
+import { useState, useEffect, forwardRef} from "react"
 import { cva, type VariantProps } from "class-variance-authority"
-// import { error } from "console"
-import * as React from "react"
 
 const toastVariants = cva(
   "toast",
@@ -24,11 +22,11 @@ const toastVariants = cva(
 
 interface ToastProps {
   isToastOpen: boolean;
-  setToastOpen: (isToastOpen:boolean) => void;
+  setToastOpen: () => void;
   children: React.ReactNode;
 }
 
-const Toast = React.forwardRef<
+const Toast = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof toastVariants> & ToastProps
 >(({ className, variant, isToastOpen, setToastOpen, children, ...props }, ref) => {
@@ -39,12 +37,12 @@ const Toast = React.forwardRef<
     setOpacityZero(!isOpacityZero)
     setAnimationState("animation-enter");
     console.log(isToastOpen)
-  }, []);
+  }, [isToastOpen]);
 
   function handleClose(){
     setOpacityZero(!isOpacityZero)
     setAnimationState(null);
-    setTimeout(() => setToastOpen(isToastOpen), 300);
+    setTimeout(() => setToastOpen(), 300);
     console.log(isToastOpen)
   }
 
@@ -93,7 +91,7 @@ const Toast = React.forwardRef<
 
 
 
-const ToastTitle = React.forwardRef<
+const ToastTitle = forwardRef<
   HTMLHeadingElement,
   React.HTMLAttributes<HTMLHeadingElement>
 >(({ className, ...props }, ref) => (
@@ -101,7 +99,7 @@ const ToastTitle = React.forwardRef<
 ))
 ToastTitle.displayName = "toastTitle"
 
-const ToastDescription = React.forwardRef<
+const ToastDescription = forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (

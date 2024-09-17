@@ -37,7 +37,7 @@ const Modal = forwardRef<
 
   function handleClose() {
     setAnimationState(false); // Start closing animation
-    setTimeout(() => onClose(), 200); // Close modal after animation
+    if (onClose) setTimeout(() => onClose(), 200); // Close modal after animation
     return null
   }
 
@@ -48,6 +48,9 @@ const Modal = forwardRef<
       <div
         className={cn("overlay", animationState ? "opacity-50" : "opacity-0", className)}
         onClick={handleClose}
+        ref={ref}
+        role="modal"
+        {...props}
       ></div>
       <div
         ref={ref}

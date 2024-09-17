@@ -1,9 +1,7 @@
 "use strict";
-var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __export = (target, all) => {
   for (var name in all)
@@ -17,19 +15,12 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-  // If the importer is in node compatibility mode or this is not an ESM
-  // file that has been converted to a CommonJS file using a Babel-
-  // compatible transform (i.e. "__esModule" has not been set), then set
-  // "default" to the CommonJS "module.exports" for node compatibility.
-  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
-  mod
-));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // src/index.ts
 var src_exports = {};
 __export(src_exports, {
+  Badge: () => Badge,
   Button: () => Button,
   InfoTipDescription: () => InfoTipDescription,
   InfoTipTitle: () => InfoTipTitle,
@@ -159,7 +150,7 @@ var infotipVariants = (0, import_class_variance_authority2.cva)(
     }
   }
 );
-var Infotip = (0, import_react2.forwardRef)(({ className, variant, children, ...props }, ref) => {
+var Infotip = (0, import_react2.forwardRef)(({ className, variant, dismiss, children, ...props }, ref) => {
   const [isOpacityZero, setOpacityZero] = (0, import_react2.useState)(false);
   const [visible, setVisible] = (0, import_react2.useState)(true);
   if (!visible) return null;
@@ -182,7 +173,7 @@ var Infotip = (0, import_react2.forwardRef)(({ className, variant, children, ...
             onClick: handleClose,
             className: "text-gray-500 hover:text-gray-700 focus:outline-none",
             "aria-label": "Close",
-            children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("svg", { fill: cn(infotipVariants({ variant })), className: "h-5 w-5", role: "button", viewBox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("g", { id: "filled=false", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("path", { id: "Combined Shape", fillRule: "evenodd", clipRule: "evenodd", d: "M17.0219 6.27576C17.4969 5.88357 18.2013 5.90971 18.6458 6.3542C19.1181 6.82646 19.1181 7.59215 18.6458 8.06441L14.2102 12.5L18.6458 16.9356C19.1181 17.4079 19.1181 18.1735 18.6458 18.6458C18.2013 19.0903 17.4969 19.1164 17.0219 18.7242L16.9356 18.6458L12.5 14.2102L8.06441 18.6458L7.97814 18.7242C7.50308 19.1164 6.79868 19.0903 6.3542 18.6458C5.88193 18.1735 5.88193 17.4079 6.3542 16.9356L10.7898 12.5L6.3542 8.06441C5.88193 7.59215 5.88193 6.82646 6.3542 6.3542C6.79868 5.90971 7.50308 5.88357 7.97814 6.27576L8.06441 6.3542L12.5 10.7898L16.9356 6.3542L17.0219 6.27576Z" }) }) })
+            children: dismiss && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("svg", { fill: cn(infotipVariants({ variant })), className: "h-5 w-5", role: "button", viewBox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("g", { id: "filled=false", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("path", { id: "Combined Shape", fillRule: "evenodd", clipRule: "evenodd", d: "M17.0219 6.27576C17.4969 5.88357 18.2013 5.90971 18.6458 6.3542C19.1181 6.82646 19.1181 7.59215 18.6458 8.06441L14.2102 12.5L18.6458 16.9356C19.1181 17.4079 19.1181 18.1735 18.6458 18.6458C18.2013 19.0903 17.4969 19.1164 17.0219 18.7242L16.9356 18.6458L12.5 14.2102L8.06441 18.6458L7.97814 18.7242C7.50308 19.1164 6.79868 19.0903 6.3542 18.6458C5.88193 18.1735 5.88193 17.4079 6.3542 16.9356L10.7898 12.5L6.3542 8.06441C5.88193 7.59215 5.88193 6.82646 6.3542 6.3542C6.79868 5.90971 7.50308 5.88357 7.97814 6.27576L8.06441 6.3542L12.5 10.7898L16.9356 6.3542L17.0219 6.27576Z" }) }) })
           }
         )
       ]
@@ -198,7 +189,6 @@ InfoTipDescription.displayName = "InfoTipDescription";
 // src/components/ui/toast.tsx
 var import_react3 = require("react");
 var import_class_variance_authority3 = require("class-variance-authority");
-var React = __toESM(require("react"));
 var import_jsx_runtime3 = require("react/jsx-runtime");
 var toastVariants = (0, import_class_variance_authority3.cva)(
   "toast",
@@ -217,7 +207,7 @@ var toastVariants = (0, import_class_variance_authority3.cva)(
     }
   }
 );
-var Toast = React.forwardRef(({ className, variant, isToastOpen, setToastOpen, children, ...props }, ref) => {
+var Toast = (0, import_react3.forwardRef)(({ className, variant, isToastOpen, setToastOpen, children, ...props }, ref) => {
   const [animationState, setAnimationState] = (0, import_react3.useState)(null);
   ;
   const [isOpacityZero, setOpacityZero] = (0, import_react3.useState)(true);
@@ -226,11 +216,11 @@ var Toast = React.forwardRef(({ className, variant, isToastOpen, setToastOpen, c
     setOpacityZero(!isOpacityZero);
     setAnimationState("animation-enter");
     console.log(isToastOpen);
-  }, []);
+  }, [isToastOpen]);
   function handleClose() {
     setOpacityZero(!isOpacityZero);
     setAnimationState(null);
-    setTimeout(() => setToastOpen(isToastOpen), 300);
+    setTimeout(() => setToastOpen(), 300);
     console.log(isToastOpen);
   }
   if (!isToastOpen) return null;
@@ -278,9 +268,9 @@ var Toast = React.forwardRef(({ className, variant, isToastOpen, setToastOpen, c
     }
   ) });
 });
-var ToastTitle = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("h5", { "data-title": true, ref, className: cn("__title", className), ...props }));
+var ToastTitle = (0, import_react3.forwardRef)(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("h5", { "data-title": true, ref, className: cn("__title", className), ...props }));
 ToastTitle.displayName = "toastTitle";
-var ToastDescription = React.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { "data-description": true, ref, className: cn("__description", className), ...props }));
+var ToastDescription = (0, import_react3.forwardRef)(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { "data-description": true, ref, className: cn("__description", className), ...props }));
 ToastDescription.displayName = "toastDescription";
 
 // src/components/ui/modal.tsx
@@ -309,7 +299,7 @@ var Modal = (0, import_react4.forwardRef)(({ className, children, dismiss, isOpe
   }, [isOpen]);
   function handleClose() {
     setAnimationState(false);
-    setTimeout(() => onClose(), 200);
+    if (onClose) setTimeout(() => onClose(), 200);
     return null;
   }
   if (!isOpen && !animationState) return handleClose();
@@ -318,7 +308,10 @@ var Modal = (0, import_react4.forwardRef)(({ className, children, dismiss, isOpe
       "div",
       {
         className: cn("overlay", animationState ? "opacity-50" : "opacity-0", className),
-        onClick: handleClose
+        onClick: handleClose,
+        ref,
+        role: "modal",
+        ...props
       }
     ),
     /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)(
@@ -366,8 +359,62 @@ var ModalBody = (0, import_react4.forwardRef)(({ className, ...props }, ref) => 
 ModalBody.displayName = "ModalBody";
 var ModalFooter = (0, import_react4.forwardRef)(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { ref, className: cn("modal-footer", className), ...props }));
 ModalFooter.displayName = "ModalFooter";
+
+// src/components/ui/badge.tsx
+var import_react5 = require("react");
+var import_class_variance_authority5 = require("class-variance-authority");
+var import_jsx_runtime5 = require("react/jsx-runtime");
+var badgeVariants = (0, import_class_variance_authority5.cva)(
+  "badge",
+  {
+    variants: {
+      variant: {
+        red: "badge-red",
+        orange: "badge-orange",
+        green: "badge-green",
+        blue: "badge-blue"
+      }
+    },
+    defaultVariants: {
+      variant: "green"
+    }
+  }
+);
+var Badge = (0, import_react5.forwardRef)(({ className, children, variant, dismiss, isBadgeOpen, setBadgeOpen, ...props }, ref) => {
+  const [animationState, setAnimationState] = (0, import_react5.useState)(false);
+  (0, import_react5.useEffect)(() => {
+    if (isBadgeOpen) {
+      setAnimationState(true);
+    } else {
+      setAnimationState(false);
+    }
+  }, [isBadgeOpen]);
+  function handleClose() {
+    setAnimationState(false);
+    if (setBadgeOpen) setTimeout(() => setBadgeOpen(), 300);
+  }
+  if (!isBadgeOpen) return null;
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(
+    "div",
+    {
+      className: cn(
+        badgeVariants({ variant }),
+        animationState ? "opacity-100" : "opacity-0",
+        className
+      ),
+      ref,
+      role: "badge",
+      ...props,
+      children: [
+        children,
+        dismiss && /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("svg", { onClick: handleClose, xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", viewBox: "0 0 20 20", fill: "none", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M18.3334 10C18.3334 14.6024 14.6024 18.3333 10 18.3333C5.39765 18.3333 1.66669 14.6024 1.66669 10C1.66669 5.39762 5.39765 1.66666 10 1.66666C14.6024 1.66666 18.3334 5.39762 18.3334 10ZM6.86346 6.86344C7.1104 6.61651 7.50173 6.60198 7.76565 6.81986L7.81358 6.86344L10.2778 9.32765L12.742 6.86344L12.7899 6.81986C13.0539 6.60198 13.4452 6.61651 13.6921 6.86344C13.9545 7.12581 13.9545 7.55119 13.6921 7.81356L11.2279 10.2778L13.6921 12.742C13.9545 13.0044 13.9545 13.4297 13.6921 13.6921C13.4452 13.939 13.0539 13.9536 12.7899 13.7357L12.742 13.6921L10.2778 11.2279L7.81357 13.6921L7.76565 13.7357C7.50172 13.9536 7.11039 13.939 6.86345 13.6921C6.60109 13.4297 6.60109 13.0044 6.86345 12.742L9.32768 10.2778L6.86346 7.81356C6.6011 7.55119 6.6011 7.12581 6.86346 6.86344Z", fill: "#939597" }) })
+      ]
+    }
+  );
+});
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
+  Badge,
   Button,
   InfoTipDescription,
   InfoTipTitle,

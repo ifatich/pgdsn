@@ -18,14 +18,16 @@ declare const Button: react.ForwardRefExoticComponent<ButtonPropsType & react.Re
 
 declare const Infotip: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & VariantProps<(props?: ({
     variant?: "default" | "error" | "success" | "warning" | "info" | null | undefined;
-} & class_variance_authority_dist_types.ClassProp) | undefined) => string> & react.RefAttributes<HTMLDivElement>>;
+} & class_variance_authority_dist_types.ClassProp) | undefined) => string> & {
+    dismiss?: boolean;
+} & react.RefAttributes<HTMLDivElement>>;
 declare const InfoTipTitle: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLHeadingElement> & react.RefAttributes<HTMLHeadingElement>>;
 declare const InfoTipDescription: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLParagraphElement> & react.RefAttributes<HTMLParagraphElement>>;
 
 interface ToastProps {
     isToastOpen: boolean;
-    setToastOpen: (isToastOpen: boolean) => void;
-    children: react.ReactNode;
+    setToastOpen: () => void;
+    children: React.ReactNode;
 }
 declare const Toast: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & VariantProps<(props?: ({
     variant?: "default" | "error" | "success" | "warning" | "info" | null | undefined;
@@ -45,4 +47,14 @@ declare const ModalHeader: react.ForwardRefExoticComponent<react.HTMLAttributes<
 declare const ModalBody: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLHeadingElement> & react.RefAttributes<HTMLDivElement>>;
 declare const ModalFooter: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLHeadingElement> & react.RefAttributes<HTMLDivElement>>;
 
-export { Button, InfoTipDescription, InfoTipTitle, Infotip, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle };
+interface BadgeProps {
+    dismiss?: boolean;
+    isBadgeOpen?: boolean;
+    setBadgeOpen?: () => void;
+    children: React.ReactNode;
+}
+declare const Badge: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & VariantProps<(props?: ({
+    variant?: "red" | "orange" | "green" | "blue" | null | undefined;
+} & class_variance_authority_dist_types.ClassProp) | undefined) => string> & BadgeProps & react.RefAttributes<HTMLDivElement>>;
+
+export { Badge, Button, InfoTipDescription, InfoTipTitle, Infotip, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle };

@@ -14,5 +14,6 @@
 @import "/components/dropdown-menu.scss";
 @import "/components/page-layout.scss";
 @import "/components/syariah-pattern.scss";
-@import "/components/custom/content-state.scss";
 @import "/components/modal.scss";
+@import "/components/badge.scss";
+@import "/components/custom/content-state.scss";

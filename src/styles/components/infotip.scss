@@ -2,44 +2,30 @@
     .infotip {
         @apply flex flex-row items-start justify-between w-full rounded-lg p-3 [&>svg~*]:pl-10 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground transition-opacity duration-200;
         
+        svg {
+            @apply text-black-60;
+            fill: currentColor
+        }
+
         &--error {
             @apply bg-destructive/10 dark:bg-destructive/[8%] bg-no-repeat bg-right-top bg-contain;
             background-image: url("https://bucket.pegadaian.co.id/design-system-salt-bucket/assets/images/aksen-red.svg");
-
-            svg {
-                @apply text-destructive/90 dark:text-destructive/70 fill-red-50;
-                fill: currentColor
-            }
         }
 
         &--success {
             @apply bg-lime-50/10 dark:bg-lime-50/[8%] bg-no-repeat bg-right-top bg-contain;
             background-image: url("https://ifatich4.github.io/img/aksen-green.83b1e1cd.svg");
-
-            svg {
-                @apply text-lime-50/90 dark:text-lime-50/70;
-                fill: currentColor
-            }
         }
 
         &--warning {
             @apply bg-orange-50/10 dark:bg-orange-50/[8%] bg-no-repeat bg-right-top bg-contain;
             background-image: url("https://bucket.pegadaian.co.id/design-system-salt-bucket/assets/images/aksen-yellow.svg");
 
-            svg {
-                @apply text-orange-50/90 dark:text-orange-50/70;
-                fill: currentColor
-            }
         }
 
         &--info {
             @apply bg-blue-50/10 dark:bg-blue-50/[8%] bg-no-repeat bg-right-top bg-contain;
             background-image: url("https://ifatich4.github.io/img/aksen-blue.9555dc63.svg");
-
-            svg {
-                @apply text-blue-50/90 dark:text-blue-50/70;
-                fill: currentColor
-            }
         }
 
         &__title {

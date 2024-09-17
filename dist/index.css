@@ -829,6 +829,11 @@ body {
 .infotip > svg ~ * {
   padding-left: 2.5rem;
 }
+.infotip svg {
+  --tw-text-opacity: 1;
+  color: hsl(var(--black-60) / var(--tw-text-opacity));
+  fill: currentColor;
+}
 .infotip--error {
   background-color: hsl(var(--destructive) / 0.1);
   background-size: contain;
@@ -840,16 +845,6 @@ body {
 }
 .infotip--error {
   background-image: url(https://bucket.pegadaian.co.id/design-system-salt-bucket/assets/images/aksen-red.svg);
-}
-.infotip--error svg {
-  fill: hsl(var(--red-50) / 1);
-  color: hsl(var(--destructive) / 0.9);
-}
-.infotip--error svg:is(.dark *) {
-  color: hsl(var(--destructive) / 0.7);
-}
-.infotip--error svg {
-  fill: currentColor;
 }
 .infotip--success {
   background-color: hsl(var(--lime-50) / 0.1);
@@ -863,15 +858,6 @@ body {
 .infotip--success {
   background-image: url(https://ifatich4.github.io/img/aksen-green.83b1e1cd.svg);
 }
-.infotip--success svg {
-  color: hsl(var(--lime-50) / 0.9);
-}
-.infotip--success svg:is(.dark *) {
-  color: hsl(var(--lime-50) / 0.7);
-}
-.infotip--success svg {
-  fill: currentColor;
-}
 .infotip--warning {
   background-color: hsl(var(--orange-50) / 0.1);
   background-size: contain;
@@ -884,15 +870,6 @@ body {
 .infotip--warning {
   background-image: url(https://bucket.pegadaian.co.id/design-system-salt-bucket/assets/images/aksen-yellow.svg);
 }
-.infotip--warning svg {
-  color: hsl(var(--orange-50) / 0.9);
-}
-.infotip--warning svg:is(.dark *) {
-  color: hsl(var(--orange-50) / 0.7);
-}
-.infotip--warning svg {
-  fill: currentColor;
-}
 .infotip--info {
   background-color: hsl(var(--blue-50) / 0.1);
   background-size: contain;
@@ -904,15 +881,6 @@ body {
 }
 .infotip--info {
   background-image: url(https://ifatich4.github.io/img/aksen-blue.9555dc63.svg);
-}
-.infotip--info svg {
-  color: hsl(var(--blue-50) / 0.9);
-}
-.infotip--info svg:is(.dark *) {
-  color: hsl(var(--blue-50) / 0.7);
-}
-.infotip--info svg {
-  fill: currentColor;
 }
 .infotip__title {
   margin-bottom: 0.25rem;
@@ -1077,6 +1045,9 @@ body {
     opacity: 0;
   }
 }
+.modal svg:hover {
+  cursor: pointer;
+}
 .overlay {
   position: fixed;
   inset: 0px;
@@ -1101,6 +1072,9 @@ body {
   padding-bottom: 1rem;
   padding-right: 2.5rem;
   padding-left: 1rem;
+  font-size: var(--18-lambda);
+  line-height: var(--18-lambda-line-height);
+  font-weight: var(--bold);
 }
 .modal-dismiss {
   position: absolute;
@@ -1124,6 +1098,57 @@ body {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
+}
+.badge {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: calc(var(--radius) - 2px);
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: var(--12-omega);
+  line-height: var(--12-omega-line-height);
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+.badge svg {
+  fill: currentColor;
+}
+.badge.badge-red {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--red-10) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--red-50) / var(--tw-text-opacity));
+}
+.badge.badge-green {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--lime-10) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-50) / var(--tw-text-opacity));
+}
+.badge.badge-blue {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--blue-10) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--blue-50) / var(--tw-text-opacity));
+}
+.badge.badge-orange {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--orange-10) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--orange-50) / var(--tw-text-opacity));
+}
+.badge.animation-exit {
+  opacity: 0;
+}
+.badge.animation-enter {
+  opacity: 1;
 }
 @layer component {
   :root {
@@ -1345,6 +1370,12 @@ body {
       }
     }
   }
+}
+.badge-dismiss {
+  display: inline;
+}
+.badge-non-dismiss {
+  display: none;
 }
 .\!visible {
   visibility: visible !important;

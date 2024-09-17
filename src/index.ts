@@ -4,6 +4,7 @@ import { Button } from './components/ui/button';
 import { Infotip, InfoTipTitle, InfoTipDescription } from "./components/ui/infotip";
 import { Toast, ToastDescription, ToastTitle } from "./components/ui/toast";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "./components/ui/modal";
+import { Badge } from "./components/ui/badge";
 
 // Export
 export { 
@@ -20,6 +21,8 @@ export {
     Modal,
     ModalBody,
     ModalFooter,
-    ModalHeader
+    ModalHeader,
+
+    Badge
 };
 

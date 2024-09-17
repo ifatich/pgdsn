@@ -1,0 +1,41 @@
+@layer components {
+    .badge{
+        @apply px-3 py-1 rounded-md flex flex-row gap-3 w-fit items-center text-omega transition-opacity duration-200;
+
+        svg{
+            fill: currentColor;
+        }
+
+        &.badge-red{
+            @apply bg-red-10 text-red-50 ;
+        }
+
+        &.badge-green{
+            @apply bg-lime-10 text-lime-50 ;
+        }
+
+        &.badge-blue{
+            @apply bg-blue-10 text-blue-50 ;
+        }
+
+        &.badge-orange{
+            @apply bg-orange-10 text-orange-50 ;
+        }
+
+        &.animation-exit{
+            @apply opacity-0
+        }
+
+        &.animation-enter{
+            @apply opacity-100
+        }
+    } 
+}
+
+.badge-dismiss{
+    @apply inline;
+}
+
+.badge-non-dismiss{
+    @apply hidden;
+}
