@@ -1504,9 +1504,13 @@ body {
   padding-bottom: 0.25rem;
   font-size: var(--12-omega);
   line-height: var(--12-omega-line-height);
+  font-weight: var(--bold);
   transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
+}
+.badge svg:hover {
+  cursor: pointer;
 }
 .badge svg {
   fill: currentColor;

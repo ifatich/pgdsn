@@ -1,8 +1,9 @@
 @layer components {
     .badge{
-        @apply px-3 py-1 rounded-md flex flex-row gap-3 w-fit items-center text-omega transition-opacity duration-200;
+        @apply px-3 py-1 rounded-md flex flex-row gap-3 w-fit items-center text-omega transition-opacity duration-200 font-bold; 
 
         svg{
+            @apply hover:cursor-pointer;
             fill: currentColor;
         }
 
