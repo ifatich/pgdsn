@@ -1,6 +1,7 @@
 @import "base/colors.scss";
 @import "base/sizes.css";
 @import "base/theme.css";
+@import "base/typography.scss";
 
 @layer base {
     * {
