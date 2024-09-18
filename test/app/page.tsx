@@ -1,8 +1,7 @@
 "use client";
 
-import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge} from "pgdsn";
+import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Breadcumb} from "pgdsn";
 import { useState } from "react";
-
 
 export default function Home() {
 
@@ -15,6 +14,14 @@ export default function Home() {
   const [isModalOpen, setModalOpen] = useState(false)
 
   const [isBadgeOpen, setBadgeOpen] = useState (false)
+
+  const breadcrumbItems = [
+    { page: "Home", link: "/" },
+    { page: "About Us", link: "/about" },
+    { page: "Services", link: "/services" },
+    { page: "Contact", link: "/contact" },
+    { page: "FAQ", link: "/faq" },
+  ];
  
   return (
     <main className="flex flex-col w-full">
@@ -24,6 +31,11 @@ export default function Home() {
           <Button onClick={() => setModalOpen(true)} variant="primary">Open Modal</Button>
           <Button onClick={() => setBadgeOpen(true)} variant="primary">Open Badge</Button>
         </div>
+
+        <div className="breadcumb-group gap-4 flex flex-row p-4 ">
+          <Breadcumb itemList={breadcrumbItems}></Breadcumb>
+        </div>
+        
         
         {
           isToastOpenInfo &&

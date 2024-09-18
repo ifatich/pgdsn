@@ -1545,6 +1545,24 @@ body {
 .badge.animation-enter {
   opacity: 1;
 }
+.breadcumb {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.breadcumb .breadcumb-item {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  font-size: var(--14-sigma);
+  line-height: var(--14-sigma-line-height);
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-50) / var(--tw-text-opacity));
+}
+.breadcumb .breadcumb-item.active {
+  --tw-text-opacity: 1;
+  color: hsl(var(--black-80) / var(--tw-text-opacity));
+}
 @layer component {
   :root {
     --nav-height: 3.5rem;

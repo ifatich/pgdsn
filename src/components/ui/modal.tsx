@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../lib/utils";
-import { useState, forwardRef, useEffect } from "react";
+import { useState, forwardRef, useEffect, Children } from "react";
 
 const modalHeaderVariant = cva("", {
   variants: {

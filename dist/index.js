@@ -21,6 +21,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var src_exports = {};
 __export(src_exports, {
   Badge: () => Badge,
+  Breadcumb: () => Breadcumb,
   Button: () => Button,
   InfoTipDescription: () => InfoTipDescription,
   InfoTipTitle: () => InfoTipTitle,
@@ -412,9 +413,27 @@ var Badge = (0, import_react5.forwardRef)(({ className, children, variant, dismi
     }
   );
 });
+
+// src/components/ui/breadcumb.tsx
+var import_react6 = require("react");
+var import_class_variance_authority6 = require("class-variance-authority");
+var import_jsx_runtime6 = require("react/jsx-runtime");
+var Breadcumb = (0, import_react6.forwardRef)(({ className, itemList, children, ...props }, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: cn("breadcumb"), children: itemList.map((item, i) => {
+    if (i >= 0 && i != itemList.length - 1) {
+      return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: cn("breadcumb-item"), children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("a", { href: item.link, children: item.page }),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("path", { d: "M8.99755 15.875L12.8775 11.995L8.99755 8.11499C8.60755 7.72499 8.60755 7.09499 8.99755 6.70499C9.38755 6.31499 10.0175 6.31499 10.4075 6.70499L14.9975 11.295C15.3875 11.685 15.3875 12.315 14.9975 12.705L10.4075 17.295C10.0175 17.685 9.38755 17.685 8.99755 17.295C8.61755 16.905 8.60755 16.265 8.99755 15.875Z", fill: "#58585B" }) })
+      ] }, i);
+    } else {
+      return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: cn("breadcumb-item active"), children: item.page }, i);
+    }
+  }) });
+});
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Badge,
+  Breadcumb,
   Button,
   InfoTipDescription,
   InfoTipTitle,

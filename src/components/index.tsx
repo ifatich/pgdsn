@@ -3,3 +3,4 @@ export { Button } from "./ui/button";
 export { Toast } from "./ui/toast";
 export { Modal } from "./ui/modal";
 export { Badge } from "./ui/badge";
+export { Breadcumb } from "./ui/breadcumb";

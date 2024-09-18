@@ -5,6 +5,7 @@ import { Infotip, InfoTipTitle, InfoTipDescription } from "./components/ui/infot
 import { Toast, ToastDescription, ToastTitle } from "./components/ui/toast";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "./components/ui/modal";
 import { Badge } from "./components/ui/badge";
+import { Breadcumb } from "./components/ui/breadcumb";
 
 // Export
 export { 
@@ -23,6 +24,8 @@ export {
     ModalFooter,
     ModalHeader,
 
-    Badge
+    Badge,
+
+    Breadcumb
 };
 

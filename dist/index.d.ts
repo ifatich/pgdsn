@@ -57,4 +57,13 @@ declare const Badge: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDi
     variant?: "red" | "orange" | "green" | "blue" | null | undefined;
 } & class_variance_authority_dist_types.ClassProp) | undefined) => string> & BadgeProps & react.RefAttributes<HTMLDivElement>>;
 
-export { Badge, Button, InfoTipDescription, InfoTipTitle, Infotip, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle };
+interface BreadcumbProps {
+    itemList: {
+        page: string;
+        link: string;
+    }[];
+    children?: React.ReactNode;
+}
+declare const Breadcumb: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & BreadcumbProps & react.RefAttributes<HTMLDivElement>>;
+
+export { Badge, Breadcumb, Button, InfoTipDescription, InfoTipTitle, Infotip, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle };

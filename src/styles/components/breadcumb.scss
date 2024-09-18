@@ -1,0 +1,13 @@
+@layer components {
+    .breadcumb{
+        @apply flex flex-row gap-2;
+
+        .breadcumb-item{
+            @apply flex flex-row gap-2 text-lime-50 text-sigma;
+
+            &.active{
+                @apply text-black-80;
+            }            
+        }
+    }
+}
