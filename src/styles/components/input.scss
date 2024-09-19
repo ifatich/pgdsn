@@ -1,9 +1,45 @@
 @layer components {
-    .inp {
-        @apply text-omicron font-regular flex h-11 w-full rounded-md border border-input bg-background/[0%] px-3 py-2 ring-offset-background
-        focus-ring-none transition-[width] duration-500;
+    .input-group {
+        @apply flex flex-row;
+    }
 
-        &[aria-invalid=true] {
+    input {
+        @apply flex flex-row flex-grow;
+
+        &:focus {
+            @apply outline-none;
+        }
+
+        &:disabled {
+            @apply cursor-not-allowed;
+        }
+    }
+
+    .input-label {
+        @apply text-sigma text-black-80;
+    }
+
+    .input {
+        @apply text-omicron font-regular items-center flex gap-2 w-full rounded-md border border-input bg-background/[0%] px-3 py-2 ring-offset-background
+        focus-ring-none transition-[width] duration-500 mt-1 mb-2;
+
+        &:has(.unit-input) {
+            @apply pl-0 py-0;
+        }
+
+        textarea {
+            @apply outline-none h-[78px];
+        }
+
+        &:has(input) {
+            @apply h-fit;
+        }
+
+        &:has(textarea) {
+            @apply h-fit;
+        }
+
+        &[aria-invalid="true"] {
             &:focus-visible {
                 @apply border-destructive-on-text;
             }
@@ -15,12 +51,25 @@
             }
         }
 
-        &:focus-visible {
+        &:has(:focus), &:hover {
             @apply border-input-focus;
+
+            .unit-input.active{
+                @apply border-r border-r-lime-50;
+            }
         }
 
-        &:disabled {
-            @apply cursor-not-allowed opacity-50;
+        &:disabled, &:has(:disabled) {
+            @apply cursor-not-allowed bg-black-20;
+
+            ::placeholder {
+                @apply text-black-60;
+            }
+
+            &:hover {
+                @apply border-black-20;
+            }
+            
         }
 
         &::placeholder {
@@ -56,5 +105,17 @@
                 margin: 0;
             }
         }
+    }
+
+    .unit-input {
+        @apply bg-black-10 px-3 py-2 rounded-l-md left-0 border-r border-r-black-20 text-black-60;
+
+        &:has(~ :disabled){
+            @apply bg-black-20 border-r-black-40
+        }
+    }
+
+    .input-group{
+        @apply flex flex-col
     }
 }

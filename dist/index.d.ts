@@ -1,5 +1,5 @@
 import * as react from 'react';
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode, InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
 import * as class_variance_authority_dist_types from 'class-variance-authority/dist/types';
 import { VariantProps } from 'class-variance-authority';
 
@@ -66,4 +66,24 @@ interface BreadcumbProps {
 }
 declare const Breadcumb: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & BreadcumbProps & react.RefAttributes<HTMLDivElement>>;
 
-export { Badge, Breadcumb, Button, InfoTipDescription, InfoTipTitle, Infotip, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle };
+interface InputProps {
+    placeholder: string;
+    type: string;
+    reset?: boolean;
+    children?: React.ReactNode;
+}
+declare const Input: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLInputElement> & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
+declare const InputGroup: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
+    children: React.ReactNode;
+} & react.RefAttributes<HTMLDivElement>>;
+
+interface LabelProps {
+    children: React.ReactNode;
+}
+declare const Label: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & LabelProps & react.RefAttributes<HTMLDivElement>>;
+
+declare const ErrorText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
+    active?: boolean;
+} & react.RefAttributes<HTMLDivElement>>;
+
+export { Badge, Breadcumb, Button, ErrorText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, Label, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle };

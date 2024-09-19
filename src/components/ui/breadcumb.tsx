@@ -1,7 +1,5 @@
 import { cn } from "../../lib/utils"
 import { useState, useEffect, forwardRef, Children} from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-
 
 interface BreadcumbProps {
     itemList: { page: string; link: string }[]
@@ -38,23 +36,6 @@ const Breadcumb = forwardRef<
     </div>
   )
 })
-
-// interface BreadcumpItemProps{
-//     page:string;
-//     link:string;
-//     isActive: boolean;
-//     children:React.ReactNode;
-// }
-
-// const BreadcrumbItem = forwardRef<
-//   HTMLHeadingElement,
-//   React.HTMLAttributes<HTMLHeadingElement> & BreadcumpItemProps
-// >(({ className, isActive, page, link, ...props }, ref) => (
-//   isActive?
-//   <a href={link}>{page}</a>
-//   : page
-// ))
-// BreadcrumbItem.displayName = "Breadcumb Item" 
 
 export {Breadcumb}
 

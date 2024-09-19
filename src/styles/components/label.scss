@@ -1,5 +1,8 @@
 @layer components {
     .label {
+
+        @apply text-sigma text-black-80 font-bold flex flex-row gap-1;
+        
         &--positive {
             @apply bg-lime-50/[20%] dark:bg-lime-50/[40%];
         }

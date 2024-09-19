@@ -1,9 +1,9 @@
 @layer components {
     .breadcumb{
-        @apply flex flex-row gap-2;
+        @apply flex flex-row gap-2 items-center;
 
         .breadcumb-item{
-            @apply flex flex-row gap-2 text-lime-50 text-sigma;
+            @apply flex flex-row gap-2 text-lime-50 text-sigma items-center;
 
             &.active{
                 @apply text-black-80;
