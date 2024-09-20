@@ -46,15 +46,15 @@
         &--xl {
             @apply rounded-lg h-14;
         }
+    }
 
-        &--remove-arrow {
-            -moz-appearance: textfield;
+    .remove-arrow {
+        -moz-appearance: textfield;
 
-            &::-webkit-outer-spin-button,
-            &::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
     }
 }

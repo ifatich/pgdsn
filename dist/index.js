@@ -22,16 +22,28 @@ var src_exports = {};
 __export(src_exports, {
   Badge: () => Badge,
   Button: () => Button,
+  Dialog: () => Dialog,
+  DialogBody: () => DialogBody,
+  DialogClose: () => DialogClose,
+  DialogContent: () => DialogContent,
+  DialogDescription: () => DialogDescription,
+  DialogFooter: () => DialogFooter,
+  DialogHeader: () => DialogHeader,
+  DialogOverlay: () => DialogOverlay,
+  DialogTitle: () => DialogTitle,
   InfoTipDescription: () => InfoTipDescription,
   InfoTipTitle: () => InfoTipTitle,
   Infotip: () => Infotip,
+  Input: () => Input,
+  Label: () => Label,
   Modal: () => Modal,
   ModalBody: () => ModalBody,
   ModalFooter: () => ModalFooter,
   ModalHeader: () => ModalHeader,
   Toast: () => Toast,
   ToastDescription: () => ToastDescription,
-  ToastTitle: () => ToastTitle
+  ToastTitle: () => ToastTitle,
+  inputVariants: () => inputVariants
 });
 module.exports = __toCommonJS(src_exports);
 
@@ -412,18 +424,258 @@ var Badge = (0, import_react5.forwardRef)(({ className, children, variant, dismi
     }
   );
 });
+
+// src/components/ui/input.tsx
+var import_class_variance_authority6 = require("class-variance-authority");
+var import_react6 = require("react");
+var import_jsx_runtime6 = require("react/jsx-runtime");
+var inputVariants = (0, import_class_variance_authority6.cva)("inp", {
+  variants: {
+    inputSize: {
+      md: "inp--md remove-arrow",
+      sm: "inp--sm remove-arrow",
+      lg: "inp--lg remove-arrow",
+      xl: "inp--xl remove-arrow"
+    },
+    variant: {
+      "hover-focus": "inp--hover-focus"
+    }
+  },
+  defaultVariants: {
+    inputSize: "lg"
+  }
+});
+var Input = (0, import_react6.forwardRef)(({
+  className,
+  type,
+  inputSize,
+  variant,
+  ...props
+}, ref) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { type, className: cn(inputVariants({ inputSize, variant, className })), ref, ...props });
+});
+Input.displayName = "Input";
+
+// src/components/ui/label.tsx
+var import_class_variance_authority7 = require("class-variance-authority");
+var import_react7 = require("react");
+var import_jsx_runtime7 = require("react/jsx-runtime");
+var labelVariants = (0, import_class_variance_authority7.cva)("form__label");
+var Label = (0, import_react7.forwardRef)(({
+  className,
+  ...props
+}, ref) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("label", { ref, className: cn(labelVariants(), className), ...props }));
+Label.displayName = "Label";
+
+// src/components/ui/card.tsx
+var import_react8 = require("react");
+var import_jsx_runtime8 = require("react/jsx-runtime");
+var Card = (0, import_react8.forwardRef)(({
+  className,
+  ...props
+}, ref) => /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+  "div",
+  {
+    ref,
+    className: cn("card", className),
+    ...props
+  }
+));
+Card.displayName = "Card";
+var CardHeader = (0, import_react8.forwardRef)(({
+  className,
+  ...props
+}, ref) => /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+  "div",
+  {
+    ref,
+    className: cn("card__header", className),
+    ...props
+  }
+));
+CardHeader.displayName = "CardHeader";
+var CardTitle = (0, import_react8.forwardRef)(({
+  className,
+  ...props
+}, ref) => /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+  "h3",
+  {
+    ref,
+    className: cn("card__title", className),
+    ...props
+  }
+));
+CardTitle.displayName = "CardTitle";
+var CardDescription = (0, import_react8.forwardRef)(({
+  highlight = false,
+  className,
+  ...props
+}, ref) => /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+  "p",
+  {
+    ref,
+    className: cn(
+      "card__description",
+      highlight && "card__description--highlight",
+      className
+    ),
+    ...props
+  }
+));
+CardDescription.displayName = "CardDescription";
+var CardContent = (0, import_react8.forwardRef)(({
+  className,
+  ...props
+}, ref) => /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { ref, className: cn("card__content", className), ...props }));
+CardContent.displayName = "CardContent";
+var CardFooter = (0, import_react8.forwardRef)(({
+  className,
+  ...props
+}, ref) => /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
+  "div",
+  {
+    ref,
+    className: cn("card__footer", className),
+    ...props
+  }
+));
+CardFooter.displayName = "CardFooter";
+
+// src/components/ui/dialog.tsx
+var import_react9 = require("react");
+var import_react_dom = require("react-dom");
+var import_lucide_react2 = require("lucide-react");
+var import_jsx_runtime9 = require("react/jsx-runtime");
+var Dialog = (0, import_react9.forwardRef)(({
+  className,
+  open = false,
+  children,
+  ...props
+}, ref) => {
+  const [isMounted, setIsMounted] = (0, import_react9.useState)(false);
+  (0, import_react9.useEffect)(() => {
+    setIsMounted(true);
+  }, []);
+  if (!isMounted) return null;
+  if (!open) return null;
+  return (0, import_react_dom.createPortal)(
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(DialogOverlay, { open, className, ...props, children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(DialogContent, { open, ref, ...props, children }) }) }),
+    document.body
+  );
+});
+Dialog.displayName = "Dialog";
+var DialogOverlay = (0, import_react9.forwardRef)(({
+  className,
+  children,
+  open,
+  ...props
+}, ref) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+  "div",
+  {
+    ref,
+    className: cn(
+      "fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-opacity duration-300",
+      open ? "opacity-100" : "opacity-0",
+      className
+    ),
+    ...props,
+    children
+  }
+));
+DialogOverlay.displayName = "DialogOverlay";
+var DialogContent = (0, import_react9.forwardRef)(({
+  className,
+  children,
+  open,
+  ...props
+}, ref) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+  "div",
+  {
+    ref,
+    className: cn(
+      "fixed z-50 grid w-full bg-background shadow-lg duration-200 transition-all transform overflow-y-auto",
+      "sm:max-w-screen-sm sm:rounded-lg sm:h-auto",
+      // Styling untuk tablet ke atas
+      open ? "opacity-100" : "opacity-0",
+      open ? "scale-100" : "scale-95",
+      open ? "sm:left-[50%] sm:top-[50%] sm:translate-x-[-50%] sm:translate-y-[-50%]" : "bottom-0 left-0 translate-x-0 translate-y-0 sm:top-0 sm:left-0 sm:translate-x-0 sm:translate-y-0 sm:duration-200",
+      className
+    ),
+    style: { maxHeight: open ? "60vh" : "0" },
+    ...props,
+    children
+  }
+));
+DialogContent.displayName = "DialogContent";
+var DialogClose = (0, import_react9.forwardRef)(({
+  className,
+  ...props
+}, ref) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("button", { ref, className: cn("data-[state=open]:bg-accent data-[state=open]:text-muted-foreground", className), ...props }));
+DialogClose.displayName = "DialogClose";
+var DialogHeader = ({
+  className,
+  onClose,
+  ...props
+}) => /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: cn("flex flex-row justify-between items-center sm:text-left p-4", className), ...props, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { children: props.children }),
+  onClose && /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)(DialogClose, { onClick: onClose, className: "cursor-pointer", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_lucide_react2.X, { className: "h-4 w-4" }),
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "sr-only", children: "Close" })
+  ] })
+] });
+DialogHeader.displayName = "DialogHeader";
+var DialogBody = (0, import_react9.forwardRef)(({
+  className,
+  children,
+  ...props
+}, ref) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { ref, className: cn("p-4", className), ...props, children }));
+DialogBody.displayName = "DialogBody";
+var DialogFooter = ({
+  className,
+  ...props
+}) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("div", { className: cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 p-4", className), ...props });
+DialogFooter.displayName = "DialogFooter";
+var DialogTitle = (0, import_react9.forwardRef)(({
+  className,
+  ...props
+}, ref) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(
+  "h2",
+  {
+    ref,
+    className: cn("text-lg font-regular leading-none tracking-tight", className),
+    ...props
+  }
+));
+DialogTitle.displayName = "DialogTitle";
+var DialogDescription = (0, import_react9.forwardRef)(({
+  className,
+  ...props
+}, ref) => /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("p", { ref, className: cn("text-sm text-muted-foreground", className), ...props }));
+DialogDescription.displayName = "DialogDescription";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Badge,
   Button,
+  Dialog,
+  DialogBody,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogTitle,
   InfoTipDescription,
   InfoTipTitle,
   Infotip,
+  Input,
+  Label,
   Modal,
   ModalBody,
   ModalFooter,
   ModalHeader,
   Toast,
   ToastDescription,
-  ToastTitle
+  ToastTitle,
+  inputVariants
 });
