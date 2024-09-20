@@ -1220,6 +1220,10 @@ input:focus {
 input:disabled {
   cursor: not-allowed;
 }
+textarea {
+  display: flex;
+  flex-grow: 1;
+}
 .input {
   margin-top: 0.25rem;
   margin-bottom: 0.5rem;
@@ -1271,8 +1275,11 @@ input:disabled {
   height: fit-content;
 }
 .input:has(textarea) {
+  display: flex;
   height: -moz-fit-content;
   height: fit-content;
+  flex-direction: row;
+  align-items: flex-start;
 }
 .input[aria-invalid=true]:focus-visible {
   --tw-border-opacity: 1;

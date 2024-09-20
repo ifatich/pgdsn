@@ -15,6 +15,10 @@
         }
     }
 
+    textarea{
+        @apply flex flex-grow
+    }
+
     .input-label {
         @apply text-sigma text-black-80;
     }
@@ -36,7 +40,7 @@
         }
 
         &:has(textarea) {
-            @apply h-fit;
+            @apply h-fit flex flex-row items-start;
         }
 
         &[aria-invalid="true"] {
