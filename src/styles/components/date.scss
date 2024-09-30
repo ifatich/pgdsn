@@ -1,0 +1,64 @@
+@layer components {
+
+    .date{
+        @apply w-[360px] bg-white shadow-md rounded-md border border-black-10 flex flex-col;
+
+        .header-date{
+            @apply flex flex-row text-lambda font-bold text-black-80 border-b border-b-black-20 justify-between p-4;
+        }
+
+        .month-picker{
+            @apply flex flex-row justify-between p-4;
+
+            .month-year{
+                @apply flex flex-row gap-1;
+
+                span{
+                    @apply text-lime-50 text-omicron font-bold;
+                }
+            }
+        }
+
+        .year-picker{
+            @apply grid grid-cols-3 h-[222px] w-[360px] overflow-scroll rounded-b-md top-[166px] absolute bg-white p-4 justify-items-center;
+
+            .year-cell{
+                @apply text-lambda px-4 py-1 rounded-md w-[76px] text-center;
+
+                &.active{
+                    @apply bg-lime-50 text-white;
+                }
+
+                &:hover:not(.active){
+                    @apply text-primary
+                }
+            }
+        }
+
+        .day-list{
+            
+            .days{
+                @apply grid grid-cols-7 py-2 mx-4 text-omicron text-black-60 border-y border-y-black-20 text-center;
+            }
+        }
+
+        .date-picker{
+            @apply grid grid-rows-4 grid-cols-7 px-4;
+
+            .nomor{
+                @apply p-2 text-sigma flex align-middle justify-center ;
+
+                &:hover{
+                    @apply bg-black-10
+                }
+
+                &.active{
+                    @apply bg-lime-50 rounded-full text-white w-9 ml-1
+                }
+            }
+        }
+    }
+
+    
+
+}

@@ -86,4 +86,6 @@ declare const ErrorText: react.ForwardRefExoticComponent<react.HTMLAttributes<HT
     active?: boolean;
 } & react.RefAttributes<HTMLDivElement>>;
 
-export { Badge, Breadcumb, Button, ErrorText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, Label, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle };
+declare const DatePicker: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & react.RefAttributes<HTMLDivElement>>;
+
+export { Badge, Breadcumb, Button, DatePicker, ErrorText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, Label, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle };

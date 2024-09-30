@@ -9,6 +9,7 @@ import { Breadcumb } from "./components/ui/breadcumb";
 import { Input, InputGroup } from "./components/ui/input";
 import { Label } from "./components/ui/label";
 import { ErrorText } from "./components/ui/error-text";
+import { DatePicker } from "./components/ui/date";
 
 
 // Export
@@ -37,5 +38,7 @@ export {
 
     Label,
     ErrorText,
+
+    DatePicker,
 };
 

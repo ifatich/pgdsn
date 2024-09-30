@@ -7,3 +7,4 @@ export { Breadcumb } from "./ui/breadcumb";
 export { Input } from "./ui/input";
 export { Label } from "./ui/label";
 export { ErrorText } from "./ui/error-text";
+export { DatePicker } from "./ui/date";

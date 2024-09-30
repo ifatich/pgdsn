@@ -1,6 +1,6 @@
 "use client";
 
-import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Breadcumb, Input, InputGroup, Label, ErrorText } from "pgdsn";
+import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Breadcumb, Input, InputGroup, Label, ErrorText, DatePicker } from "pgdsn";
 import { useState } from "react";
 export default function Home() {
 
@@ -21,9 +21,30 @@ export default function Home() {
     { page: "Contact", link: "/contact" },
     { page: "FAQ", link: "/faq" },
   ];
+
+  const aa = new Date()
+
+  const currentDate = aa.getDate();
+  const currentDay = aa.getDay();
+  const currentMonth = aa.getMonth();
+  const currentYear = aa.getFullYear();
+  let firstDay = new Date(currentYear, currentMonth, 1);
+  let lastDay = new Date(currentYear, currentMonth + 1, 0);
+
+  // console.log(currentDate, currentDay, currentMonth, currentYear);
+
+  // for(let i=1; i<=lastDay.getDate(); i++){
+  //   console.log(i)
+  // }
  
   return (
     <main className="flex flex-col w-full">
+      <div className="d">{lastDay.getDate()}</div>
+      <div className="d">{lastDay.getFullYear()}</div>
+
+
+      <DatePicker/>
+
       <div className="w-screen h-screen">
         <div className="flex flex-row gap-3">
           <Button onClick={() => setToastOpenInfo(true)} variant={'primary'} size={'md'}>Open Mobile Toast</Button>

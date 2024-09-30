@@ -1726,6 +1726,137 @@ textarea {
   --tw-text-opacity: 1;
   color: hsl(var(--black-80) / var(--tw-text-opacity));
 }
+.date {
+  display: flex;
+  width: 360px;
+  flex-direction: column;
+  border-radius: calc(var(--radius) - 2px);
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--black-10) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--text-white) / var(--tw-bg-opacity));
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow:
+    var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
+}
+.date .header-date {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom-width: 1px;
+  --tw-border-opacity: 1;
+  border-bottom-color: hsl(var(--black-20) / var(--tw-border-opacity));
+  padding: 1rem;
+  font-size: var(--18-lambda);
+  line-height: var(--18-lambda-line-height);
+  font-weight: var(--bold);
+  --tw-text-opacity: 1;
+  color: hsl(var(--black-80) / var(--tw-text-opacity));
+}
+.date .month-picker {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.date .month-picker .month-year {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+}
+.date .month-picker .month-year span {
+  font-size: var(--16-omicron);
+  line-height: var(--16-omicron-line-height);
+  font-weight: var(--bold);
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-50) / var(--tw-text-opacity));
+}
+.date .year-picker {
+  position: absolute;
+  top: 166px;
+  display: grid;
+  height: 222px;
+  width: 360px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-items: center;
+  overflow: scroll;
+  border-bottom-right-radius: calc(var(--radius) - 2px);
+  border-bottom-left-radius: calc(var(--radius) - 2px);
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--text-white) / var(--tw-bg-opacity));
+  padding: 1rem;
+}
+.date .year-picker .year-cell {
+  width: 76px;
+  border-radius: calc(var(--radius) - 2px);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  text-align: center;
+  font-size: var(--18-lambda);
+  line-height: var(--18-lambda-line-height);
+}
+.date .year-picker .year-cell.active {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--lime-50) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--text-white) / var(--tw-text-opacity));
+}
+.date .year-picker .year-cell:hover:not(.active) {
+  --tw-text-opacity: 1;
+  color: hsl(var(--primary) / var(--tw-text-opacity));
+}
+.date .day-list .days {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  --tw-border-opacity: 1;
+  border-top-color: hsl(var(--black-20) / var(--tw-border-opacity));
+  border-bottom-color: hsl(var(--black-20) / var(--tw-border-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+  font-size: var(--16-omicron);
+  line-height: var(--16-omicron-line-height);
+  --tw-text-opacity: 1;
+  color: hsl(var(--black-60) / var(--tw-text-opacity));
+}
+.date .date-picker {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.date .date-picker .nomor {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  vertical-align: middle;
+  font-size: var(--14-sigma);
+  line-height: var(--14-sigma-line-height);
+}
+.date .date-picker .nomor:hover {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--black-10) / var(--tw-bg-opacity));
+}
+.date .date-picker .nomor.active {
+  margin-left: 0.25rem;
+  width: 2.25rem;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--lime-50) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--text-white) / var(--tw-text-opacity));
+}
 @layer component {
   :root {
     --nav-height: 3.5rem;
