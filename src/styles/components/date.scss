@@ -16,6 +16,14 @@
                 span{
                     @apply text-lime-50 text-omicron font-bold;
                 }
+
+                svg{
+                    @apply transition-transform duration-200 ;
+                }
+    
+                .rotate{
+                    @apply rotate-180;
+                }
             }
         }
 
@@ -43,17 +51,17 @@
         }
 
         .date-picker{
-            @apply grid grid-rows-4 grid-cols-7 px-4;
+            @apply grid grid-rows-4 grid-cols-7 px-4 pb-4 pt-1 gap-1;
 
             .nomor{
-                @apply p-2 text-sigma flex align-middle justify-center ;
+                @apply p-2 text-sigma flex align-middle justify-items-center justify-center text-center ;
 
                 &:hover{
                     @apply bg-black-10
                 }
 
                 &.active{
-                    @apply bg-lime-50 rounded-full text-white w-9 ml-1
+                    @apply bg-lime-50 rounded-full text-white w-9 gap-1 ml-1
                 }
             }
         }
