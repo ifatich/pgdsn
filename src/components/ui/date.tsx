@@ -4,12 +4,18 @@ import { useState, forwardRef, useEffect, Children } from "react";
 
 
 
+interface DatePickerProps{
+    selectedDate: Date;
+    setSelectedDate: (selectedDate:Date) => void;
+}
+
 const DatePicker = forwardRef<
 HTMLDivElement,
-React.HTMLAttributes<HTMLDivElement> 
->(({ className, ...props }, ref) => {
+React.HTMLAttributes<HTMLDivElement> & DatePickerProps
+>(({ className, selectedDate, setSelectedDate, ...props }, ref) => {
 
     const [currentDate, setCurrentDate] = useState(new Date())
+    // const [selectedDate, setSelectedDate] = useState(new Date())
     const [isYearOpen, setYearOpen] = useState(false)
 
     let indexFirstDate = 0
@@ -58,34 +64,7 @@ React.HTMLAttributes<HTMLDivElement>
         setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth()+1))
     }
 
-    function getMonth(indexMonth:number){
-        if(indexMonth===0){
-            return "Januari"
-        }else if(indexMonth===1){
-            return "Februari"
-        }else if(indexMonth===2){
-            return "Maret"
-        }else if(indexMonth===3){
-            return "April"
-        }else if(indexMonth===4){
-            return "Mei"
-        }else if(indexMonth===5){
-            return "Juni"
-        }else if(indexMonth===6){
-            return "Juli"
-        }else if(indexMonth===7){
-            return "Agustus"
-        }else if (indexMonth===8){
-            return "September"
-        }else if(indexMonth===9){
-            return "Oktober"
-        }else if(indexMonth===10){
-            return "November"
-        }else if(indexMonth===11){
-            return "Desember"
-        }
-        return null
-    }
+    const months = ["Januari", "Feburari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
 
     function handleYearOpen(){
         setYearOpen(!isYearOpen)
@@ -94,6 +73,19 @@ React.HTMLAttributes<HTMLDivElement>
     function handleYearChange(yearChoice:number){
         setCurrentDate(new Date(yearChoice, currentDate.getMonth(), currentDate.getDate()))
         handleYearOpen()
+    }
+
+    function isDateSameWithCurrent(date:number){
+        return(
+            date === selectedDate.getDate() &&
+            currentDate.getMonth() === selectedDate.getMonth() &&
+            currentDate.getFullYear() === selectedDate.getFullYear()
+        )
+    }
+
+    function handleChangeDate(dateChoice:number){
+        setSelectedDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), dateChoice))
+        console.log(selectedDate.getDate()+ " " + selectedDate.getMonth()+ " " + selectedDate.getFullYear())
     }
 
     return(
@@ -123,9 +115,9 @@ React.HTMLAttributes<HTMLDivElement>
                     <path d="M14.9975 8.12501L11.1175 12.005L14.9975 15.885C15.3875 16.275 15.3875 16.905 14.9975 17.295C14.6075 17.685 13.9775 17.685 13.5875 17.295L8.99754 12.705C8.60754 12.315 8.60754 11.685 8.99754 11.295L13.5875 6.70501C13.9775 6.31501 14.6075 6.31501 14.9975 6.70501C15.3775 7.09501 15.3875 7.73501 14.9975 8.12501Z" fill="#58585B"/>
                 </svg>
                 <div onClick={handleYearOpen} className={cn("month-year", className)}>
-                    <span>{getMonth(currentDate.getMonth())}</span>
+                    <span>{months[(currentDate.getMonth())]}</span>
                     <span>{currentDate.getFullYear()}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <svg className={isYearOpen ?"rotate": ""} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M8.12253 9.2925L12.0025 13.1725L15.8825 9.2925C16.2725 8.9025 16.9025 8.9025 17.2925 9.2925C17.6825 9.6825 17.6825 10.3125 17.2925 10.7025L12.7025 15.2925C12.3125 15.6825 11.6825 15.6825 11.2925 15.2925L6.70253 10.7025C6.31253 10.3125 6.31253 9.6825 6.70253 9.2925C7.09253 8.9125 7.73253 8.9025 8.12253 9.2925Z" fill="#58585B"/>
                     </svg>
                 </div>
@@ -146,7 +138,10 @@ React.HTMLAttributes<HTMLDivElement>
                 <div className="date-picker">
                     {
                         dates.map((key,date:number) =>(
-                             dates[date] === 0? <div className={cn("nomor" ,className)} key={date}></div>: <div className={cn("nomor", dates[date] === currentDate.getDate() && "active")} key={date}>{dates[date]}</div>
+                             dates[date] === 0? 
+                                <div className={cn("nomor" ,className)} key={date}></div>
+                                : 
+                                <div onClick={() => handleChangeDate(dates[date])} className={cn("nomor", isDateSameWithCurrent(dates[date]) && "active")} key={date}>{dates[date]}</div>
                         ))
                     }
                 </div>
@@ -161,6 +156,7 @@ React.HTMLAttributes<HTMLDivElement>
                         }
                     </div>
             }
+            {/* <div>{selectedDate.getDate()+" "+months[selectedDate.getMonth()]+" "+selectedDate.getFullYear()}</div> */}
         </div>
     )
 })

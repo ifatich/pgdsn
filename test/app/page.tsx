@@ -14,7 +14,11 @@ export default function Home() {
 
   const [isBadgeOpen, setBadgeOpen] = useState (false)
 
+<<<<<<< HEAD
  
+=======
+  const [isDateOpen, setDateOpen] = useState(false)
+>>>>>>> refs/remotes/origin/saannns-branch
 
   const breadcrumbItems = [
     { page: "Home", link: "/" },
@@ -23,9 +27,37 @@ export default function Home() {
     { page: "Contact", link: "/contact" },
     { page: "FAQ", link: "/faq" },
   ];
+<<<<<<< HEAD
  
   return (
     <main className="flex flex-col w-full">
+=======
+
+  const aa = new Date()
+
+  const currentDate = aa.getDate();
+  const currentDay = aa.getDay();
+  const currentMonth = aa.getMonth();
+  const currentYear = aa.getFullYear();
+  let firstDay = new Date(currentYear, currentMonth, 1);
+  let lastDay = new Date(currentYear, currentMonth + 1, 0);
+
+  const [selectedDate, setSelectedDate] = useState(new Date())
+
+  // console.log(currentDate, currentDay, currentMonth, currentYear);
+
+  // for(let i=1; i<=lastDay.getDate(); i++){
+  //   console.log(i)
+  // }
+ 
+  return (
+    <main className="flex flex-col w-full">
+      <div className="d">{lastDay.getDate()}</div>
+      <div className="d">{lastDay.getFullYear()}</div>
+
+      <div>{selectedDate.getDate()+"/"+(selectedDate.getMonth()+1)+"/"+selectedDate.getFullYear()}</div>
+
+>>>>>>> refs/remotes/origin/saannns-branch
       <div className="w-screen h-screen">
         <div className="flex flex-row gap-3">
           <Button onClick={() => setToastOpenInfo(true)} variant={'primary'} size={'md'}>Open Mobile Toast</Button>
@@ -56,6 +88,19 @@ export default function Home() {
               <Label>Kata Sandi</Label>
               <Input placeholder="Masukkan Kata Sandi" type="password" reset={true}/>
               <ErrorText active={true}>Kata sandi salah</ErrorText>
+            </InputGroup>
+            <InputGroup>
+              <Label>Tanggal Lahir</Label>
+              <Input readOnly onClick={() => setDateOpen(!isDateOpen)} placeholder="Pilih tangal lahir" type="text"/>
+              
+              {
+                isDateOpen &&
+                  <div className="absolute flex justify-end flex-grow mt-[64px]">
+                  <DatePicker  selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
+                  </div>
+              }
+              
+              
             </InputGroup>
             <Input   placeholder="Masukkan Nama" type="text" reset={true}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

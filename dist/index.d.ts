@@ -86,6 +86,10 @@ declare const ErrorText: react.ForwardRefExoticComponent<react.HTMLAttributes<HT
     active?: boolean;
 } & react.RefAttributes<HTMLDivElement>>;
 
-declare const DatePicker: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & react.RefAttributes<HTMLDivElement>>;
+interface DatePickerProps {
+    selectedDate: Date;
+    setSelectedDate: (selectedDate: Date) => void;
+}
+declare const DatePicker: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & DatePickerProps & react.RefAttributes<HTMLDivElement>>;
 
 export { Badge, Breadcumb, Button, DatePicker, ErrorText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, Label, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle };
