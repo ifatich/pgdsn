@@ -87,7 +87,7 @@ export default function Home() {
                     <DatePicker  isActive={isDateOpen} setActive={setDateOpen} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
                   </div>
               }
-              
+              {"Selected Day: "+ (isDateSameWithCurrent()? selectedDate.getDate()+"/"+(selectedDate.getMonth()+1)+"/"+selectedDate.getFullYear(): "-")}
               
             </InputGroup>
             <Input   placeholder="Masukkan Nama" type="text" reset={true}>
