@@ -1,7 +1,7 @@
 "use client";
 
 import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Breadcumb, Input, InputGroup, Label, ErrorText, DatePicker } from "pgdsn";
-import { useState } from "react";
+import { useState } from "react"; 
 export default function Home() {
 
   //Defining state every components here
@@ -14,6 +14,8 @@ export default function Home() {
 
   const [isBadgeOpen, setBadgeOpen] = useState (false)
 
+ 
+
   const breadcrumbItems = [
     { page: "Home", link: "/" },
     { page: "About Us", link: "/about" },
@@ -21,30 +23,9 @@ export default function Home() {
     { page: "Contact", link: "/contact" },
     { page: "FAQ", link: "/faq" },
   ];
-
-  const aa = new Date()
-
-  const currentDate = aa.getDate();
-  const currentDay = aa.getDay();
-  const currentMonth = aa.getMonth();
-  const currentYear = aa.getFullYear();
-  let firstDay = new Date(currentYear, currentMonth, 1);
-  let lastDay = new Date(currentYear, currentMonth + 1, 0);
-
-  // console.log(currentDate, currentDay, currentMonth, currentYear);
-
-  // for(let i=1; i<=lastDay.getDate(); i++){
-  //   console.log(i)
-  // }
  
   return (
     <main className="flex flex-col w-full">
-      <div className="d">{lastDay.getDate()}</div>
-      <div className="d">{lastDay.getFullYear()}</div>
-
-
-      <DatePicker/>
-
       <div className="w-screen h-screen">
         <div className="flex flex-row gap-3">
           <Button onClick={() => setToastOpenInfo(true)} variant={'primary'} size={'md'}>Open Mobile Toast</Button>
@@ -54,6 +35,10 @@ export default function Home() {
 
         <div className="breadcumb-group gap-4 flex flex-row p-4 ">
           <Breadcumb itemList={breadcrumbItems}></Breadcumb>
+        </div>
+
+        <div className="input-group gap-4 flex flex-row p-4 ">
+          <DatePicker/>
         </div>
         
         
