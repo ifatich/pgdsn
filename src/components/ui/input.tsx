@@ -13,7 +13,7 @@ HTMLInputElement,
 React.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLInputElement> & TextareaHTMLAttributes<HTMLTextAreaElement>
 >(({ className, placeholder, type, reset, children, ...props }, ref) => {
     
-    const [enteredText, setEnteredText] = useState(props.defaultValue)
+    const [enteredText, setEnteredText] = useState("")
     const [isPasswordHidden, setPasswordHidden] = useState(true)
 
     function handleClearText(){
@@ -41,7 +41,7 @@ React.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLIn
                     }
                     
                     {children}
-                    <input {...props} ref={ref} role="input" type={type ==="password"? isPasswordHidden? "password" : "text": type==="number"? "text" : type} placeholder={placeholder} value={enteredText} onChange={(e)=> setInputValue(e.target.value)}/> 
+                    <input {...props} ref={ref} role="input" type={type ==="password"? isPasswordHidden? "password" : "text": type==="number"? "text" : type} placeholder={placeholder} value={props.readOnly?props.value:enteredText} onChange={(e)=> setInputValue(e.target.value)}/> 
                     {
                         reset && 
                             <svg onClick={handleClearText} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

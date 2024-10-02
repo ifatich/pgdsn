@@ -46,8 +46,7 @@ React.HTMLAttributes<HTMLDivElement> & DatePickerProps
         dates.push(0)
     }
 
-    console.log(dates)
-    console.log(years)
+
 
     function handleDecreament(){
         if(indexFirstDate == 0) indexFirstDate = 11
