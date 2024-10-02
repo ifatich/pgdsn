@@ -7,15 +7,16 @@ import { useState, forwardRef, useEffect, Children } from "react";
 interface DatePickerProps{
     selectedDate: Date;
     setSelectedDate: (selectedDate:Date) => void;
+    isActive: boolean
+    setActive: (isActive:boolean) => void
 }
 
 const DatePicker = forwardRef<
 HTMLDivElement,
 React.HTMLAttributes<HTMLDivElement> & DatePickerProps
->(({ className, selectedDate, setSelectedDate, ...props }, ref) => {
+>(({ className, selectedDate, setSelectedDate, isActive, setActive, ...props }, ref) => {
 
     const [currentDate, setCurrentDate] = useState(new Date())
-    // const [selectedDate, setSelectedDate] = useState(new Date())
     const [isYearOpen, setYearOpen] = useState(false)
 
     let indexFirstDate = 0
@@ -88,11 +89,14 @@ React.HTMLAttributes<HTMLDivElement> & DatePickerProps
         console.log(selectedDate.getDate()+ " " + selectedDate.getMonth()+ " " + selectedDate.getFullYear())
     }
 
+    if (!isActive) return null;
+
     return(
         <div className="date">
             <div className={cn("header-date", className)}>
                 Pilih Tanggal
                 <svg
+                    onClick={() => setActive(!isActive)}
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"

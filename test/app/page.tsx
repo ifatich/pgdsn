@@ -14,11 +14,7 @@ export default function Home() {
 
   const [isBadgeOpen, setBadgeOpen] = useState (false)
 
-<<<<<<< HEAD
- 
-=======
   const [isDateOpen, setDateOpen] = useState(false)
->>>>>>> refs/remotes/origin/saannns-branch
 
   const breadcrumbItems = [
     { page: "Home", link: "/" },
@@ -27,11 +23,6 @@ export default function Home() {
     { page: "Contact", link: "/contact" },
     { page: "FAQ", link: "/faq" },
   ];
-<<<<<<< HEAD
- 
-  return (
-    <main className="flex flex-col w-full">
-=======
 
   const aa = new Date()
 
@@ -44,11 +35,14 @@ export default function Home() {
 
   const [selectedDate, setSelectedDate] = useState(new Date())
 
-  // console.log(currentDate, currentDay, currentMonth, currentYear);
-
-  // for(let i=1; i<=lastDay.getDate(); i++){
-  //   console.log(i)
-  // }
+  function isDateSameWithCurrent(){
+    const currentDate = new Date()
+    return(
+        currentDate.getDate() !== selectedDate.getDate() ||
+        currentDate.getMonth() !== selectedDate.getMonth() ||
+        currentDate.getFullYear() !== selectedDate.getFullYear()
+    )
+}
  
   return (
     <main className="flex flex-col w-full">
@@ -57,7 +51,6 @@ export default function Home() {
 
       <div>{selectedDate.getDate()+"/"+(selectedDate.getMonth()+1)+"/"+selectedDate.getFullYear()}</div>
 
->>>>>>> refs/remotes/origin/saannns-branch
       <div className="w-screen h-screen">
         <div className="flex flex-row gap-3">
           <Button onClick={() => setToastOpenInfo(true)} variant={'primary'} size={'md'}>Open Mobile Toast</Button>
@@ -68,19 +61,14 @@ export default function Home() {
         <div className="breadcumb-group gap-4 flex flex-row p-4 ">
           <Breadcumb itemList={breadcrumbItems}></Breadcumb>
         </div>
-
-        <div className="input-group gap-4 flex flex-row p-4 ">
-          <DatePicker/>
-        </div>
         
         
         {
           isToastOpenInfo &&
-          <>
             <Toast variant="info" type="mobile" setToastOpen={() => setToastOpenInfo(!isToastOpenInfo)} isToastOpen={isToastOpenInfo}>
                 <ToastDescription>Ini lorem ipsum Ini lorem ipsum Ini lorem ipsum Ini</ToastDescription>
             </Toast> 
-          </> 
+          
         }
 
         <div className="input-group gap-4 flex flex-row p-4 ">
@@ -91,12 +79,12 @@ export default function Home() {
             </InputGroup>
             <InputGroup>
               <Label>Tanggal Lahir</Label>
-              <Input readOnly onClick={() => setDateOpen(!isDateOpen)} placeholder="Pilih tangal lahir" type="text"/>
+              <Input readOnly onClick={() => setDateOpen(!isDateOpen)} placeholder="Pilih tangal lahir" type="text" value={ isDateSameWithCurrent()? selectedDate.getDate()+"/"+selectedDate.getMonth()+"/"+selectedDate.getFullYear(): ""}/>
               
               {
                 isDateOpen &&
-                  <div className="absolute flex justify-end flex-grow mt-[64px]">
-                  <DatePicker  selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
+                  <div className="absolute flex justify-end flex-grow mt-[68px]">
+                    <DatePicker  isActive={isDateOpen} setActive={setDateOpen} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
                   </div>
               }
               

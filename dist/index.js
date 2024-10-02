@@ -500,7 +500,7 @@ var ErrorText = (0, import_react9.forwardRef)(({ className, children, active, ..
 var import_class_variance_authority6 = require("class-variance-authority");
 var import_react10 = require("react");
 var import_jsx_runtime10 = require("react/jsx-runtime");
-var DatePicker = (0, import_react10.forwardRef)(({ className, selectedDate, setSelectedDate, ...props }, ref) => {
+var DatePicker = (0, import_react10.forwardRef)(({ className, selectedDate, setSelectedDate, isActive, setActive, ...props }, ref) => {
   const [currentDate, setCurrentDate] = (0, import_react10.useState)(/* @__PURE__ */ new Date());
   const [isYearOpen, setYearOpen] = (0, import_react10.useState)(false);
   let indexFirstDate = 0;
@@ -553,12 +553,14 @@ var DatePicker = (0, import_react10.forwardRef)(({ className, selectedDate, setS
     setSelectedDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), dateChoice));
     console.log(selectedDate.getDate() + " " + selectedDate.getMonth() + " " + selectedDate.getFullYear());
   }
+  if (!isActive) return null;
   return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "date", children: [
     /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: cn("header-date", className), children: [
       "Pilih Tanggal",
       /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
         "svg",
         {
+          onClick: () => setActive(!isActive),
           width: "24",
           height: "24",
           viewBox: "0 0 24 24",
