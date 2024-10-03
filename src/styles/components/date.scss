@@ -1,10 +1,16 @@
 @layer components {
 
     .date{
-        @apply w-[360px] bg-white shadow-md rounded-md border border-black-10 flex flex-col;
+        @apply z-10 w-[360px] h-fit bg-white shadow-md rounded-md border border-black-10 flex flex-col;
 
         .header-date{
             @apply flex flex-row text-lambda font-bold text-black-80 border-b border-b-black-20 justify-between p-4;
+
+            svg{
+                &:hover{
+                    @apply cursor-pointer;
+                }
+            }
         }
 
         .month-picker{
@@ -13,6 +19,10 @@
             .month-year{
                 @apply flex flex-row gap-1;
 
+                &:hover{
+                    @apply cursor-pointer;
+                }
+
                 span{
                     @apply text-lime-50 text-omicron font-bold;
                 }
@@ -20,7 +30,9 @@
                 svg{
                     @apply transition-transform duration-200 ;
 
-                
+                    &:hover{
+                        @apply cursor-pointer;
+                    }
                 }
     
                 .rotate{
@@ -30,7 +42,7 @@
         }
 
         .year-picker{
-            @apply grid grid-cols-3 h-[222px] w-[360px] overflow-scroll rounded-b-md top-[166px] absolute bg-white p-4 justify-items-center;
+            @apply grid grid-cols-3 gap-y-4 h-[274px] w-[360px] overflow-scroll rounded-b-md top-[117px] absolute bg-white p-4 justify-items-center;
 
             .year-cell{
                 @apply text-lambda px-4 py-1 rounded-md w-[76px] text-center;
@@ -46,24 +58,32 @@
         }
 
         .day-list{
+
+            @apply w-full;
             
             .days{
-                @apply grid grid-cols-7 py-2 mx-4 text-omicron text-black-60 border-y border-y-black-20 text-center;
+                @apply flex justify-between py-2 mx-4 text-omicron text-black-60 border-y border-y-black-20 text-center;
+
+                div{
+                    @apply w-8;
+                }
             }
         }
 
         .date-picker{
-            @apply grid grid-rows-4 grid-cols-7 px-4 pb-4 pt-1 gap-1;
+            @apply flex flex-wrap justify-between grid-cols-7 px-4 pb-4 pt-1 gap-x-3 gap-y-1;
 
             .nomor{
-                @apply p-2 text-sigma flex align-middle justify-items-center justify-center text-center ;
+                @apply p-2 text-sigma flex align-middle justify-items-center justify-center text-center w-8 h-8 items-center;
+
+                
 
                 &:hover{
-                    @apply bg-black-10
+                    @apply bg-black-10 cursor-pointer
                 }
 
                 &.active{
-                    @apply bg-lime-50 rounded-full text-white w-9 gap-1 ml-1
+                    @apply bg-lime-50 rounded-full text-white ;
                 }
             }
         }

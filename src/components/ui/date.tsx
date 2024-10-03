@@ -5,8 +5,8 @@ import { useState, forwardRef, useEffect, Children } from "react";
 
 
 interface DatePickerProps{
-    selectedDate: Date;
-    setSelectedDate: (selectedDate:Date) => void;
+    selectedDate: string;
+    setSelectedDate: (selectedDate:string) => void;
     isActive: boolean
     setActive: (isActive:boolean) => void
 }
@@ -16,6 +16,9 @@ HTMLDivElement,
 React.HTMLAttributes<HTMLDivElement> & DatePickerProps
 >(({ className, selectedDate, setSelectedDate, isActive, setActive, ...props }, ref) => {
 
+    
+
+    const currentDate_current = new Date();
     const [currentDate, setCurrentDate] = useState(new Date())
     const [isYearOpen, setYearOpen] = useState(false)
 
@@ -25,7 +28,7 @@ React.HTMLAttributes<HTMLDivElement> & DatePickerProps
     let firstDate = new Date(currentDate.getFullYear(), currentDate.getMonth()+indexFirstDate, 1)
     let lastDate = new Date(currentDate.getFullYear(), currentDate.getMonth()+indexLastDate, 0) 
 
-    const dates: number [] = [];
+    const dates: number [] = [];        
     const years: number [] = [];
 
     const [topYears] = useState(() => new Date().getFullYear() + 3);
@@ -77,18 +80,25 @@ React.HTMLAttributes<HTMLDivElement> & DatePickerProps
 
     function isDateSameWithCurrent(date:number){
         return(
-            date === selectedDate.getDate() &&
-            currentDate.getMonth() === selectedDate.getMonth() &&
-            currentDate.getFullYear() === selectedDate.getFullYear()
+            date === currentDate.getDate() &&
+            currentDate_current.getMonth() === currentDate.getMonth() &&
+            currentDate_current.getFullYear() === currentDate.getFullYear()
         )
     }
 
     function handleChangeDate(dateChoice:number){
-        setSelectedDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), dateChoice))
-        console.log(selectedDate.getDate()+ " " + selectedDate.getMonth()+ " " + selectedDate.getFullYear())
+        setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), dateChoice))
+        setSelectedDate(`${currentDate.getDate()}/${currentDate.getMonth()+1}/${currentDate.getFullYear()}`)
+        console.log(currentDate.getDate()+ " " + currentDate.getMonth()+ " " + currentDate.getFullYear())
     }
 
-    if (!isActive) return null;
+    useEffect(() => {
+        if (selectedDate) {
+          setSelectedDate(`${currentDate.getDate()}/${currentDate.getMonth()+1}/${currentDate.getFullYear()}`);
+        }
+      }), [currentDate, selectedDate];
+
+    if (isActive){
 
     return(
         <div className="date">
@@ -162,6 +172,7 @@ React.HTMLAttributes<HTMLDivElement> & DatePickerProps
             {/* <div>{selectedDate.getDate()+" "+months[selectedDate.getMonth()]+" "+selectedDate.getFullYear()}</div> */}
         </div>
     )
+}
 })
 
 export {DatePicker}

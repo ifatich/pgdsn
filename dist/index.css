@@ -1727,7 +1727,10 @@ textarea {
   color: hsl(var(--black-80) / var(--tw-text-opacity));
 }
 .date {
+  z-index: 10;
   display: flex;
+  height: -moz-fit-content;
+  height: fit-content;
   width: 360px;
   flex-direction: column;
   border-radius: calc(var(--radius) - 2px);
@@ -1757,6 +1760,9 @@ textarea {
   --tw-text-opacity: 1;
   color: hsl(var(--black-80) / var(--tw-text-opacity));
 }
+.date .header-date svg:hover {
+  cursor: pointer;
+}
 .date .month-picker {
   display: flex;
   flex-direction: row;
@@ -1767,6 +1773,9 @@ textarea {
   display: flex;
   flex-direction: row;
   gap: 0.25rem;
+}
+.date .month-picker .month-year:hover {
+  cursor: pointer;
 }
 .date .month-picker .month-year span {
   font-size: var(--16-omicron);
@@ -1780,18 +1789,22 @@ textarea {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
 }
+.date .month-picker .month-year svg:hover {
+  cursor: pointer;
+}
 .date .month-picker .month-year .rotate {
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .date .year-picker {
   position: absolute;
-  top: 166px;
+  top: 117px;
   display: grid;
-  height: 222px;
+  height: 274px;
   width: 360px;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   justify-items: center;
+  row-gap: 1rem;
   overflow: scroll;
   border-bottom-right-radius: calc(var(--radius) - 2px);
   border-bottom-left-radius: calc(var(--radius) - 2px);
@@ -1820,11 +1833,14 @@ textarea {
   --tw-text-opacity: 1;
   color: hsl(var(--primary) / var(--tw-text-opacity));
 }
+.date .day-list {
+  width: 100%;
+}
 .date .day-list .days {
   margin-left: 1rem;
   margin-right: 1rem;
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+  display: flex;
+  justify-content: space-between;
   border-top-width: 1px;
   border-bottom-width: 1px;
   --tw-border-opacity: 1;
@@ -1838,11 +1854,17 @@ textarea {
   --tw-text-opacity: 1;
   color: hsl(var(--black-60) / var(--tw-text-opacity));
 }
+.date .day-list .days div {
+  width: 2rem;
+}
 .date .date-picker {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  grid-template-rows: repeat(4, minmax(0, 1fr));
-  gap: 0.25rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  -moz-column-gap: 0.75rem;
+  column-gap: 0.75rem;
+  row-gap: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 1rem;
@@ -1850,6 +1872,9 @@ textarea {
 }
 .date .date-picker .nomor {
   display: flex;
+  height: 2rem;
+  width: 2rem;
+  align-items: center;
   justify-content: center;
   justify-items: center;
   padding: 0.5rem;
@@ -1859,13 +1884,11 @@ textarea {
   line-height: var(--14-sigma-line-height);
 }
 .date .date-picker .nomor:hover {
+  cursor: pointer;
   --tw-bg-opacity: 1;
   background-color: hsl(var(--black-10) / var(--tw-bg-opacity));
 }
 .date .date-picker .nomor.active {
-  margin-left: 0.25rem;
-  width: 2.25rem;
-  gap: 0.25rem;
   border-radius: 9999px;
   --tw-bg-opacity: 1;
   background-color: hsl(var(--lime-50) / var(--tw-bg-opacity));

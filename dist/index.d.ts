@@ -69,7 +69,6 @@ declare const Breadcumb: react.ForwardRefExoticComponent<react.HTMLAttributes<HT
 interface InputProps {
     placeholder: string;
     type: string;
-    reset?: boolean;
     children?: React.ReactNode;
 }
 declare const Input: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLInputElement> & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
@@ -87,8 +86,8 @@ declare const ErrorText: react.ForwardRefExoticComponent<react.HTMLAttributes<HT
 } & react.RefAttributes<HTMLDivElement>>;
 
 interface DatePickerProps {
-    selectedDate: Date;
-    setSelectedDate: (selectedDate: Date) => void;
+    selectedDate: string;
+    setSelectedDate: (selectedDate: string) => void;
     isActive: boolean;
     setActive: (isActive: boolean) => void;
 }

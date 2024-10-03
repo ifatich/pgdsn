@@ -24,33 +24,25 @@ export default function Home() {
     { page: "FAQ", link: "/faq" },
   ];
 
-  const aa = new Date()
 
-  const currentDate = aa.getDate();
-  const currentDay = aa.getDay();
-  const currentMonth = aa.getMonth();
-  const currentYear = aa.getFullYear();
-  let firstDay = new Date(currentYear, currentMonth, 1);
-  let lastDay = new Date(currentYear, currentMonth + 1, 0);
 
-  const [selectedDate, setSelectedDate] = useState(new Date())
+  const [selectedDate, setSelectedDate] = useState("")
 
-  function isDateSameWithCurrent(){
-    const currentDate = new Date()
-    console.log(selectedDate.getMonth())
-    return(
-        currentDate.getDate() !== selectedDate.getDate() ||
-        currentDate.getMonth() !== selectedDate.getMonth() ||
-        currentDate.getFullYear() !== selectedDate.getFullYear()
-    )
-}
+//   function isDateSameWithCurrent(){
+//     const currentDate = new Date()
+//     console.log(selectedDate.getMonth())
+//     return(
+//         currentDate.getDate() !== selectedDate.getDate() ||
+//         currentDate.getMonth() !== selectedDate.getMonth() ||
+//         currentDate.getFullYear() !== selectedDate.getFullYear()
+//     )
+// }
+
+console.log(selectedDate)
  
   return (
     <main className="flex flex-col w-full">
-      <div className="d">{lastDay.getDate()}</div>
-      <div className="d">{lastDay.getFullYear()}</div>
 
-      <div>{selectedDate.getDate()+"/"+(selectedDate.getMonth()+1)+"/"+selectedDate.getFullYear()}</div>
 
       <div className="w-screen h-screen">
         <div className="flex flex-row gap-3">
@@ -62,40 +54,38 @@ export default function Home() {
         <div className="breadcumb-group gap-4 flex flex-row p-4 ">
           <Breadcumb itemList={breadcrumbItems}></Breadcumb>
         </div>
-        
-        
+      
         {
           isToastOpenInfo &&
             <Toast variant="info" type="mobile" setToastOpen={() => setToastOpenInfo(!isToastOpenInfo)} isToastOpen={isToastOpenInfo}>
                 <ToastDescription>Ini lorem ipsum Ini lorem ipsum Ini lorem ipsum Ini</ToastDescription>
-            </Toast> 
-          
+            </Toast>  
         }
 
         <div className="input-group gap-4 flex flex-row p-4 ">
             <InputGroup>
               <Label>Kata Sandi</Label>
-              <Input placeholder="Masukkan Kata Sandi" type="password" reset={true}/>
+              <Input placeholder="Masukkan Kata Sandi" type="password"/>
               <ErrorText active={true}>Kata sandi salah</ErrorText>
             </InputGroup>
             <InputGroup>
               <Label>Tanggal Lahir</Label>
-              <Input readOnly onClick={() => setDateOpen(!isDateOpen)} placeholder="Pilih tanggal lahir" type="text" value={isDateSameWithCurrent()? selectedDate.getDate()+"/"+(selectedDate.getMonth()+1)+"/"+selectedDate.getFullYear(): ""}/>
+              <Input readOnly onClick={() => setDateOpen(!isDateOpen)} placeholder="Pilih tanggal lahir" type="text" value={selectedDate}/>
               {
                 isDateOpen &&
-                  <div className="absolute flex justify-end flex-grow mt-[68px]">
+                  <div className="absolute mt-[68px]">
                     <DatePicker  isActive={isDateOpen} setActive={setDateOpen} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
                   </div>
               }
-              {"Selected Day: "+ (isDateSameWithCurrent()? selectedDate.getDate()+"/"+(selectedDate.getMonth()+1)+"/"+selectedDate.getFullYear(): "-")}
-              
+              {/* {"Selected Day: "+ (isDateSameWithCurrent()? selectedDate.getDate()+"/"+(selectedDate.getMonth()+1)+"/"+selectedDate.getFullYear(): "-")} */}
+              <div>{selectedDate? selectedDate: "-"}</div>
             </InputGroup>
-            <Input   placeholder="Masukkan Nama" type="text" reset={true}>
+            <Input   placeholder="Masukkan Nama" type="text" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path fillRule="evenodd" clipRule="evenodd" d="M12 13.1539C15.7492 13.1539 19.1931 14.861 20.6823 17.3628C21.5467 18.8158 20.5493 20.6922 18.8714 20.8136L18.3023 20.8513C16.917 20.935 15.1287 20.9874 12.8864 20.9983L11.5995 21L10.1794 20.9911C8.06665 20.9685 6.39974 20.9059 5.1287 20.8137C3.45069 20.6922 2.45323 18.8158 3.31776 17.3627C4.80689 14.861 8.25075 13.1539 12 13.1539ZM12 14.5386C8.71228 14.5386 5.73023 16.0167 4.50752 18.0709C4.17262 18.6338 4.57196 19.385 5.2288 19.4326L5.78571 19.4695C7.14269 19.5513 8.90458 19.6029 11.1194 19.6136L12.3975 19.6153L13.3472 19.6107C15.6522 19.593 17.4402 19.5292 18.7713 19.4326C19.428 19.385 19.8274 18.6338 19.4925 18.071C18.2697 16.0167 15.2877 14.5386 12 14.5386ZM12.0001 3C14.4407 3 16.3844 5.18667 16.3844 7.84639C16.3844 10.5061 14.4407 12.6928 12.0001 12.6928C9.55944 12.6928 7.61572 10.5061 7.61572 7.84639C7.61572 5.18667 9.55944 3 12.0001 3ZM12.0001 4.38468C10.3628 4.38468 9.00025 5.91749 9.00025 7.84639C9.00025 9.7753 10.3628 11.3081 12.0001 11.3081C13.6374 11.3081 14.9999 9.7753 14.9999 7.84639C14.9999 5.91749 13.6374 4.38468 12.0001 4.38468Z" fill="#58585B"/>
                 </svg>
             </Input>
-            <Input  placeholder="Masukkan Nomor" type="number" reset={true} >
+            <Input  placeholder="Masukkan Nomor" type="textarea" >
             </Input>
         </div>  
 
