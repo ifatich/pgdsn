@@ -501,9 +501,19 @@ var ErrorText = (0, import_react9.forwardRef)(({ className, children, active, ..
 var import_class_variance_authority6 = require("class-variance-authority");
 var import_react10 = require("react");
 var import_jsx_runtime10 = require("react/jsx-runtime");
-var DatePicker = (0, import_react10.forwardRef)(({ className, selectedDate, setSelectedDate, isActive, setActive, ...props }, ref) => {
-  const currentDate_current = /* @__PURE__ */ new Date();
-  const [currentDate, setCurrentDate] = (0, import_react10.useState)(/* @__PURE__ */ new Date());
+var DatePicker = (0, import_react10.forwardRef)(({ className, selectedDateString, setSelectedDateString, isActive, setActive, ...props }, ref) => {
+  const [currentDate, setCurrentDate] = (0, import_react10.useState)(
+    () => {
+      if (selectedDateString) {
+        const arrayDate = selectedDateString.split("/");
+        return /* @__PURE__ */ new Date(`${arrayDate[2]}-${arrayDate[1]}-${arrayDate[0]}`);
+      } else {
+        return /* @__PURE__ */ new Date();
+      }
+    }
+  );
+  const [selectedDate, setSelectedDate] = (0, import_react10.useState)(/* @__PURE__ */ new Date());
+  const [isDateSelected, setIsDateSelected] = (0, import_react10.useState)(false);
   const [isYearOpen, setYearOpen] = (0, import_react10.useState)(false);
   let indexFirstDate = 0;
   let indexLastDate = 1;
@@ -533,7 +543,7 @@ var DatePicker = (0, import_react10.forwardRef)(({ className, selectedDate, setS
   }
   function handleIncreament() {
     if (indexFirstDate == 11) indexFirstDate = -1;
-    if (indexLastDate == 0) indexLastDate = 0;
+    if (indexLastDate == 11) indexLastDate = 0;
     indexFirstDate++;
     indexLastDate++;
     setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1));
@@ -547,18 +557,19 @@ var DatePicker = (0, import_react10.forwardRef)(({ className, selectedDate, setS
     handleYearOpen();
   }
   function isDateSameWithCurrent(date) {
-    return date === currentDate.getDate() && currentDate_current.getMonth() === currentDate.getMonth() && currentDate_current.getFullYear() === currentDate.getFullYear();
+    return date === currentDate.getDate() && selectedDate.getMonth() === currentDate.getMonth() && selectedDate.getFullYear() === currentDate.getFullYear();
   }
   function handleChangeDate(dateChoice) {
     setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), dateChoice));
-    setSelectedDate(`${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`);
-    console.log(currentDate.getDate() + " " + currentDate.getMonth() + " " + currentDate.getFullYear());
+    setSelectedDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), dateChoice));
+    setIsDateSelected(true);
+    console.log(currentDate.getDate() + " " + currentDate.getDate());
   }
   (0, import_react10.useEffect)(() => {
-    if (selectedDate) {
-      setSelectedDate(`${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`);
+    if (isDateSelected) {
+      setSelectedDateString(`${selectedDate.getDate()}/${selectedDate.getMonth() + 1}/${selectedDate.getFullYear()}`);
     }
-  }), [currentDate, selectedDate];
+  }, [selectedDate]);
   if (isActive) {
     return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "date", children: [
       /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: cn("header-date", className), children: [

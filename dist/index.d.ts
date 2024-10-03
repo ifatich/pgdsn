@@ -86,8 +86,8 @@ declare const ErrorText: react.ForwardRefExoticComponent<react.HTMLAttributes<HT
 } & react.RefAttributes<HTMLDivElement>>;
 
 interface DatePickerProps {
-    selectedDate: string;
-    setSelectedDate: (selectedDate: string) => void;
+    selectedDateString: string;
+    setSelectedDateString: (selectedDateString: string) => void;
     isActive: boolean;
     setActive: (isActive: boolean) => void;
 }

@@ -37,8 +37,6 @@ export default function Home() {
 //         currentDate.getFullYear() !== selectedDate.getFullYear()
 //     )
 // }
-
-console.log(selectedDate)
  
   return (
     <main className="flex flex-col w-full">
@@ -74,11 +72,11 @@ console.log(selectedDate)
               {
                 isDateOpen &&
                   <div className="absolute mt-[68px]">
-                    <DatePicker  isActive={isDateOpen} setActive={setDateOpen} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
+                    <DatePicker  isActive={isDateOpen} setActive={setDateOpen} selectedDateString={selectedDate} setSelectedDateString={setSelectedDate}/>
                   </div>
               }
               {/* {"Selected Day: "+ (isDateSameWithCurrent()? selectedDate.getDate()+"/"+(selectedDate.getMonth()+1)+"/"+selectedDate.getFullYear(): "-")} */}
-              <div>{selectedDate? selectedDate: "-"}</div>
+              <div>{`Selected Day: ${selectedDate? selectedDate: "-"}`}</div>
             </InputGroup>
             <Input   placeholder="Masukkan Nama" type="text" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
