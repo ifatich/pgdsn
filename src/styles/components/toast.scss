@@ -1,6 +1,6 @@
 @layer components {
     [data-toast] {
-      @apply p-3 text-white text-sigma flex gap-3 sm:w-[var(--width)] justify-between items-start transition-all duration-200 ease-in-out rounded-t-md sm:rounded-lg bottom-0 sm:bottom-auto fixed sm:relative w-full translate-y-[100px] sm:translate-y-0 opacity-0;
+      @apply p-3 text-white text-sigma flex gap-3 sm:w-[var(--width)] justify-between items-start transition-all duration-200 ease-in-out rounded-t-md sm:rounded-lg bottom-0 sm:bottom-auto fixed right-0 sm:right-auto sm:relative w-full translate-y-[100px] sm:translate-y-0 opacity-0;
   
       [data-title] {
         @apply text-omicron;

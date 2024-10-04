@@ -46,7 +46,7 @@
         }
 
         .year-picker{
-            @apply grid grid-cols-3 gap-y-4 h-[274px] w-[360px] overflow-scroll rounded-b-md top-[117px] absolute bg-white p-4 justify-items-center;
+            @apply w-full grid grid-cols-3 gap-y-4 h-[274px] sm:w-[360px] overflow-scroll rounded-b-md top-[117px] absolute bg-white p-4 justify-items-center;
 
             .year-cell{
                 @apply text-lambda px-4 py-1 rounded-md w-[76px] text-center;

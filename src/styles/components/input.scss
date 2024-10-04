@@ -27,9 +27,16 @@
         @apply text-omicron font-regular items-center flex gap-2 w-full rounded-md border border-input bg-background/[0%] px-3 py-2 ring-offset-background
         focus-ring-none transition-[width] duration-500 mt-1 mb-2;
 
-        &:has(.unit-input) {
+        &:has(.unit-input-left) {
             @apply pl-0 py-0;
         }
+
+
+        &:has(.unit-input-right) {
+            @apply pr-0 py-0;
+        }
+
+        
 
         textarea {
             @apply outline-none h-[78px];
@@ -58,8 +65,12 @@
         &:has(:focus), &:hover {
             @apply border-input-focus;
 
-            .unit-input.active{
+            .unit-input-left.active{
                 @apply border-r border-r-lime-50;
+            }
+
+            .unit-input-right.active{
+                @apply border-l border-l-lime-50;
             }
         }
 
@@ -111,11 +122,19 @@
         }
     }
 
-    .unit-input {
-        @apply bg-black-10 px-3 py-2 rounded-l-md left-0 border-r border-r-black-20 text-black-60;
+    .unit-input-left {
+        @apply bg-black-10 px-3 py-2 rounded-l-md left-0 border-r border-r-black-20 text-black-60 w-[100px] text-center;
 
         &:has(~ :disabled){
             @apply bg-black-20 border-r-black-40
+        }
+    }
+
+    .unit-input-right {
+        @apply bg-black-10 px-3 py-2 rounded-r-md right-0 border-l border-l-black-20 text-black-60 w-[100px] text-center;
+
+        &:has(~ :disabled){
+            @apply bg-black-20 border-l-black-40
         }
     }
 

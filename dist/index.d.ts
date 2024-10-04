@@ -68,10 +68,20 @@ declare const Breadcumb: react.ForwardRefExoticComponent<react.HTMLAttributes<HT
 
 interface InputProps {
     placeholder: string;
-    type: string;
     children?: React.ReactNode;
 }
-declare const Input: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLInputElement> & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
+interface InputTextProps {
+    iconLeft?: boolean;
+    iconright?: boolean;
+}
+interface InputNumberProps {
+    labelLeft?: string;
+    labelRight?: string;
+    type?: "default" | "percentage" | "money" | "4-digits-seperate";
+}
+declare const InputShortText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLInputElement> & InputTextProps & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
+declare const InputLongText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputTextProps & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
+declare const InputNumber: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLInputElement> & InputNumberProps & react.RefAttributes<HTMLInputElement>>;
 declare const InputGroup: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
     children: React.ReactNode;
 } & react.RefAttributes<HTMLDivElement>>;
@@ -84,6 +94,9 @@ declare const Label: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDi
 declare const ErrorText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
     active?: boolean;
 } & react.RefAttributes<HTMLDivElement>>;
+declare const HelperText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
+    active?: boolean;
+} & react.RefAttributes<HTMLDivElement>>;
 
 interface DatePickerProps {
     selectedDateString: string;
@@ -93,4 +106,4 @@ interface DatePickerProps {
 }
 declare const DatePicker: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & DatePickerProps & react.RefAttributes<HTMLDivElement>>;
 
-export { Badge, Breadcumb, Button, DatePicker, ErrorText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, Label, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle };
+export { Badge, Breadcumb, Button, DatePicker, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, InputGroup, InputLongText, InputNumber, InputShortText, Label, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle };

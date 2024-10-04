@@ -6,9 +6,9 @@ import { Toast, ToastDescription, ToastTitle } from "./components/ui/toast";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "./components/ui/modal";
 import { Badge } from "./components/ui/badge";
 import { Breadcumb } from "./components/ui/breadcumb";
-import { Input, InputGroup } from "./components/ui/input";
+import { InputShortText, InputGroup, InputLongText, InputNumber } from "./components/ui/input";
 import { Label } from "./components/ui/label";
-import { ErrorText } from "./components/ui/error-text";
+import { ErrorText, HelperText } from "./components/ui/helper-text";
 import { DatePicker } from "./components/ui/date";
 
 
@@ -33,11 +33,13 @@ export {
 
     Breadcumb,
 
-    Input,
+    InputShortText,
+    InputLongText, InputNumber,
     InputGroup,
 
     Label,
     ErrorText,
+    HelperText,
 
     DatePicker,
 };

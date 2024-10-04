@@ -13,4 +13,18 @@ React.HTMLAttributes<HTMLDivElement> & {active?:boolean;}
     )
 })
 
-export {ErrorText}
+const HelperText = forwardRef<
+HTMLDivElement,
+React.HTMLAttributes<HTMLDivElement> & {active?:boolean;}
+>(({ className, children, active, ...props }, ref) => {
+    return (
+        active &&
+            <div className="text-omega text-black-60 font-regular">
+                {children}
+            </div>
+    )
+})
+
+
+
+export {ErrorText, HelperText}

@@ -1260,10 +1260,15 @@ textarea {
   --tw-ring-color: hsl(var(--primary) / 0%) !important;
   --tw-ring-offset-width: 0px !important;
 }
-.input:has(.unit-input) {
+.input:has(.unit-input-left) {
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 0px;
+}
+.input:has(.unit-input-right) {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-right: 0px;
 }
 .input textarea {
   height: 78px;
@@ -1290,11 +1295,17 @@ textarea {
   --tw-border-opacity: 1;
   border-color: hsl(var(--input-focus) / var(--tw-border-opacity));
 }
-.input:has(:focus) .unit-input.active,
-.input:hover .unit-input.active {
+.input:has(:focus) .unit-input-left.active,
+.input:hover .unit-input-left.active {
   border-right-width: 1px;
   --tw-border-opacity: 1;
   border-right-color: hsl(var(--lime-50) / var(--tw-border-opacity));
+}
+.input:has(:focus) .unit-input-right.active,
+.input:hover .unit-input-right.active {
+  border-left-width: 1px;
+  --tw-border-opacity: 1;
+  border-left-color: hsl(var(--lime-50) / var(--tw-border-opacity));
 }
 .input:disabled,
 .input:has(:disabled) {
@@ -1329,8 +1340,9 @@ textarea {
   border-width: 0px;
   background-color: hsl(var(--primary) / 0%);
 }
-.unit-input {
+.unit-input-left {
   left: 0px;
+  width: 100px;
   border-top-left-radius: calc(var(--radius) - 2px);
   border-bottom-left-radius: calc(var(--radius) - 2px);
   border-right-width: 1px;
@@ -1342,12 +1354,37 @@ textarea {
   padding-right: 0.75rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  text-align: center;
   --tw-text-opacity: 1;
   color: hsl(var(--black-60) / var(--tw-text-opacity));
 }
-.unit-input:has(~ :disabled) {
+.unit-input-left:has(~ :disabled) {
   --tw-border-opacity: 1;
   border-right-color: hsl(var(--black-40) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--black-20) / var(--tw-bg-opacity));
+}
+.unit-input-right {
+  right: 0px;
+  width: 100px;
+  border-top-right-radius: calc(var(--radius) - 2px);
+  border-bottom-right-radius: calc(var(--radius) - 2px);
+  border-left-width: 1px;
+  --tw-border-opacity: 1;
+  border-left-color: hsl(var(--black-20) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--black-10) / var(--tw-bg-opacity));
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-align: center;
+  --tw-text-opacity: 1;
+  color: hsl(var(--black-60) / var(--tw-text-opacity));
+}
+.unit-input-right:has(~ :disabled) {
+  --tw-border-opacity: 1;
+  border-left-color: hsl(var(--black-40) / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: hsl(var(--black-20) / var(--tw-bg-opacity));
 }
@@ -1453,6 +1490,7 @@ textarea {
 [data-toast] {
   position: fixed;
   bottom: 0px;
+  right: 0px;
   display: flex;
   width: 100%;
   --tw-translate-y: 100px;
@@ -1476,6 +1514,7 @@ textarea {
   [data-toast] {
     position: relative;
     bottom: auto;
+    right: auto;
     width: var(--width);
     --tw-translate-y: 0px;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1826,7 +1865,7 @@ textarea {
   top: 117px;
   display: grid;
   height: 274px;
-  width: 360px;
+  width: 100%;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   justify-items: center;
   row-gap: 1rem;
@@ -1836,6 +1875,11 @@ textarea {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--text-white) / var(--tw-bg-opacity));
   padding: 1rem;
+}
+@media (min-width: 640px) {
+  .date .year-picker {
+    width: 360px;
+  }
 }
 .date .year-picker .year-cell {
   width: 76px;
@@ -2203,6 +2247,10 @@ textarea {
 }
 .font-regular {
   font-weight: var(--regular);
+}
+.text-black-60 {
+  --tw-text-opacity: 1;
+  color: hsl(var(--black-60) / var(--tw-text-opacity));
 }
 .text-destructive {
   --tw-text-opacity: 1;
