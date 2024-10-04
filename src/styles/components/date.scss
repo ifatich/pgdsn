@@ -1,7 +1,11 @@
 @layer components {
 
     .date{
-        @apply z-10 w-[360px] h-fit bg-white shadow-md rounded-md border border-black-10 flex flex-col;
+        @apply  fixed sm:absolute bottom-0 right-0 sm:right-auto sm:bottom-auto z-10 w-full sm:w-[360px] h-fit bg-white shadow-md rounded-t-md sm:rounded-b-md border border-black-10 flex flex-col transition-transform duration-500 ease-in-out translate-y-[700px] sm:translate-y-0;
+
+        &.translate{
+            @apply translate-y-0;
+        }
 
         .header-date{
             @apply flex flex-row text-lambda font-bold text-black-80 border-b border-b-black-20 justify-between p-4;
@@ -58,7 +62,6 @@
         }
 
         .day-list{
-
             @apply w-full;
             
             .days{
@@ -71,12 +74,10 @@
         }
 
         .date-picker{
-            @apply flex flex-wrap justify-between grid-cols-7 px-4 pb-4 pt-1 gap-x-3 gap-y-1;
+            @apply grid grid-cols-7 pb-4 pt-1 justify-items-center;
 
             .nomor{
                 @apply p-2 text-sigma flex align-middle justify-items-center justify-center text-center w-8 h-8 items-center;
-
-                
 
                 &:hover{
                     @apply bg-black-10 cursor-pointer

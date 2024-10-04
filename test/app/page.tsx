@@ -14,7 +14,7 @@ export default function Home() {
 
   const [isBadgeOpen, setBadgeOpen] = useState (false)
 
-  const [isDateOpen, setDateOpen] = useState(false)
+
 
   const breadcrumbItems = [
     { page: "Home", link: "/" },
@@ -25,8 +25,10 @@ export default function Home() {
   ];
 
 
-
+  const [isDateOpen, setDateOpen] = useState(false)
+  const [isDateOpen2, setDateOpen2] = useState(false)
   const [selectedDate, setSelectedDate] = useState("")
+  const [selectedDate2, setSelectedDate2]= useState("")
 
 //   function isDateSameWithCurrent(){
 //     const currentDate = new Date()
@@ -60,7 +62,7 @@ export default function Home() {
             </Toast>  
         }
 
-        <div className="input-group gap-4 flex flex-row p-4 ">
+        <div className="input-group gap-4 flex flex-row p-4 w-full h-full">
             <InputGroup>
               <Label>Kata Sandi</Label>
               <Input placeholder="Masukkan Kata Sandi" type="password"/>
@@ -71,12 +73,22 @@ export default function Home() {
               <Input readOnly onClick={() => setDateOpen(!isDateOpen)} placeholder="Pilih tanggal lahir" type="text" value={selectedDate}/>
               {
                 isDateOpen &&
-                  <div className="absolute mt-[68px]">
+                  
                     <DatePicker  isActive={isDateOpen} setActive={setDateOpen} selectedDateString={selectedDate} setSelectedDateString={setSelectedDate}/>
-                  </div>
+                  
               }
               {/* {"Selected Day: "+ (isDateSameWithCurrent()? selectedDate.getDate()+"/"+(selectedDate.getMonth()+1)+"/"+selectedDate.getFullYear(): "-")} */}
               <div>{`Selected Day: ${selectedDate? selectedDate: "-"}`}</div>
+            </InputGroup>
+            <InputGroup>
+              <Label>Tanggal Lahir</Label>
+              <Input readOnly onClick={() => setDateOpen2(!isDateOpen2)} placeholder="Pilih tanggal lahir" type="text" value={selectedDate2}/>
+              {
+                isDateOpen2 &&
+                    <DatePicker  isActive={isDateOpen2} setActive={setDateOpen2} selectedDateString={selectedDate2} setSelectedDateString={setSelectedDate2}/>
+              }
+              {/* {"Selected Day: "+ (isDateSameWithCurrent()? selectedDate.getDate()+"/"+(selectedDate.getMonth()+1)+"/"+selectedDate.getFullYear(): "-")} */}
+              <div>{`Selected Day: ${selectedDate2? selectedDate2: "-"}`}</div>
             </InputGroup>
             <Input   placeholder="Masukkan Nama" type="text" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
