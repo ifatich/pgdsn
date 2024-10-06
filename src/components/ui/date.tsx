@@ -127,14 +127,13 @@ React.HTMLAttributes<HTMLDivElement> & DatePickerProps
         if (isActive) {
           setTransitionActive(true); // Start animation
         } else {
-            setTransitionActive(false); // Stop animation
-            setTimeout(() => setActive(!isActive), 500);
+            handleClose
         }
       }, [isActive]);
     
       function handleClose() {
         setTransitionActive(false); // Start closing animation
-        setTimeout(() => setActive(!isActive), 500); // Close modal after animation
+        setTimeout(() => setActive(!isActive), 100); // Close modal after animation
       }
 
     if (isActive){

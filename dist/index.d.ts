@@ -69,6 +69,7 @@ declare const Breadcumb: react.ForwardRefExoticComponent<react.HTMLAttributes<HT
 interface InputProps {
     placeholder: string;
     children?: React.ReactNode;
+    setEnteredText: (value: string) => void;
 }
 interface InputTextProps {
     iconLeft?: boolean;
@@ -79,7 +80,7 @@ interface InputNumberProps {
     labelRight?: string;
     type?: "default" | "percentage" | "money" | "4-digits-seperate";
 }
-declare const InputShortText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLInputElement> & InputTextProps & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
+declare const InputShortText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLInputElement> & InputTextProps & react.RefAttributes<HTMLInputElement>>;
 declare const InputLongText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputTextProps & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
 declare const InputNumber: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLInputElement> & InputNumberProps & react.RefAttributes<HTMLInputElement>>;
 declare const InputGroup: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {

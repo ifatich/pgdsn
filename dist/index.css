@@ -1791,7 +1791,7 @@ textarea {
     var(--tw-ring-shadow, 0 0 #0000),
     var(--tw-shadow);
   transition-property: transform;
-  transition-duration: 500ms;
+  transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media (min-width: 640px) {
