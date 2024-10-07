@@ -1,5 +1,5 @@
 import * as react from 'react';
-import { ButtonHTMLAttributes, ReactNode, InputHTMLAttributes, LabelHTMLAttributes, HTMLAttributes, ComponentPropsWithoutRef } from 'react';
+import { ButtonHTMLAttributes, ReactNode, InputHTMLAttributes, LabelHTMLAttributes, HTMLAttributes, ComponentPropsWithoutRef, TextareaHTMLAttributes } from 'react';
 import * as class_variance_authority_dist_types from 'class-variance-authority/dist/types';
 import { VariantProps } from 'class-variance-authority';
 import * as react_jsx_runtime from 'react/jsx-runtime';
@@ -62,9 +62,12 @@ declare const inputVariants: (props?: ({
     inputSize?: "md" | "sm" | "lg" | "xl" | null | undefined;
     variant?: "hover-focus" | null | undefined;
 } & class_variance_authority_dist_types.ClassProp) | undefined) => string;
-interface InputProps extends InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputVariants> {
+interface InputProps$3 extends InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputVariants> {
 }
-declare const Input: react.ForwardRefExoticComponent<InputProps & react.RefAttributes<HTMLInputElement>>;
+declare const Input: react.ForwardRefExoticComponent<InputProps$3 & react.RefAttributes<HTMLInputElement>>;
+declare const InputGroup: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
+    children: React.ReactNode;
+} & react.RefAttributes<HTMLDivElement>>;
 
 declare const Label: react.ForwardRefExoticComponent<LabelHTMLAttributes<HTMLLabelElement> & VariantProps<(props?: class_variance_authority_dist_types.ClassProp | undefined) => string> & react.RefAttributes<HTMLLabelElement>>;
 
@@ -95,4 +98,46 @@ declare const DialogFooter: {
 declare const DialogTitle: react.ForwardRefExoticComponent<Omit<react.DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>, "ref"> & react.RefAttributes<HTMLHeadingElement>>;
 declare const DialogDescription: react.ForwardRefExoticComponent<Omit<react.DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>, "ref"> & react.RefAttributes<HTMLParagraphElement>>;
 
-export { Badge, Button, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, InfoTipDescription, InfoTipTitle, Infotip, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle, inputVariants };
+interface DatePickerProps {
+    selectedDateString: string;
+    setSelectedDateString: (selectedDateString: string) => void;
+    isActive: boolean;
+    setActive: (isActive: boolean) => void;
+}
+declare const DatePicker: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & DatePickerProps & react.RefAttributes<HTMLDivElement>>;
+
+interface InputProps$2 {
+    placeholder: string;
+    children?: React.ReactNode;
+    setEnteredText: (value: string) => void;
+}
+interface InputNumberProps {
+    labelLeft?: string;
+    labelRight?: string;
+    type?: "default" | "percentage" | "money" | "4-digits-seperate";
+}
+declare const InputNumber: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps$2 & InputHTMLAttributes<HTMLInputElement> & InputNumberProps & react.RefAttributes<HTMLInputElement>>;
+
+interface InputProps$1 {
+    placeholder: string;
+    children?: React.ReactNode;
+    setEnteredText: (value: string) => void;
+}
+interface InputTextProps$1 {
+    iconLeft?: boolean;
+    iconright?: boolean;
+}
+declare const InputShortText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps$1 & InputHTMLAttributes<HTMLInputElement> & InputTextProps$1 & react.RefAttributes<HTMLInputElement>>;
+
+interface InputProps {
+    placeholder: string;
+    children?: React.ReactNode;
+    setEnteredText: (value: string) => void;
+}
+interface InputTextProps {
+    iconLeft?: boolean;
+    iconright?: boolean;
+}
+declare const InputLongText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputTextProps & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
+
+export { Badge, Button, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, InputLongText, InputNumber, InputShortText, Label, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle, inputVariants };

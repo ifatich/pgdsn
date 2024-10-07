@@ -50,9 +50,8 @@ const DialogOverlay = forwardRef<ElementRef<"div">, DialogOverlayProps>(({
     ...props
 }, ref) => (
     <div ref={ref}
-        className={cn("fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-opacity duration-300",
-            open ? "opacity-100" : "opacity-0",
-            className)}
+        className={cn("bg-black-80/50 w-screen h-screen z-10 fixed inset-0",
+            open ? "opacity-100" : "opacity-0", className)}
         {...props}>
         {children}
     </div>
@@ -71,18 +70,19 @@ const DialogContent = forwardRef<ElementRef<"div">, DialogContentProps>(({
 }, ref) => (
     <div
         ref={ref}
-        className={cn("fixed z-50 grid w-full bg-background shadow-lg duration-200 transition-all transform overflow-y-auto",
-            "sm:max-w-screen-sm sm:rounded-lg sm:h-auto", // Styling untuk tablet ke atas
-            open ? "opacity-100" : "opacity-0",
-            open ? "scale-100" : "scale-95",
+        className={cn("fixed bottom-0 z-50 grid w-full bg-background shadow-lg duration-500 transition-transform ease-in-out transform overflow-y-auto",
+            "sm:max-w-screen-sm sm:rounded-lg h-fit", // Styling untuk tablet ke atas
+            open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-[700px] md:translate-y-[-50px]",
+
+            // Animasikan berdasarkan ukuran layar
             open ? (
-                "sm:left-[50%] sm:top-[50%] sm:translate-x-[-50%] sm:translate-y-[-50%]" // Posisi tengah untuk tablet ke atas
+                "sm:left-[50%] sm:top-[50%] sm:translate-x-[-50%]" // Tablet ke atas, muncul dari atas
             ) : (
-                "bottom-0 left-0 translate-x-0 translate-y-0 sm:top-0 sm:left-0 sm:translate-x-0 sm:translate-y-0 sm:duration-200" // Reset transform untuk transisi yang mulus, tambahkan bottom-0 di sini
+                "ease-in-out bottom-0" // Mobile, muncul dari bawah
             ),
             className
         )}
-        style={{ maxHeight: open ? '60vh' : '0' }} // Atur tinggi maksimum di sini
+        style={{ maxHeight: open ? '60vh' : '0' }} // Atur tinggi maksimum
         {...props}
     >
         {children}

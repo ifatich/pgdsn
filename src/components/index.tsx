@@ -7,3 +7,4 @@ export { Input, inputVariants } from "./ui/input";
 export { Label } from "./ui/label";
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from "./ui/card"
 export { Dialog, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogBody } from "./ui/dialog"
+export { DatePicker } from "./ui/date";

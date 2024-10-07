@@ -3,16 +3,16 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { forwardRef, type InputHTMLAttributes } from "react"
 
 
-const inputVariants = cva("inp", {
+const inputVariants = cva("input", {
     variants: {
         inputSize: {
-            md: "inp--md remove-arrow",
-            sm: "inp--sm remove-arrow",
-            lg: "inp--lg remove-arrow",
-            xl: "inp--xl remove-arrow"
+            md: "input--md",
+            sm: "input--sm",
+            lg: "input--lg",
+            xl: "input--xl"
         },
         variant: {
-            "hover-focus": "inp--hover-focus"
+            "hover-focus": "input-hover-focus"
         }
     },
     defaultVariants: {
@@ -36,4 +36,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
 })
 Input.displayName = "Input"
 
-export { Input, inputVariants }
+const InputGroup = forwardRef<
+HTMLDivElement,
+React.HTMLAttributes<HTMLDivElement> & {children:React.ReactNode}
+>(({ className, children, title, ...props }, ref) => {
+    return (
+        <div className={cn("input-group")}>
+            {children}
+        </div>
+    )
+})
+
+export { Input, InputGroup, inputVariants }
