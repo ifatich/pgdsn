@@ -106,6 +106,33 @@ interface DatePickerProps {
 }
 declare const DatePicker: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & DatePickerProps & react.RefAttributes<HTMLDivElement>>;
 
+interface DropdownProps {
+    disabled?: boolean;
+    loading?: boolean;
+    useBottomSheet?: boolean;
+    showMenu?: boolean;
+    error?: string;
+    label?: string;
+    items?: Array<{
+        [key: string]: any;
+    }>;
+    itemValue?: string;
+    itemText?: string;
+    modelValue?: any;
+    placeholder?: string;
+    className?: string;
+    errorFetch?: string;
+    executeFetch?: () => void;
+    onChange?: (value: any) => void;
+    onBlur?: () => void;
+}
+declare const Dropdown: React.FC<DropdownProps>;
+
+declare const List: react.ForwardRefExoticComponent<HTMLAttributes<HTMLOListElement | HTMLUListElement> & VariantProps<(props?: ({
+    size?: "md" | "sm" | "lg" | null | undefined;
+    variant?: "ordered" | "unordered" | null | undefined;
+} & class_variance_authority_dist_types.ClassProp) | undefined) => string> & react.RefAttributes<HTMLOListElement | HTMLUListElement>>;
+
 interface InputProps$2 {
     placeholder: string;
     children?: React.ReactNode;
@@ -140,4 +167,4 @@ interface InputTextProps {
 }
 declare const InputLongText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputTextProps & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
 
-export { Badge, Button, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, InputLongText, InputNumber, InputShortText, Label, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle, inputVariants };
+export { Badge, Button, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, InputLongText, InputNumber, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle, inputVariants };
