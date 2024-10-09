@@ -302,14 +302,31 @@ var Modal = (0, import_react4.forwardRef)(({ className, children, dismiss, isOpe
   (0, import_react4.useEffect)(() => {
     if (isOpen) {
       setAnimationState(true);
+      preventBodyScroll();
     } else {
       setAnimationState(false);
+      restoreBodyScroll();
     }
+    return () => {
+      restoreBodyScroll();
+    };
   }, [isOpen]);
   function handleClose() {
     setAnimationState(false);
     if (onClose) setTimeout(() => onClose(), 200);
     return null;
+  }
+  function preventBodyScroll() {
+    const scrollY = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+  }
+  function restoreBodyScroll() {
+    const scrollY = Math.abs(parseInt(document.body.style.top || "0", 10));
+    document.body.style.position = "";
+    document.body.style.top = "";
+    window.scrollTo(0, scrollY);
   }
   if (!isOpen && !animationState) return handleClose();
   return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "fixed inset-0 flex items-center justify-center", children: [
@@ -445,10 +462,6 @@ var InputShortText = (0, import_react7.forwardRef)(
   ({ className, setEnteredText, placeholder, type, iconLeft, iconright, children, ...props }, ref) => {
     const [isPasswordHidden, setPasswordHidden] = (0, import_react7.useState)(true);
     const icons = [];
-    if (props.readOnly) {
-      setEnteredText = () => {
-      };
-    }
     function handleClearText() {
       setEnteredText("");
       console.log(props.value);
@@ -641,10 +654,33 @@ var DatePicker = (0, import_react10.forwardRef)(({ className, selectedDateString
   (0, import_react10.useEffect)(() => {
     if (isActive) {
       setTransitionActive(true);
+      if (!window.matchMedia("(min-width: 640px)").matches) {
+        preventBodyScroll();
+      }
     } else {
       handleClose;
+      if (!window.matchMedia("(min-width: 640px)").matches) {
+        restoreBodyScroll();
+      }
     }
+    return () => {
+      if (!window.matchMedia("(min-width: 640px)").matches) {
+        restoreBodyScroll();
+      }
+    };
   }, [isActive]);
+  function preventBodyScroll() {
+    const scrollY = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+  }
+  function restoreBodyScroll() {
+    const scrollY = Math.abs(parseInt(document.body.style.top || "0", 10));
+    document.body.style.position = "";
+    document.body.style.top = "";
+    window.scrollTo(0, scrollY);
+  }
   function handleClose() {
     setTransitionActive(false);
     setTimeout(() => setActive(!isActive), 100);
@@ -654,7 +690,7 @@ var DatePicker = (0, import_react10.forwardRef)(({ className, selectedDateString
       /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
         "div",
         {
-          className: cn("overlay", isTransitionActive ? "opacity-50" : "opacity-0", "sm:hidden absolute inset-0", className),
+          className: cn("overlay", isTransitionActive ? `overlay-enter` : `overlay-exit `, "sm:hidden fixed inset-0", className),
           onClick: handleClose,
           ref,
           role: "overlay",

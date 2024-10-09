@@ -27,10 +27,6 @@ React.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLIn
     const [isPasswordHidden, setPasswordHidden] = useState(true)
     const icons: React.ReactNode[] = [];
 
-    if(props.readOnly){
-        setEnteredText= () =>{}
-    }
-
     function handleClearText(){
         setEnteredText("")
         console.log(props.value)

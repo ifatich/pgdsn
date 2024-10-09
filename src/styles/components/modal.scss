@@ -23,6 +23,14 @@
 
     .overlay{
         @apply bg-black-80 w-screen h-screen z-10 fixed inset-0 transition-opacity duration-200 ease-in-out;
+
+        &.overlay-enter{
+            @apply opacity-50
+        }
+
+        &.overlay-exit{
+            @apply opacity-0
+        }
     }
       
     

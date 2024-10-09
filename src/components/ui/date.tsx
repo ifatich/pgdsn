@@ -113,8 +113,6 @@ React.HTMLAttributes<HTMLDivElement> & DatePickerProps
         console.log(currentDate.getDate()+" "+currentDate.getDate())
     }
 
-    
-
     useEffect(() => {
         if(isDateSelected){
             setSelectedDateString(`${selectedDate.getDate()}/${selectedDate.getMonth() + 1}/${selectedDate.getFullYear()}`);    
@@ -126,22 +124,55 @@ React.HTMLAttributes<HTMLDivElement> & DatePickerProps
         // Handle the animation when modal is opened or closed
         if (isActive) {
           setTransitionActive(true); // Start animation
+          if(!window.matchMedia("(min-width: 640px)").matches){
+            preventBodyScroll();
+          }
         } else {
             handleClose
+            if(!window.matchMedia("(min-width: 640px)").matches){
+                restoreBodyScroll();
+            }
         }
+        return () => {
+            if(!window.matchMedia("(min-width: 640px)").matches){
+                restoreBodyScroll(); // Pastikan scroll dikembalikan jika komponen di-unmount
+            }
+          };
       }, [isActive]);
+
+      function preventBodyScroll() {
+        // Simpan posisi scroll saat ini
+        const scrollY = window.scrollY;
+        
+        // Cegah scroll pada body
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = "100%"; // Jaga agar body tidak melebar
+      }
+      
+      function restoreBodyScroll() {
+        // Kembalikan posisi scroll
+        const scrollY = Math.abs(parseInt(document.body.style.top || "0", 10));
+        
+        // Kembalikan pengaturan body
+        document.body.style.position = "";
+        document.body.style.top = "";
+        window.scrollTo(0, scrollY);
+      }
     
       function handleClose() {
+
         setTransitionActive(false); // Start closing animation
         setTimeout(() => setActive(!isActive), 100); // Close modal after animation
       }
 
     if (isActive){
 
+
     return(
         <div className="">
             <div
-                className={cn("overlay", isTransitionActive ? "opacity-50" : "opacity-0",  "sm:hidden absolute inset-0", className)}
+                className={cn("overlay", isTransitionActive ? `overlay-enter` : `overlay-exit ` ,  "sm:hidden fixed inset-0", className)}
                 onClick={handleClose}
                 ref={ref}
                 role="overlay"

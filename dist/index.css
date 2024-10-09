@@ -1639,6 +1639,8 @@ textarea {
 .modal svg:hover {
   cursor: pointer;
 }
+body :has(.overlay-enter) {
+}
 .overlay {
   position: fixed;
   inset: 0px;
@@ -1650,6 +1652,12 @@ textarea {
   transition-property: opacity;
   transition-duration: 200ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.overlay.overlay-enter {
+  opacity: 0.5;
+}
+.overlay.overlay-exit {
+  opacity: 0;
 }
 .modal-header {
   display: flex;
@@ -2193,9 +2201,6 @@ textarea {
 }
 .fixed {
   position: fixed;
-}
-.absolute {
-  position: absolute;
 }
 .inset-0 {
   inset: 0px;

@@ -30,15 +30,41 @@ const Modal = forwardRef<
     // Handle the animation when modal is opened or closed
     if (isOpen) {
       setAnimationState(true); // Start animation
+      preventBodyScroll();
     } else {
       setAnimationState(false); // Stop animation
+      restoreBodyScroll();
     }
+
+    return(()=>{
+      restoreBodyScroll();
+    })
   }, [isOpen]);
 
   function handleClose() {
     setAnimationState(false); // Start closing animation
     if (onClose) setTimeout(() => onClose(), 200); // Close modal after animation
     return null
+  }
+  
+  function preventBodyScroll() {
+    // Simpan posisi scroll saat ini
+    const scrollY = window.scrollY;
+    
+    // Cegah scroll pada body
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%"; // Jaga agar body tidak melebar
+  }
+  
+  function restoreBodyScroll() {
+    // Kembalikan posisi scroll
+    const scrollY = Math.abs(parseInt(document.body.style.top || "0", 10));
+    
+    // Kembalikan pengaturan body
+    document.body.style.position = "";
+    document.body.style.top = "";
+    window.scrollTo(0, scrollY);
   }
 
   if (!isOpen && !animationState) return handleClose();
