@@ -1,0 +1,42 @@
+@layer components {
+    .input-dropdown {
+
+        .bottomsheet-dropdown {
+            @apply flex flex-row border-b border-b-black-20 justify-between p-4 mb-4 sm:hidden;
+            
+            label {
+                @apply mb-0 text-lambda;
+            }
+        }
+
+        .input {
+            @apply mt-0;
+        }
+
+        .dropdown-content {
+            @apply fixed w-full bg-white border mt-2 z-10 shadow-md rounded-t-md sm:absolute right-0 sm:right-auto bottom-0 sm:bottom-auto;
+
+            input.input {
+                @apply m-4;
+                width: -webkit-fill-available;
+            }
+
+            li {
+                @apply p-4;
+                border-bottom: 1px solid #eeeeef;
+            }
+
+            li:first-child {
+                padding-top: 0px;
+            }
+
+            li:last-child {
+                margin-bottom: 40px;
+            }
+        }
+
+        label {
+            @apply mb-1;
+        }
+    }
+}

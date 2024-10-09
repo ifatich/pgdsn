@@ -1,0 +1,95 @@
+@layer components {
+
+    .date{
+        @apply  fixed sm:absolute bottom-0 right-0 sm:right-auto sm:bottom-auto z-10 w-full sm:w-[360px] h-fit bg-white shadow-md rounded-t-md sm:rounded-b-md border border-black-10 flex flex-col transition-transform duration-300 ease-in-out translate-y-[700px] sm:translate-y-0;
+
+        &.translate{
+            @apply translate-y-0;
+        }
+
+        .header-date{
+            @apply flex flex-row text-lambda font-bold text-black-80 border-b border-b-black-20 justify-between p-4;
+
+            svg{
+                &:hover{
+                    @apply cursor-pointer;
+                }
+            }
+        }
+
+        .month-picker{
+            @apply flex flex-row justify-between p-4;
+
+            .month-year{
+                @apply flex flex-row gap-1;
+
+                &:hover{
+                    @apply cursor-pointer;
+                }
+
+                span{
+                    @apply text-lime-50 text-omicron font-bold;
+                }
+
+                svg{
+                    @apply transition-transform duration-200 ;
+
+                    &:hover{
+                        @apply cursor-pointer;
+                    }
+                }
+    
+                .rotate{
+                    @apply rotate-180;
+                }
+            }
+        }
+
+        .year-picker{
+            @apply w-full grid grid-cols-3 gap-y-4 h-[274px] sm:w-[360px] overflow-scroll rounded-b-md top-[117px] absolute bg-white p-4 justify-items-center;
+
+            .year-cell{
+                @apply text-lambda px-4 py-1 rounded-md w-[76px] text-center;
+
+                &.active{
+                    @apply bg-lime-50 text-white;
+                }
+
+                &:hover:not(.active){
+                    @apply text-primary
+                }
+            }
+        }
+
+        .day-list{
+            @apply w-full;
+            
+            .days{
+                @apply flex justify-between py-2 mx-4 text-omicron text-black-60 border-y border-y-black-20 text-center;
+
+                div{
+                    @apply w-8;
+                }
+            }
+        }
+
+        .date-picker{
+            @apply grid grid-cols-7 pb-4 pt-1 justify-items-center;
+
+            .nomor{
+                @apply p-2 text-sigma flex align-middle justify-items-center justify-center text-center w-8 h-8 items-center;
+
+                &:hover{
+                    @apply bg-black-10 cursor-pointer
+                }
+
+                &.active{
+                    @apply bg-lime-50 rounded-full text-white ;
+                }
+            }
+        }
+    }
+
+    
+
+}

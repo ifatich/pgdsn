@@ -1,18 +1,18 @@
+"use client"
+
 import { cn } from "../../lib/utils"
-import { forwardRef} from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { forwardRef, type LabelHTMLAttributes } from "react"
 
 
-interface LabelProps{
-    children:React.ReactNode;
-}
+const labelVariants = cva("form__label")
 
-const Label = forwardRef<
-HTMLDivElement,
-React.HTMLAttributes<HTMLDivElement> & LabelProps
->(({ className, children, ...props }, ref) => {
-    return (
-        <div className={cn("label")}> {children} </div>
-    )
-})
+const Label = forwardRef<HTMLLabelElement, LabelHTMLAttributes<HTMLLabelElement> & VariantProps<typeof labelVariants>>(({
+    className,
+    ...props
+}, ref) => (
+    <label ref={ref} className={cn(labelVariants(), className)} {...props} />
+))
+Label.displayName = "Label"
 
-export {Label}
+export { Label }

@@ -1,7 +1,8 @@
 import * as react from 'react';
-import { ButtonHTMLAttributes, ReactNode, InputHTMLAttributes, TextareaHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, ReactNode, InputHTMLAttributes, LabelHTMLAttributes, HTMLAttributes, ComponentPropsWithoutRef, TextareaHTMLAttributes } from 'react';
 import * as class_variance_authority_dist_types from 'class-variance-authority/dist/types';
 import { VariantProps } from 'class-variance-authority';
+import * as react_jsx_runtime from 'react/jsx-runtime';
 
 declare const buttonVariants: (props?: ({
     variant?: "default" | "primary" | "destructive" | "outline" | "secondary" | "ghost" | "ghost-fab" | "link" | null | undefined;
@@ -66,38 +67,52 @@ interface BreadcumbProps {
 }
 declare const Breadcumb: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & BreadcumbProps & react.RefAttributes<HTMLDivElement>>;
 
-interface InputProps {
-    placeholder: string;
-    children?: React.ReactNode;
-    setEnteredText: (value: string) => void;
-}
-interface InputTextProps {
-    iconLeft?: boolean;
-    iconright?: boolean;
-}
-interface InputNumberProps {
-    labelLeft?: string;
-    labelRight?: string;
-    type?: "default" | "percentage" | "money" | "4-digits-seperate";
-}
-declare const InputShortText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLInputElement> & InputTextProps & react.RefAttributes<HTMLInputElement>>;
-declare const InputLongText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputTextProps & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
-declare const InputNumber: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLInputElement> & InputNumberProps & react.RefAttributes<HTMLInputElement>>;
-declare const InputGroup: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
-    children: React.ReactNode;
-} & react.RefAttributes<HTMLDivElement>>;
-
-interface LabelProps {
-    children: React.ReactNode;
-}
-declare const Label: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & LabelProps & react.RefAttributes<HTMLDivElement>>;
-
 declare const ErrorText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
     active?: boolean;
 } & react.RefAttributes<HTMLDivElement>>;
 declare const HelperText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
     active?: boolean;
 } & react.RefAttributes<HTMLDivElement>>;
+
+declare const inputVariants: (props?: ({
+    inputSize?: "md" | "sm" | "lg" | "xl" | null | undefined;
+    variant?: "hover-focus" | null | undefined;
+} & class_variance_authority_dist_types.ClassProp) | undefined) => string;
+interface InputProps$3 extends InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputVariants> {
+}
+declare const Input: react.ForwardRefExoticComponent<InputProps$3 & react.RefAttributes<HTMLInputElement>>;
+declare const InputGroup: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
+    children: React.ReactNode;
+} & react.RefAttributes<HTMLDivElement>>;
+
+declare const Label: react.ForwardRefExoticComponent<LabelHTMLAttributes<HTMLLabelElement> & VariantProps<(props?: class_variance_authority_dist_types.ClassProp | undefined) => string> & react.RefAttributes<HTMLLabelElement>>;
+
+interface DialogProps extends ComponentPropsWithoutRef<"div"> {
+    open?: boolean;
+}
+declare const Dialog: react.ForwardRefExoticComponent<DialogProps & react.RefAttributes<HTMLDivElement>>;
+interface DialogOverlayProps extends DialogProps {
+}
+declare const DialogOverlay: react.ForwardRefExoticComponent<DialogOverlayProps & react.RefAttributes<HTMLDivElement>>;
+interface DialogContentProps extends DialogProps {
+    onClose?: () => void;
+}
+declare const DialogContent: react.ForwardRefExoticComponent<DialogContentProps & react.RefAttributes<HTMLDivElement>>;
+declare const DialogClose: react.ForwardRefExoticComponent<Omit<react.DetailedHTMLProps<react.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, "ref"> & react.RefAttributes<HTMLButtonElement>>;
+interface DialogHeaderProps extends HTMLAttributes<HTMLDivElement> {
+    onClose?: () => void;
+}
+declare const DialogHeader: {
+    ({ className, onClose, ...props }: DialogHeaderProps): react_jsx_runtime.JSX.Element;
+    displayName: string;
+};
+declare const DialogBody: react.ForwardRefExoticComponent<Omit<react.DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & react.RefAttributes<HTMLDivElement>>;
+declare const DialogFooter: {
+    ({ className, ...props }: HTMLAttributes<HTMLDivElement>): react_jsx_runtime.JSX.Element;
+    displayName: string;
+};
+declare const DialogTitle: react.ForwardRefExoticComponent<Omit<react.DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>, "ref"> & react.RefAttributes<HTMLHeadingElement>>;
+declare const DialogDescription: react.ForwardRefExoticComponent<Omit<react.DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>, "ref"> & react.RefAttributes<HTMLParagraphElement>>;
 
 interface DatePickerProps {
     selectedDateString: string;
@@ -107,4 +122,65 @@ interface DatePickerProps {
 }
 declare const DatePicker: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & DatePickerProps & react.RefAttributes<HTMLDivElement>>;
 
-export { Badge, Breadcumb, Button, DatePicker, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, InputGroup, InputLongText, InputNumber, InputShortText, Label, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle };
+interface DropdownProps {
+    disabled?: boolean;
+    loading?: boolean;
+    useBottomSheet?: boolean;
+    showMenu?: boolean;
+    error?: string;
+    label?: string;
+    items?: Array<{
+        [key: string]: any;
+    }>;
+    itemValue?: string;
+    itemText?: string;
+    modelValue?: any;
+    placeholder?: string;
+    className?: string;
+    errorFetch?: string;
+    executeFetch?: () => void;
+    onChange?: (value: any) => void;
+    onBlur?: () => void;
+}
+declare const Dropdown: React.FC<DropdownProps>;
+
+declare const List: react.ForwardRefExoticComponent<HTMLAttributes<HTMLOListElement | HTMLUListElement> & VariantProps<(props?: ({
+    size?: "md" | "sm" | "lg" | null | undefined;
+    variant?: "ordered" | "unordered" | null | undefined;
+} & class_variance_authority_dist_types.ClassProp) | undefined) => string> & react.RefAttributes<HTMLOListElement | HTMLUListElement>>;
+
+interface InputProps$2 {
+    placeholder: string;
+    children?: React.ReactNode;
+    setEnteredText: (value: string) => void;
+}
+interface InputNumberProps {
+    labelLeft?: string;
+    labelRight?: string;
+    type?: "default" | "percentage" | "money" | "4-digits-seperate";
+}
+declare const InputNumber: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps$2 & InputHTMLAttributes<HTMLInputElement> & InputNumberProps & react.RefAttributes<HTMLInputElement>>;
+
+interface InputProps$1 {
+    placeholder: string;
+    children?: React.ReactNode;
+    setEnteredText: (value: string) => void;
+}
+interface InputTextProps$1 {
+    iconLeft?: boolean;
+    iconright?: boolean;
+}
+declare const InputShortText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps$1 & InputHTMLAttributes<HTMLInputElement> & InputTextProps$1 & react.RefAttributes<HTMLInputElement>>;
+
+interface InputProps {
+    placeholder: string;
+    children?: React.ReactNode;
+    setEnteredText: (value: string) => void;
+}
+interface InputTextProps {
+    iconLeft?: boolean;
+    iconright?: boolean;
+}
+declare const InputLongText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputTextProps & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
+
+export { Badge, Breadcumb, Button, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, InputLongText, InputNumber, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle, inputVariants };
