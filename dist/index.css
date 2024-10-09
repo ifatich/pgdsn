@@ -1639,8 +1639,6 @@ textarea {
 .modal svg:hover {
   cursor: pointer;
 }
-body :has(.overlay-enter) {
-}
 .overlay {
   position: fixed;
   inset: 0px;
