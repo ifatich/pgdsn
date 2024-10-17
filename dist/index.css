@@ -1302,6 +1302,8 @@ textarea {
   font-size: var(--16-omicron);
   line-height: var(--16-omicron-line-height);
   font-weight: var(--regular);
+  --tw-text-opacity: 1;
+  color: hsl(var(--black-80) / var(--tw-text-opacity));
   --tw-ring-offset-color: hsl(var(--background) / 1);
   transition-property: width;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1319,6 +1321,16 @@ textarea {
   --tw-ring-color: hsl(var(--primary) / 0%) !important;
   --tw-ring-offset-width: 0px !important;
 }
+.input ::-moz-placeholder {
+  font-weight: var(--regular);
+  --tw-text-opacity: 1;
+  color: hsl(var(--black-50) / var(--tw-text-opacity));
+}
+.input ::placeholder {
+  font-weight: var(--regular);
+  --tw-text-opacity: 1;
+  color: hsl(var(--black-50) / var(--tw-text-opacity));
+}
 .input:has(.unit-input-left) {
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1328,6 +1340,25 @@ textarea {
   padding-top: 0px;
   padding-bottom: 0px;
   padding-right: 0px;
+}
+.input.input-search {
+  border-style: none;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--black-10) / var(--tw-bg-opacity));
+  font-size: var(--14-sigma);
+  line-height: var(--14-sigma-line-height);
+}
+.input.input-search.shadow {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow:
+    var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
+}
+.input.input-search input {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--black-10) / var(--tw-bg-opacity));
 }
 .input textarea {
   height: 78px;
@@ -2109,6 +2140,62 @@ textarea {
 .input-dropdown label {
   margin-bottom: 0.25rem;
 }
+.accordion-group {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: calc(var(--radius) - 2px);
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--black-20) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--text-white) / var(--tw-bg-opacity));
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+.accordion-group.accordion-opened {
+  max-height: none;
+}
+.accordion-group.accordion-closed {
+  max-height: 54px;
+}
+.accordion-group .accordion-header {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  padding: 0.75rem;
+}
+.accordion-group .accordion-header .accordion-title {
+  display: flex;
+  flex-grow: 1;
+  font-size: var(--20-kappa);
+  line-height: var(--20-kappa-line-height);
+  font-weight: var(--bold);
+}
+.accordion-group .accordion-header .accordion-title.accordion-opened {
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-50) / var(--tw-text-opacity));
+}
+.accordion-group .accordion-header .accordion-title.accordion-closed {
+  --tw-text-opacity: 1;
+  color: hsl(var(--black-60) / var(--tw-text-opacity));
+}
+.accordion-group .accordion-header svg {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+.accordion-group .accordion-header svg.rotate {
+  --tw-rotate: 180deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.accordion-group .accordion-body {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-bottom: 1rem;
+  padding-top: 0.25rem;
+}
 @layer component {
   :root {
     --nav-height: 3.5rem;
@@ -2336,6 +2423,25 @@ textarea {
 .badge-non-dismiss {
   display: none;
 }
+@layer component {
+  .progress-bar {
+    height: 10px;
+    width: 100%;
+    border-radius: 9999px;
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--black-20) / var(--tw-bg-opacity));
+  }
+  .progress-bar .fill-bar {
+    height: 100%;
+    width: 0px;
+    border-radius: 9999px;
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--lime-50) / var(--tw-bg-opacity));
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+}
 .sr-only {
   position: absolute;
   width: 1px;
@@ -2547,6 +2653,14 @@ textarea {
 }
 .opacity-50 {
   opacity: 0.5;
+}
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow:
+    var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000),
+    var(--tw-shadow);
 }
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);

@@ -1,0 +1,41 @@
+@layer components {
+    .accordion-group{
+        @apply rounded-md bg-white border border-black-20 flex flex-col transition-all duration-200 overflow-hidden;
+
+        &.accordion-opened{
+            @apply max-h-none;
+        }
+
+        &.accordion-closed{
+            @apply max-h-[54px];
+        }
+
+        .accordion-header{
+            @apply flex flex-row gap-3 p-3;
+
+            .accordion-title{
+                @apply flex flex-grow font-bold text-kappa;
+
+                &.accordion-opened{
+                    @apply text-lime-50;
+                }
+
+                &.accordion-closed{
+                    @apply text-black-60;
+                }
+            }
+
+            svg{
+                @apply transition-all duration-200;
+
+                &.rotate{
+                    @apply rotate-180;
+                }
+            }
+        }
+
+        .accordion-body{
+            @apply px-3 pb-4 pt-1
+        }
+    }
+}

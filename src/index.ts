@@ -8,7 +8,7 @@ import { Badge } from "./components/ui/badge";
 import { Breadcumb } from "./components/ui/breadcumb";
 import { ErrorText, HelperText } from "./components/ui/helper-text";
 
-import { Input, inputVariants, Dialog, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogBody  } from "./components";
+import { Input, inputVariants, Dialog, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogBody, InputSearch  } from "./components";
 import { Label } from "./components";
 import { InputGroup } from "./components/ui/input";
 import { InputNumber } from "./components/custom/input/number";
@@ -17,6 +17,8 @@ import { InputLongText } from "./components/custom/input/long";
 import { DatePicker } from "./components";
 import { Dropdown } from "./components/custom/input/dropdown";
 import { List } from "./components/ui/list";
+import { ProgressBar } from "./components";
+import { AccordionBody, AccordionGroup, AccordionHeader} from "./components";
 
 // Export
 export { 
@@ -34,6 +36,7 @@ export {
     Dropdown,
 
     Input,
+    InputSearch,
     inputVariants,
 
     Infotip,
@@ -51,6 +54,10 @@ export {
 
     Breadcumb,
 
+    AccordionBody,
+    AccordionHeader,
+    AccordionGroup,
+
     InputShortText,
     InputLongText, InputNumber,
     InputGroup,
@@ -65,5 +72,6 @@ export {
     ToastDescription,
     ToastTitle,
 
+    ProgressBar,
 };
 

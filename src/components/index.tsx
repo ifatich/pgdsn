@@ -12,3 +12,6 @@ export { Dialog, DialogOverlay, DialogClose, DialogContent, DialogHeader, Dialog
 export { DatePicker } from "./ui/date";
 export { Dropdown } from "./custom/input/dropdown";
 export { List } from "./ui/list"
+export { InputSearch } from "./custom/input/search";
+export { ProgressBar } from "./ui/progress-bar";
+export { AccordionBody,AccordionGroup, AccordionHeader } from "./ui/accordion";

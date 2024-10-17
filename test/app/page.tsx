@@ -1,6 +1,6 @@
 "use client";
 
-import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown} from "pgdsn";
+import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionGroup, AccordionHeader} from "pgdsn";
 import { useState } from "react";
 
 
@@ -26,7 +26,7 @@ const items = [
   { value: '9', text: 'Item 3' },
   { value: '10', text: 'Item 3' },
   { value: '11', text: 'Item 3' },
-];
+]; 
 
 const handleChange = (value: string) => {
   console.log('Selected Value:', value);
@@ -48,6 +48,10 @@ const [isDateOpen2, setDateOpen2] = useState(false)
 const [selectedDate, setselectedDate]= useState("")
 
 const [inputValue3, setInputValue3] = useState("")
+
+const [inputSearch, setInputSearch] = useState("")
+
+const [isAccordionActive, setAccordionActive] = useState(false)
 
 function executeFetch(): void {
   throw new Error("Function not implemented.");
@@ -154,9 +158,11 @@ function executeFetch(): void {
 
           <div className="col-span-6">
             <Label>Ini Label</Label>
-          </div>
+          </div>  
 
           <div className="col-span-6">
+          <ProgressBar value={15}></ProgressBar>
+            <InputSearch  value={inputSearch} setEnteredText={setInputSearch} placeholder="Cari nama atau ID"></InputSearch>
             <InputGroup>
               <Label>Tanggal Lahir</Label>
               <InputShortText  iconright={true} readOnly setEnteredText={setInputValue3} onClick={() => setDateOpen2(!isDateOpen2)} placeholder="Pilih tanggal lahir" type="text" value={selectedDate}>
@@ -181,6 +187,13 @@ function executeFetch(): void {
               executeFetch={executeFetch}
               onChange={handleChange}
             />
+          </div>
+
+          <div className="col-span-12">
+              <AccordionGroup isActive={isAccordionActive} setActive={setAccordionActive}>
+                <AccordionHeader isActive={isAccordionActive}>Bagaimana cara melakukan gadai di kantor cabang?</AccordionHeader>
+                <AccordionBody isActive={isAccordionActive} >Caranya adalah blablbablaa</AccordionBody>
+              </AccordionGroup>
           </div>
 
           <div className="col-span-6">

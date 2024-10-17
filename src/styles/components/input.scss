@@ -25,7 +25,11 @@
 
     .input {
         @apply text-omicron font-regular items-center flex gap-2 w-full rounded-md border border-input bg-background/[0%] px-3 py-2 ring-offset-background
-        focus-ring-none transition-[width] duration-500 mt-1 mb-2;
+        focus-ring-none transition-[width] duration-500 mt-1 mb-2 text-black-80 ;
+
+        ::placeholder{
+            @apply font-regular text-black-50;
+        }
 
         &:has(.unit-input-left) {
             @apply pl-0 py-0;
@@ -36,7 +40,17 @@
             @apply pr-0 py-0;
         }
 
-        
+        &.input-search{
+            @apply bg-black-10 border-none text-sigma;
+
+            &.shadow{
+                @apply shadow-md;
+            }
+
+            input{
+                @apply bg-black-10
+            }
+        }
 
         textarea {
             @apply outline-none h-[78px];

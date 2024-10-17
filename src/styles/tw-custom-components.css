@@ -23,3 +23,5 @@
 @import "/components/custom/content-state.scss";
 @import "/components/custom/date.scss";
 @import "/components/custom/dropdown.scss";
+@import "/components/progress-bar.scss";
+@import "/components/accordion.scss";

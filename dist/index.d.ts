@@ -78,9 +78,9 @@ declare const inputVariants: (props?: ({
     inputSize?: "md" | "sm" | "lg" | "xl" | null | undefined;
     variant?: "hover-focus" | null | undefined;
 } & class_variance_authority_dist_types.ClassProp) | undefined) => string;
-interface InputProps$3 extends InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputVariants> {
+interface InputProps$4 extends InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputVariants> {
 }
-declare const Input: react.ForwardRefExoticComponent<InputProps$3 & react.RefAttributes<HTMLInputElement>>;
+declare const Input: react.ForwardRefExoticComponent<InputProps$4 & react.RefAttributes<HTMLInputElement>>;
 declare const InputGroup: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
     children: React.ReactNode;
 } & react.RefAttributes<HTMLDivElement>>;
@@ -149,6 +149,32 @@ declare const List: react.ForwardRefExoticComponent<HTMLAttributes<HTMLOListElem
     variant?: "ordered" | "unordered" | null | undefined;
 } & class_variance_authority_dist_types.ClassProp) | undefined) => string> & react.RefAttributes<HTMLOListElement | HTMLUListElement>>;
 
+interface InputProps$3 {
+    placeholder: string;
+    children?: React.ReactNode;
+    setEnteredText: (value: string) => void;
+    value: string;
+    shadow?: boolean;
+}
+declare const InputSearch: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps$3 & InputHTMLAttributes<HTMLInputElement> & react.RefAttributes<HTMLInputElement>>;
+
+interface ProgressBarProps {
+    children?: React.ReactNode;
+    value: number;
+}
+declare const ProgressBar: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & ProgressBarProps & react.RefAttributes<HTMLDivElement>>;
+
+declare const AccordionGroup: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
+    isActive: boolean;
+    setActive: (isActive: boolean) => void;
+} & react.RefAttributes<HTMLDivElement>>;
+declare const AccordionHeader: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
+    isActive: boolean;
+} & react.RefAttributes<HTMLDivElement>>;
+declare const AccordionBody: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
+    isActive: boolean;
+} & react.RefAttributes<HTMLDivElement>>;
+
 interface InputProps$2 {
     placeholder: string;
     children?: React.ReactNode;
@@ -165,6 +191,7 @@ interface InputProps$1 {
     placeholder: string;
     children?: React.ReactNode;
     setEnteredText: (value: string) => void;
+    value: string;
 }
 interface InputTextProps$1 {
     iconLeft?: boolean;
@@ -183,4 +210,4 @@ interface InputTextProps {
 }
 declare const InputLongText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputTextProps & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
 
-export { Badge, Breadcumb, Button, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, InputLongText, InputNumber, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, Toast, ToastDescription, ToastTitle, inputVariants };
+export { AccordionBody, AccordionGroup, AccordionHeader, Badge, Breadcumb, Button, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, Toast, ToastDescription, ToastTitle, inputVariants };
