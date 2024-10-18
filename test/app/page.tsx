@@ -1,6 +1,6 @@
 "use client";
 
-import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionGroup, AccordionHeader} from "pgdsn";
+import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionItem, AccordionHeader, AccordionGroup, TabGroup, TabItem} from "pgdsn";
 import { useState } from "react";
 
 
@@ -13,6 +13,10 @@ const [isToastOpenSuccess, setToastOpenSuccess] = useState(true)
 const [isToastOpenWarning, setToastOpenWarning] = useState(true)
 
 const [selectedValue, setSelectedValue] = useState<string | null>(null);
+
+const [activeTab, setActiveTab] = useState(0)
+
+const tabItem = ["Konvensional", "Syariah", "Menu"];
 
 const items = [
   { value: '1', text: 'Item 1' },
@@ -52,6 +56,8 @@ const [inputValue3, setInputValue3] = useState("")
 const [inputSearch, setInputSearch] = useState("")
 
 const [isAccordionActive, setAccordionActive] = useState(false)
+const [isAccordionActive2, setAccordionActive2] = useState(false)
+const [isAccordionActive3, setAccordionActive3] = useState(false)
 
 function executeFetch(): void {
   throw new Error("Function not implemented.");
@@ -154,6 +160,9 @@ function executeFetch(): void {
             <Input variant="hover-focus" arrow= "true"  inputSize="lg" />
             <Input variant="hover-focus" inputSize="md" />
             <Input variant="hover-focus" inputSize="sm" />
+            <InputSearch  value={inputSearch} setEnteredText={setInputSearch} placeholder="Cari nama atau ID"/>
+            {inputSearch}
+            <ProgressBar value={15}></ProgressBar>
           </div>
 
           <div className="col-span-6">
@@ -161,8 +170,7 @@ function executeFetch(): void {
           </div>  
 
           <div className="col-span-6">
-          <ProgressBar value={15}></ProgressBar>
-            <InputSearch  value={inputSearch} setEnteredText={setInputSearch} placeholder="Cari nama atau ID"></InputSearch>
+         
             <InputGroup>
               <Label>Tanggal Lahir</Label>
               <InputShortText  iconright={true} readOnly setEnteredText={setInputValue3} onClick={() => setDateOpen2(!isDateOpen2)} placeholder="Pilih tanggal lahir" type="text" value={selectedDate}>
@@ -190,10 +198,48 @@ function executeFetch(): void {
           </div>
 
           <div className="col-span-12">
-              <AccordionGroup isActive={isAccordionActive} setActive={setAccordionActive}>
-                <AccordionHeader isActive={isAccordionActive}>Bagaimana cara melakukan gadai di kantor cabang?</AccordionHeader>
-                <AccordionBody isActive={isAccordionActive} >Caranya adalah blablbablaa</AccordionBody>
-              </AccordionGroup>
+              <AccordionGroup>
+                <AccordionItem>
+                  <AccordionHeader>
+                    Accordion 1
+                  </AccordionHeader>
+                  <AccordionBody>
+                    <p>Content for Accordion 1 goes here.</p>
+                  </AccordionBody>
+                </AccordionItem>
+
+                <AccordionItem>
+                  <AccordionHeader>
+                    Accordion 2
+                  </AccordionHeader>
+                  <AccordionBody>
+                    <p>Content for Accordion 2 goes here.</p>
+                  </AccordionBody>
+                </AccordionItem>
+
+                <AccordionItem>
+                  <AccordionHeader>
+                    Accordion 3
+                  </AccordionHeader>
+                  <AccordionBody>
+                    <p>Content for Accordion 3 goes here.</p>
+                  </AccordionBody>
+                </AccordionItem>
+              </AccordionGroup> 
+          </div>
+
+          <div className="col-span-12">
+          <TabGroup activeTabIndex={activeTab} setActiveTabIndex={setActiveTab}>
+                {
+                  tabItem.map((item,key) => {
+                    const [isActive, setActive] = useState(false)
+                    return(
+                     <TabItem key={key} >{item}</TabItem>
+                    )
+                  })
+                }
+              </TabGroup>
+              {activeTab}
           </div>
 
           <div className="col-span-6">

@@ -1,14 +1,11 @@
 @layer components {
+
     .accordion-group{
-        @apply rounded-md bg-white border border-black-20 flex flex-col transition-all duration-200 overflow-hidden;
+        @apply flex flex-col gap-3;
+    }
 
-        &.accordion-opened{
-            @apply max-h-none;
-        }
-
-        &.accordion-closed{
-            @apply max-h-[54px];
-        }
+    .accordion-item{
+        @apply rounded-md bg-white border border-black-20 flex flex-col;
 
         .accordion-header{
             @apply flex flex-row gap-3 p-3;
@@ -35,7 +32,15 @@
         }
 
         .accordion-body{
-            @apply px-3 pb-4 pt-1
+            @apply px-3 transition-all duration-200 overflow-hidden ease-in-out;
+
+            &.accordion-opened{
+                @apply  max-h-[54px] pt-1 pb-4;
+            }
+    
+            &.accordion-closed{
+                @apply max-h-0 pt-0 pb-0;
+            }
         }
     }
 }

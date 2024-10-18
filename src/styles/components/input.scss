@@ -41,7 +41,7 @@
         }
 
         &.input-search{
-            @apply bg-black-10 border-none text-sigma;
+            @apply bg-black-10 border-none text-sigma mb-0;
 
             &.shadow{
                 @apply shadow-md;

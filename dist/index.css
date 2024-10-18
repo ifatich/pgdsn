@@ -1342,6 +1342,7 @@ textarea {
   padding-right: 0px;
 }
 .input.input-search {
+  margin-bottom: 0px;
   border-style: none;
   --tw-bg-opacity: 1;
   background-color: hsl(var(--black-10) / var(--tw-bg-opacity));
@@ -2075,7 +2076,6 @@ textarea {
   color: hsl(var(--text-white) / var(--tw-text-opacity));
 }
 .input-dropdown .bottomsheet-dropdown {
-  margin-bottom: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -2143,58 +2143,104 @@ textarea {
 .accordion-group {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  gap: 0.75rem;
+}
+.accordion-item {
+  display: flex;
+  flex-direction: column;
   border-radius: calc(var(--radius) - 2px);
   border-width: 1px;
   --tw-border-opacity: 1;
   border-color: hsl(var(--black-20) / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
   background-color: hsl(var(--text-white) / var(--tw-bg-opacity));
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 200ms;
 }
-.accordion-group.accordion-opened {
-  max-height: none;
-}
-.accordion-group.accordion-closed {
-  max-height: 54px;
-}
-.accordion-group .accordion-header {
+.accordion-item .accordion-header {
   display: flex;
   flex-direction: row;
   gap: 0.75rem;
   padding: 0.75rem;
 }
-.accordion-group .accordion-header .accordion-title {
+.accordion-item .accordion-header .accordion-title {
   display: flex;
   flex-grow: 1;
   font-size: var(--20-kappa);
   line-height: var(--20-kappa-line-height);
   font-weight: var(--bold);
 }
-.accordion-group .accordion-header .accordion-title.accordion-opened {
+.accordion-item .accordion-header .accordion-title.accordion-opened {
   --tw-text-opacity: 1;
   color: hsl(var(--lime-50) / var(--tw-text-opacity));
 }
-.accordion-group .accordion-header .accordion-title.accordion-closed {
+.accordion-item .accordion-header .accordion-title.accordion-closed {
   --tw-text-opacity: 1;
   color: hsl(var(--black-60) / var(--tw-text-opacity));
 }
-.accordion-group .accordion-header svg {
+.accordion-item .accordion-header svg {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
 }
-.accordion-group .accordion-header svg.rotate {
+.accordion-item .accordion-header svg.rotate {
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-.accordion-group .accordion-body {
+.accordion-item .accordion-body {
+  overflow: hidden;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  padding-bottom: 1rem;
+  transition-property: all;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.accordion-item .accordion-body.accordion-opened {
+  max-height: 54px;
   padding-top: 0.25rem;
+  padding-bottom: 1rem;
+}
+.accordion-item .accordion-body.accordion-closed {
+  max-height: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.tab-group {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+}
+.tab-group .tab-item {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  border-bottom-width: 1px;
+  --tw-border-opacity: 1;
+  border-bottom-color: hsl(var(--black-20) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--text-white) / var(--tw-bg-opacity));
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
+  vertical-align: middle;
+  font-size: var(--14-sigma);
+  line-height: var(--14-sigma-line-height);
+  font-weight: var(--bold);
+  --tw-text-opacity: 1;
+  color: hsl(var(--black-50) / var(--tw-text-opacity));
+}
+@media (min-width: 640px) {
+  .tab-group .tab-item {
+    font-size: var(--20-kappa);
+    line-height: var(--20-kappa-line-height);
+  }
+}
+.tab-group .tab-item.active {
+  border-bottom-width: 2px;
+  --tw-border-opacity: 1;
+  border-bottom-color: hsl(var(--lime-50) / var(--tw-border-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-50) / var(--tw-text-opacity));
 }
 @layer component {
   :root {

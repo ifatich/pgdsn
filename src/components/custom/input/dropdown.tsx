@@ -3,6 +3,7 @@ import { Label } from '../../ui/label';
 import { Input, InputGroup } from '../../ui/input';
 import { InputShortText } from './short';
 import { cn } from '../../../lib/utils';
+import { InputSearch } from './search';
 
 interface DropdownProps {
   disabled?: boolean;
@@ -158,14 +159,14 @@ const Dropdown: React.FC<DropdownProps> = ({
             </svg>
           </div>
           {items.length > 10 && (
-            <Input
-              variant="hover-focus"
-              inputSize="lg"
-              type="text"
-              placeholder={`Cari ${label.toLowerCase()}`}
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
+            <div className="p-4">
+              <InputSearch
+                setEnteredText={setSearch}
+                placeholder={`Cari ${label.toLowerCase()}`}
+                value={search}
+              />
+            </div>
+            
           )}
           <ul className="list-none max-h-96 sm:max-h-48 overflow-y-auto">
             {filteredItems.length > 0 ? (

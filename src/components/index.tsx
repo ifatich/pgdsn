@@ -1,3 +1,5 @@
+
+
 export { Infotip } from "./ui/infotip";
 export { Button } from "./ui/button";
 export { Toast } from "./ui/toast";
@@ -14,4 +16,5 @@ export { Dropdown } from "./custom/input/dropdown";
 export { List } from "./ui/list"
 export { InputSearch } from "./custom/input/search";
 export { ProgressBar } from "./ui/progress-bar";
-export { AccordionBody,AccordionGroup, AccordionHeader } from "./ui/accordion";
+export { AccordionGroup,AccordionBody,AccordionItem, AccordionHeader } from "./ui/accordion";
+export { TabGroup, TabItem } from "./ui/tabs";

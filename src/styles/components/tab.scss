@@ -1,0 +1,13 @@
+@layer components {
+    .tab-group{
+        @apply flex flex-row flex-grow;
+
+        .tab-item{
+            @apply bg-white text-sigma font-bold text-black-50 border-b border-b-black-20 py-2 px-4 align-middle justify-center flex sm:text-kappa w-full text-center; 
+            
+            &.active{
+                @apply text-lime-50 border-b-2 border-b-lime-50
+            }
+        }
+    }
+}

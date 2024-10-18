@@ -2,7 +2,7 @@
     .input-dropdown {
 
         .bottomsheet-dropdown {
-            @apply flex flex-row border-b border-b-black-20 justify-between p-4 mb-4 sm:hidden;
+            @apply flex flex-row border-b border-b-black-20 justify-between p-4 sm:hidden;
             
             label {
                 @apply mb-0 text-lambda;

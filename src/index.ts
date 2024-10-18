@@ -18,7 +18,8 @@ import { DatePicker } from "./components";
 import { Dropdown } from "./components/custom/input/dropdown";
 import { List } from "./components/ui/list";
 import { ProgressBar } from "./components";
-import { AccordionBody, AccordionGroup, AccordionHeader} from "./components";
+import { AccordionGroup,AccordionBody, AccordionItem, AccordionHeader} from "./components";
+import { TabGroup, TabItem } from "./components";
 
 // Export
 export { 
@@ -56,7 +57,11 @@ export {
 
     AccordionBody,
     AccordionHeader,
+    AccordionItem,
     AccordionGroup,
+
+    TabGroup,
+    TabItem,
 
     InputShortText,
     InputLongText, InputNumber,

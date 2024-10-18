@@ -164,16 +164,29 @@ interface ProgressBarProps {
 }
 declare const ProgressBar: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & ProgressBarProps & react.RefAttributes<HTMLDivElement>>;
 
-declare const AccordionGroup: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
-    isActive: boolean;
-    setActive: (isActive: boolean) => void;
+declare const AccordionGroup: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & react.RefAttributes<HTMLDivElement>>;
+declare const AccordionItem: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
+    isActive?: boolean;
+    onToggle?: () => void;
 } & react.RefAttributes<HTMLDivElement>>;
 declare const AccordionHeader: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
-    isActive: boolean;
+    isActive?: boolean;
+    onToggle?: () => void;
 } & react.RefAttributes<HTMLDivElement>>;
 declare const AccordionBody: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & {
-    isActive: boolean;
+    isActive?: boolean;
 } & react.RefAttributes<HTMLDivElement>>;
+
+interface TabGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+    activeTabIndex: number;
+    setActiveTabIndex: (index: number) => void;
+}
+declare const TabGroup: react.ForwardRefExoticComponent<TabGroupProps & react.RefAttributes<HTMLDivElement>>;
+interface TabItemProps extends React.HTMLAttributes<HTMLDivElement> {
+    isActive?: boolean;
+    setActive?: () => void;
+}
+declare const TabItem: react.ForwardRefExoticComponent<TabItemProps & react.RefAttributes<HTMLDivElement>>;
 
 interface InputProps$2 {
     placeholder: string;
@@ -210,4 +223,4 @@ interface InputTextProps {
 }
 declare const InputLongText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputTextProps & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
 
-export { AccordionBody, AccordionGroup, AccordionHeader, Badge, Breadcumb, Button, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, Toast, ToastDescription, ToastTitle, inputVariants };
+export { AccordionBody, AccordionGroup, AccordionHeader, AccordionItem, Badge, Breadcumb, Button, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, TabGroup, TabItem, Toast, ToastDescription, ToastTitle, inputVariants };
