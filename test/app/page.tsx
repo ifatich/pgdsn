@@ -1,7 +1,9 @@
 "use client";
 
-import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionItem, AccordionHeader, AccordionGroup, TabGroup, TabItem} from "pgdsn";
+import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionItem, AccordionHeader, AccordionGroup, TabGroup, TabItem, Table} from "pgdsn";
 import { useState } from "react";
+import DataTable, { TableColumn } from "react-data-table-component";
+
 
 
 export default function Home() {
@@ -32,6 +34,26 @@ const items = [
   { value: '11', text: 'Item 3' },
 ]; 
 
+const customStyles = {
+	rows: {
+		style: {
+			minHeight: '72px', // override the row height
+		},
+	},
+	headCells: {
+		style: {
+			paddingLeft: '8px', // override the cell padding for head cells
+			paddingRight: '8px',
+		},
+	},
+	cells: {
+		style: {
+			paddingLeft: '8px', // override the cell padding for data cells
+			paddingRight: '8px',
+		},
+	},
+};
+
 const handleChange = (value: string) => {
   console.log('Selected Value:', value);
   setSelectedValue(value);
@@ -58,6 +80,32 @@ const [inputSearch, setInputSearch] = useState("")
 const [isAccordionActive, setAccordionActive] = useState(false)
 const [isAccordionActive2, setAccordionActive2] = useState(false)
 const [isAccordionActive3, setAccordionActive3] = useState(false)
+
+
+const data = [
+  { id: 1, name: 'John Doe', age: 28 },
+  { id: 2, name: 'Jane Smith', age: 32 },
+  { id: 3, name: 'Alice Johnson', age: 25 },
+];
+
+// Contoh kolom untuk tabel
+const columns = [
+  {
+    name: 'ID',
+    selector: (row: any) => row.id,
+    sortable: true,
+  },
+  {
+    name: 'Name',
+    selector: (row: any) => row.name,
+    sortable: true,
+  },
+  {
+    name: 'Age',
+    selector: (row: any) => row.age,
+    sortable: true,
+  },
+];
 
 function executeFetch(): void {
   throw new Error("Function not implemented.");
@@ -204,7 +252,7 @@ function executeFetch(): void {
                     Accordion 1
                   </AccordionHeader>
                   <AccordionBody>
-                    <p>Content for Accordion 1 goes here.</p>
+                    <p>Content for Accordion 1 goes hereContent for Accordion 1 goes hereContent for Accordion 1 goes hereContent for Accordion 1 goes hereContent for Accordion 1 goes hereContent for Accordion 1 goes hereContent for Accordion 1 goes hereContent for Accordion 1 goes here.</p>
                   </AccordionBody>
                 </AccordionItem>
 
@@ -226,6 +274,15 @@ function executeFetch(): void {
                   </AccordionBody>
                 </AccordionItem>
               </AccordionGroup> 
+          </div>
+
+          <div className="col-span-6">
+            <Table
+              className= ".custom-data-table"
+              columns={columns}
+              data={data}
+              customStyles={customStyles}
+            />  
           </div>
 
           <div className="col-span-12">

@@ -2242,6 +2242,29 @@ textarea {
   --tw-text-opacity: 1;
   color: hsl(var(--lime-50) / var(--tw-text-opacity));
 }
+.rdt_Table {
+  border: 1px solid red;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.rdt_Table .rdt_TableCol {
+  background-color: #00AB4E;
+  border-right: 1px solid #EEEEEF;
+  color: white;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 20px;
+}
+.rdt_Table .rdt_TableCol :hover {
+  opacity: 100%;
+}
+.rdt_Table .rdt_TableBody tr:hover {
+  background-color: red;
+}
+.rdt_Table .rdt_TableRow {
+  border-bottom: 1px solid red;
+}
 @layer component {
   :root {
     --nav-height: 3.5rem;

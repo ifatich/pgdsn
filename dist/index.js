@@ -1,7 +1,9 @@
 "use strict";
+var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __export = (target, all) => {
   for (var name in all)
@@ -15,6 +17,14 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // src/index.ts
@@ -58,6 +68,7 @@ __export(src_exports, {
   ProgressBar: () => ProgressBar,
   TabGroup: () => TabGroup,
   TabItem: () => TabItem,
+  Table: () => Table,
   Toast: () => Toast,
   ToastDescription: () => ToastDescription,
   ToastTitle: () => ToastTitle,
@@ -1296,10 +1307,18 @@ var TabItem = (0, import_react19.forwardRef)(
   }
 );
 
-// src/components/custom/input/number.tsx
+// src/components/ui/table.tsx
 var import_react20 = require("react");
+var import_react_data_table_component = __toESM(require("react-data-table-component"));
 var import_jsx_runtime20 = require("react/jsx-runtime");
-var InputNumber = (0, import_react20.forwardRef)(({ className, placeholder, setEnteredText, type, children, labelLeft, labelRight, ...props }, ref) => {
+var Table = (props) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_react_data_table_component.default, { ...props });
+};
+
+// src/components/custom/input/number.tsx
+var import_react21 = require("react");
+var import_jsx_runtime21 = require("react/jsx-runtime");
+var InputNumber = (0, import_react21.forwardRef)(({ className, placeholder, setEnteredText, type, children, labelLeft, labelRight, ...props }, ref) => {
   function handleClearText() {
     setEnteredText("");
     console.log(props.value);
@@ -1317,41 +1336,41 @@ var InputNumber = (0, import_react20.forwardRef)(({ className, placeholder, setE
     }
     setEnteredText(formattedValue);
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: cn("input"), children: [
-    labelLeft && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: cn("unit-input-left", !props.disabled && "active"), children: labelLeft }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("input", { ...props, ref, role: "input", placeholder, value: props.value, onChange: (e) => setInputValue(e.target.value) }),
-    props.value && !props.readOnly && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("svg", { onClick: handleClearText, xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM8.23613 8.23613C8.53245 7.93981 9.00205 7.92238 9.31876 8.18384L9.37627 8.23613L12.3333 11.1932L15.2904 8.23613L15.3479 8.18384C15.6646 7.92238 16.1342 7.93981 16.4305 8.23613C16.7454 8.55097 16.7454 9.06143 16.4305 9.37627L13.4735 12.3333L16.4305 15.2904C16.7454 15.6052 16.7454 16.1157 16.4305 16.4305C16.1342 16.7269 15.6646 16.7443 15.3479 16.4828L15.2904 16.4305L12.3333 13.4735L9.37626 16.4305L9.31875 16.4828C9.00204 16.7443 8.53244 16.7269 8.23612 16.4305C7.92128 16.1157 7.92128 15.6052 8.23612 15.2904L11.1932 12.3333L8.23613 9.37627C7.92129 9.06143 7.92129 8.55097 8.23613 8.23613Z", fill: "#58585B" }) }),
-    labelRight && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("span", { className: cn("unit-input-right", !props.disabled && "active"), children: labelRight })
+  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: cn("input"), children: [
+    labelLeft && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: cn("unit-input-left", !props.disabled && "active"), children: labelLeft }),
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("input", { ...props, ref, role: "input", placeholder, value: props.value, onChange: (e) => setInputValue(e.target.value) }),
+    props.value && !props.readOnly && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("svg", { onClick: handleClearText, xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM8.23613 8.23613C8.53245 7.93981 9.00205 7.92238 9.31876 8.18384L9.37627 8.23613L12.3333 11.1932L15.2904 8.23613L15.3479 8.18384C15.6646 7.92238 16.1342 7.93981 16.4305 8.23613C16.7454 8.55097 16.7454 9.06143 16.4305 9.37627L13.4735 12.3333L16.4305 15.2904C16.7454 15.6052 16.7454 16.1157 16.4305 16.4305C16.1342 16.7269 15.6646 16.7443 15.3479 16.4828L15.2904 16.4305L12.3333 13.4735L9.37626 16.4305L9.31875 16.4828C9.00204 16.7443 8.53244 16.7269 8.23612 16.4305C7.92128 16.1157 7.92128 15.6052 8.23612 15.2904L11.1932 12.3333L8.23613 9.37627C7.92129 9.06143 7.92129 8.55097 8.23613 8.23613Z", fill: "#58585B" }) }),
+    labelRight && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: cn("unit-input-right", !props.disabled && "active"), children: labelRight })
   ] });
 });
 
 // src/components/custom/input/long.tsx
-var import_react21 = require("react");
-var import_jsx_runtime21 = require("react/jsx-runtime");
-var InputLongText = (0, import_react21.forwardRef)(({ className, placeholder, setEnteredText, iconLeft, iconright, children, ...props }, ref) => {
+var import_react22 = require("react");
+var import_jsx_runtime22 = require("react/jsx-runtime");
+var InputLongText = (0, import_react22.forwardRef)(({ className, placeholder, setEnteredText, iconLeft, iconright, children, ...props }, ref) => {
   const icons = [];
   function handleClearText() {
     setEnteredText("");
     console.log(props.value);
   }
-  if (iconLeft && iconright && import_react21.Children.toArray(children).length === 1) {
+  if (iconLeft && iconright && import_react22.Children.toArray(children).length === 1) {
     icons.push(
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { children: import_react21.Children.toArray(children)[0] }, 0)
+      /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { children: import_react22.Children.toArray(children)[0] }, 0)
     );
     icons.push(
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { children: import_react21.Children.toArray(children)[0] }, 1)
+      /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { children: import_react22.Children.toArray(children)[0] }, 1)
     );
   } else {
-    import_react21.Children.toArray(children).map((i, key) => {
+    import_react22.Children.toArray(children).map((i, key) => {
       icons.push(
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { children: i }, key)
+        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { children: i }, key)
       );
     });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: cn("input-group"), children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: cn("input"), ...props, ref, role: "input", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: cn("input-group"), children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: cn("input"), ...props, ref, role: "input", children: [
     icons && iconLeft && icons[0],
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("textarea", { ...props, placeholder, value: props.value, onChange: (e) => setEnteredText(e.target.value) }),
-    props.value && !props.readOnly && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("svg", { onClick: handleClearText, xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM8.23613 8.23613C8.53245 7.93981 9.00205 7.92238 9.31876 8.18384L9.37627 8.23613L12.3333 11.1932L15.2904 8.23613L15.3479 8.18384C15.6646 7.92238 16.1342 7.93981 16.4305 8.23613C16.7454 8.55097 16.7454 9.06143 16.4305 9.37627L13.4735 12.3333L16.4305 15.2904C16.7454 15.6052 16.7454 16.1157 16.4305 16.4305C16.1342 16.7269 15.6646 16.7443 15.3479 16.4828L15.2904 16.4305L12.3333 13.4735L9.37626 16.4305L9.31875 16.4828C9.00204 16.7443 8.53244 16.7269 8.23612 16.4305C7.92128 16.1157 7.92128 15.6052 8.23612 15.2904L11.1932 12.3333L8.23613 9.37627C7.92129 9.06143 7.92129 8.55097 8.23613 8.23613Z", fill: "#58585B" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("textarea", { ...props, placeholder, value: props.value, onChange: (e) => setEnteredText(e.target.value) }),
+    props.value && !props.readOnly && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("svg", { onClick: handleClearText, xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM8.23613 8.23613C8.53245 7.93981 9.00205 7.92238 9.31876 8.18384L9.37627 8.23613L12.3333 11.1932L15.2904 8.23613L15.3479 8.18384C15.6646 7.92238 16.1342 7.93981 16.4305 8.23613C16.7454 8.55097 16.7454 9.06143 16.4305 9.37627L13.4735 12.3333L16.4305 15.2904C16.7454 15.6052 16.7454 16.1157 16.4305 16.4305C16.1342 16.7269 15.6646 16.7443 15.3479 16.4828L15.2904 16.4305L12.3333 13.4735L9.37626 16.4305L9.31875 16.4828C9.00204 16.7443 8.53244 16.7269 8.23612 16.4305C7.92128 16.1157 7.92128 15.6052 8.23612 15.2904L11.1932 12.3333L8.23613 9.37627C7.92129 9.06143 7.92129 8.55097 8.23613 8.23613Z", fill: "#58585B" }) }),
     (icons[0] || icons[1]) && iconright && (icons[1] ? icons[1] : icons[0])
   ] }) });
 });
@@ -1395,6 +1414,7 @@ var InputLongText = (0, import_react21.forwardRef)(({ className, placeholder, se
   ProgressBar,
   TabGroup,
   TabItem,
+  Table,
   Toast,
   ToastDescription,
   ToastTitle,
