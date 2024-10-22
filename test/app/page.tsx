@@ -1,7 +1,9 @@
 "use client";
 
-import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionItem, AccordionHeader, AccordionGroup, TabGroup, TabItem} from "pgdsn";
+import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionItem, AccordionHeader, AccordionGroup, TabGroup, TabItem, Table} from "pgdsn";
 import { useState } from "react";
+import DataTable, { TableColumn } from "react-data-table-component";
+
 
 
 export default function Home() {
@@ -32,6 +34,26 @@ const items = [
   { value: '11', text: 'Item 3' },
 ]; 
 
+const customStyles = {
+	rows: {
+		style: {
+			minHeight: '72px', // override the row height
+		},
+	},
+	headCells: {
+		style: {
+			paddingLeft: '8px', // override the cell padding for head cells
+			paddingRight: '8px',
+		},
+	},
+	cells: {
+		style: {
+			paddingLeft: '8px', // override the cell padding for data cells
+			paddingRight: '8px',
+		},
+	},
+};
+
 const handleChange = (value: string) => {
   console.log('Selected Value:', value);
   setSelectedValue(value);
@@ -58,6 +80,93 @@ const [inputSearch, setInputSearch] = useState("")
 const [isAccordionActive, setAccordionActive] = useState(false)
 const [isAccordionActive2, setAccordionActive2] = useState(false)
 const [isAccordionActive3, setAccordionActive3] = useState(false)
+
+
+const data = [
+  { id: 1, name: 'John Doe John Doe John Doe', age: 28, action: 
+  <div className="flex flex-row gap-2 flex-grow flex-wrap">
+    <Button  variant="neutral" size="sm">Lihat Detail</Button>
+    <Button  variant="primary" size="sm">Lihat Detail</Button>
+  </div>},
+  { id: 2, name: 'Jane Smith', age: 32,  action: 
+    <div className="flex flex-row gap-2 flex-grow flex-wrap">
+      <Button  variant="neutral" size="sm">Lihat Detail</Button>
+      <Button  variant="primary" size="sm">Lihat Detail</Button>
+    </div> },
+  { id: 3, name: 'Alice Johnson', age: 25,  action: 
+    <div className="flex flex-row gap-2 flex-grow flex-wrap">
+      <Button  variant="neutral" size="sm">Lihat Detail</Button>
+      <Button  variant="primary" size="sm">Lihat Detail</Button>
+    </div>,
+   },
+  { id: 4, name: 'John Doe John Doe John Doe', age: 28,  action: 
+    <div className="flex flex-row gap-2 flex-grow flex-wrap">
+      <Button  variant="neutral" size="sm">Lihat Detail</Button>
+      <Button  variant="primary" size="sm">Lihat Detail</Button>
+    </div> },
+  { id: 5, name: 'Jane Smith', age: 32,  action: 
+    <div className="flex flex-row gap-2 flex-grow flex-wrap">
+      <Button  variant="neutral" size="sm">Lihat Detail</Button>
+      <Button  variant="primary" size="sm">Lihat Detail</Button>
+    </div> },
+  { id: 6, name: 'Alice Johnson', age: 25,  action: 
+    <div className="flex flex-row gap-2 flex-grow flex-wrap">
+      <Button  variant="neutral" size="sm">Lihat Detail</Button>
+      <Button  variant="primary" size="sm">Lihat Detail</Button>
+    </div>},
+  { id: 7, name: 'Jane Smith', age: 25,  action: 
+    <div className="flex flex-row gap-2 flex-grow flex-wrap">
+      <Button  variant="neutral" size="sm">Lihat Detail</Button>
+      <Button  variant="primary" size="sm">Lihat Detail</Button>
+    </div> },
+  { id: 8, name: 'John Doe John', age: 25,  action: 
+    <div className="flex flex-row gap-2 flex-grow flex-wrap">
+      <Button  variant="neutral" size="sm">Lihat Detail</Button>
+      <Button  variant="primary" size="sm">Lihat Detail</Button>
+    </div> },
+  { id: 9, name: 'John', age: 25,  action: 
+    <div className="flex flex-row gap-2 flex-grow flex-wrap">
+      <Button  variant="neutral" size="sm">Lihat Detail</Button>
+      <Button  variant="primary" size="sm">Lihat Detail</Button>
+    </div> },
+  { id: 10, name: 'Doe John', age: 25,  action: 
+    <div className="flex flex-row gap-2 flex-grow flex-wrap">
+      <Button  variant="neutral" size="sm">Lihat Detail</Button>
+      <Button  variant="primary" size="sm">Lihat Detail</Button>
+    </div> },
+  { id: 11, name: 'John John', age: 25,  action: 
+    <div className="flex flex-row gap-2 flex-grow flex-wrap">
+      <Button  variant="neutral" size="sm">Lihat Detail</Button>
+      <Button  variant="primary" size="sm">Lihat Detail</Button>
+    </div> },
+];
+
+// Contoh kolom untuk tabel
+const columns = [
+  {
+    name: 'ID',
+    selector: (row: any) => row.id,
+    sortable: true,
+    width: "100px",
+  },
+  {
+    name: 'Name',
+    selector: (row: any) => row.name,
+    
+  },
+  {
+    name: 'Age',
+    selector: (row: any) => row.age,
+    sortable: true,
+    width: "100px",
+  },
+  {
+  name: 'Action',
+    selector: (row: any) => row.action,
+    justifyContent: "center",
+    width: "244px",
+  },
+];
 
 function executeFetch(): void {
   throw new Error("Function not implemented.");
@@ -204,7 +313,7 @@ function executeFetch(): void {
                     Accordion 1
                   </AccordionHeader>
                   <AccordionBody>
-                    <p>Content for Accordion 1 goes here.</p>
+                    <p>Content for Accordion 1 goes hereContent for Accordion 1 goes hereContent for Accordion 1 goes hereContent for Accordion 1 goes hereContent for Accordion 1 goes hereContent for Accordion 1 goes hereContent for Accordion 1 goes hereContent for Accordion 1 goes here.</p>
                   </AccordionBody>
                 </AccordionItem>
 
@@ -226,6 +335,14 @@ function executeFetch(): void {
                   </AccordionBody>
                 </AccordionItem>
               </AccordionGroup> 
+          </div>
+
+          <div className="col-span-12">
+            <Table
+              columns={columns}
+              data={data}
+              pagination
+            />  
           </div>
 
           <div className="col-span-12">

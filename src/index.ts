@@ -20,6 +20,7 @@ import { List } from "./components/ui/list";
 import { ProgressBar } from "./components";
 import { AccordionGroup,AccordionBody, AccordionItem, AccordionHeader} from "./components";
 import { TabGroup, TabItem } from "./components";
+import { Table } from "./components/ui/table";
 
 // Export
 export { 
@@ -39,6 +40,8 @@ export {
     Input,
     InputSearch,
     inputVariants,
+
+    Table,
 
     Infotip,
     InfoTipTitle,

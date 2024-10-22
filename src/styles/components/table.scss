@@ -1,45 +1,87 @@
+.rdt_Table {
+    border: 1px solid #EEEEEF;
+    border-radius: 6px;
+    overflow: hidden;
+    font-style: normal;
+    line-height: 20px;
+
+    .rdt_TableHead{
+        height: fit-content;
+        font-size: 14px;
+        .rdt_TableHeadRow{
+            background-color: #00AB4E;
+            color: white;
+            font-style: normal;
+            border-bottom-color: #EEEEEF;
+            height: fit-content;
+            min-height: 0px;
+    
+            .rdt_TableCol {  
+                border-right: 1px solid #EEEEEF;
+                padding: 16px;
+    
+                :hover{
+                    opacity: 100%;
+                }
+    
+                .rdt_TableCol_Sortable{
+                    div{
+                        font-weight: 800 !important;
+                        width: 100%;
+                        white-space-collapse:collapse;
+                        text-wrap:wrap
+                    }
+                }
+            }
+        
+            .rdt_TableCol:last-child{
+                border-right: 0px solid #EEEEEF;
+            }
+        }
+    }
+
+    .rdt_TableRow{
+        height: fit-content;
+        min-height: 0px;
+        font-weight: 600;
+        font-size: 14px;
+        background-color: white;
+        color: #252528;
+
+        .rdt_TableCell{
+            border-right: 1px solid #EEEEEF;
+            background-color: white;
+            padding-inline: 24px;
+            padding-block: 16px;
+    
+
+            :first-child{
+                white-space-collapse:collapse;
+                text-wrap:wrap
+            }
+        }
+
+        .rdt_TableCell:last-child{
+            padding-inline: 24px;
+            padding-block: 16px;
+            border-right: 0px solid #EEEEEF;
+        }
+
+    }
+
+    
+
+    .rdt_TableBody {
+        tr {
+            &:hover {
+                background-color: red;
+            }
+        }
+    }
+}
+
 @layer components {
-    .table {
-        @apply w-full caption-bottom text-omicron;
-
-        &__wrapper {
-            @apply relative w-full overflow-auto;
-        }
-
-        &__header {
-            @apply [&_tr]:border-b;
-        }
-
-        &__body {
-            @apply [&_tr:last-child]:border-0;
-        }
-
-        &__footer {
-            @apply bg-primary font-regular text-primary-foreground;
-        }
-
-        &__row {
-            @apply border-b transition-colors data-[state=selected]:bg-muted;
-
-            &:not(.no-data):not(.header):hover {
-                @apply bg-muted/50;
-            }
-        }
-
-        &__head {
-            @apply h-12 px-2 text-left align-middle [&:has([role=checkbox])]:pr-0 first:pl-3;
-
-            &, & > div, button, button span {
-                @apply text-omicron text-card-foreground font-bold;
-            }
-        }
-
-        &__cell {
-            @apply px-2 py-4 align-top [&:has([role=checkbox])]:pr-0 first:pl-3;
-        }
-
-        &__caption {
-            @apply mt-4 text-omicron text-muted-foreground;
-        }
+    .current-page{
+        @apply p-2 text-black-80 border border-black-20 w-[46px] text-center align-middle rounded-md flex;
     }
 }

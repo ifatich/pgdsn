@@ -1,8 +1,9 @@
 import * as react from 'react';
-import { ButtonHTMLAttributes, ReactNode, InputHTMLAttributes, LabelHTMLAttributes, HTMLAttributes, ComponentPropsWithoutRef, TextareaHTMLAttributes } from 'react';
+import react__default, { ButtonHTMLAttributes, ReactNode, InputHTMLAttributes, LabelHTMLAttributes, HTMLAttributes, ComponentPropsWithoutRef, TextareaHTMLAttributes } from 'react';
 import * as class_variance_authority_dist_types from 'class-variance-authority/dist/types';
 import { VariantProps } from 'class-variance-authority';
 import * as react_jsx_runtime from 'react/jsx-runtime';
+import { TableProps } from 'react-data-table-component';
 
 declare const buttonVariants: (props?: ({
     variant?: "default" | "primary" | "destructive" | "outline" | "secondary" | "ghost" | "ghost-fab" | "link" | null | undefined;
@@ -188,6 +189,8 @@ interface TabItemProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 declare const TabItem: react.ForwardRefExoticComponent<TabItemProps & react.RefAttributes<HTMLDivElement>>;
 
+declare const Table: react__default.FC<TableProps<any>>;
+
 interface InputProps$2 {
     placeholder: string;
     children?: React.ReactNode;
@@ -223,4 +226,4 @@ interface InputTextProps {
 }
 declare const InputLongText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputTextProps & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
 
-export { AccordionBody, AccordionGroup, AccordionHeader, AccordionItem, Badge, Breadcumb, Button, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, TabGroup, TabItem, Toast, ToastDescription, ToastTitle, inputVariants };
+export { AccordionBody, AccordionGroup, AccordionHeader, AccordionItem, Badge, Breadcumb, Button, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, TabGroup, TabItem, Table, Toast, ToastDescription, ToastTitle, inputVariants };
