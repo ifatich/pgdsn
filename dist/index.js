@@ -1311,8 +1311,66 @@ var TabItem = (0, import_react19.forwardRef)(
 var import_react20 = require("react");
 var import_react_data_table_component = __toESM(require("react-data-table-component"));
 var import_jsx_runtime20 = require("react/jsx-runtime");
+var CustomPagination = ({ rowsPerPage, rowCount, onChangePage, currentPage }) => {
+  const totalPages = Math.ceil(rowCount / rowsPerPage);
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex space-x-2 ", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+      Button,
+      {
+        size: "sm",
+        className: "py-2 h-fit",
+        onClick: () => onChangePage(currentPage - 1, rowCount),
+        children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+          "svg",
+          {
+            className: "rotate-90",
+            xmlns: "http://www.w3.org/2000/svg",
+            width: "30",
+            height: "30",
+            viewBox: "0 0 30 30",
+            fill: "none",
+            children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+              "path",
+              {
+                d: "M10.1533 11.6156L15.0033 16.4656L19.8533 11.6156C20.3408 11.1281 21.1283 11.1281 21.6158 11.6156C22.1033 12.1031 22.1033 12.8906 21.6158 13.3781L15.8783 19.1156C15.3908 19.6031 14.6033 19.6031 14.1158 19.1156L8.37832 13.3781C7.89082 12.8906 7.89082 12.1031 8.37832 11.6156C8.86582 11.1406 9.66582 11.1281 10.1533 11.6156Z",
+                fill: "#FFFFFF"
+              }
+            )
+          }
+        )
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "current-page", children: currentPage }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+      Button,
+      {
+        size: "sm",
+        className: "py-2 h-fit",
+        onClick: () => onChangePage(currentPage + 1, rowCount),
+        children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+          "svg",
+          {
+            className: "-rotate-90",
+            xmlns: "http://www.w3.org/2000/svg",
+            width: "30",
+            height: "30",
+            viewBox: "0 0 30 30",
+            fill: "none",
+            children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+              "path",
+              {
+                d: "M10.1533 11.6156L15.0033 16.4656L19.8533 11.6156C20.3408 11.1281 21.1283 11.1281 21.6158 11.6156C22.1033 12.1031 22.1033 12.8906 21.6158 13.3781L15.8783 19.1156C15.3908 19.6031 14.6033 19.6031 14.1158 19.1156L8.37832 13.3781C7.89082 12.8906 7.89082 12.1031 8.37832 11.6156C8.86582 11.1406 9.66582 11.1281 10.1533 11.6156Z",
+                fill: "#FFFFFF"
+              }
+            )
+          }
+        )
+      }
+    )
+  ] });
+};
 var Table = (props) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_react_data_table_component.default, { ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(import_react_data_table_component.default, { ...props, paginationComponent: CustomPagination });
 };
 
 // src/components/custom/input/number.tsx

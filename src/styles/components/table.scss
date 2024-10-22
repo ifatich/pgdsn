@@ -2,20 +2,74 @@
     border: 1px solid #EEEEEF;
     border-radius: 6px;
     overflow: hidden;
+    font-style: normal;
+    line-height: 20px;
 
-    .rdt_TableCol {
-        background-color: #00AB4E;
-        border-right: 1px solid #EEEEEF;
-        color: white;
+    .rdt_TableHead{
+        height: fit-content;
         font-size: 14px;
-        font-style: normal;
-        font-weight: 800;
-        line-height: 20px;
-
-        :hover{
-            opacity: 100%;
+        .rdt_TableHeadRow{
+            background-color: #00AB4E;
+            color: white;
+            font-style: normal;
+            border-bottom-color: #EEEEEF;
+            height: fit-content;
+            min-height: 0px;
+    
+            .rdt_TableCol {  
+                border-right: 1px solid #EEEEEF;
+                padding: 16px;
+    
+                :hover{
+                    opacity: 100%;
+                }
+    
+                .rdt_TableCol_Sortable{
+                    div{
+                        font-weight: 800 !important;
+                        width: 100%;
+                        white-space-collapse:collapse;
+                        text-wrap:wrap
+                    }
+                }
+            }
+        
+            .rdt_TableCol:last-child{
+                border-right: 0px solid #EEEEEF;
+            }
         }
     }
+
+    .rdt_TableRow{
+        height: fit-content;
+        min-height: 0px;
+        font-weight: 600;
+        font-size: 14px;
+        background-color: white;
+        color: #252528;
+
+        .rdt_TableCell{
+            border-right: 1px solid #EEEEEF;
+            background-color: white;
+            padding-inline: 24px;
+            padding-block: 16px;
+    
+
+            :first-child{
+                white-space-collapse:collapse;
+                text-wrap:wrap
+            }
+        }
+
+        .rdt_TableCell:last-child{
+            padding-inline: 24px;
+            padding-block: 16px;
+            border-right: 0px solid #EEEEEF;
+        }
+
+    }
+
+    
 
     .rdt_TableBody {
         tr {
@@ -24,8 +78,10 @@
             }
         }
     }
+}
 
-    .rdt_TableRow {
-        border-bottom: 1px solid red;
+@layer components {
+    .current-page{
+        @apply p-2 text-black-80 border border-black-20 w-[46px] text-center align-middle rounded-md flex;
     }
 }
