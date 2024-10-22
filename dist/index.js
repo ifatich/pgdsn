@@ -718,7 +718,6 @@ var DialogDescription = (0, import_react11.forwardRef)(({
 DialogDescription.displayName = "DialogDescription";
 
 // src/components/ui/date.tsx
-var import_class_variance_authority8 = require("class-variance-authority");
 var import_react12 = require("react");
 var import_jsx_runtime12 = require("react/jsx-runtime");
 var DatePicker = (0, import_react12.forwardRef)(({ className, selectedDateString, setSelectedDateString, isActive, setActive, ...props }, ref) => {
@@ -1140,10 +1139,10 @@ var Dropdown = ({
 };
 
 // src/components/ui/list.tsx
-var import_class_variance_authority9 = require("class-variance-authority");
+var import_class_variance_authority8 = require("class-variance-authority");
 var import_react16 = require("react");
 var import_jsx_runtime16 = require("react/jsx-runtime");
-var listVariants = (0, import_class_variance_authority9.cva)("list", {
+var listVariants = (0, import_class_variance_authority8.cva)("list", {
   variants: {
     size: {
       sm: "text-sm",
@@ -1173,8 +1172,6 @@ var List = (0, import_react16.forwardRef)(
 List.displayName = "List";
 
 // src/components/ui/progress-bar.tsx
-var import_class_variance_authority10 = require("class-variance-authority");
-var import_constants = require("constants");
 var import_react17 = require("react");
 var import_jsx_runtime17 = require("react/jsx-runtime");
 var ProgressBar = (0, import_react17.forwardRef)(({ className, children, value, ...props }, ref) => {

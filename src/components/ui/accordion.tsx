@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, forwardRef, Children, isValidElement, cloneElement } from "react";
+import { useState, forwardRef, Children, isValidElement, cloneElement } from "react";
 import { cn } from "../../lib/utils";
 
 const AccordionGroup = forwardRef<
