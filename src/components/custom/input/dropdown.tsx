@@ -159,7 +159,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             </svg>
           </div>
           {items.length > 10 && (
-            <div className="p-4">
+            <div className="px-4 pb-4">
               <InputSearch
                 setEnteredText={setSearch}
                 placeholder={`Cari ${label.toLowerCase()}`}

@@ -14,7 +14,7 @@
         }
 
         .dropdown-content {
-            @apply fixed w-full bg-white border mt-2 z-10 shadow-md rounded-t-md sm:absolute right-0 sm:right-auto bottom-0 sm:bottom-auto;
+            @apply fixed w-full bg-white border mt-2 z-10 shadow-md rounded-t-md sm:absolute right-0 sm:right-auto bottom-0 sm:bottom-auto pt-4;
 
             input.input {
                 @apply m-4;

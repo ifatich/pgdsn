@@ -4,7 +4,7 @@
     }
 
     input {
-        @apply flex flex-row flex-grow;
+        @apply flex flex-row flex-grow w-full;
 
         &:focus {
             @apply outline-none;

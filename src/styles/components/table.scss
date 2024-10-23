@@ -65,11 +65,17 @@
             padding-inline: 24px;
             padding-block: 16px;
             border-right: 0px solid #EEEEEF;
-        }
+        } 
 
     }
 
-    
+    .rdt_TableRow:nth-child(even){
+
+        .rdt_TableCell{
+            background-color: #F8F8F8;
+        }
+        
+    }
 
     .rdt_TableBody {
         tr {
@@ -82,6 +88,6 @@
 
 @layer components {
     .current-page{
-        @apply p-2 text-black-80 border border-black-20 w-[46px] text-center align-middle rounded-md flex;
+        @apply p-2 text-white bg-lime-50 w-[46px] justify-center items-center rounded-sm flex;
     }
 }

@@ -82,64 +82,17 @@ const [isAccordionActive2, setAccordionActive2] = useState(false)
 const [isAccordionActive3, setAccordionActive3] = useState(false)
 
 
-const data = [
-  { id: 1, name: 'John Doe John Doe John Doe', age: 28, action: 
-  <div className="flex flex-row gap-2 flex-grow flex-wrap">
-    <Button  variant="neutral" size="sm">Lihat Detail</Button>
-    <Button  variant="primary" size="sm">Lihat Detail</Button>
-  </div>},
-  { id: 2, name: 'Jane Smith', age: 32,  action: 
+const data = Array.from({ length: 100 }, (_, index) => ({
+  id: index + 1,
+  name: `User ${index + 1}`,
+  age: Math.floor(Math.random() * 60) + 18, // Umur antara 18 dan 77
+  action: (
     <div className="flex flex-row gap-2 flex-grow flex-wrap">
-      <Button  variant="neutral" size="sm">Lihat Detail</Button>
-      <Button  variant="primary" size="sm">Lihat Detail</Button>
-    </div> },
-  { id: 3, name: 'Alice Johnson', age: 25,  action: 
-    <div className="flex flex-row gap-2 flex-grow flex-wrap">
-      <Button  variant="neutral" size="sm">Lihat Detail</Button>
-      <Button  variant="primary" size="sm">Lihat Detail</Button>
-    </div>,
-   },
-  { id: 4, name: 'John Doe John Doe John Doe', age: 28,  action: 
-    <div className="flex flex-row gap-2 flex-grow flex-wrap">
-      <Button  variant="neutral" size="sm">Lihat Detail</Button>
-      <Button  variant="primary" size="sm">Lihat Detail</Button>
-    </div> },
-  { id: 5, name: 'Jane Smith', age: 32,  action: 
-    <div className="flex flex-row gap-2 flex-grow flex-wrap">
-      <Button  variant="neutral" size="sm">Lihat Detail</Button>
-      <Button  variant="primary" size="sm">Lihat Detail</Button>
-    </div> },
-  { id: 6, name: 'Alice Johnson', age: 25,  action: 
-    <div className="flex flex-row gap-2 flex-grow flex-wrap">
-      <Button  variant="neutral" size="sm">Lihat Detail</Button>
-      <Button  variant="primary" size="sm">Lihat Detail</Button>
-    </div>},
-  { id: 7, name: 'Jane Smith', age: 25,  action: 
-    <div className="flex flex-row gap-2 flex-grow flex-wrap">
-      <Button  variant="neutral" size="sm">Lihat Detail</Button>
-      <Button  variant="primary" size="sm">Lihat Detail</Button>
-    </div> },
-  { id: 8, name: 'John Doe John', age: 25,  action: 
-    <div className="flex flex-row gap-2 flex-grow flex-wrap">
-      <Button  variant="neutral" size="sm">Lihat Detail</Button>
-      <Button  variant="primary" size="sm">Lihat Detail</Button>
-    </div> },
-  { id: 9, name: 'John', age: 25,  action: 
-    <div className="flex flex-row gap-2 flex-grow flex-wrap">
-      <Button  variant="neutral" size="sm">Lihat Detail</Button>
-      <Button  variant="primary" size="sm">Lihat Detail</Button>
-    </div> },
-  { id: 10, name: 'Doe John', age: 25,  action: 
-    <div className="flex flex-row gap-2 flex-grow flex-wrap">
-      <Button  variant="neutral" size="sm">Lihat Detail</Button>
-      <Button  variant="primary" size="sm">Lihat Detail</Button>
-    </div> },
-  { id: 11, name: 'John John', age: 25,  action: 
-    <div className="flex flex-row gap-2 flex-grow flex-wrap">
-      <Button  variant="neutral" size="sm">Lihat Detail</Button>
-      <Button  variant="primary" size="sm">Lihat Detail</Button>
-    </div> },
-];
+      <Button variant="neutral" size="sm">Lihat Detail</Button>
+      <Button variant="primary" size="sm">Lihat Detail</Button>
+    </div>
+  )
+}));
 
 // Contoh kolom untuk tabel
 const columns = [
@@ -341,8 +294,11 @@ function executeFetch(): void {
             <Table
               columns={columns}
               data={data}
-              pagination
-            />  
+              pagination onChangePage={function (page: number, totalRows: number): void {
+                throw new Error("Function not implemented.");
+              } } onChangeRowsPerPage={function (currentRowsPerPage: number, currentPage: number): void {
+                throw new Error("Function not implemented.");
+              } } rowsPerPage={0} rowCount={0} currentPage={0}/>  
           </div>
 
           <div className="col-span-12">
