@@ -1,7 +1,7 @@
 "use client";
 
 import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionItem, AccordionHeader, AccordionGroup, TabGroup, TabItem, Table} from "pgdsn";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DataTable, { TableColumn } from "react-data-table-component";
 
 
@@ -34,26 +34,6 @@ const items = [
   { value: '11', text: 'Item 3' },
 ]; 
 
-const customStyles = {
-	rows: {
-		style: {
-			minHeight: '72px', // override the row height
-		},
-	},
-	headCells: {
-		style: {
-			paddingLeft: '8px', // override the cell padding for head cells
-			paddingRight: '8px',
-		},
-	},
-	cells: {
-		style: {
-			paddingLeft: '8px', // override the cell padding for data cells
-			paddingRight: '8px',
-		},
-	},
-};
-
 const handleChange = (value: string) => {
   console.log('Selected Value:', value);
   setSelectedValue(value);
@@ -77,22 +57,34 @@ const [inputValue3, setInputValue3] = useState("")
 
 const [inputSearch, setInputSearch] = useState("")
 
-const [isAccordionActive, setAccordionActive] = useState(false)
-const [isAccordionActive2, setAccordionActive2] = useState(false)
-const [isAccordionActive3, setAccordionActive3] = useState(false)
+interface User {
+  id: number;
+  name: string;
+  age: number;
+  action: JSX.Element;
+}
 
+  // Membuat state untuk menyimpan data dengan tipe User[]
+  const [data, setData] = useState<User[]>([]);
 
-const data = Array.from({ length: 100 }, (_, index) => ({
-  id: index + 1,
-  name: `User ${index + 1}`,
-  age: Math.floor(Math.random() * 60) + 18, // Umur antara 18 dan 77
-  action: (
-    <div className="flex flex-row gap-2 flex-grow flex-wrap">
-      <Button variant="neutral" size="sm">Lihat Detail</Button>
-      <Button variant="primary" size="sm">Lihat Detail</Button>
-    </div>
-  )
-}));
+  useEffect(() => {
+    // Ambil data atau lakukan perhitungan ulang di sini
+    const generatedData: User[] = Array.from({ length: 100 }, (_, index) => ({
+      id: index + 1,
+      name: `User ${index + 1}`,
+      age: Math.floor(Math.random() * 60) + 18, // Umur antara 18 dan 77
+      tahunkelahiran: Math.floor(Math.random() * 60) + 18,
+      action: (
+        <div className="flex flex-row gap-2 flex-grow flex-wrap">
+          <Button variant="neutral" size="sm">Lihat Detail</Button>
+          <Button variant="primary" size="sm">Lihat Detail</Button>
+        </div>
+      )
+    }));
+
+    // Update state dengan data yang dihasilkan
+    setData(generatedData);
+  }, []);
 
 // Contoh kolom untuk tabel
 const columns = [
@@ -112,6 +104,12 @@ const columns = [
     selector: (row: any) => row.age,
     sortable: true,
     width: "100px",
+  },
+  {
+  name: 'tahun kelahiran',
+    selector: (row: any) => row.tahunkelahiran,
+    justifyContent: "center",
+    width: "244px",
   },
   {
   name: 'Action',
@@ -291,14 +289,12 @@ function executeFetch(): void {
           </div>
 
           <div className="col-span-12">
-            <Table
-              columns={columns}
-              data={data}
-              pagination onChangePage={function (page: number, totalRows: number): void {
-                throw new Error("Function not implemented.");
-              } } onChangeRowsPerPage={function (currentRowsPerPage: number, currentPage: number): void {
-                throw new Error("Function not implemented.");
-              } } rowsPerPage={0} rowCount={0} currentPage={0}/>  
+
+                <Table
+                columns={columns}
+                data={data}
+                pagination /> 
+             
           </div>
 
           <div className="col-span-12">

@@ -86,8 +86,108 @@
     }
 }
 
+@media only screen and (max-width: 640px) {
+
+    DataTable{
+        overflow-y: visible !important;
+    }
+
+    .rdt_Table {
+        border: none;
+        overflow: visible;
+
+        .rdt_TableHead{
+            display: none;
+            overflow: visible;
+        }
+
+        .rdt_TableBody{
+            gap: 16px;
+            overflow: visible;
+
+            .rdt_TableRow{
+                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+                background: white;
+                flex-direction: column;
+                padding: 16px;
+                border-radius: 6px;
+                overflow: visible;
+                
+
+
+                &:nth-child(even){
+                    .rdt_TableCell{
+                        background-color: white;
+                    }
+                    
+                }
+    
+                .rdt_TableCell{
+                    border: none;
+                    padding-inline: 0px;
+                    padding-block: 8px;
+                }
+            }
+        }
+        
+    }
+    
+  }
+
 @layer components {
+
+    .table-container{
+        @apply h-fit flex flex-col gap-6 overflow-visible;
+
+        .hZZlND{
+            @apply overflow-y-visible overflow-x-visible sm:overflow-y-hidden sm:overflow-x-hidden;
+        }
+    }
+
     .current-page{
-        @apply p-2 text-white bg-lime-50 w-[46px] justify-center items-center rounded-sm flex;
+        @apply p-2 text-white bg-lime-50 w-[40px] justify-center sm:items-center rounded-sm flex text-omicron;
+    }
+
+    .custom-pagination{
+        @apply flex flex-grow gap-2 items-center bg-white text-sigma justify-evenly gap-y-5 flex-wrap;
+
+        select{
+            @apply outline-none;
+
+            &:focus{
+                @apply border border-lime-50
+            }
+
+            &:after {
+                content: url(https://ifatich4.github.io/img/chevron_down.07b426b2.svg);
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                transform: translateY(-50%);
+                height: 20px;
+                width: 20px;
+                pointer-events: none;
+              }
+        }
+
+        .rows-per-page{
+            @apply flex justify-between items-center;
+        }
+
+        .table-nav{
+            @apply flex flex-row gap-6 flex-wrap justify-center;
+
+            .page-select-nav{
+                @apply flex items-center space-x-2 ;
+            }
+
+            .next-prev-nav{
+                @apply flex flex-row gap-2;
+
+                Button{
+                    @apply w-10 h-full
+                }
+            }
+        }
     }
 }
