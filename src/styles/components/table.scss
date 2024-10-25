@@ -40,6 +40,22 @@
         }
     }
 
+    .rdt_TableBody{
+        .rdt_TableRow:nth-child(even){
+            background-color: #f8f8f8;
+        }
+
+        .rdt_TableRow:nth-child(odd){
+            background-color: white;
+        }
+
+        .rdt_TableRow:has(:checked){
+            background-color: #E6F6EA;
+        }
+    }
+    
+   
+
     .rdt_TableRow{
         height: fit-content;
         min-height: 0px;
@@ -48,12 +64,19 @@
         background-color: white;
         color: #252528;
 
+
+        &:has(:active){
+            background-color: #00AB4E;
+        }
+
         .rdt_TableCell{
             border-right: 1px solid #EEEEEF;
-            background-color: white;
             padding-inline: 24px;
             padding-block: 16px;
-    
+
+            input{
+                width: fit-content !important;
+            }
 
             :first-child{
                 white-space-collapse:collapse;
@@ -67,22 +90,6 @@
             border-right: 0px solid #EEEEEF;
         } 
 
-    }
-
-    .rdt_TableRow:nth-child(even){
-
-        .rdt_TableCell{
-            background-color: #F8F8F8;
-        }
-        
-    }
-
-    .rdt_TableBody {
-        tr {
-            &:hover {
-                background-color: red;
-            }
-        }
     }
 }
 
@@ -140,7 +147,7 @@
         @apply h-fit flex flex-col gap-6 overflow-visible;
 
         .hZZlND{
-            @apply overflow-y-visible overflow-x-visible sm:overflow-y-hidden sm:overflow-x-hidden;
+            @apply overflow-y-visible overflow-x-visible sm:overflow-y-hidden sm:overflow-x-auto;
         }
     }
 

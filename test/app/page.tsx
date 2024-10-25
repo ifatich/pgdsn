@@ -293,8 +293,9 @@ function executeFetch(): void {
                 <Table
                 columns={columns}
                 data={data}
-                pagination /> 
-             
+                pagination
+                selectableRows
+                /> 
           </div>
 
           <div className="col-span-12">

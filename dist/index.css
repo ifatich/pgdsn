@@ -1518,7 +1518,7 @@ textarea {
 }
 @media (min-width: 640px) {
   .table-container .hZZlND {
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-y: hidden;
   }
 }
@@ -2379,6 +2379,15 @@ textarea {
 .rdt_Table .rdt_TableHead .rdt_TableHeadRow .rdt_TableCol:last-child {
   border-right: 0px solid #EEEEEF;
 }
+.rdt_Table .rdt_TableBody .rdt_TableRow:nth-child(even) {
+  background-color: #f8f8f8;
+}
+.rdt_Table .rdt_TableBody .rdt_TableRow:nth-child(odd) {
+  background-color: white;
+}
+.rdt_Table .rdt_TableBody .rdt_TableRow:has(:checked) {
+  background-color: #E6F6EA;
+}
 .rdt_Table .rdt_TableRow {
   height: -moz-fit-content;
   height: fit-content;
@@ -2388,11 +2397,17 @@ textarea {
   background-color: white;
   color: #252528;
 }
+.rdt_Table .rdt_TableRow:has(:active) {
+  background-color: #00AB4E;
+}
 .rdt_Table .rdt_TableRow .rdt_TableCell {
   border-right: 1px solid #EEEEEF;
-  background-color: white;
   padding-inline: 24px;
   padding-block: 16px;
+}
+.rdt_Table .rdt_TableRow .rdt_TableCell input {
+  width: -moz-fit-content !important;
+  width: fit-content !important;
 }
 .rdt_Table .rdt_TableRow .rdt_TableCell :first-child {
   white-space-collapse: collapse;
@@ -2402,12 +2417,6 @@ textarea {
   padding-inline: 24px;
   padding-block: 16px;
   border-right: 0px solid #EEEEEF;
-}
-.rdt_Table .rdt_TableRow:nth-child(even) .rdt_TableCell {
-  background-color: #F8F8F8;
-}
-.rdt_Table .rdt_TableBody tr:hover {
-  background-color: red;
 }
 @media only screen and (max-width: 640px) {
   DataTable {
