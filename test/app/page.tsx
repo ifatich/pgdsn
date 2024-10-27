@@ -77,7 +77,7 @@ interface User {
       action: (
         <div className="flex flex-row gap-2 flex-grow flex-wrap">
           <Button variant="neutral" size="sm">Lihat Detail</Button>
-          <Button variant="primary" size="sm">Lihat Detail</Button>
+          <Button variant="secondary" size="sm">Lihat Detail</Button>
         </div>
       )
     }));
@@ -95,24 +95,24 @@ const columns = [
     width: "100px",
   },
   {
-    name: 'Name',
+    name: 'Nama',
     selector: (row: any) => row.name,
     
   },
   {
-    name: 'Age',
+    name: 'Umur',
     selector: (row: any) => row.age,
     sortable: true,
     width: "100px",
   },
   {
-  name: 'tahun kelahiran',
+  name: 'Tahun Kelahiran',
     selector: (row: any) => row.tahunkelahiran,
     justifyContent: "center",
     width: "244px",
   },
   {
-  name: 'Action',
+  name: 'Aksi',
     selector: (row: any) => row.action,
     justifyContent: "center",
     width: "244px",
@@ -294,7 +294,7 @@ function executeFetch(): void {
                 columns={columns}
                 data={data}
                 pagination
-                selectableRows
+                cardResponsive
                 /> 
           </div>
 

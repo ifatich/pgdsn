@@ -127,8 +127,12 @@ const CustomPagination = ({ rowsPerPage, rowCount, onChangePage, currentPage, on
     );
 };
 
-const Table: React.FC<TableProps<any>> = ({
-  columns, // Mengambil kolom dari props
+interface CustomTableProps<T> extends TableProps<T> {
+  cardResponsive?: boolean;
+}
+
+const Table: React.FC<CustomTableProps<any>> = ({
+  cardResponsive,
   ...props
 }) => {
   const [filterText, setFilterText] = React.useState('');
@@ -151,15 +155,16 @@ const Table: React.FC<TableProps<any>> = ({
   }, []);
 
   // Modifikasi kolom untuk menambahkan nilai dari props.columns
-  const modifiedColumns = columns.map(column => ({
+  const modifiedColumns = props.columns.map(column => ({
     ...column,
-    cell: (row: any) => (
-      <div>
+    cell: (row : any) => (
+      <>
+        {(showExtraColumn && ((column.name != "Action") && (column.name != "Aksi"))) && <div>{column.name}</div>}
+        {column.selector}
         <div data-tag="allowRowEvents">
           {column.selector ? column.selector(row) : null} {/* Menghindari kesalahan jika selector tidak ada */}
         </div>
-        {showExtraColumn && <div>{column.name}</div>}
-      </div>
+      </>
     ),
   }));
 
@@ -174,11 +179,12 @@ const Table: React.FC<TableProps<any>> = ({
       </div>
       <DataTable 
         {...props}  
-        columns={modifiedColumns} // Gunakan modifiedColumns
+        columns={cardResponsive?modifiedColumns:props.columns} // Gunakan modifiedColumns
         paginationComponent={CustomPagination} 
         paginationPerPage={rowperpage}
         data={filteredItems.length ? filteredItems : props.data}
         persistTableHead
+        className={cardResponsive?"table-card-responsive":""}
       />
     </div>
   );

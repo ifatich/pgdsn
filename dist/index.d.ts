@@ -189,7 +189,10 @@ interface TabItemProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 declare const TabItem: react.ForwardRefExoticComponent<TabItemProps & react.RefAttributes<HTMLDivElement>>;
 
-declare const Table: react__default.FC<TableProps<any>>;
+interface CustomTableProps<T> extends TableProps<T> {
+    cardResponsive?: boolean;
+}
+declare const Table: react__default.FC<CustomTableProps<any>>;
 
 interface InputProps$2 {
     placeholder: string;

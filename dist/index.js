@@ -1443,8 +1443,7 @@ var CustomPagination = ({ rowsPerPage, rowCount, onChangePage, currentPage, onCh
   ] });
 };
 var Table = ({
-  columns,
-  // Mengambil kolom dari props
+  cardResponsive,
   ...props
 }) => {
   const [filterText, setFilterText] = import_react20.default.useState("");
@@ -1462,14 +1461,15 @@ var Table = ({
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  const modifiedColumns = columns.map((column) => ({
+  const modifiedColumns = props.columns.map((column) => ({
     ...column,
-    cell: (row) => /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { children: [
+    cell: (row) => /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(import_jsx_runtime20.Fragment, { children: [
+      showExtraColumn && (column.name != "Action" && column.name != "Aksi") && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { children: column.name }),
+      column.selector,
       /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { "data-tag": "allowRowEvents", children: [
         column.selector ? column.selector(row) : null,
         " "
-      ] }),
-      showExtraColumn && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { children: column.name })
+      ] })
     ] })
   }));
   (0, import_react20.useEffect)(() => {
@@ -1480,11 +1480,12 @@ var Table = ({
       import_react_data_table_component.default,
       {
         ...props,
-        columns: modifiedColumns,
+        columns: cardResponsive ? modifiedColumns : props.columns,
         paginationComponent: CustomPagination,
         paginationPerPage: rowperpage,
         data: filteredItems.length ? filteredItems : props.data,
-        persistTableHead: true
+        persistTableHead: true,
+        className: cardResponsive ? "table-card-responsive" : ""
       }
     )
   ] });

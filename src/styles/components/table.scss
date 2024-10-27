@@ -50,7 +50,7 @@
         }
 
         .rdt_TableRow:has(:checked){
-            background-color: #E6F6EA;
+            background-color: #E6F6EA !important;
         }
     }
     
@@ -95,58 +95,88 @@
 
 @media only screen and (max-width: 640px) {
 
-    DataTable{
+    .table-card-responsive{
         overflow-y: visible !important;
-    }
 
-    .rdt_Table {
-        border: none;
-        overflow: visible;
-
-        .rdt_TableHead{
-            display: none;
+        .rdt_Table {
+            border: none;
             overflow: visible;
-        }
-
-        .rdt_TableBody{
-            gap: 16px;
-            overflow: visible;
-
-            .rdt_TableRow{
-                box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-                background: white;
-                flex-direction: column;
-                padding: 16px;
-                border-radius: 6px;
+            background-color: transparent !important;
+    
+            .rdt_TableHead{
+                display: none;
                 overflow: visible;
-                
-
-
-                &:nth-child(even){
-                    .rdt_TableCell{
+            }
+    
+            .rdt_TableBody{
+                gap: 16px;
+                overflow: visible;
+    
+                .rdt_TableRow{
+                    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .14)) drop-shadow(0 0 2px rgba(0, 0, 0, .08));
+                    background-color: white;
+                    flex-direction: column;
+                    padding-top: 16px;
+                    border-radius: 6px;
+                    overflow: visible;
+    
+                    &:nth-child(even){
                         background-color: white;
                     }
-                    
-                }
+        
+                    .rdt_TableCell{
+                        border: none;
+                        padding-inline: 16px;
+                        padding-block: 8px;
+                        word-break: normal;
+                        max-width: none;
+                        gap: 16px;
+                        color: #58585b;
     
-                .rdt_TableCell{
-                    border: none;
-                    padding-inline: 0px;
-                    padding-block: 8px;
+                        div{
+                            width: 100%;
+    
+                            &:last-child{
+                                text-align: end
+                            }
+                        }
+                    }
+                    .rdt_TableCell:first-child{
+                        padding-top: 0px;
+                    }
+    
+                    .rdt_TableCell:has(:only-child){
+                        background-color: #F8F8F8; 
+                        padding-block: 8px;
+                        margin-top: 12px;
+                        border-bottom-right-radius: 6px;
+                        border-bottom-left-radius: 6px;
+    
+                        div{
+                            div{
+                                flex-wrap: nowrap;
+                                button{
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }   
                 }
             }
+            
         }
-        
     }
+
+    
     
   }
 
 @layer components {
 
     .table-container{
-        @apply h-fit flex flex-col gap-6 overflow-visible;
+        @apply h-fit flex flex-col gap-6;
 
-        .hZZlND{
+        .table-card-responsive{
             @apply overflow-y-visible overflow-x-visible sm:overflow-y-hidden sm:overflow-x-auto;
         }
     }

@@ -1510,14 +1510,13 @@ textarea {
   height: fit-content;
   flex-direction: column;
   gap: 1.5rem;
-  overflow: visible;
 }
-.table-container .hZZlND {
+.table-container .table-card-responsive {
   overflow-x: visible;
   overflow-y: visible;
 }
 @media (min-width: 640px) {
-  .table-container .hZZlND {
+  .table-container .table-card-responsive {
     overflow-x: auto;
     overflow-y: hidden;
   }
@@ -2386,7 +2385,7 @@ textarea {
   background-color: white;
 }
 .rdt_Table .rdt_TableBody .rdt_TableRow:has(:checked) {
-  background-color: #E6F6EA;
+  background-color: #E6F6EA !important;
 }
 .rdt_Table .rdt_TableRow {
   height: -moz-fit-content;
@@ -2419,36 +2418,63 @@ textarea {
   border-right: 0px solid #EEEEEF;
 }
 @media only screen and (max-width: 640px) {
-  DataTable {
+  .table-card-responsive {
     overflow-y: visible !important;
   }
-  .rdt_Table {
+  .table-card-responsive .rdt_Table {
     border: none;
     overflow: visible;
+    background-color: transparent !important;
   }
-  .rdt_Table .rdt_TableHead {
+  .table-card-responsive .rdt_Table .rdt_TableHead {
     display: none;
     overflow: visible;
   }
-  .rdt_Table .rdt_TableBody {
+  .table-card-responsive .rdt_Table .rdt_TableBody {
     gap: 16px;
     overflow: visible;
   }
-  .rdt_Table .rdt_TableBody .rdt_TableRow {
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    background: white;
+  .table-card-responsive .rdt_Table .rdt_TableBody .rdt_TableRow {
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .14)) drop-shadow(0 0 2px rgba(0, 0, 0, .08));
+    background-color: white;
     flex-direction: column;
-    padding: 16px;
+    padding-top: 16px;
     border-radius: 6px;
     overflow: visible;
   }
-  .rdt_Table .rdt_TableBody .rdt_TableRow:nth-child(even) .rdt_TableCell {
+  .table-card-responsive .rdt_Table .rdt_TableBody .rdt_TableRow:nth-child(even) {
     background-color: white;
   }
-  .rdt_Table .rdt_TableBody .rdt_TableRow .rdt_TableCell {
+  .table-card-responsive .rdt_Table .rdt_TableBody .rdt_TableRow .rdt_TableCell {
     border: none;
-    padding-inline: 0px;
+    padding-inline: 16px;
     padding-block: 8px;
+    word-break: normal;
+    max-width: none;
+    gap: 16px;
+    color: #58585b;
+  }
+  .table-card-responsive .rdt_Table .rdt_TableBody .rdt_TableRow .rdt_TableCell div {
+    width: 100%;
+  }
+  .table-card-responsive .rdt_Table .rdt_TableBody .rdt_TableRow .rdt_TableCell div:last-child {
+    text-align: end;
+  }
+  .table-card-responsive .rdt_Table .rdt_TableBody .rdt_TableRow .rdt_TableCell:first-child {
+    padding-top: 0px;
+  }
+  .table-card-responsive .rdt_Table .rdt_TableBody .rdt_TableRow .rdt_TableCell:has(:only-child) {
+    background-color: #F8F8F8;
+    padding-block: 8px;
+    margin-top: 12px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+  .table-card-responsive .rdt_Table .rdt_TableBody .rdt_TableRow .rdt_TableCell:has(:only-child) div div {
+    flex-wrap: nowrap;
+  }
+  .table-card-responsive .rdt_Table .rdt_TableBody .rdt_TableRow .rdt_TableCell:has(:only-child) div div button {
+    width: 100%;
   }
 }
 @layer component {
