@@ -141,10 +141,14 @@ const Table: React.FC<CustomTableProps<any>> = ({
   );
 
   const [rowperpage, setRowperpage] = useState(10);
-  const [showExtraColumn, setShowExtraColumn] = useState(window.innerWidth <= 640);
-
+  const [showExtraColumn, setShowExtraColumn] = useState(
+    typeof window !== 'undefined' && window.innerWidth <= 640
+  );
+  
   const handleResize = () => {
-    setShowExtraColumn(window.innerWidth <= 640);
+    if (typeof window !== 'undefined') {
+      setShowExtraColumn(window.innerWidth <= 640);
+    }
   };
 
   useEffect(() => {
@@ -156,17 +160,18 @@ const Table: React.FC<CustomTableProps<any>> = ({
 
   // Modifikasi kolom untuk menambahkan nilai dari props.columns
   const modifiedColumns = props.columns.map(column => ({
-    ...column,
-    cell: (row : any) => (
-      <>
-        {(showExtraColumn && ((column.name != "Action") && (column.name != "Aksi"))) && <div>{column.name}</div>}
-        {column.selector}
+  ...column,
+  cell: (row: any) => (
+    <>
+      {(showExtraColumn && column.name !== "Action" && column.name !== "Aksi") && <div>{column.name}</div>}
+      {column.selector && typeof column.selector === 'function' && (
         <div data-tag="allowRowEvents">
-          {column.selector ? column.selector(row) : null} {/* Menghindari kesalahan jika selector tidak ada */}
+          {column.selector(row)}
         </div>
-      </>
-    ),
-  }));
+      )}
+    </>
+  ),
+}));
 
   useEffect(() => {
     // Jika perlu melakukan sesuatu saat rowperpage berubah
@@ -174,17 +179,18 @@ const Table: React.FC<CustomTableProps<any>> = ({
 
   return (
     <div className='table-container'>
-      <div className="flex flex-grow justify-end overflow-visible">
-        <InputSearch className='w-[328px]' placeholder='Cari nama' setEnteredText={setFilterText} value={filterText} />
+      <div className="table-search">
+        <InputSearch placeholder='Cari nama' setEnteredText={setFilterText} value={filterText} />
       </div>
       <DataTable 
         {...props}  
         columns={cardResponsive?modifiedColumns:props.columns} // Gunakan modifiedColumns
         paginationComponent={CustomPagination} 
         paginationPerPage={rowperpage}
-        data={filteredItems.length ? filteredItems : props.data}
+        data={filteredItems}
         persistTableHead
         className={cardResponsive?"table-card-responsive":""}
+        noDataComponent={<div className='p-6'>Data tidak ditemukan</div>}
       />
     </div>
   );

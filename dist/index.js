@@ -1451,9 +1451,13 @@ var Table = ({
     (item) => item.name && item.name.toLowerCase().includes(filterText.toLowerCase())
   );
   const [rowperpage, setRowperpage] = (0, import_react20.useState)(10);
-  const [showExtraColumn, setShowExtraColumn] = (0, import_react20.useState)(window.innerWidth <= 640);
+  const [showExtraColumn, setShowExtraColumn] = (0, import_react20.useState)(
+    typeof window !== "undefined" && window.innerWidth <= 640
+  );
   const handleResize = () => {
-    setShowExtraColumn(window.innerWidth <= 640);
+    if (typeof window !== "undefined") {
+      setShowExtraColumn(window.innerWidth <= 640);
+    }
   };
   (0, import_react20.useEffect)(() => {
     window.addEventListener("resize", handleResize);
@@ -1464,18 +1468,14 @@ var Table = ({
   const modifiedColumns = props.columns.map((column) => ({
     ...column,
     cell: (row) => /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(import_jsx_runtime20.Fragment, { children: [
-      showExtraColumn && (column.name != "Action" && column.name != "Aksi") && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { children: column.name }),
-      column.selector,
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { "data-tag": "allowRowEvents", children: [
-        column.selector ? column.selector(row) : null,
-        " "
-      ] })
+      showExtraColumn && column.name !== "Action" && column.name !== "Aksi" && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { children: column.name }),
+      column.selector && typeof column.selector === "function" && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { "data-tag": "allowRowEvents", children: column.selector(row) })
     ] })
   }));
   (0, import_react20.useEffect)(() => {
   }, [rowperpage]);
   return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "table-container", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "flex flex-grow justify-end overflow-visible", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(InputSearch, { className: "w-[328px]", placeholder: "Cari nama", setEnteredText: setFilterText, value: filterText }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "table-search", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(InputSearch, { placeholder: "Cari nama", setEnteredText: setFilterText, value: filterText }) }),
     /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
       import_react_data_table_component.default,
       {
@@ -1483,9 +1483,10 @@ var Table = ({
         columns: cardResponsive ? modifiedColumns : props.columns,
         paginationComponent: CustomPagination,
         paginationPerPage: rowperpage,
-        data: filteredItems.length ? filteredItems : props.data,
+        data: filteredItems,
         persistTableHead: true,
-        className: cardResponsive ? "table-card-responsive" : ""
+        className: cardResponsive ? "table-card-responsive" : "",
+        noDataComponent: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "p-6", children: "Data tidak ditemukan" })
       }
     )
   ] });

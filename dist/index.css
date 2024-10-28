@@ -2341,6 +2341,14 @@ textarea {
   --tw-text-opacity: 1;
   color: hsl(var(--lime-50) / var(--tw-text-opacity));
 }
+.table-search {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+.table-search :only-child {
+  max-width: 328px;
+}
 .rdt_Table {
   border: 1px solid #EEEEEF;
   border-radius: 6px;
@@ -2418,6 +2426,9 @@ textarea {
   border-right: 0px solid #EEEEEF;
 }
 @media only screen and (max-width: 640px) {
+  .table-search :only-child {
+    max-width: none;
+  }
   .table-card-responsive {
     overflow-y: visible !important;
   }
@@ -2825,17 +2836,11 @@ textarea {
 .w-5 {
   width: 1.25rem;
 }
-.w-\[328px\] {
-  width: 328px;
-}
 .w-full {
   width: 100%;
 }
 .w-screen {
   width: 100vw;
-}
-.flex-grow {
-  flex-grow: 1;
 }
 .translate-y-0 {
   --tw-translate-y: 0px;
@@ -2896,9 +2901,6 @@ textarea {
 .items-center {
   align-items: center;
 }
-.justify-end {
-  justify-content: flex-end;
-}
 .justify-center {
   justify-content: center;
 }
@@ -2907,9 +2909,6 @@ textarea {
 }
 .overflow-hidden {
   overflow: hidden;
-}
-.overflow-visible {
-  overflow: visible;
 }
 .overflow-y-auto {
   overflow-y: auto;
@@ -2932,6 +2931,9 @@ textarea {
 }
 .p-4 {
   padding: 1rem;
+}
+.p-6 {
+  padding: 1.5rem;
 }
 .px-2 {
   padding-left: 0.5rem;

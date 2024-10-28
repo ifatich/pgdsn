@@ -294,7 +294,6 @@ function executeFetch(): void {
                 columns={columns}
                 data={data}
                 pagination
-                cardResponsive
                 /> 
           </div>
 
