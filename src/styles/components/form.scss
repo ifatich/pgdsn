@@ -3,7 +3,7 @@
         @apply space-y-1;
 
         &__label {
-            @apply text-omicron font-bold
+            @apply text-sigma font-bold
             peer-disabled:cursor-not-allowed;
 
             &--error {

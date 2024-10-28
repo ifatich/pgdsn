@@ -1,3 +1,13 @@
+.table-search{
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+
+    :only-child{
+        max-width: 328px;
+    }
+}
+
 .rdt_Table {
     border: 1px solid #EEEEEF;
     border-radius: 6px;
@@ -93,7 +103,20 @@
     }
 }
 
+@media only screen and (max-width: 817px) {
+    .custom-pagination{
+        justify-content: center;
+    }
+
+}
+
 @media only screen and (max-width: 640px) {
+
+    .table-search{
+        :only-child{
+            max-width: none;
+        }
+    }
 
     .table-card-responsive{
         overflow-y: visible !important;
@@ -186,7 +209,7 @@
     }
 
     .custom-pagination{
-        @apply flex flex-grow gap-2 items-center bg-white text-sigma justify-evenly gap-y-5 flex-wrap;
+        @apply flex flex-grow gap-2 items-center bg-white text-sigma justify-between gap-y-5 flex-wrap;
 
         select{
             @apply outline-none;

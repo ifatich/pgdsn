@@ -62,7 +62,7 @@ const TimePicker: React.FC = () => {
 
       <div className="relative flex items-center space-x-4">
         <div
-          className="relative w-16 overflow-y-auto h-40 snap-y snap-mandatory"
+          className="relative w-16 overflow-y-auto h-48 snap-y snap-mandatory"
           ref={hourContainerRef}
           onScroll={() => handleScroll('hour')}
           style={{ scrollSnapType: 'y mandatory' }} // Menambahkan snapping
@@ -85,7 +85,7 @@ const TimePicker: React.FC = () => {
         <div className="absolute top-1/2 transform -translate-y-1/2 left-1/2 text-2xl">:</div>
 
         <div
-          className="relative w-16 overflow-y-auto h-40 snap-y snap-mandatory"
+          className="relative w-16 overflow-y-auto h-48 snap-y snap-mandatory"
           ref={minuteContainerRef}
           onScroll={() => handleScroll('minute')}
           style={{ scrollSnapType: 'y mandatory' }} // Menambahkan snapping

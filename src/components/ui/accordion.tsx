@@ -1,4 +1,4 @@
-import { useState, forwardRef, Children, isValidElement, cloneElement } from "react";
+import { useState, useRef, useEffect, forwardRef, Children, isValidElement, cloneElement } from "react";
 import { cn } from "../../lib/utils";
 
 const AccordionGroup = forwardRef<
@@ -16,8 +16,8 @@ const AccordionGroup = forwardRef<
       {Children.map(children, (child, index) =>
         isValidElement(child) &&
         cloneElement(child as React.ReactElement<any>, {
-          isActive: activeIndex === index, // Tentukan isActive berdasarkan activeIndex
-          onToggle: () => toggleAccordion(index), // Fungsi untuk toggle state
+          isActive: activeIndex === index,
+          onToggle: () => toggleAccordion(index),
         })
       )}
     </div>
@@ -37,7 +37,6 @@ const AccordionItem = forwardRef<
     </div>
   );
 });
-
 
 const AccordionHeader = forwardRef<
   HTMLDivElement,
@@ -80,6 +79,15 @@ const AccordionBody = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & { isActive?: boolean }
 >(({ className, children, isActive, ...props }, ref) => {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState("0px");
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setHeight(isActive ? `${contentRef.current.scrollHeight}px` : "0px");
+    }
+  }, [isActive]);
+
   return (
     <div
       className={cn(
@@ -87,8 +95,13 @@ const AccordionBody = forwardRef<
         isActive ? "accordion-opened" : "accordion-closed",
         className
       )}
+      style={{
+        height: isActive ? height : "0px",
+        overflow: "hidden",
+        transition: "height 0.3s ease-in-out",
+      }}
       {...props}
-      ref={ref}
+      ref={contentRef}
     >
       {children}
     </div>
