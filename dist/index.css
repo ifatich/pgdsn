@@ -1256,8 +1256,8 @@ body {
   padding-top: 0px;
 }
 .form__label {
-  font-size: var(--16-omicron);
-  line-height: var(--16-omicron-line-height);
+  font-size: var(--14-sigma);
+  line-height: var(--14-sigma-line-height);
   font-weight: var(--bold);
 }
 .peer:disabled ~ .form__label {
@@ -1544,7 +1544,7 @@ textarea {
   flex-grow: 1;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: 0.5rem;
   row-gap: 1.25rem;
   --tw-bg-opacity: 1;
@@ -2207,7 +2207,6 @@ textarea {
   border-width: 1px;
   --tw-bg-opacity: 1;
   background-color: hsl(var(--text-white) / var(--tw-bg-opacity));
-  padding-top: 1rem;
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow:
@@ -2288,18 +2287,14 @@ textarea {
   overflow: hidden;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  transition-property: all;
-  transition-duration: 200ms;
+  transition-property: transform;
+  transition-duration: 100ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .accordion-item .accordion-body.accordion-opened {
-  max-height: 54px;
-  padding-top: 0.25rem;
   padding-bottom: 1rem;
 }
 .accordion-item .accordion-body.accordion-closed {
-  max-height: 0px;
-  padding-top: 0px;
   padding-bottom: 0px;
 }
 .tab-group {
@@ -2424,6 +2419,11 @@ textarea {
   padding-inline: 24px;
   padding-block: 16px;
   border-right: 0px solid #EEEEEF;
+}
+@media only screen and (max-width: 817px) {
+  .custom-pagination {
+    justify-content: center;
+  }
 }
 @media only screen and (max-width: 640px) {
   .table-search :only-child {
@@ -2947,7 +2947,8 @@ textarea {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
-.pb-4 {
+.py-4 {
+  padding-top: 1rem;
   padding-bottom: 1rem;
 }
 .pl-5 {
@@ -3012,6 +3013,47 @@ textarea {
 }
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.transition {
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform,
+    filter,
+    -webkit-backdrop-filter;
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform,
+    filter,
+    backdrop-filter;
+  transition-property:
+    color,
+    background-color,
+    border-color,
+    text-decoration-color,
+    fill,
+    stroke,
+    opacity,
+    box-shadow,
+    transform,
+    filter,
+    backdrop-filter,
+    -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 .transition-all {
   transition-property: all;

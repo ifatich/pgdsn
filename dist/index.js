@@ -1101,7 +1101,7 @@ var Dropdown = ({
               }
             )
           ] }),
-          items.length > 10 && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "px-4 pb-4", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+          items.length > 10 && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "px-4 py-4", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
             InputSearch,
             {
               setEnteredText: setSearch,
@@ -1201,9 +1201,7 @@ var AccordionGroup = (0, import_react18.forwardRef)(({ className, children, ...p
     children,
     (child, index) => (0, import_react18.isValidElement)(child) && (0, import_react18.cloneElement)(child, {
       isActive: activeIndex === index,
-      // Tentukan isActive berdasarkan activeIndex
       onToggle: () => toggleAccordion(index)
-      // Fungsi untuk toggle state
     })
   ) });
 });
@@ -1256,6 +1254,13 @@ var AccordionHeader = (0, import_react18.forwardRef)(({ className, children, isA
   );
 });
 var AccordionBody = (0, import_react18.forwardRef)(({ className, children, isActive, ...props }, ref) => {
+  const contentRef = (0, import_react18.useRef)(null);
+  const [height, setHeight] = (0, import_react18.useState)("0px");
+  (0, import_react18.useEffect)(() => {
+    if (contentRef.current) {
+      setHeight(isActive ? `${contentRef.current.scrollHeight}px` : "0px");
+    }
+  }, [isActive]);
   return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
     "div",
     {
@@ -1264,8 +1269,13 @@ var AccordionBody = (0, import_react18.forwardRef)(({ className, children, isAct
         isActive ? "accordion-opened" : "accordion-closed",
         className
       ),
+      style: {
+        height: isActive ? height : "0px",
+        overflow: "hidden",
+        transition: "height 0.3s ease-in-out"
+      },
       ...props,
-      ref,
+      ref: contentRef,
       children
     }
   );
