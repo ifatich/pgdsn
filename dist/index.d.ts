@@ -194,6 +194,8 @@ interface CustomTableProps<T> extends TableProps<T> {
 }
 declare const Table: react__default.FC<CustomTableProps<any>>;
 
+declare const TimePicker: react__default.FC;
+
 interface InputProps$2 {
     placeholder: string;
     children?: React.ReactNode;
@@ -229,4 +231,4 @@ interface InputTextProps {
 }
 declare const InputLongText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputTextProps & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
 
-export { AccordionBody, AccordionGroup, AccordionHeader, AccordionItem, Badge, Breadcumb, Button, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, TabGroup, TabItem, Table, Toast, ToastDescription, ToastTitle, inputVariants };
+export { AccordionBody, AccordionGroup, AccordionHeader, AccordionItem, Badge, Breadcumb, Button, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, TabGroup, TabItem, Table, TimePicker, Toast, ToastDescription, ToastTitle, inputVariants };

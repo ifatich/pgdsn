@@ -1,6 +1,6 @@
 "use client";
 
-import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionItem, AccordionHeader, AccordionGroup, TabGroup, TabItem, Table} from "pgdsn";
+import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ModalBody, ModalFooter, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionItem, AccordionHeader, AccordionGroup, TabGroup, TabItem, Table, TimePicker} from "pgdsn";
 import { useEffect, useState } from "react";
 import DataTable, { TableColumn } from "react-data-table-component";
 
@@ -310,6 +310,7 @@ function executeFetch(): void {
                 }
               </TabGroup>
               {activeTab}
+              <TimePicker></TimePicker>
           </div>
 
           <div className="col-span-6">

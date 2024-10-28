@@ -21,6 +21,8 @@ import { ProgressBar } from "./components";
 import { AccordionGroup,AccordionBody, AccordionItem, AccordionHeader} from "./components";
 import { TabGroup, TabItem } from "./components";
 import { Table } from "./components/ui/table";
+import {TimePicker} from "./components/ui/timepicker";
+
 
 // Export
 export { 
@@ -75,6 +77,7 @@ export {
     HelperText,
 
     DatePicker,
+    TimePicker,
        
     Toast,
     ToastDescription,
