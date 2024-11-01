@@ -1,6 +1,6 @@
 "use client";
 
-import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ErrorText, ModalBody, ModalFooter, TimePicker, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionItem, AccordionHeader, AccordionGroup, TabGroup, TabItem, Table, InputNumber, FilePicker} from "pgdsn";
+import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ErrorText, ModalBody, ModalFooter, TimePicker, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionItem, AccordionHeader, AccordionGroup, TabGroup, TabItem, Table, InputNumber, FilePicker, HelperText} from "pgdsn";
 import { useEffect, useState } from "react";
 import DataTable, { TableColumn } from "react-data-table-component";
 
@@ -60,6 +60,8 @@ const [inputSearch, setInputSearch] = useState("")
 const [inputValue1, setInputValue1] = useState("")
 
 const [inputValue2, setInputValue2] = useState("")
+
+const [file, setFile] = useState<File | undefined>(undefined);
 
 interface User {
   id: number;
@@ -126,6 +128,7 @@ const columns = [
 function executeFetch(): void {
   throw new Error("Function not implemented.");
 }
+
 
   return (
     <main className="flex flex-col w-full bg-black-10">
@@ -355,7 +358,21 @@ function executeFetch(): void {
             <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
                  File Picker
             </div>
-          <FilePicker></FilePicker>
+            <InputGroup>
+                <FilePicker file={file} setFile={() => setFile(file)} variant="image"></FilePicker>
+                {
+                  file
+                  ?
+                    file.size/1000000 > 1
+                    ?
+                    <ErrorText active>File melebihi 1mb</ErrorText>
+                    :
+                    <ErrorText active>File melebihi 1000000mb</ErrorText>
+                  :
+                  <HelperText active>File tidak boleh melebihi 1mb</HelperText> 
+                }
+            </InputGroup>
+          
           </div>
 
           <div className="col-span-6">

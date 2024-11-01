@@ -196,7 +196,13 @@ declare const Table: react__default.FC<CustomTableProps<any>>;
 
 declare const TimePicker: react__default.FC;
 
-declare const FilePicker: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & react.RefAttributes<HTMLDivElement>>;
+interface FilePickerProps {
+    variant?: "image" | "default";
+    fileSize?: number;
+    file: File | undefined;
+    setFile: (file: File | undefined) => void;
+}
+declare const FilePicker: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & FilePickerProps & react.RefAttributes<HTMLDivElement>>;
 
 interface InputProps$2 {
     placeholder: string;

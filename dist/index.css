@@ -2847,6 +2847,9 @@ textarea {
 .h-4 {
   height: 1rem;
 }
+.h-40 {
+  height: 10rem;
+}
 .h-48 {
   height: 12rem;
 }
@@ -2874,6 +2877,12 @@ textarea {
 }
 .max-h-96 {
   max-height: 24rem;
+}
+.min-h-0 {
+  min-height: 0px;
+}
+.min-h-40 {
+  min-height: 10rem;
 }
 .w-16 {
   width: 4rem;
@@ -2980,6 +2989,9 @@ textarea {
 .justify-between {
   justify-content: space-between;
 }
+.gap-2 {
+  gap: 0.5rem;
+}
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
@@ -3006,9 +3018,13 @@ textarea {
 .border-dashed {
   border-style: dashed;
 }
-.border-black-60 {
+.border-black-40 {
   --tw-border-opacity: 1;
-  border-color: hsl(var(--black-60) / var(--tw-border-opacity));
+  border-color: hsl(var(--black-40) / var(--tw-border-opacity));
+}
+.border-lime-40 {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--lime-40) / var(--tw-border-opacity));
 }
 .bg-background {
   --tw-bg-opacity: 1;
@@ -3016,6 +3032,10 @@ textarea {
 }
 .bg-black-80\/50 {
   background-color: hsl(var(--black-80) / 0.5);
+}
+.bg-lime-10 {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--lime-10) / var(--tw-bg-opacity));
 }
 .bg-white {
   --tw-bg-opacity: 1;
@@ -3037,10 +3057,6 @@ textarea {
 .p-6 {
   padding: 1.5rem;
 }
-.px-16 {
-  padding-left: 4rem;
-  padding-right: 4rem;
-}
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -3057,19 +3073,22 @@ textarea {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
-}
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
 }
 .pl-5 {
   padding-left: 1.25rem;
 }
 .text-center {
   text-align: center;
+}
+.align-middle {
+  vertical-align: middle;
 }
 .text-omega {
   font-size: var(--12-omega);
