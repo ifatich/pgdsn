@@ -49,6 +49,7 @@ __export(src_exports, {
   DialogTitle: () => DialogTitle,
   Dropdown: () => Dropdown,
   ErrorText: () => ErrorText,
+  FilePicker: () => FilePicker,
   HelperText: () => HelperText,
   InfoTipDescription: () => InfoTipDescription,
   InfoTipTitle: () => InfoTipTitle,
@@ -1603,10 +1604,30 @@ var TimePicker = () => {
   ] });
 };
 
-// src/components/custom/input/number.tsx
+// src/components/ui/filepicker.tsx
 var import_react22 = require("react");
 var import_jsx_runtime22 = require("react/jsx-runtime");
-var InputNumber = (0, import_react22.forwardRef)(({ className, placeholder, setEnteredText, type, children, labelLeft, labelRight, ...props }, ref) => {
+var FilePicker = (0, import_react22.forwardRef)(({ className, children, ...props }, ref) => {
+  const [image, setImage] = (0, import_react22.useState)("undefined");
+  function handlePickingImage(e) {
+    e.target.files ? setImage(URL.createObjectURL(e.target.files[0])) : setImage("undefined");
+  }
+  function handleRemoveFile() {
+    setImage("undefined");
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "py-5 px-16 bg-white border border-black-60 border-dashed rounded-md relative flex items-center justify-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("input", { type: "file", className: image === "undefined" ? "absolute w-full h-full opacity-0 top-0 left-0" : "hidden", accept: "image/*", onChange: image === "undefined" ? (e) => handlePickingImage(e) : (e) => e.target.remove }),
+    image === "undefined" ? /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("img", { src: "https://ifatich4.github.io/img/ico-image-upload.1e0a3166.svg", alt: "Upload Icon" }) : /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "relative w-[180px] h-[135px] flex justify-center items-center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "bg-white absolute -right-2 -top-2 w-6 h-6 rounded-full", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("img", { className: "w-full h-full rounded-md", src: "https://ifatich4.github.io/img/cross.f902232a.svg", alt: "", onClick: handleRemoveFile }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("img", { className: "object-cover w-full h-full rounded-md", src: image, alt: "Choosen File" })
+    ] })
+  ] });
+});
+
+// src/components/custom/input/number.tsx
+var import_react23 = require("react");
+var import_jsx_runtime23 = require("react/jsx-runtime");
+var InputNumber = (0, import_react23.forwardRef)(({ className, placeholder, setEnteredText, type, children, labelLeft, labelRight, ...props }, ref) => {
   function handleClearText() {
     setEnteredText("");
     console.log(props.value);
@@ -1624,41 +1645,41 @@ var InputNumber = (0, import_react22.forwardRef)(({ className, placeholder, setE
     }
     setEnteredText(formattedValue);
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: cn("input"), children: [
-    labelLeft && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: cn("unit-input-left", !props.disabled && "active"), children: labelLeft }),
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("input", { ...props, ref, role: "input", placeholder, value: props.value, onChange: (e) => setInputValue(e.target.value) }),
-    props.value && !props.readOnly && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("svg", { onClick: handleClearText, xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM8.23613 8.23613C8.53245 7.93981 9.00205 7.92238 9.31876 8.18384L9.37627 8.23613L12.3333 11.1932L15.2904 8.23613L15.3479 8.18384C15.6646 7.92238 16.1342 7.93981 16.4305 8.23613C16.7454 8.55097 16.7454 9.06143 16.4305 9.37627L13.4735 12.3333L16.4305 15.2904C16.7454 15.6052 16.7454 16.1157 16.4305 16.4305C16.1342 16.7269 15.6646 16.7443 15.3479 16.4828L15.2904 16.4305L12.3333 13.4735L9.37626 16.4305L9.31875 16.4828C9.00204 16.7443 8.53244 16.7269 8.23612 16.4305C7.92128 16.1157 7.92128 15.6052 8.23612 15.2904L11.1932 12.3333L8.23613 9.37627C7.92129 9.06143 7.92129 8.55097 8.23613 8.23613Z", fill: "#58585B" }) }),
-    labelRight && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("span", { className: cn("unit-input-right", !props.disabled && "active"), children: labelRight })
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: cn("input"), children: [
+    labelLeft && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: cn("unit-input-left", !props.disabled && "active"), children: labelLeft }),
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("input", { ...props, ref, role: "input", placeholder, value: props.value, onChange: (e) => setInputValue(e.target.value) }),
+    props.value && !props.readOnly && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("svg", { onClick: handleClearText, xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM8.23613 8.23613C8.53245 7.93981 9.00205 7.92238 9.31876 8.18384L9.37627 8.23613L12.3333 11.1932L15.2904 8.23613L15.3479 8.18384C15.6646 7.92238 16.1342 7.93981 16.4305 8.23613C16.7454 8.55097 16.7454 9.06143 16.4305 9.37627L13.4735 12.3333L16.4305 15.2904C16.7454 15.6052 16.7454 16.1157 16.4305 16.4305C16.1342 16.7269 15.6646 16.7443 15.3479 16.4828L15.2904 16.4305L12.3333 13.4735L9.37626 16.4305L9.31875 16.4828C9.00204 16.7443 8.53244 16.7269 8.23612 16.4305C7.92128 16.1157 7.92128 15.6052 8.23612 15.2904L11.1932 12.3333L8.23613 9.37627C7.92129 9.06143 7.92129 8.55097 8.23613 8.23613Z", fill: "#58585B" }) }),
+    labelRight && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("span", { className: cn("unit-input-right", !props.disabled && "active"), children: labelRight })
   ] });
 });
 
 // src/components/custom/input/long.tsx
-var import_react23 = require("react");
-var import_jsx_runtime23 = require("react/jsx-runtime");
-var InputLongText = (0, import_react23.forwardRef)(({ className, placeholder, setEnteredText, iconLeft, iconright, children, ...props }, ref) => {
+var import_react24 = require("react");
+var import_jsx_runtime24 = require("react/jsx-runtime");
+var InputLongText = (0, import_react24.forwardRef)(({ className, placeholder, setEnteredText, iconLeft, iconright, children, ...props }, ref) => {
   const icons = [];
   function handleClearText() {
     setEnteredText("");
     console.log(props.value);
   }
-  if (iconLeft && iconright && import_react23.Children.toArray(children).length === 1) {
+  if (iconLeft && iconright && import_react24.Children.toArray(children).length === 1) {
     icons.push(
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { children: import_react23.Children.toArray(children)[0] }, 0)
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { children: import_react24.Children.toArray(children)[0] }, 0)
     );
     icons.push(
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { children: import_react23.Children.toArray(children)[0] }, 1)
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { children: import_react24.Children.toArray(children)[0] }, 1)
     );
   } else {
-    import_react23.Children.toArray(children).map((i, key) => {
+    import_react24.Children.toArray(children).map((i, key) => {
       icons.push(
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { children: i }, key)
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { children: i }, key)
       );
     });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: cn("input-group"), children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: cn("input"), ...props, ref, role: "input", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: cn("input-group"), children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: cn("input"), ...props, ref, role: "input", children: [
     icons && iconLeft && icons[0],
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("textarea", { ...props, placeholder, value: props.value, onChange: (e) => setEnteredText(e.target.value) }),
-    props.value && !props.readOnly && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("svg", { onClick: handleClearText, xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM8.23613 8.23613C8.53245 7.93981 9.00205 7.92238 9.31876 8.18384L9.37627 8.23613L12.3333 11.1932L15.2904 8.23613L15.3479 8.18384C15.6646 7.92238 16.1342 7.93981 16.4305 8.23613C16.7454 8.55097 16.7454 9.06143 16.4305 9.37627L13.4735 12.3333L16.4305 15.2904C16.7454 15.6052 16.7454 16.1157 16.4305 16.4305C16.1342 16.7269 15.6646 16.7443 15.3479 16.4828L15.2904 16.4305L12.3333 13.4735L9.37626 16.4305L9.31875 16.4828C9.00204 16.7443 8.53244 16.7269 8.23612 16.4305C7.92128 16.1157 7.92128 15.6052 8.23612 15.2904L11.1932 12.3333L8.23613 9.37627C7.92129 9.06143 7.92129 8.55097 8.23613 8.23613Z", fill: "#58585B" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("textarea", { ...props, placeholder, value: props.value, onChange: (e) => setEnteredText(e.target.value) }),
+    props.value && !props.readOnly && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("svg", { onClick: handleClearText, xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12ZM8.23613 8.23613C8.53245 7.93981 9.00205 7.92238 9.31876 8.18384L9.37627 8.23613L12.3333 11.1932L15.2904 8.23613L15.3479 8.18384C15.6646 7.92238 16.1342 7.93981 16.4305 8.23613C16.7454 8.55097 16.7454 9.06143 16.4305 9.37627L13.4735 12.3333L16.4305 15.2904C16.7454 15.6052 16.7454 16.1157 16.4305 16.4305C16.1342 16.7269 15.6646 16.7443 15.3479 16.4828L15.2904 16.4305L12.3333 13.4735L9.37626 16.4305L9.31875 16.4828C9.00204 16.7443 8.53244 16.7269 8.23612 16.4305C7.92128 16.1157 7.92128 15.6052 8.23612 15.2904L11.1932 12.3333L8.23613 9.37627C7.92129 9.06143 7.92129 8.55097 8.23613 8.23613Z", fill: "#58585B" }) }),
     (icons[0] || icons[1]) && iconright && (icons[1] ? icons[1] : icons[0])
   ] }) });
 });
@@ -1683,6 +1704,7 @@ var InputLongText = (0, import_react23.forwardRef)(({ className, placeholder, se
   DialogTitle,
   Dropdown,
   ErrorText,
+  FilePicker,
   HelperText,
   InfoTipDescription,
   InfoTipTitle,

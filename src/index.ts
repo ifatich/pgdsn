@@ -22,6 +22,7 @@ import { AccordionGroup,AccordionBody, AccordionItem, AccordionHeader} from "./c
 import { TabGroup, TabItem } from "./components";
 import { Table } from "./components/ui/table";
 import {TimePicker} from "./components/ui/timepicker";
+import { FilePicker } from "./components/ui/filepicker";
 
 
 // Export
@@ -78,6 +79,7 @@ export {
 
     DatePicker,
     TimePicker,
+    FilePicker,
        
     Toast,
     ToastDescription,

@@ -2775,6 +2775,12 @@ textarea {
 .inset-0 {
   inset: 0px;
 }
+.-right-2 {
+  right: -0.5rem;
+}
+.-top-2 {
+  top: -0.5rem;
+}
 .bottom-0 {
   bottom: 0px;
 }
@@ -2786,6 +2792,9 @@ textarea {
 }
 .right-0 {
   right: 0px;
+}
+.top-0 {
+  top: 0px;
 }
 .top-1\/2 {
   top: 50%;
@@ -2844,6 +2853,12 @@ textarea {
 .h-5 {
   height: 1.25rem;
 }
+.h-6 {
+  height: 1.5rem;
+}
+.h-\[135px\] {
+  height: 135px;
+}
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
@@ -2868,6 +2883,12 @@ textarea {
 }
 .w-5 {
   width: 1.25rem;
+}
+.w-6 {
+  width: 1.5rem;
+}
+.w-\[180px\] {
+  width: 180px;
 }
 .w-full {
   width: 100%;
@@ -2973,8 +2994,21 @@ textarea {
 .rounded {
   border-radius: 0.25rem;
 }
+.rounded-full {
+  border-radius: 9999px;
+}
+.rounded-md {
+  border-radius: calc(var(--radius) - 2px);
+}
 .border {
   border-width: 1px;
+}
+.border-dashed {
+  border-style: dashed;
+}
+.border-black-60 {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--black-60) / var(--tw-border-opacity));
 }
 .bg-background {
   --tw-bg-opacity: 1;
@@ -2990,6 +3024,10 @@ textarea {
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
+.object-cover {
+  -o-object-fit: cover;
+  object-fit: cover;
+}
 .p-2 {
   padding: 0.5rem;
 }
@@ -2998,6 +3036,10 @@ textarea {
 }
 .p-6 {
   padding: 1.5rem;
+}
+.px-16 {
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
 .px-2 {
   padding-left: 0.5rem;
@@ -3018,6 +3060,10 @@ textarea {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 .pl-5 {
   padding-left: 1.25rem;
