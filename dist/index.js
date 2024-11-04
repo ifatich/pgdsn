@@ -1506,41 +1506,118 @@ var Table = ({
 
 // src/components/ui/timepicker.tsx
 var import_react21 = require("react");
-var import_class_variance_authority9 = require("class-variance-authority");
 var import_jsx_runtime21 = require("react/jsx-runtime");
 var TimePicker = (0, import_react21.forwardRef)(({ className, ...props }, ref) => {
-  const hours = Array.from({ length: 24 }, (_, i) => i);
-  const minutes = Array.from({ length: 60 }, (_, i) => i);
+  const hours = [-1, -1, ...Array.from({ length: 24 }, (_, i) => i), 99, 99];
+  const minutes = [-1, -1, ...Array.from({ length: 60 }, (_, i) => i), 99, 99];
   const currentHour = (/* @__PURE__ */ new Date()).getHours();
   const currentMinute = (/* @__PURE__ */ new Date()).getMinutes();
   const [choosenHour, setChoosenHour] = (0, import_react21.useState)(currentHour);
+  const [choosenMinute, setChoosenMinute] = (0, import_react21.useState)(currentMinute);
   const hourRef = (0, import_react21.useRef)(null);
+  const minuteRef = (0, import_react21.useRef)(null);
   const itemHeight = 40;
-  const handleScroll = () => {
+  const initializedRef = (0, import_react21.useRef)(false);
+  (0, import_react21.useEffect)(() => {
     if (hourRef.current) {
-      const { scrollTop, clientHeight } = hourRef.current;
+      hourRef.current.scrollTop = currentHour * itemHeight;
+      initializedRef.current = true;
+    }
+  }, [currentHour]);
+  (0, import_react21.useEffect)(() => {
+    if (minuteRef.current) {
+      minuteRef.current.scrollTop = currentMinute * itemHeight;
+      initializedRef.current = true;
+    }
+  }, [currentMinute]);
+  const getCenterElement = (container, items) => {
+    if (container) {
+      const { scrollTop, clientHeight } = container;
       const middle = scrollTop + clientHeight / 2;
-      const index = Math.round(middle / itemHeight);
-      console.log(!(hours[index] === void 0) && "Item yang di tengah:", hours[index]);
+      const index = Math.floor(middle / itemHeight);
+      const value = items[Math.min(Math.max(index, 0), items.length - 1)];
+      if (value === -1) return 0;
+      if (value === 99) return 59;
+      return value;
+    }
+    return null;
+  };
+  const handleHourScroll = () => {
+    const hour = getCenterElement(hourRef.current, hours);
+    if (hour !== null && hour !== choosenHour) {
+      setChoosenHour(hour);
     }
   };
-  function hanndleGetHour() {
-    if (hourRef.current) {
-      const { scrollTop, clientHeight } = hourRef.current;
-      const middle = scrollTop + clientHeight / 2;
-      const index = Math.round(middle / itemHeight);
-      console.log(!(hours[index] === void 0) && "Item yang di tengah:", hours[index]);
+  const handleMinuteScroll = () => {
+    const minute = getCenterElement(minuteRef.current, minutes);
+    if (minute !== null && minute !== choosenMinute) {
+      setChoosenMinute(minute);
+    }
+  };
+  function handleGetTime() {
+    const hour = getCenterElement(hourRef.current, hours);
+    const minute = getCenterElement(minuteRef.current, minutes);
+    if (hour !== null && minute !== null) {
+      alert(`Selected time: ${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`);
     }
   }
   return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex flex-row items-center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { ref: hourRef, onScroll: handleScroll, className: "hours-list flex flex-col h-48 py-[120px] overflow-y-scroll scroll-smooth", style: { overflowY: "scroll", scrollbarWidth: "none", msOverflowStyle: "none" }, children: hours.map((item, key) => /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex py-2 w-14 justify-center text-center", children: [
-      " ",
-      item < 10 ? item.toString().padStart(2, "0") : item,
-      " "
-    ] }, key)) }),
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "h-10", children: ":" }),
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "hours-list flex flex-col h-48 py-[120px] overflow-y-scroll scroll-smooth", style: { overflowY: "scroll", scrollbarWidth: "none", msOverflowStyle: "none" }, children: minutes.map((item, key) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "flex py-2 w-14 justify-center text-center", children: item < 10 ? item.toString().padStart(2, "0") : item }, key)) }),
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(Button, { onClick: hanndleGetHour, children: "Get Time" })
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+      "div",
+      {
+        ref: hourRef,
+        onScroll: handleHourScroll,
+        className: "hours-list flex flex-col h-48 overflow-y-scroll scroll-smooth",
+        style: {
+          overflowY: "scroll",
+          scrollSnapType: "y mandatory",
+          // Enable vertical snapping
+          scrollbarWidth: "none",
+          msOverflowStyle: "none"
+        },
+        children: hours.map((item) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+          "div",
+          {
+            className: cn("flex items-center pt-2 w-14 justify-center text-center", 23 === item || item === 0 ? 23 === item ? "pb-[3px]" : "pt-[6px]" : "pb-2", choosenHour === item ? "font-bold" : "font-regular", className),
+            style: {
+              scrollSnapAlign: "center",
+              // Snap each item to the center
+              height: `${itemHeight}px`
+            },
+            children: item.toString().padStart(2, "0")
+          },
+          item
+        ))
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "h-10 flex items-center", children: ":" }),
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+      "div",
+      {
+        ref: minuteRef,
+        onScroll: handleMinuteScroll,
+        className: "minutes-list flex flex-col h-48 overflow-y-scroll scroll-smooth",
+        style: {
+          overflowY: "scroll",
+          scrollSnapType: "y mandatory",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none"
+        },
+        children: minutes.map((item, key) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+          "div",
+          {
+            className: `flex pt-2 w-14 justify-center text-center items-center ${59 === item || item === 0 ? 59 === item ? "pb-[3px]" : "pt-[6px]" : "pb-2"}`,
+            style: {
+              scrollSnapAlign: "center",
+              height: `${itemHeight}px`
+            },
+            children: item.toString().padStart(2, "0")
+          },
+          key
+        ))
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(Button, { onClick: handleGetTime, children: "Get Time" })
   ] });
 });
 
