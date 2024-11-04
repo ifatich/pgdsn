@@ -194,7 +194,7 @@ interface CustomTableProps<T> extends TableProps<T> {
 }
 declare const Table: react__default.FC<CustomTableProps<any>>;
 
-declare const TimePicker: react__default.FC;
+declare const TimePicker: react__default.ForwardRefExoticComponent<react__default.HTMLAttributes<HTMLDivElement> & react__default.RefAttributes<HTMLDivElement>>;
 
 interface InputFileProps {
     variant?: "image" | "default";

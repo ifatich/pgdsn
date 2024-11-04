@@ -1506,103 +1506,43 @@ var Table = ({
 
 // src/components/ui/timepicker.tsx
 var import_react21 = require("react");
+var import_class_variance_authority9 = require("class-variance-authority");
 var import_jsx_runtime21 = require("react/jsx-runtime");
-var TimePicker = () => {
-  const currentHour = (/* @__PURE__ */ new Date()).getHours();
-  const currentMinute = (/* @__PURE__ */ new Date()).getMinutes();
+var TimePicker = (0, import_react21.forwardRef)(({ className, ...props }, ref) => {
   const hours = Array.from({ length: 24 }, (_, i) => i);
   const minutes = Array.from({ length: 60 }, (_, i) => i);
-  const extendedHours = [-1, -1, ...hours, 24, 24];
-  const extendedMinutes = [-1, -1, ...minutes, 60, 60];
-  const [selectedHour, setSelectedHour] = (0, import_react21.useState)(currentHour);
-  const [selectedMinute, setSelectedMinute] = (0, import_react21.useState)(currentMinute);
-  const hourContainerRef = (0, import_react21.useRef)(null);
-  const minuteContainerRef = (0, import_react21.useRef)(null);
-  (0, import_react21.useEffect)(() => {
-    if (hourContainerRef.current) {
-      hourContainerRef.current.scrollTop = (currentHour + 1) * 40;
-    }
-    if (minuteContainerRef.current) {
-      minuteContainerRef.current.scrollTop = (currentMinute + 1) * 40;
-    }
-  }, [currentHour, currentMinute]);
-  const getCenterElement = (container, items) => {
-    if (container) {
-      const { scrollTop, clientHeight } = container;
+  const currentHour = (/* @__PURE__ */ new Date()).getHours();
+  const currentMinute = (/* @__PURE__ */ new Date()).getMinutes();
+  const [choosenHour, setChoosenHour] = (0, import_react21.useState)(currentHour);
+  const hourRef = (0, import_react21.useRef)(null);
+  const itemHeight = 40;
+  const handleScroll = () => {
+    if (hourRef.current) {
+      const { scrollTop, clientHeight } = hourRef.current;
       const middle = scrollTop + clientHeight / 2;
-      const itemHeight = 40;
       const index = Math.round(middle / itemHeight);
-      return items[Math.min(Math.max(index, 0), items.length - 1)];
-    }
-    return null;
-  };
-  const handleScroll = (type) => {
-    if (type === "hour") {
-      const hour = getCenterElement(hourContainerRef.current, extendedHours);
-      if (hour !== null && hour !== selectedHour) {
-        setSelectedHour(hour);
-      }
-    } else if (type === "minute") {
-      const minute = getCenterElement(minuteContainerRef.current, extendedMinutes);
-      if (minute !== null && minute !== selectedMinute) {
-        setSelectedMinute(minute);
-      }
+      console.log(!(hours[index] === void 0) && "Item yang di tengah:", hours[index]);
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex flex-col items-center", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex text-center mb-2", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "flex-1 font-semibold text-gray-600", children: "Hour" }),
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "flex-1 font-semibold text-gray-600", children: "Minute" })
-    ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "relative flex items-center space-x-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
-        "div",
-        {
-          className: "relative w-16 overflow-y-auto h-48 snap-y snap-mandatory",
-          ref: hourContainerRef,
-          onScroll: () => handleScroll("hour"),
-          style: { scrollSnapType: "y mandatory" },
-          children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "absolute inset-0", children: extendedHours.map((hour, index) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
-            "div",
-            {
-              className: `p-2 text-center h-10 snap-start transition-all duration-200 ${hour === selectedHour ? "bg-blue-500 text-white" : "bg-white"}`,
-              style: { scrollSnapAlign: "start", color: hour < 0 || hour > 23 ? "white" : "black" },
-              children: hour < 0 || hour > 23 ? "" : hour.toString().padStart(2, "0")
-            },
-            index
-          )) })
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "absolute top-1/2 transform -translate-y-1/2 left-1/2 text-2xl", children: ":" }),
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
-        "div",
-        {
-          className: "relative w-16 overflow-y-auto h-48 snap-y snap-mandatory",
-          ref: minuteContainerRef,
-          onScroll: () => handleScroll("minute"),
-          style: { scrollSnapType: "y mandatory" },
-          children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "absolute inset-0", children: extendedMinutes.map((minute, index) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
-            "div",
-            {
-              className: `p-2 text-center h-10 snap-start transition-all duration-200 ${minute === selectedMinute ? "bg-blue-500 text-white" : "bg-white"}`,
-              style: { scrollSnapAlign: "start", color: minute < 0 || minute > 59 ? "white" : "black" },
-              children: minute < 0 || minute > 59 ? "" : minute.toString().padStart(2, "0")
-            },
-            index
-          )) })
-        }
-      )
-    ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
-      "button",
-      {
-        className: "mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none",
-        onClick: () => alert(`Selected Time: ${selectedHour}:${selectedMinute}`),
-        children: "Get Time"
-      }
-    )
+  function hanndleGetHour() {
+    if (hourRef.current) {
+      const { scrollTop, clientHeight } = hourRef.current;
+      const middle = scrollTop + clientHeight / 2;
+      const index = Math.round(middle / itemHeight);
+      console.log(!(hours[index] === void 0) && "Item yang di tengah:", hours[index]);
+    }
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex flex-row items-center", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { ref: hourRef, onScroll: handleScroll, className: "hours-list flex flex-col h-48 py-[120px] overflow-y-scroll scroll-smooth", style: { overflowY: "scroll", scrollbarWidth: "none", msOverflowStyle: "none" }, children: hours.map((item, key) => /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex py-2 w-14 justify-center text-center", children: [
+      " ",
+      item < 10 ? item.toString().padStart(2, "0") : item,
+      " "
+    ] }, key)) }),
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "h-10", children: ":" }),
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "hours-list flex flex-col h-48 py-[120px] overflow-y-scroll scroll-smooth", style: { overflowY: "scroll", scrollbarWidth: "none", msOverflowStyle: "none" }, children: minutes.map((item, key) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "flex py-2 w-14 justify-center text-center", children: item < 10 ? item.toString().padStart(2, "0") : item }, key)) }),
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(Button, { onClick: hanndleGetHour, children: "Get Time" })
   ] });
-};
+});
 
 // src/components/custom/input/file.tsx
 var import_react22 = require("react");

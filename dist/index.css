@@ -879,18 +879,6 @@ body {
 body {
   font-family: var(--font-family-base);
 }
-.container {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 2rem;
-  padding-left: 2rem;
-}
-@media (min-width: 1400px) {
-  .container {
-    max-width: 1400px;
-  }
-}
 :root {
   --loading-page-size: 160px;
   --loading-page-margin-top: calc(var(--nav-height) + 1.5rem + 4.75rem + 3rem);
@@ -2863,14 +2851,8 @@ textarea {
 .left-0 {
   left: 0px;
 }
-.left-1\/2 {
-  left: 50%;
-}
 .right-0 {
   right: 0px;
-}
-.top-1\/2 {
-  top: 50%;
 }
 .z-10 {
   z-index: 10;
@@ -2881,9 +2863,6 @@ textarea {
 .z-50 {
   z-index: 50;
 }
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -2892,9 +2871,6 @@ textarea {
 }
 .mt-0 {
   margin-top: 0px;
-}
-.mt-4 {
-  margin-top: 1rem;
 }
 .block {
   display: block;
@@ -2945,8 +2921,8 @@ textarea {
 .max-h-96 {
   max-height: 24rem;
 }
-.w-16 {
-  width: 4rem;
+.w-14 {
+  width: 3.5rem;
 }
 .w-4 {
   width: 1rem;
@@ -2959,13 +2935,6 @@ textarea {
 }
 .w-screen {
   width: 100vw;
-}
-.flex-1 {
-  flex: 1 1 0%;
-}
-.-translate-y-1\/2 {
-  --tw-translate-y: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .translate-y-0 {
   --tw-translate-y: 0px;
@@ -3008,15 +2977,6 @@ textarea {
 .resize {
   resize: both;
 }
-.snap-y {
-  scroll-snap-type: y var(--tw-scroll-snap-strictness);
-}
-.snap-mandatory {
-  --tw-scroll-snap-strictness: mandatory;
-}
-.snap-start {
-  scroll-snap-align: start;
-}
 .list-decimal {
   list-style-type: decimal;
 }
@@ -3044,16 +3004,17 @@ textarea {
 .justify-between {
   justify-content: space-between;
 }
-.space-x-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1rem * var(--tw-space-x-reverse));
-  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-}
 .overflow-hidden {
   overflow: hidden;
 }
 .overflow-y-auto {
   overflow-y: auto;
+}
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+.scroll-smooth {
+  scroll-behavior: smooth;
 }
 .rounded {
   border-radius: 0.25rem;
@@ -3071,19 +3032,12 @@ textarea {
 .bg-black-80\/50 {
   background-color: hsl(var(--black-80) / 0.5);
 }
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--text-white) / var(--tw-bg-opacity));
-}
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
 }
 .object-cover {
   -o-object-fit: cover;
   object-fit: cover;
-}
-.p-2 {
-  padding: 0.5rem;
 }
 .p-4 {
   padding: 1rem;
@@ -3110,6 +3064,10 @@ textarea {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+.py-\[120px\] {
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 .pl-5 {
   padding-left: 1.25rem;
@@ -3145,10 +3103,6 @@ textarea {
 .text-muted-foreground {
   --tw-text-opacity: 1;
   color: hsl(var(--muted-foreground) / var(--tw-text-opacity));
-}
-.text-white {
-  --tw-text-opacity: 1;
-  color: hsl(var(--text-white) / var(--tw-text-opacity));
 }
 .opacity-0 {
   opacity: 0;
@@ -3232,9 +3186,6 @@ textarea {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
-.duration-200 {
-  transition-duration: 200ms;
-}
 .duration-300 {
   transition-duration: 300ms;
 }
@@ -3243,22 +3194,6 @@ textarea {
 }
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-.container {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-}
-@media (min-width: 321px) {
-  .container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
-@media (min-width: 768px) {
-  .container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
 }
 .fab {
   position: fixed;
