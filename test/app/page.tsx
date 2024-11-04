@@ -1,6 +1,6 @@
 "use client";
 
-import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ErrorText, ModalBody, ModalFooter, TimePicker, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionItem, AccordionHeader, AccordionGroup, TabGroup, TabItem, Table, InputNumber, FilePicker, HelperText} from "pgdsn";
+import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ErrorText, ModalBody, ModalFooter, TimePicker, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionItem, AccordionHeader, AccordionGroup, TabGroup, TabItem, Table, InputNumber, InputFile, HelperText} from "pgdsn";
 import { useEffect, useState } from "react";
 import DataTable, { TableColumn } from "react-data-table-component";
 
@@ -359,7 +359,7 @@ function executeFetch(): void {
                  File Picker
             </div>
             <InputGroup>
-                <FilePicker file={file} setFile={setFile} ></FilePicker>
+                <InputFile file={file} setFile={setFile} ></InputFile>
             </InputGroup>
           
           </div>

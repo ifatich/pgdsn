@@ -18,4 +18,4 @@ export { AccordionGroup,AccordionBody,AccordionItem, AccordionHeader } from "./u
 export { TabGroup, TabItem } from "./ui/tabs";
 export { Table } from "./ui/table";
 export {TimePicker} from "./ui/timepicker";
-export { FilePicker } from "./ui/filepicker";
+export { InputFile } from "./custom/input/file";

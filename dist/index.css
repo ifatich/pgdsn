@@ -2348,6 +2348,88 @@ textarea {
   --tw-text-opacity: 1;
   color: hsl(var(--lime-50) / var(--tw-text-opacity));
 }
+.file-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.file-container .input-container.file-input-all-filled {
+  min-height: 0px;
+  border-radius: calc(var(--radius) - 2px);
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--lime-40) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--lime-10) / var(--tw-bg-opacity));
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.file-container .input-container.file-input-empty {
+  position: relative;
+  display: flex;
+  min-height: 10rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(var(--radius) - 2px);
+  border-width: 1px;
+  border-style: dashed;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--black-40) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--text-white) / var(--tw-bg-opacity));
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.file-container .input-container input {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+.file-container .input-container input.input-visible {
+  display: block;
+}
+.file-container .input-container input.input-hidden {
+  display: none;
+}
+.file-container .input-container .input-empty-all-instruction {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  vertical-align: middle;
+}
+.file-container .input-container .input-filled-image {
+  position: relative;
+  display: flex;
+  height: 135px;
+  width: 180px;
+  align-items: center;
+  justify-content: center;
+}
+.file-container .input-container .input-filled-image .close-button {
+  position: absolute;
+  right: -0.5rem;
+  top: -0.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--text-white) / var(--tw-bg-opacity));
+}
+.file-container .input-container .input-filled-all {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 .table-search {
   display: flex;
   flex-grow: 1;
@@ -2775,12 +2857,6 @@ textarea {
 .inset-0 {
   inset: 0px;
 }
-.-right-2 {
-  right: -0.5rem;
-}
-.-top-2 {
-  top: -0.5rem;
-}
 .bottom-0 {
   bottom: 0px;
 }
@@ -2792,9 +2868,6 @@ textarea {
 }
 .right-0 {
   right: 0px;
-}
-.top-0 {
-  top: 0px;
 }
 .top-1\/2 {
   top: 50%;
@@ -2856,12 +2929,6 @@ textarea {
 .h-5 {
   height: 1.25rem;
 }
-.h-6 {
-  height: 1.5rem;
-}
-.h-\[135px\] {
-  height: 135px;
-}
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
@@ -2878,12 +2945,6 @@ textarea {
 .max-h-96 {
   max-height: 24rem;
 }
-.min-h-0 {
-  min-height: 0px;
-}
-.min-h-40 {
-  min-height: 10rem;
-}
 .w-16 {
   width: 4rem;
 }
@@ -2892,12 +2953,6 @@ textarea {
 }
 .w-5 {
   width: 1.25rem;
-}
-.w-6 {
-  width: 1.5rem;
-}
-.w-\[180px\] {
-  width: 180px;
 }
 .w-full {
   width: 100%;
@@ -2989,9 +3044,6 @@ textarea {
 .justify-between {
   justify-content: space-between;
 }
-.gap-2 {
-  gap: 0.5rem;
-}
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
@@ -3006,25 +3058,11 @@ textarea {
 .rounded {
   border-radius: 0.25rem;
 }
-.rounded-full {
-  border-radius: 9999px;
-}
 .rounded-md {
   border-radius: calc(var(--radius) - 2px);
 }
 .border {
   border-width: 1px;
-}
-.border-dashed {
-  border-style: dashed;
-}
-.border-black-40 {
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--black-40) / var(--tw-border-opacity));
-}
-.border-lime-40 {
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--lime-40) / var(--tw-border-opacity));
 }
 .bg-background {
   --tw-bg-opacity: 1;
@@ -3032,10 +3070,6 @@ textarea {
 }
 .bg-black-80\/50 {
   background-color: hsl(var(--black-80) / 0.5);
-}
-.bg-lime-10 {
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--lime-10) / var(--tw-bg-opacity));
 }
 .bg-white {
   --tw-bg-opacity: 1;
@@ -3073,10 +3107,6 @@ textarea {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -3086,9 +3116,6 @@ textarea {
 }
 .text-center {
   text-align: center;
-}
-.align-middle {
-  vertical-align: middle;
 }
 .text-omega {
   font-size: var(--12-omega);
