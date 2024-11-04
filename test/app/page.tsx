@@ -359,18 +359,7 @@ function executeFetch(): void {
                  File Picker
             </div>
             <InputGroup>
-                <FilePicker file={file} setFile={() => setFile(file)} variant="image"></FilePicker>
-                {
-                  file
-                  ?
-                    file.size/1000000 > 1
-                    ?
-                    <ErrorText active>File melebihi 1mb</ErrorText>
-                    :
-                    <ErrorText active>File melebihi 1000000mb</ErrorText>
-                  :
-                  <HelperText active>File tidak boleh melebihi 1mb</HelperText> 
-                }
+                <FilePicker file={file} setFile={setFile} ></FilePicker>
             </InputGroup>
           
           </div>
