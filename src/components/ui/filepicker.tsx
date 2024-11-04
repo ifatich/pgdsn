@@ -86,8 +86,10 @@ const FilePicker = forwardRef<
                         </div> 
                         :
                         <div className="w-full relative flex flex-row justify-center items-center">
-                            <strong className="w-full">{file?.name}</strong>
-                            <img className="w-6 h-6" src="https://ifatich4.github.io/img/cross.f902232a.svg" alt="" onClick={handleRemoveFile}/>   
+                            <strong className="w-full">{file.name} - {(file.size/1000000).toFixed(1)} MB</strong>
+                            <svg onClick={handleRemoveFile} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path fillRule="evenodd" clipRule="evenodd" d="M6.64845 5.2298C6.25257 4.90297 5.66557 4.92476 5.29516 5.29516C4.90161 5.68872 4.90161 6.32679 5.29516 6.72034L8.99149 10.4167L5.29516 14.113C4.90161 14.5065 4.90161 15.1446 5.29516 15.5382C5.66557 15.9086 6.25257 15.9304 6.64845 15.6035L6.72034 15.5382L10.4167 11.8418L14.113 15.5382L14.1849 15.6035C14.5808 15.9304 15.1678 15.9086 15.5382 15.5382C15.9317 15.1446 15.9317 14.5065 15.5382 14.113L11.8418 10.4167L15.5382 6.72034C15.9317 6.32679 15.9317 5.68872 15.5382 5.29516C15.1678 4.92476 14.5808 4.90297 14.1849 5.2298L14.113 5.29516L10.4167 8.99149L6.72034 5.29516L6.64845 5.2298Z" fill="#58585B"/>
+                            </svg>
                         </div> 
                 }
 
