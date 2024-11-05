@@ -1,14 +1,15 @@
 import React, { useState, useRef, useEffect, forwardRef } from 'react';
 import { cn } from "../../lib/utils";
 import { Button } from './button';
+import { Input } from './input';
 
 const TimePicker = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
   // Tambahkan -1 di awal dan 99 di akhir untuk padding
-  const hours = [-1, -1, ...Array.from({ length: 24 }, (_, i) => i), 99, 99];
-  const minutes = [-1, -1, ...Array.from({ length: 60 }, (_, i) => i), 99, 99];
+  const hours = [22, 23, ...Array.from({ length: 24 }, (_, i) => i)];
+  const minutes = [58, 59, ...Array.from({ length: 60 }, (_, i) => i), 0, 1];
 
   const currentHour = new Date().getHours();
   const currentMinute = new Date().getMinutes();
@@ -18,6 +19,9 @@ const TimePicker = forwardRef<
   const minuteRef = useRef<HTMLDivElement>(null);
   const itemHeight = 40;
   const initializedRef = useRef(false); // Track if scrollTop is initialized
+  const [isInputHourActive, setInputHourActive] = useState(false)
+  const [inputHourValue, setInputHourValue] = useState(choosenHour)
+  const inputHourRef = useRef<HTMLInputElement>(null); 
 
   useEffect(() => {
     if (hourRef.current ) {
@@ -33,6 +37,7 @@ const TimePicker = forwardRef<
     }
   }, [currentMinute]);
 
+
   const getCenterElement = (container: HTMLDivElement | null, items: number[]) => {
     if (container) {
       const { scrollTop, clientHeight } = container;
@@ -47,6 +52,12 @@ const TimePicker = forwardRef<
     }
     return null;
   };
+
+  useEffect(() => {
+    if(choosenHour != inputHourValue){
+      setInputHourValue(choosenHour)
+   }
+  }, [choosenHour]);
 
   const handleHourScroll = () => {
     const hour = getCenterElement(hourRef.current, hours);
@@ -70,29 +81,64 @@ const TimePicker = forwardRef<
     }
   }
 
+  function handleInputChange(value : string){
+    const regex = /^(\d{1,2})?$/
+
+    if (value === '') {
+      setInputHourValue(0)
+    }else{
+      setInputHourValue(parseInt(value))
+    }
+
+    setTimeout(() => {
+      if (value === '') {
+        setChoosenHour(0)
+      }else{
+        setChoosenHour(parseInt(value))
+      }
+
+      if (hourRef.current) {
+        hourRef.current.scrollTop = parseInt(value) * itemHeight;
+      }
+      setInputHourActive(false)
+    }, 1500)
+    
+    console.log(inputHourValue)
+    
+  }
+
   return (
     <div className='flex flex-row items-center'>
       <div
         ref={hourRef}
         onScroll={handleHourScroll}
-        className="hours-list flex flex-col h-48 overflow-y-scroll scroll-smooth"
+        className={`hours-list flex flex-col h-48 snap-y snap-mandatory ${isInputHourActive? "overflow-hidden " : "overflow-y-scroll scroll-smooth"}`}
         style={{
-          overflowY: 'scroll',
-          scrollSnapType: 'y mandatory', // Enable vertical snapping
           scrollbarWidth: 'none', 
           msOverflowStyle: 'none'
         }}
       >
-        {hours.map((item) => (
+        {hours.map((item, key) => (
           <div
-            className={cn("flex items-center pt-2 w-14 justify-center text-center", 23 === item || item === 0 ? 23 === item ? "pb-[3px]" : "pt-[6px]" : "pb-2", choosenHour === item? "font-bold" : "font-regular",className)}
-            key={item}
+            className={cn("flex items-center py-2 w-16 justify-center text-center", choosenHour === item? "font-bold" : "font-regular", isInputHourActive && "px-2",className)}
+            key={key}
             style={{
               scrollSnapAlign: 'center', // Snap each item to the center
               height: `${itemHeight}px`
             }}
+            onClick={() => setInputHourActive(true)}
           >
-            {item.toString().padStart(2, '0')}
+            
+            {isInputHourActive && choosenHour == item
+            ? 
+            isInputHourActive
+            ?
+            <Input autoFocus ref={inputHourRef} className={`text-center ${isInputHourActive && "border-lime-50"}`} inputSize="sm" value={inputHourValue.toString().padStart(2, '0')} onChange={(e) => handleInputChange(e.target.value)} ></Input>
+            :
+            item.toString().padStart(2, '0')
+            :
+            item.toString().padStart(2, '0')
+            }
           </div>
         ))}
       </div>
@@ -110,7 +156,7 @@ const TimePicker = forwardRef<
       >
         {minutes.map((item, key) => (
           <div
-            className={`flex pt-2 w-14 justify-center text-center items-center ${59 === item || item === 0 ? 59 === item ? "pb-[3px]" : "pt-[6px]" : "pb-2"}`}
+            className={`flex pt-2 w-16 justify-center text-center items-center ${59 === item || item === 0 ? 59 === item ? "pb-[3px]" : "pt-[6px]" : "pb-2"}`}
             style={{
               scrollSnapAlign: 'center',
               height: `${itemHeight}px`

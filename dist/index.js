@@ -1508,8 +1508,8 @@ var Table = ({
 var import_react21 = require("react");
 var import_jsx_runtime21 = require("react/jsx-runtime");
 var TimePicker = (0, import_react21.forwardRef)(({ className, ...props }, ref) => {
-  const hours = [-1, -1, ...Array.from({ length: 24 }, (_, i) => i), 99, 99];
-  const minutes = [-1, -1, ...Array.from({ length: 60 }, (_, i) => i), 99, 99];
+  const hours = [22, 23, ...Array.from({ length: 24 }, (_, i) => i)];
+  const minutes = [58, 59, ...Array.from({ length: 60 }, (_, i) => i), 0, 1];
   const currentHour = (/* @__PURE__ */ new Date()).getHours();
   const currentMinute = (/* @__PURE__ */ new Date()).getMinutes();
   const [choosenHour, setChoosenHour] = (0, import_react21.useState)(currentHour);
@@ -1518,6 +1518,9 @@ var TimePicker = (0, import_react21.forwardRef)(({ className, ...props }, ref) =
   const minuteRef = (0, import_react21.useRef)(null);
   const itemHeight = 40;
   const initializedRef = (0, import_react21.useRef)(false);
+  const [isInputHourActive, setInputHourActive] = (0, import_react21.useState)(false);
+  const [inputHourValue, setInputHourValue] = (0, import_react21.useState)(choosenHour);
+  const inputHourRef = (0, import_react21.useRef)(null);
   (0, import_react21.useEffect)(() => {
     if (hourRef.current) {
       hourRef.current.scrollTop = currentHour * itemHeight;
@@ -1542,6 +1545,11 @@ var TimePicker = (0, import_react21.forwardRef)(({ className, ...props }, ref) =
     }
     return null;
   };
+  (0, import_react21.useEffect)(() => {
+    if (choosenHour != inputHourValue) {
+      setInputHourValue(choosenHour);
+    }
+  }, [choosenHour]);
   const handleHourScroll = () => {
     const hour = getCenterElement(hourRef.current, hours);
     if (hour !== null && hour !== choosenHour) {
@@ -1561,32 +1569,50 @@ var TimePicker = (0, import_react21.forwardRef)(({ className, ...props }, ref) =
       alert(`Selected time: ${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`);
     }
   }
+  function handleInputChange(value) {
+    const regex = /^(\d{1,2})?$/;
+    if (value === "") {
+      setInputHourValue(0);
+    } else {
+      setInputHourValue(parseInt(value));
+    }
+    setTimeout(() => {
+      if (value === "") {
+        setChoosenHour(0);
+      } else {
+        setChoosenHour(parseInt(value));
+      }
+      if (hourRef.current) {
+        hourRef.current.scrollTop = parseInt(value) * itemHeight;
+      }
+      setInputHourActive(false);
+    }, 1500);
+    console.log(inputHourValue);
+  }
   return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "flex flex-row items-center", children: [
     /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
       "div",
       {
         ref: hourRef,
         onScroll: handleHourScroll,
-        className: "hours-list flex flex-col h-48 overflow-y-scroll scroll-smooth",
+        className: `hours-list flex flex-col h-48 snap-y snap-mandatory ${isInputHourActive ? "overflow-hidden " : "overflow-y-scroll scroll-smooth"}`,
         style: {
-          overflowY: "scroll",
-          scrollSnapType: "y mandatory",
-          // Enable vertical snapping
           scrollbarWidth: "none",
           msOverflowStyle: "none"
         },
-        children: hours.map((item) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+        children: hours.map((item, key) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
           "div",
           {
-            className: cn("flex items-center pt-2 w-14 justify-center text-center", 23 === item || item === 0 ? 23 === item ? "pb-[3px]" : "pt-[6px]" : "pb-2", choosenHour === item ? "font-bold" : "font-regular", className),
+            className: cn("flex items-center py-2 w-16 justify-center text-center", choosenHour === item ? "font-bold" : "font-regular", isInputHourActive && "px-2", className),
             style: {
               scrollSnapAlign: "center",
               // Snap each item to the center
               height: `${itemHeight}px`
             },
-            children: item.toString().padStart(2, "0")
+            onClick: () => setInputHourActive(true),
+            children: isInputHourActive && choosenHour == item ? isInputHourActive ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(Input, { autoFocus: true, ref: inputHourRef, className: `text-center ${isInputHourActive && "border-lime-50"}`, inputSize: "sm", value: inputHourValue.toString().padStart(2, "0"), onChange: (e) => handleInputChange(e.target.value) }) : item.toString().padStart(2, "0") : item.toString().padStart(2, "0")
           },
-          item
+          key
         ))
       }
     ),
@@ -1606,7 +1632,7 @@ var TimePicker = (0, import_react21.forwardRef)(({ className, ...props }, ref) =
         children: minutes.map((item, key) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
           "div",
           {
-            className: `flex pt-2 w-14 justify-center text-center items-center ${59 === item || item === 0 ? 59 === item ? "pb-[3px]" : "pt-[6px]" : "pb-2"}`,
+            className: `flex pt-2 w-16 justify-center text-center items-center ${59 === item || item === 0 ? 59 === item ? "pb-[3px]" : "pt-[6px]" : "pb-2"}`,
             style: {
               scrollSnapAlign: "center",
               height: `${itemHeight}px`

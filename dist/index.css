@@ -2933,8 +2933,8 @@ textarea {
 .max-h-96 {
   max-height: 24rem;
 }
-.w-14 {
-  width: 3.5rem;
+.w-16 {
+  width: 4rem;
 }
 .w-4 {
   width: 1rem;
@@ -2989,6 +2989,12 @@ textarea {
 .resize {
   resize: both;
 }
+.snap-y {
+  scroll-snap-type: y var(--tw-scroll-snap-strictness);
+}
+.snap-mandatory {
+  --tw-scroll-snap-strictness: mandatory;
+}
 .list-decimal {
   list-style-type: decimal;
 }
@@ -3037,6 +3043,10 @@ textarea {
 .border {
   border-width: 1px;
 }
+.border-lime-50 {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--lime-50) / var(--tw-border-opacity));
+}
 .bg-background {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--background) / var(--tw-bg-opacity));
@@ -3068,6 +3078,10 @@ textarea {
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 .py-4 {
   padding-top: 1rem;
