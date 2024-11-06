@@ -8,7 +8,7 @@ import { Badge } from "./components/ui/badge";
 import { Breadcumb } from "./components/ui/breadcumb";
 import { ErrorText, HelperText } from "./components/ui/helper-text";
 
-import { Input, inputVariants, Dialog, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogBody, InputSearch  } from "./components";
+import { Input, inputVariants, Dialog, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogBody, InputSearch, TimePickerTry  } from "./components";
 import { Label } from "./components";
 import { InputGroup } from "./components/ui/input";
 import { InputNumber } from "./components/custom/input/number";
@@ -23,6 +23,7 @@ import { TabGroup, TabItem } from "./components";
 import { Table } from "./components/ui/table";
 import {TimePicker} from "./components/ui/timepicker";
 import { InputFile } from "./components/custom/input/file";
+
 
 
 // Export
@@ -80,6 +81,7 @@ export {
 
     DatePicker,
     TimePicker,
+    TimePickerTry,
        
     Toast,
     ToastDescription,

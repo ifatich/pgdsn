@@ -1,6 +1,6 @@
 "use client";
 
-import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ErrorText, ModalBody, ModalFooter, TimePicker, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionItem, AccordionHeader, AccordionGroup, TabGroup, TabItem, Table, InputNumber, InputFile, HelperText} from "pgdsn";
+import {Button, Infotip, InfoTipDescription, InfoTipTitle, Toast, ToastDescription, ToastTitle, Modal, ErrorText, ModalBody, ModalFooter, TimePicker, ModalHeader, Badge, Input, Label, Dialog, DialogOverlay, DialogContent, DialogHeader, DialogDescription, DialogTitle, DialogFooter, DialogBody, InputGroup, InputShortText, DatePicker, Dropdown, InputSearch, ProgressBar, AccordionBody, AccordionItem, AccordionHeader, AccordionGroup, TabGroup, TabItem, Table, InputNumber, InputFile, HelperText, TimePickerTry} from "pgdsn";
 import { useEffect, useState } from "react";
 import DataTable, { TableColumn } from "react-data-table-component";
 
@@ -253,6 +253,7 @@ function executeFetch(): void {
             </div>
             <div className="columns-2 space-y-9">
             <TimePicker></TimePicker>
+            <TimePickerTry></TimePickerTry>
               <Input variant="hover-focus" arrow= "true"  inputSize="lg" />
               <Input variant="hover-focus" inputSize="md" />
               <Input variant="hover-focus" inputSize="sm" />

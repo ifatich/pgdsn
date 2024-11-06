@@ -1,3 +1,5 @@
+
+
 export { Infotip } from "./ui/infotip";
 export { Button } from "./ui/button";
 export { Toast } from "./ui/toast";
@@ -19,3 +21,5 @@ export { TabGroup, TabItem } from "./ui/tabs";
 export { Table } from "./ui/table";
 export {TimePicker} from "./ui/timepicker";
 export { InputFile } from "./custom/input/file";
+export { TimePickerTry } from "./ui/timpicker-try";
+

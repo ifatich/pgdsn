@@ -7,8 +7,8 @@ const TimePicker = forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  // Tambahkan -1 di awal dan 99 di akhir untuk padding
-  const [hourList, setHourList] = useState([...Array.from({ length: 24 }, (_, i) => i)]);
+  const initialHours = [...Array.from({ length: 24 }, (_, i) => i)];
+  const [hourList, setHourList] = useState([...initialHours, ...initialHours, ...initialHours]); // Gandakan data untuk efek infinite
   const minutes = [58, 59, ...Array.from({ length: 60 }, (_, i) => i), 0, 1];
 
   const currentHour = new Date().getHours();
@@ -18,55 +18,51 @@ const TimePicker = forwardRef<
   const hourRef = useRef<HTMLDivElement>(null);
   const minuteRef = useRef<HTMLDivElement>(null);
   const itemHeight = 40;
-  const initializedRef = useRef(false); // Track if scrollTop is initialized
-  const [isInputHourActive, setInputHourActive] = useState(false)
-  const [inputHourValue, setInputHourValue] = useState(choosenHour)
+  const [isInputHourActive, setInputHourActive] = useState(false);
+  const [inputHourValue, setInputHourValue] = useState(choosenHour);
   const inputHourRef = useRef<HTMLInputElement>(null); 
 
-  let timer: string | number | NodeJS.Timeout | undefined
+  let timer: string | number | NodeJS.Timeout | undefined;
 
   useEffect(() => {
-    if (hourRef.current ) {
-      hourRef.current.scrollTop = (currentHour-2) * itemHeight; // Initialize scroll position
-      initializedRef.current = true;
+    if (hourRef.current) {
+      hourRef.current.scrollTop = (currentHour + initialHours.length) * itemHeight;
+      console.log("currentt: "+currentHour)
     }
   }, [currentHour]);
 
   useEffect(() => {
     if (minuteRef.current) {
-      minuteRef.current.scrollTop = (currentMinute) * itemHeight; // Initialize scroll position
-      initializedRef.current = true;
+      minuteRef.current.scrollTop = currentMinute * itemHeight;
     }
   }, [currentMinute]);
-
 
   const getCenterElement = (container: HTMLDivElement | null, items: number[]) => {
     if (container) {
       const { scrollTop, clientHeight } = container;
       const middle = scrollTop + clientHeight / 2;
-      const index = Math.floor(middle / itemHeight);
-      const value = items[Math.min(Math.max(index, 0), items.length - 1)];
-      
-      // Return adjusted value if -1 or 99
-      if (value === -1) return 0;
-      if (value === 99) return 59; // Adjusted for minutes
+      const index = Math.floor(middle / itemHeight) % items.length;
+      const value = items[index];
       return value;
     }
     return null;
   };
 
   const handleHourScroll = () => {
-    const hour = getCenterElement(hourRef.current, hourList);
-
-    if (hour !== null && hour !== choosenHour) {
+    const container = hourRef.current;
+    const hour = getCenterElement(container, hourList);
+    if (container && hour !== null && hour !== choosenHour) {
       setChoosenHour(hour);
-      console.log(hourList)
 
-      if(choosenHour == 2){
-        const newArray = [...Array.from({ length: 24 }, (_, i) => i)]
-        newArray.map((item) => {
-          hourList.unshift(newArray.length-(item+1))
-        })    
+      const scrollTop = container.scrollTop;
+      const scrollHeight = container.scrollHeight;
+      const containerHeight = container.clientHeight;
+
+      // Infinite scroll logic: Jika posisi scroll mendekati bagian atas atau bawah, reset posisi scroll
+      if (scrollTop < containerHeight) {
+        container.scrollTop = scrollTop + initialHours.length * itemHeight;
+      } else if (scrollTop + containerHeight >= scrollHeight - containerHeight) {
+        container.scrollTop = scrollTop - initialHours.length * itemHeight;
       }
     }
   };
@@ -87,84 +83,66 @@ const TimePicker = forwardRef<
   }
 
   useEffect(() => {
-    if(isInputHourActive){
-      setInputHourValue(choosenHour)
-    }else{
-      
+    if (isInputHourActive) {
+      setInputHourValue(choosenHour);
     }
-  },[isInputHourActive])
+  }, [isInputHourActive]);
 
   function handleInputChange(value: string) {
-
-    const validValue = value.substring(0,2)
-
-      // Set nilai input yang difilter (jika kosong, diset ke 0)
+    const validValue = value.substring(0, 2);
     if (value === '') {
-        setInputHourValue(0);
-    } else{
+      setInputHourValue(0);
+    } else {
       setInputHourValue(parseInt(validValue));
     }
 
-    clearTimeout(timer)
-    
+    clearTimeout(timer);
+
     timer = setTimeout(() => {
-  
-        if (parseInt(validValue) > 23) {
-            setInputHourActive(false);
-            return
-        }else if(validValue === '') {
-          setChoosenHour(0);
-        }else {
-            setChoosenHour(parseInt(validValue));
-        }
-
-        // Jika ada referensi elemen, set scrollTop sesuai nilai yang diketik
-        if (hourRef.current && (parseInt(validValue) <= 23)) {
-            hourRef.current.scrollTop = (parseInt(validValue) - 2) * itemHeight  ;
-        }
+      if (parseInt(validValue) > 23) {
         setInputHourActive(false);
-        
-        console.log("validvalue "+validValue);
-        console.log("value "+value);
-        console.log("inputhour "+inputHourValue);
-        console.log("choosenhour "+choosenHour);
-    }, 3000);
-}
+        return;
+      } else if (validValue === '') {
+        setChoosenHour(0);
+      } else {
+        setChoosenHour(parseInt(validValue));
+      }
 
+      if (hourRef.current && parseInt(validValue) <= 23) {
+        hourRef.current.scrollTop = (parseInt(validValue) + initialHours.length) * itemHeight;
+      }
+      setInputHourActive(false);
+    }, 3000);
+  }
 
   return (
-    <div className='flex flex-row items-center'>
+    <div className="flex flex-row items-center">
       <div
         ref={hourRef}
         onScroll={handleHourScroll}
-        className={`hours-list flex flex-col h-48 snap-y snap-mandatory ${isInputHourActive? "overflow-hidden " : "overflow-y-scroll scroll-smooth"}`}
+        className={`hours-list flex flex-col h-48 snap-y snap-mandatory ${isInputHourActive ? "overflow-hidden " : "overflow-y-scroll scroll-smooth"}`}
         style={{
-          scrollbarWidth: 'none', 
+          scrollbarWidth: 'none',
           msOverflowStyle: 'none'
         }}
       >
         {hourList.map((item, key) => (
           <div
-            className={cn("flex items-center py-2 w-16 justify-center text-center", choosenHour === item? "font-bold" : "font-regular", isInputHourActive && "px-2",className)}
+            className={cn("flex items-center py-2 w-16 justify-center text-center", choosenHour === item ? "font-bold" : "font-regular", isInputHourActive && "px-2", className)}
             key={key}
             style={{
-              scrollSnapAlign: 'center', // Snap each item to the center
+              scrollSnapAlign: 'center',
               height: `${itemHeight}px`
             }}
             onClick={() => {
-              setInputHourActive(true)
+              setInputHourActive(true);
             }}
           >
-            
-            {isInputHourActive && choosenHour == item
-            ? 
-            isInputHourActive
-            ?
-            <Input autoFocus ref={inputHourRef} className={`text-center ${isInputHourActive && "border-lime-50"}`} inputSize="sm" value={inputHourValue.toString()} onChange={(e) => handleInputChange(e.target.value)} ></Input>
-            :
-            item.toString().padStart(2, '0')
-            :
-            item.toString().padStart(2, '0')
+            {isInputHourActive && choosenHour === item
+              ? isInputHourActive
+                ? <Input autoFocus ref={inputHourRef} className={`text-center ${isInputHourActive && "border-lime-50"}`} inputSize="sm" value={inputHourValue.toString()} onChange={(e) => handleInputChange(e.target.value)}></Input>
+                : item.toString().padStart(2, '0')
+              : item.toString().padStart(2, '0')
             }
           </div>
         ))}
@@ -177,7 +155,7 @@ const TimePicker = forwardRef<
         style={{
           overflowY: 'scroll',
           scrollSnapType: 'y mandatory',
-          scrollbarWidth: 'none', 
+          scrollbarWidth: 'none',
           msOverflowStyle: 'none'
         }}
       >

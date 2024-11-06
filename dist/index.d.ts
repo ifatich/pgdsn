@@ -204,6 +204,8 @@ interface InputFileProps {
 }
 declare const InputFile: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & InputFileProps & react.RefAttributes<HTMLDivElement>>;
 
+declare const TimePickerTry: () => react_jsx_runtime.JSX.Element;
+
 interface InputProps$2 {
     placeholder: string;
     children?: React.ReactNode;
@@ -239,4 +241,4 @@ interface InputTextProps {
 }
 declare const InputLongText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputTextProps & TextareaHTMLAttributes<HTMLTextAreaElement> & react.RefAttributes<HTMLInputElement>>;
 
-export { AccordionBody, AccordionGroup, AccordionHeader, AccordionItem, Badge, Breadcumb, Button, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputFile, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, TabGroup, TabItem, Table, TimePicker, Toast, ToastDescription, ToastTitle, inputVariants };
+export { AccordionBody, AccordionGroup, AccordionHeader, AccordionItem, Badge, Breadcumb, Button, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputFile, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, TabGroup, TabItem, Table, TimePicker, TimePickerTry, Toast, ToastDescription, ToastTitle, inputVariants };
