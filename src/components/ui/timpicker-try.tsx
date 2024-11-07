@@ -1,11 +1,22 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, forwardRef, } from 'react';
 import { Input } from './input';
 import { Button } from './button';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from './modal';
+import { DialogOverlay } from './dialog';
 
-const TimePickerTry = () => {
-  const currentHour = new Date().getHours();
+interface TimePickerProps {
+    children?: React.ReactNode;
+    isOpen: boolean;
+    onClose: (isOpen : boolean) => void;
+}
+
+const TimePickerTry = forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & TimePickerProps
+>(({ className, isOpen, onClose, ...props }, ref) => {
+    const currentHour = new Date().getHours();
   const currentMinute = new Date().getMinutes();
-  const itemHeight = 40;
+  const itemHeight = 44;
 
   const hours = Array.from({ length: 24 }, (_, i) => i);
   const minutes = Array.from({ length: 60 }, (_, i) => i);
@@ -59,15 +70,15 @@ const TimePickerTry = () => {
       const containerHeight = container.clientHeight;
 
       if (scrollTop === 0) {
-        container.scrollTop = scrollHeight / 2 - 40 * 12;
+        container.scrollTop = scrollHeight / 2 - 40 * 13;
       } else if (scrollTop + containerHeight >= scrollHeight) {
 
         if(scrollHourIndex === 22){
-          container.scrollTop = scrollHeight / 2 + 40 * 32;
+          container.scrollTop = scrollHeight / 2 + 40 * 35;
         }else if(scrollHourIndex === 23){
-          container.scrollTop = scrollHeight / 2 + 40 * 33;
+          container.scrollTop = scrollHeight / 2 + 40 * 36;
         }else{
-          container.scrollTop = scrollHeight / 2 + 40 * 7;
+          container.scrollTop = scrollHeight / 2 + 40 * 8;
         }
         
       }
@@ -88,15 +99,15 @@ const TimePickerTry = () => {
       const containerHeight = container.clientHeight;
 
       if (scrollTop === 0) {
-        container.scrollTop = scrollHeight / 2 - 40 * 30;
+        container.scrollTop = scrollHeight / 2 - 40 * 33;
       } else if (scrollTop + containerHeight >= scrollHeight) {
         
         if(scrollMinuteIndex === 58){
-          container.scrollTop = scrollHeight / 2 + 40 * 26;
+          container.scrollTop = scrollHeight / 2 + 40 * 28.6;
         }else if(scrollMinuteIndex === 59){
-          container.scrollTop = scrollHeight / 2 + 40 * 27;
+          container.scrollTop = scrollHeight / 2 + 40 * 29.7;
         }else{
-          container.scrollTop = scrollHeight / 2 + 40 * 25;
+          container.scrollTop = scrollHeight / 2 + 40 * 29;
         }
       }
 
@@ -175,7 +186,7 @@ const TimePickerTry = () => {
   function handleMinuteInputEnter(e:React.KeyboardEvent<HTMLInputElement>){
     if (e.key === 'Enter') {
       setInputMinuteChangedEnter(true)
-      console.log(inputHourValue)
+      console.log(inputMinuteValue)
       setInputMinuteChanged(true)
     }
    }
@@ -183,7 +194,7 @@ const TimePickerTry = () => {
   useEffect(() => {
     if (isInputMinuteChanged) {
       const parsedValue = parseInt(inputMinuteValue);
-      if (parsedValue >= 0 && parsedValue <= 23) {
+      if (parsedValue >= 0 && parsedValue <= 59) {
         setScrollMinuteIndex(parsedValue);
         if (minuteContainerRef.current) {
           minuteContainerRef.current.scrollTop = (parsedValue + minutes.length - 2) * itemHeight;
@@ -199,104 +210,123 @@ const TimePickerTry = () => {
 
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-      {/* Hour Picker */}
-      <div
-        ref={hourContainerRef}
-        onScroll={handleHourScroll}
-        style={{
-          height: '200px',
-          overflowY: 'scroll',
-          border: '1px solid #ddd',
-          marginRight: '8px'
-        }}
-      >
-    
-        <div>
-          {Array.from({ length: 7 }, (_, i) => (
-            <div key={i} style={{ display: 'flex', flexDirection: 'column' }}>
-              {hours.map((hour) => (
-                <div
-                  key={`${i}-${hour}`}
-                  style={{
-                    height: `${itemHeight}px`,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '18px',
-                    backgroundColor: scrollHourIndex === hour ? '#eee' : 'transparent',
-                  }}
-                  onClick={() => scrollHourIndex === hour && setInputHourActive(true)}
-                >
-                  {isInputHourActive && scrollHourIndex === hour ? (
-                    <Input
-                      maxLength={2}
-                      autoFocus
-                      className={`text-center ${isInputHourActive && "border-lime-50"}`}
-                      inputSize="sm"
-                      value={inputHourValue}
-                      onChange={(e) => handleHourInput(e.target.value)}
-                      ref={inputHourRef}
-                      onKeyDown = {(e) => handleHourInputEnter(e)} 
-                    />
-                  ) : (
-                    hour.toString().padStart(2, '0')
-                  )}
+    <div className='flex flex-col'>
+   <Modal className='w-full sm:w-[360px]' dismiss isOpen={isOpen} onClose={() => onClose}>
+        <ModalHeader>Pilih Waktu</ModalHeader>
+        <ModalBody>
+            <div className="flex flex-row items-center justify-center">
+            {/* Hour Picker */}
+            <div
+                ref={hourContainerRef}
+                onScroll={handleHourScroll}
+                style={{
+                    scrollbarWidth: 'none',
+                    msOverflowStyle: 'none'
+                }}
+                className={`h-[220px] w-[75px] snap-y snap-mandatory overflow-y-scroll`}
+            >
+            
+                <div>
+                {Array.from({ length: 7 }, (_, i) => (
+                    <div key={i} className="flex flex-col">
+                    {hours.map((hour) => (
+                        <div
+                        key={`${i}-${hour}`}
+                        style={{
+                            height: `${itemHeight}px`,
+                        }}
+                        className={`flex items-center justify-center snap-center text-black-80 transition-all duration-200 ease-in-out 
+                            ${scrollHourIndex === hour ? "text-zeta font-bold px-3" : "text-omicron px-0"} 
+                            ${((scrollHourIndex - 1 === hour || scrollHourIndex + 1 === hour) || 
+                            (scrollHourIndex === 0 && (hour === 23 || hour === 1)) || 
+                            (scrollHourIndex === 23 && hour === 0)) && "opacity-50"} 
+                            ${((scrollHourIndex - 2 >= hour || scrollHourIndex + 2 <= hour)) && "opacity-15"} 
+                            
+                            `
+                        }
+                        
+                        onClick={() => scrollHourIndex === hour && setInputHourActive(true)}
+                        >
+                        {isInputHourActive && scrollHourIndex === hour ? (
+                            <Input
+                            maxLength={2}
+                            autoFocus
+                            className={`text-center ${isInputHourActive && "border-lime-50"}`}
+                            inputSize="sm"
+                            value={inputHourValue}
+                            onChange={(e) => handleHourInput(e.target.value)}
+                            ref={inputHourRef}
+                            onKeyDown = {(e) => handleHourInputEnter(e)} 
+                            />
+                        ) : (
+                            hour.toString().padStart(2, '0')
+                        )}
+                        </div>
+                    ))}
+                    </div>
+                ))}
                 </div>
-              ))}
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Minute Picker */}
-      <div
-        ref={minuteContainerRef}
-        onScroll={handleMinuteScroll}
-        style={{
-          height: '200px',
-          overflowY: 'scroll',
-          border: '1px solid #ddd',
-        }}
-      >
-        <div>
-          {Array.from({ length: 7 }, (_, i) => (
-            <div key={i} style={{ display: 'flex', flexDirection: 'column' }}>
-              {minutes.map((minute) => (
-                <div
-                  key={`${i}-${minute}`}
-                  style={{
-                    height: `${itemHeight}px`,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '18px',
-                    backgroundColor: scrollMinuteIndex === minute ? '#eee' : 'transparent',
-                  }}
-                  onClick={() => scrollMinuteIndex === minute && setInputMinuteActive(true)}
-                >
-                  {isInputMinuteActive && scrollMinuteIndex === minute ? (
-                    <Input
-                      maxLength={2}
-                      autoFocus
-                      className={`text-center ${isInputMinuteActive && "border-lime-50"}`}
-                      inputSize="sm"
-                      value={inputMinuteValue}
-                      onChange={(e) => handleMinuteInput(e.target.value)}
-                      onKeyDown = {(e) => handleMinuteInputEnter(e)}
-                    />
-                  ) : (
-                    minute.toString().padStart(2, '0')
-                  )}
+                <div className="font-bold text-lambda flex">
+                    :
                 </div>
-              ))}
+            {/* Minute Picker */}
+            <div
+                ref={minuteContainerRef}
+                onScroll={handleMinuteScroll}
+                style={{
+                    scrollbarWidth: 'none',
+                    msOverflowStyle: 'none'
+                }}
+                className={`h-[220px] w-[75px] snap-y snap-mandatory overflow-y-scroll`}
+            >
+                <div>
+                {Array.from({ length: 7 }, (_, i) => (
+                    <div key={i} style={{ display: 'flex', flexDirection: 'column' }}>
+                    {minutes.map((minute) => (
+                        <div
+                        key={`${i}-${minute}`}
+                        style={{
+                            height: `${itemHeight}px`,
+                        }}
+                        className={`flex items-center justify-center snap-center text-black-80 transition-all duration-200 ease-in-out 
+                            ${scrollMinuteIndex === minute ? "text-zeta font-bold" : "text-omicron"} 
+                            ${((scrollMinuteIndex - 1 === minute || scrollMinuteIndex + 1 === minute) || 
+                            (scrollMinuteIndex === 0 && (minute === 59 || minute === 1)) || 
+                            (scrollMinuteIndex === 59 && minute === 0)) && "opacity-50"} 
+                            ${((scrollMinuteIndex - 2 >= minute || scrollMinuteIndex + 2 <= minute)) && "opacity-15"}`
+                        }
+                        onClick={() => scrollMinuteIndex === minute && setInputMinuteActive(true)}
+                        >
+                        {isInputMinuteActive && scrollMinuteIndex === minute ? (
+                            <Input
+                            maxLength={2}
+                            autoFocus
+                            className={`text-center ${isInputMinuteActive && "border-lime-50"}`}
+                            inputSize="sm"
+                            value={inputMinuteValue}
+                            onChange={(e) => handleMinuteInput(e.target.value)}
+                            onKeyDown = {(e) => handleMinuteInputEnter(e)}
+                            />
+                        ) : (
+                            minute.toString().padStart(2, '0')
+                        )}
+                        </div>
+                    ))}
+                    </div>
+                ))}
+                </div>
             </div>
-          ))}
-        </div>
-      </div>
-      <Button onClick={handleGetTime}>AAA</Button>
+            </div>
+        </ModalBody>
+        <ModalFooter>
+            <Button onClick={handleGetTime} variant={'primary'} size={'md'}>Tetapkan</Button>
+        </ModalFooter>
+   </Modal>
+        
     </div>
+    
   );
-};
+})
 
 export { TimePickerTry };

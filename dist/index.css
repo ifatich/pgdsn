@@ -2917,6 +2917,9 @@ textarea {
 .h-5 {
   height: 1.25rem;
 }
+.h-\[220px\] {
+  height: 220px;
+}
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
@@ -2941,6 +2944,9 @@ textarea {
 }
 .w-5 {
   width: 1.25rem;
+}
+.w-\[75px\] {
+  width: 75px;
 }
 .w-full {
   width: 100%;
@@ -2994,6 +3000,9 @@ textarea {
 }
 .snap-mandatory {
   --tw-scroll-snap-strictness: mandatory;
+}
+.snap-center {
+  scroll-snap-align: center;
 }
 .list-decimal {
   list-style-type: decimal;
@@ -3067,9 +3076,17 @@ textarea {
 .p-6 {
   padding: 1.5rem;
 }
+.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 .px-4 {
   padding-left: 1rem;
@@ -3105,9 +3122,21 @@ textarea {
 .text-center {
   text-align: center;
 }
+.text-lambda {
+  font-size: var(--18-lambda);
+  line-height: var(--18-lambda-line-height);
+}
 .text-omega {
   font-size: var(--12-omega);
   line-height: var(--12-omega-line-height);
+}
+.text-omicron {
+  font-size: var(--16-omicron);
+  line-height: var(--16-omicron-line-height);
+}
+.text-zeta {
+  font-size: var(--24-zeta);
+  line-height: var(--24-zeta-line-height);
 }
 .font-bold {
   font-weight: var(--bold);
@@ -3129,6 +3158,10 @@ textarea {
   --tw-text-opacity: 1;
   color: hsl(var(--black-60) / var(--tw-text-opacity));
 }
+.text-black-80 {
+  --tw-text-opacity: 1;
+  color: hsl(var(--black-80) / var(--tw-text-opacity));
+}
 .text-destructive {
   --tw-text-opacity: 1;
   color: hsl(var(--destructive) / var(--tw-text-opacity));
@@ -3142,6 +3175,9 @@ textarea {
 }
 .opacity-100 {
   opacity: 1;
+}
+.opacity-15 {
+  opacity: 0.15;
 }
 .opacity-50 {
   opacity: 0.5;
@@ -3219,6 +3255,9 @@ textarea {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
+.duration-200 {
+  transition-duration: 200ms;
+}
 .duration-300 {
   transition-duration: 300ms;
 }
@@ -3276,6 +3315,9 @@ textarea {
   }
   .sm\:max-h-48 {
     max-height: 12rem;
+  }
+  .sm\:w-\[360px\] {
+    width: 360px;
   }
   .sm\:max-w-screen-sm {
     max-width: 640px;

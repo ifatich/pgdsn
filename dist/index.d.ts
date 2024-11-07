@@ -204,7 +204,12 @@ interface InputFileProps {
 }
 declare const InputFile: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & InputFileProps & react.RefAttributes<HTMLDivElement>>;
 
-declare const TimePickerTry: () => react_jsx_runtime.JSX.Element;
+interface TimePickerProps {
+    children?: React.ReactNode;
+    isOpen: boolean;
+    onClose: (isOpen: boolean) => void;
+}
+declare const TimePickerTry: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & TimePickerProps & react.RefAttributes<HTMLDivElement>>;
 
 interface InputProps$2 {
     placeholder: string;

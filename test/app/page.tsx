@@ -43,6 +43,8 @@ const handleChange = (value: string) => {
 
 const [isModalOpen, setModalOpen] = useState(false)
 
+const [isTimePickerOpen, setTimePickerOpen] = useState(true)
+
 const [isBadgeOpen, setBadgeOpen] = useState (false)
 
 const [isOpen, setIsOpen] = useState(false);
@@ -277,7 +279,7 @@ useEffect(() => {
             </div>
             <div className="columns-2 space-y-9">
             <TimePicker></TimePicker>
-            <TimePickerTry></TimePickerTry>
+            <TimePickerTry onClose={() => setTimePickerOpen(isTimePickerOpen)} isOpen={isTimePickerOpen}></TimePickerTry>
               <Input variant="hover-focus" arrow= "true"  inputSize="lg" />
               <Input variant="hover-focus" inputSize="md" />
               <Input variant="hover-focus" inputSize="sm" />

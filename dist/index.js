@@ -338,18 +338,14 @@ var Modal = (0, import_react4.forwardRef)(({ className, children, dismiss, isOpe
     if (isOpen) {
       setAnimationState(true);
       preventBodyScroll();
-    } else {
-      setAnimationState(false);
-      restoreBodyScroll();
+    } else if (animationState) {
+      handleClose();
     }
-    return () => {
-      restoreBodyScroll();
-    };
-  }, [isOpen]);
+    return () => restoreBodyScroll();
+  }, [isOpen, animationState]);
   function handleClose() {
     setAnimationState(false);
     if (onClose) setTimeout(() => onClose(), 200);
-    return null;
   }
   function preventBodyScroll() {
     const scrollY = window.scrollY;
@@ -363,12 +359,12 @@ var Modal = (0, import_react4.forwardRef)(({ className, children, dismiss, isOpe
     document.body.style.top = "";
     window.scrollTo(0, scrollY);
   }
-  if (!isOpen && !animationState) return handleClose();
+  if (!isOpen && !animationState) return null;
   return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("div", { className: "fixed inset-0 flex items-center justify-center", children: [
     /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(
       "div",
       {
-        className: cn("overlay", animationState ? "opacity-50" : "opacity-0", className),
+        className: cn("overlay", animationState ? "opacity-50" : "opacity-0"),
         onClick: handleClose,
         ref,
         role: "modal",
@@ -387,7 +383,7 @@ var Modal = (0, import_react4.forwardRef)(({ className, children, dismiss, isOpe
             "svg",
             {
               onClick: handleClose,
-              className: cn(modalHeaderVariant({ dismiss }), className),
+              className: cn(modalHeaderVariant({ dismiss })),
               width: "24",
               height: "24",
               viewBox: "0 0 24 24",
@@ -413,12 +409,12 @@ var Modal = (0, import_react4.forwardRef)(({ className, children, dismiss, isOpe
 });
 Modal.displayName = "modal";
 var ModalHeader = (0, import_react4.forwardRef)(({ className, ...props }, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h4", { ref, ...props, className: cn("modal-header", className) });
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("h4", { ref, ...props, className: cn("modal-header") });
 });
 ModalHeader.displayName = "ModalHeader";
-var ModalBody = (0, import_react4.forwardRef)(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { ref, className: cn("modal-body", className), ...props }));
+var ModalBody = (0, import_react4.forwardRef)(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { ref, className: cn("modal-body"), ...props }));
 ModalBody.displayName = "ModalBody";
-var ModalFooter = (0, import_react4.forwardRef)(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { ref, className: cn("modal-footer", className), ...props }));
+var ModalFooter = (0, import_react4.forwardRef)(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("div", { ref, className: cn("modal-footer"), ...props }));
 ModalFooter.displayName = "ModalFooter";
 
 // src/components/ui/badge.tsx
@@ -1736,10 +1732,10 @@ var InputFile = (0, import_react22.forwardRef)(({ className, file, setFile, chil
 // src/components/ui/timpicker-try.tsx
 var import_react23 = require("react");
 var import_jsx_runtime23 = require("react/jsx-runtime");
-var TimePickerTry = () => {
+var TimePickerTry = (0, import_react23.forwardRef)(({ className, isOpen, onClose, ...props }, ref) => {
   const currentHour = (/* @__PURE__ */ new Date()).getHours();
   const currentMinute = (/* @__PURE__ */ new Date()).getMinutes();
-  const itemHeight = 40;
+  const itemHeight = 44;
   const hours = Array.from({ length: 24 }, (_, i) => i);
   const minutes = Array.from({ length: 60 }, (_, i) => i);
   const [scrollHourIndex, setScrollHourIndex] = (0, import_react23.useState)(currentHour);
@@ -1782,14 +1778,14 @@ var TimePickerTry = () => {
       const scrollHeight = container.scrollHeight;
       const containerHeight = container.clientHeight;
       if (scrollTop === 0) {
-        container.scrollTop = scrollHeight / 2 - 40 * 12;
+        container.scrollTop = scrollHeight / 2 - 40 * 13;
       } else if (scrollTop + containerHeight >= scrollHeight) {
         if (scrollHourIndex === 22) {
-          container.scrollTop = scrollHeight / 2 + 40 * 32;
+          container.scrollTop = scrollHeight / 2 + 40 * 35;
         } else if (scrollHourIndex === 23) {
-          container.scrollTop = scrollHeight / 2 + 40 * 33;
+          container.scrollTop = scrollHeight / 2 + 40 * 36;
         } else {
-          container.scrollTop = scrollHeight / 2 + 40 * 7;
+          container.scrollTop = scrollHeight / 2 + 40 * 8;
         }
       }
       const hour = getCenterElement(container, hours);
@@ -1806,14 +1802,14 @@ var TimePickerTry = () => {
       const scrollHeight = container.scrollHeight;
       const containerHeight = container.clientHeight;
       if (scrollTop === 0) {
-        container.scrollTop = scrollHeight / 2 - 40 * 30;
+        container.scrollTop = scrollHeight / 2 - 40 * 33;
       } else if (scrollTop + containerHeight >= scrollHeight) {
         if (scrollMinuteIndex === 58) {
-          container.scrollTop = scrollHeight / 2 + 40 * 26;
+          container.scrollTop = scrollHeight / 2 + 40 * 28.6;
         } else if (scrollMinuteIndex === 59) {
-          container.scrollTop = scrollHeight / 2 + 40 * 27;
+          container.scrollTop = scrollHeight / 2 + 40 * 29.7;
         } else {
-          container.scrollTop = scrollHeight / 2 + 40 * 25;
+          container.scrollTop = scrollHeight / 2 + 40 * 29;
         }
       }
       const minute = getCenterElement(container, minutes);
@@ -1878,14 +1874,14 @@ var TimePickerTry = () => {
   function handleMinuteInputEnter(e) {
     if (e.key === "Enter") {
       setInputMinuteChangedEnter(true);
-      console.log(inputHourValue);
+      console.log(inputMinuteValue);
       setInputMinuteChanged(true);
     }
   }
   (0, import_react23.useEffect)(() => {
     if (isInputMinuteChanged) {
       const parsedValue = parseInt(inputMinuteValue);
-      if (parsedValue >= 0 && parsedValue <= 23) {
+      if (parsedValue >= 0 && parsedValue <= 59) {
         setScrollMinuteIndex(parsedValue);
         if (minuteContainerRef.current) {
           minuteContainerRef.current.scrollTop = (parsedValue + minutes.length - 2) * itemHeight;
@@ -1897,90 +1893,93 @@ var TimePickerTry = () => {
       setInputMinuteChangedEnter(false);
     }
   }, [isInputMinuteChanged]);
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { style: { display: "flex", flexDirection: "row", alignItems: "center" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
-      "div",
-      {
-        ref: hourContainerRef,
-        onScroll: handleHourScroll,
-        style: {
-          height: "200px",
-          overflowY: "scroll",
-          border: "1px solid #ddd",
-          marginRight: "8px"
-        },
-        children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { children: Array.from({ length: 7 }, (_, i) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { style: { display: "flex", flexDirection: "column" }, children: hours.map((hour) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
-          "div",
-          {
-            style: {
-              height: `${itemHeight}px`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "18px",
-              backgroundColor: scrollHourIndex === hour ? "#eee" : "transparent"
-            },
-            onClick: () => scrollHourIndex === hour && setInputHourActive(true),
-            children: isInputHourActive && scrollHourIndex === hour ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
-              Input,
-              {
-                maxLength: 2,
-                autoFocus: true,
-                className: `text-center ${isInputHourActive && "border-lime-50"}`,
-                inputSize: "sm",
-                value: inputHourValue,
-                onChange: (e) => handleHourInput(e.target.value),
-                ref: inputHourRef,
-                onKeyDown: (e) => handleHourInputEnter(e)
-              }
-            ) : hour.toString().padStart(2, "0")
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "flex flex-col", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(Modal, { className: "w-full sm:w-[360px]", dismiss: true, isOpen, onClose: () => onClose, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(ModalHeader, { children: "Pilih Waktu" }),
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(ModalBody, { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex flex-row items-center justify-center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
+        "div",
+        {
+          ref: hourContainerRef,
+          onScroll: handleHourScroll,
+          style: {
+            scrollbarWidth: "none",
+            msOverflowStyle: "none"
           },
-          `${i}-${hour}`
-        )) }, i)) })
-      }
-    ),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
-      "div",
-      {
-        ref: minuteContainerRef,
-        onScroll: handleMinuteScroll,
-        style: {
-          height: "200px",
-          overflowY: "scroll",
-          border: "1px solid #ddd"
-        },
-        children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { children: Array.from({ length: 7 }, (_, i) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { style: { display: "flex", flexDirection: "column" }, children: minutes.map((minute) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
-          "div",
-          {
-            style: {
-              height: `${itemHeight}px`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "18px",
-              backgroundColor: scrollMinuteIndex === minute ? "#eee" : "transparent"
+          className: `h-[220px] w-[75px] snap-y snap-mandatory overflow-y-scroll`,
+          children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { children: Array.from({ length: 7 }, (_, i) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "flex flex-col", children: hours.map((hour) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
+            "div",
+            {
+              style: {
+                height: `${itemHeight}px`
+              },
+              className: `flex items-center justify-center snap-center text-black-80 transition-all duration-200 ease-in-out 
+                            ${scrollHourIndex === hour ? "text-zeta font-bold px-3" : "text-omicron px-0"} 
+                            ${(scrollHourIndex - 1 === hour || scrollHourIndex + 1 === hour || scrollHourIndex === 0 && (hour === 23 || hour === 1) || scrollHourIndex === 23 && hour === 0) && "opacity-50"} 
+                            ${(scrollHourIndex - 2 >= hour || scrollHourIndex + 2 <= hour) && "opacity-15"} 
+                            
+                            `,
+              onClick: () => scrollHourIndex === hour && setInputHourActive(true),
+              children: isInputHourActive && scrollHourIndex === hour ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
+                Input,
+                {
+                  maxLength: 2,
+                  autoFocus: true,
+                  className: `text-center ${isInputHourActive && "border-lime-50"}`,
+                  inputSize: "sm",
+                  value: inputHourValue,
+                  onChange: (e) => handleHourInput(e.target.value),
+                  ref: inputHourRef,
+                  onKeyDown: (e) => handleHourInputEnter(e)
+                }
+              ) : hour.toString().padStart(2, "0")
             },
-            onClick: () => scrollMinuteIndex === minute && setInputMinuteActive(true),
-            children: isInputMinuteActive && scrollMinuteIndex === minute ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
-              Input,
-              {
-                maxLength: 2,
-                autoFocus: true,
-                className: `text-center ${isInputMinuteActive && "border-lime-50"}`,
-                inputSize: "sm",
-                value: inputMinuteValue,
-                onChange: (e) => handleMinuteInput(e.target.value),
-                onKeyDown: (e) => handleMinuteInputEnter(e)
-              }
-            ) : minute.toString().padStart(2, "0")
+            `${i}-${hour}`
+          )) }, i)) })
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "font-bold text-lambda flex", children: ":" }),
+      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
+        "div",
+        {
+          ref: minuteContainerRef,
+          onScroll: handleMinuteScroll,
+          style: {
+            scrollbarWidth: "none",
+            msOverflowStyle: "none"
           },
-          `${i}-${minute}`
-        )) }, i)) })
-      }
-    ),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Button, { onClick: handleGetTime, children: "AAA" })
-  ] });
-};
+          className: `h-[220px] w-[75px] snap-y snap-mandatory overflow-y-scroll`,
+          children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { children: Array.from({ length: 7 }, (_, i) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { style: { display: "flex", flexDirection: "column" }, children: minutes.map((minute) => /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
+            "div",
+            {
+              style: {
+                height: `${itemHeight}px`
+              },
+              className: `flex items-center justify-center snap-center text-black-80 transition-all duration-200 ease-in-out 
+                            ${scrollMinuteIndex === minute ? "text-zeta font-bold" : "text-omicron"} 
+                            ${(scrollMinuteIndex - 1 === minute || scrollMinuteIndex + 1 === minute || scrollMinuteIndex === 0 && (minute === 59 || minute === 1) || scrollMinuteIndex === 59 && minute === 0) && "opacity-50"} 
+                            ${(scrollMinuteIndex - 2 >= minute || scrollMinuteIndex + 2 <= minute) && "opacity-15"}`,
+              onClick: () => scrollMinuteIndex === minute && setInputMinuteActive(true),
+              children: isInputMinuteActive && scrollMinuteIndex === minute ? /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
+                Input,
+                {
+                  maxLength: 2,
+                  autoFocus: true,
+                  className: `text-center ${isInputMinuteActive && "border-lime-50"}`,
+                  inputSize: "sm",
+                  value: inputMinuteValue,
+                  onChange: (e) => handleMinuteInput(e.target.value),
+                  onKeyDown: (e) => handleMinuteInputEnter(e)
+                }
+              ) : minute.toString().padStart(2, "0")
+            },
+            `${i}-${minute}`
+          )) }, i)) })
+        }
+      )
+    ] }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(ModalFooter, { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Button, { onClick: handleGetTime, variant: "primary", size: "md", children: "Tetapkan" }) })
+  ] }) });
+});
 
 // src/components/custom/input/number.tsx
 var import_react24 = require("react");
