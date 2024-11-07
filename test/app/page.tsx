@@ -16,6 +16,8 @@ const [isToastOpenWarning, setToastOpenWarning] = useState(true)
 
 const [selectedValue, setSelectedValue] = useState<string | null>(null);
 
+
+
 const [activeTab, setActiveTab] = useState(0)
 
 const tabItem = ["Konvensional", "Syariah", "Menu"];
@@ -128,6 +130,28 @@ const columns = [
 function executeFetch(): void {
   throw new Error("Function not implemented.");
 }
+
+const [value, setValue] = useState('');
+
+let time : string | number | NodeJS.Timeout | undefined; 
+
+const handleChangee = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const inputValue = e.target.value.replace(/[^0-9]/g, '').slice(0, 2);
+  setValue(inputValue);
+};
+
+useEffect(() => {
+  // Log nilai `value` hanya setelah pengguna berhenti mengetik (dengan delay 2 detik)
+  if (value) {
+    clearTimeout(time);
+    time = setTimeout(() => {
+      console.log(value); // Nilai `value` yang paling akhir
+    }, 2000);
+  }
+
+  // Bersihkan timeout saat komponen unmount
+  return () => clearTimeout(time);
+}, [value]);
 
 
   return (
@@ -417,6 +441,13 @@ function executeFetch(): void {
             </ModalFooter>
           </Modal>
           }
+              <input
+                type="text"
+                value={value}
+                onChange={handleChangee}
+                maxLength={2}
+                placeholder="00"
+              />
         </div>
     </main>
   );

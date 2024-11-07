@@ -1746,10 +1746,18 @@ var TimePickerTry = () => {
   const [scrollMinuteIndex, setScrollMinuteIndex] = (0, import_react23.useState)(currentMinute);
   const hourContainerRef = (0, import_react23.useRef)(null);
   const minuteContainerRef = (0, import_react23.useRef)(null);
-  const [inputHourValue, setInputHourValue] = (0, import_react23.useState)(scrollHourIndex);
-  const [inputMinuteValue, setInputMinuteValue] = (0, import_react23.useState)(scrollMinuteIndex);
+  const [inputHourValue, setInputHourValue] = (0, import_react23.useState)(scrollHourIndex.toString());
+  const [inputMinuteValue, setInputMinuteValue] = (0, import_react23.useState)(scrollMinuteIndex.toString());
   const [isInputHourActive, setInputHourActive] = (0, import_react23.useState)(false);
   const [isInputMinuteActive, setInputMinuteActive] = (0, import_react23.useState)(false);
+  const inputHourRef = (0, import_react23.useRef)(null);
+  function handleGetTime() {
+    const hour = getCenterElement(hourContainerRef.current, hours);
+    const minute = getCenterElement(minuteContainerRef.current, minutes);
+    if (hour !== null && minute !== null) {
+      alert(`Selected time: ${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`);
+    }
+  }
   (0, import_react23.useEffect)(() => {
     if (hourContainerRef.current) {
       hourContainerRef.current.scrollTop = (currentHour + hours.length - 2) * itemHeight;
@@ -1776,11 +1784,18 @@ var TimePickerTry = () => {
       if (scrollTop === 0) {
         container.scrollTop = scrollHeight / 2 - 40 * 12;
       } else if (scrollTop + containerHeight >= scrollHeight) {
-        container.scrollTop = scrollHeight / 2 + 40 * 7;
+        if (scrollHourIndex === 22) {
+          container.scrollTop = scrollHeight / 2 + 40 * 32;
+        } else if (scrollHourIndex === 23) {
+          container.scrollTop = scrollHeight / 2 + 40 * 33;
+        } else {
+          container.scrollTop = scrollHeight / 2 + 40 * 7;
+        }
       }
       const hour = getCenterElement(container, hours);
       if (hour != null) {
         setScrollHourIndex(hour);
+        setInputHourValue(hour.toString());
       }
     }
   };
@@ -1793,47 +1808,95 @@ var TimePickerTry = () => {
       if (scrollTop === 0) {
         container.scrollTop = scrollHeight / 2 - 40 * 30;
       } else if (scrollTop + containerHeight >= scrollHeight) {
-        container.scrollTop = scrollHeight / 2 + 40 * 30;
+        if (scrollMinuteIndex === 58) {
+          container.scrollTop = scrollHeight / 2 + 40 * 26;
+        } else if (scrollMinuteIndex === 59) {
+          container.scrollTop = scrollHeight / 2 + 40 * 27;
+        } else {
+          container.scrollTop = scrollHeight / 2 + 40 * 25;
+        }
       }
       const minute = getCenterElement(container, minutes);
       if (minute != null) {
         setScrollMinuteIndex(minute);
+        setInputMinuteValue(minute.toString());
       }
     }
   };
-  function handleHourInput(e) {
-    const parsedValue = parseInt(e);
-    const validformat = isNaN(parsedValue) ? 0 : parsedValue;
-    setInputHourValue(validformat);
-    setTimeout(() => {
-      if (validformat >= 0 && validformat <= 23) {
-        setScrollHourIndex(validformat);
-        if (hourContainerRef.current) {
-          hourContainerRef.current.scrollTop = (validformat + hours.length - 2) * itemHeight;
-        }
-      } else {
-        return;
-      }
-      console.log(validformat);
-      setInputHourActive(false);
+  let timerHour;
+  let timerMinute;
+  const [isInputHourChanged, setInputHourChanged] = (0, import_react23.useState)(false);
+  const [isInputMinuteChanged, setInputMinuteChanged] = (0, import_react23.useState)(false);
+  const [isInputHourChangedEnter, setInputHourChangedEnter] = (0, import_react23.useState)(false);
+  const [isInputMinuteChangedEnter, setInputMinuteChangedEnter] = (0, import_react23.useState)(false);
+  const handleHourInput = (value) => {
+    const inputValue = value.replace(/[^0-9]/g, "").slice(0, 2);
+    console.log("inputvalue: " + inputValue);
+    setInputHourValue(inputValue);
+    if (isInputHourChangedEnter) {
+      return;
+    }
+    clearTimeout(timerHour);
+    timerHour = setTimeout(() => {
+      setInputHourChanged(true);
     }, 2e3);
-  }
-  function handleMinuteInput(e) {
-    const parsedValue = parseInt(e);
-    const validformat = isNaN(parsedValue) ? 0 : parsedValue;
-    setInputMinuteValue(validformat);
-    if (validformat >= 0 && validformat <= 59) {
-      setTimeout(() => {
-        setScrollMinuteIndex(validformat);
-        if (minuteContainerRef.current) {
-          minuteContainerRef.current.scrollTop = (validformat + minutes.length - 2) * itemHeight;
+  };
+  (0, import_react23.useEffect)(() => {
+    if (isInputHourChanged) {
+      const parsedValue = parseInt(inputHourValue);
+      if (parsedValue >= 0 && parsedValue <= 23) {
+        setScrollHourIndex(parsedValue);
+        if (hourContainerRef.current) {
+          hourContainerRef.current.scrollTop = (parsedValue + hours.length - 2) * itemHeight;
         }
-        setInputMinuteActive(false);
-      }, 2e3);
-    } else {
-      setTimeout(() => setInputMinuteActive(false), 2e3);
+        console.log("valid format: " + parsedValue);
+      }
+      setInputHourActive(false);
+      setInputHourChanged(false);
+      setInputHourChangedEnter(false);
+    }
+  }, [isInputHourChanged]);
+  function handleHourInputEnter(e) {
+    if (e.key === "Enter") {
+      setInputHourChangedEnter(true);
+      console.log(inputHourValue);
+      setInputHourChanged(true);
     }
   }
+  function handleMinuteInput(value) {
+    const inputValue = value.replace(/[^0-9]/g, "").slice(0, 2);
+    console.log("inputvalue: " + inputValue);
+    setInputMinuteValue(inputValue);
+    if (isInputMinuteChangedEnter) {
+      return;
+    }
+    clearTimeout(timerMinute);
+    timerMinute = setTimeout(() => {
+      setInputMinuteChanged(true);
+    }, 2e3);
+  }
+  function handleMinuteInputEnter(e) {
+    if (e.key === "Enter") {
+      setInputMinuteChangedEnter(true);
+      console.log(inputHourValue);
+      setInputMinuteChanged(true);
+    }
+  }
+  (0, import_react23.useEffect)(() => {
+    if (isInputMinuteChanged) {
+      const parsedValue = parseInt(inputMinuteValue);
+      if (parsedValue >= 0 && parsedValue <= 23) {
+        setScrollMinuteIndex(parsedValue);
+        if (minuteContainerRef.current) {
+          minuteContainerRef.current.scrollTop = (parsedValue + minutes.length - 2) * itemHeight;
+        }
+        console.log("valid format: " + parsedValue);
+      }
+      setInputMinuteActive(false);
+      setInputMinuteChanged(false);
+      setInputMinuteChangedEnter(false);
+    }
+  }, [isInputMinuteChanged]);
   return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { style: { display: "flex", flexDirection: "row", alignItems: "center" }, children: [
     /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
       "div",
@@ -1866,7 +1929,9 @@ var TimePickerTry = () => {
                 className: `text-center ${isInputHourActive && "border-lime-50"}`,
                 inputSize: "sm",
                 value: inputHourValue,
-                onChange: (e) => handleHourInput(e.target.value)
+                onChange: (e) => handleHourInput(e.target.value),
+                ref: inputHourRef,
+                onKeyDown: (e) => handleHourInputEnter(e)
               }
             ) : hour.toString().padStart(2, "0")
           },
@@ -1904,14 +1969,16 @@ var TimePickerTry = () => {
                 className: `text-center ${isInputMinuteActive && "border-lime-50"}`,
                 inputSize: "sm",
                 value: inputMinuteValue,
-                onChange: (e) => handleMinuteInput(e.target.value)
+                onChange: (e) => handleMinuteInput(e.target.value),
+                onKeyDown: (e) => handleMinuteInputEnter(e)
               }
             ) : minute.toString().padStart(2, "0")
           },
           `${i}-${minute}`
         )) }, i)) })
       }
-    )
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Button, { onClick: handleGetTime, children: "AAA" })
   ] });
 };
 
