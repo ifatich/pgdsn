@@ -212,7 +212,7 @@ const TimePickerTry = forwardRef<
   return (
     <div className='flex flex-col'>
    <Modal className='w-full sm:w-[360px]' dismiss isOpen={isOpen} onClose={() => onClose}>
-        <ModalHeader>Pilih Waktu</ModalHeader>
+        <ModalHeader onClick={() => onClose(false)}>Pilih Waktu</ModalHeader>
         <ModalBody>
             <div className="flex flex-row items-center justify-center">
             {/* Hour Picker */}

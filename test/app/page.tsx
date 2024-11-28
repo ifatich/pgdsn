@@ -43,7 +43,7 @@ const handleChange = (value: string) => {
 
 const [isModalOpen, setModalOpen] = useState(false)
 
-const [isTimePickerOpen, setTimePickerOpen] = useState(true)
+const [isTimePickerOpen, setTimePickerOpen] = useState(false)
 
 const [isBadgeOpen, setBadgeOpen] = useState (false)
 
@@ -163,6 +163,7 @@ useEffect(() => {
 
           <div className="col-span-12 gap-4 flex flex-row py-4">
             <Button onClick={()=> setModalOpen(true)} variant="primary">Open Modal</Button>
+            <Button onClick={()=> setTimePickerOpen(true)} variant="primary">Open TimePicker</Button>
           </div>
 
           <div className="col-span-6 bg-white rounded-md shadow-md p-4 border-black-20 border">
@@ -279,7 +280,7 @@ useEffect(() => {
             </div>
             <div className="columns-2 space-y-9">
             <TimePicker></TimePicker>
-            <TimePickerTry onClose={() => setTimePickerOpen(isTimePickerOpen)} isOpen={isTimePickerOpen}></TimePickerTry>
+            <TimePickerTry onClose={setTimePickerOpen} isOpen={isTimePickerOpen}></TimePickerTry>
               <Input variant="hover-focus" arrow= "true"  inputSize="lg" />
               <Input variant="hover-focus" inputSize="md" />
               <Input variant="hover-focus" inputSize="sm" />

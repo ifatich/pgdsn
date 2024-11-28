@@ -1894,7 +1894,7 @@ var TimePickerTry = (0, import_react23.forwardRef)(({ className, isOpen, onClose
     }
   }, [isInputMinuteChanged]);
   return /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "flex flex-col", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(Modal, { className: "w-full sm:w-[360px]", dismiss: true, isOpen, onClose: () => onClose, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(ModalHeader, { children: "Pilih Waktu" }),
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(ModalHeader, { onClick: () => onClose(false), children: "Pilih Waktu" }),
     /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(ModalBody, { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex flex-row items-center justify-center", children: [
       /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
         "div",
