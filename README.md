@@ -1,46 +1,141 @@
-# Getting Started with Create React App
+# kitvue - Pegadaian Design System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting started
 
-## Available Scripts
+```
+npm install git+https://repo.pegadaian.co.id/client/pegadaian-ui-kit-vue.git
+```
 
-In the project directory, you can run :
+# Configuration
+Add sass plugin
 
-### `npm start`
+```
+vue add style-resource-loader
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+On your vue config add
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+const { defineConfig } = require('@vue/cli-service')
+module.exports = defineConfig({
+  transpileDependencies: ['bootstrap-vue'],
 
-### `npm test`
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'scss',
+      patterns: []
+    }
+  }
+})
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Spesific on line 
+```
+transpileDependencies: ['bootstrap-vue'],
 
-### `npm run build`
+pluginOptions: {
+    'style-resources-loader': {
+        preProcessor: 'scss',
+        patterns: []
+    }
+}
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Berkontribusi Pada Kitvue
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`kitvue` merupakan sebuah library komponen UI yang dapat mendukung pengembagan proyek IT di Pegadaian. Library ini menggunakan basis teknologi framework Vue versi 3.4.7, dan Bootstrap versi 5.3.2.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Branches
 
-### `npm run eject`
+Kami menggunakan dua branch utama dalam pengembangan proyek ini:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **`master`:** Branch yang berisikan library dengan versi yang stabil dan dapat digunakan untuk di publish menjadi sebuah package di artifactory pegadaian.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **`dev-update-component`:** Branch yang digunakan sebagai branch pengembangan utama. Semua fitur baru dan perbaikan akan di-review di sini sebelum akan di-merge ke branch `master`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Kontribusi
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Kami sangat menyambut kontribusi dari developer lain untuk menambahkan komponen baru, memperbaiki styling, atau melakukan bug fixing pada komponen yang ada.
 
-## Learn More
+### Langkah-Langkah Kontribusi
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Fork dan Clone Repository**
+   - Fork repository `kitvue` ke akun GitHub kamu.
+   - Clone repository fork kamu:
+     ```bash
+     git clone https://repo.pegadaian.co.id/client/pegadaian-ui-kit-vue.git
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+     cd pegadaian-ui-kit-vue
+     ```
+
+2. **Checkout Branch `dev-update-component`**
+   - Pastikan kamu selalu bekerja dari branch pengembangan, `dev-update-component`:
+     ```bash
+     git checkout dev-update-component
+     ```
+
+3. **Buat Branch Baru dari `dev-update-component`**
+   - **Untuk Penambahan Komponen Baru:**
+     - Buat branch baru dengan penamaan `dev-add-(nama-komponen)`:
+     - Contoh jika kamu melakukan penambahan komponen button : 
+       ```bash
+       git checkout -b dev-add-button
+       ```
+
+   - **Untuk Update atau Bug Fixing Komponen yang Ada:**
+     - Buat branch baru dengan penamaan `dev-update-(nama-komponen)`:
+     - Contoh jika kamu melakukan penambahan komponen button : 
+       ```bash
+       git checkout -b dev-update-button
+       ```
+
+4. **Mulai Pengembangan**
+   - **Penambahan Komponen Baru:**
+     - Tambahkan komponen baru sesuai dengan standar kode yang telah disepakati.
+     - Pastikan untuk menulis komentar dan menambahkan dokumentasi yang relevan.
+  
+   - **Update atau Bug Fixing:**
+     - Perbaiki bug atau update styling komponen yang ada.
+     - Tambahkan komentar untuk memastikan perubahan tersebut.
+
+5. **Commit dan Push**
+   - Buat commit yang jelas dan deskriptif:
+     ```bash
+     git commit -m "Add Button component with primary and secondary variants"
+     git push origin dev-add-button
+     ```
+
+6. **Buka Merge Request (MR)**
+   - Setelah selesai, buka Merge Request ke branch `dev-update-component`.
+   - Tambahkan deskripsi mengenai perubahan dan penambahan yang kamu lakukan.
+
+7. **Code Review**
+   - Kode kamu akan di-review oleh **Engineer** dan **Designer Team Pegadaian Design**.
+   - Jika ada catatan, lakukan perbaikan berdasarkan umpan balik yang diberikan.
+
+8. **Merge ke `dev-update-component`**
+   - Setelah review selesai, request akan di-merge ke `dev-update-component`.
+
+# Penting Diperhatikan 
+## Penamaan Branch
+
+- **Penambahan Komponen Baru:**
+  - Branch name: `dev-add-(nama-komponen)`
+  - Contoh: `dev-add-button`, `dev-add-modal`
+
+- **Perbaikan atau Update Komponen yang Ada:**
+  - Branch name: `dev-update-(nama-komponen)`
+  - Contoh: `dev-update-button`, `dev-update-card`
+
+### Praktik Terbaik
+
+- **Coding Style:** Ikuti pedoman coding style yang ada dalam proyek ini.
+- **Test:** Selalu tambahkan atau perbarui unit tests untuk memastikan kode yang kamu tambahkan atau ubah berfungsi dengan baik.
+- **Dokumentasi:** Jangan lupa untuk menambahkan atau memperbarui dokumentasi jika kamu menambahkan fitur baru atau mengubah yang sudah ada.
+- **Jaga Kualitas:** Semua kode harus melalui proses review dan testing sebelum di-merge ke branch `dev-update-component`.
+
+---
+
+Terima kasih telah berkontribusi ke `kitvue`! Kami sangat menghargai usaha dan waktu yang kamu luangkan untuk membuat proyek ini menjadi lebih baik.
+- **Love, Regard and Cheers. Happy Development**
+- **♡ Pegadaian Design ♡**
