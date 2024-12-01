@@ -7,15 +7,13 @@ const Overlay = React.forwardRef<
 
 	return (
 		<div
-			data-sonner-toast
 			ref={ref}
 			role="overlay"
-			className={`overlay `}
+			className="w-full h-full bg-black-80/50"
 			{...props}
 		>
-			<div className="w-full h-full bg-black-80/50">
-					{children}
-			</div>
 		</div>
 	)
 })
+
+export {Overlay}

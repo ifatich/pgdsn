@@ -214,6 +214,10 @@
         select{
             @apply outline-none;
 
+            &:hover{
+                @apply cursor-pointer
+            }
+
             &:focus{
                 @apply border border-lime-50
             }
@@ -231,6 +235,7 @@
         }
 
         .rows-per-page{
+
             @apply flex justify-between items-center;
         }
 

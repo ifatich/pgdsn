@@ -2,7 +2,6 @@ import { useState, useRef, useEffect, forwardRef, } from 'react';
 import { Input } from './input';
 import { Button } from './button';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from './modal';
-import { DialogOverlay } from './dialog';
 
 interface TimePickerProps {
     children?: React.ReactNode;
@@ -43,14 +42,21 @@ const TimePickerTry = forwardRef<
     }
   }
 
-  useEffect(() => {
+const [hasInitialized, setHasInitialized] = useState(false);
+
+useEffect(() => {
+  if (isOpen) {
     if (hourContainerRef.current) {
       hourContainerRef.current.scrollTop = ((currentHour + hours.length - 2) * itemHeight);
     }
     if (minuteContainerRef.current) {
       minuteContainerRef.current.scrollTop = ((currentMinute + minutes.length - 2) * itemHeight);
     }
-  }, []);
+    setHasInitialized(true) 
+  }else{
+     setHasInitialized(false) 
+  }
+}, [isOpen, hasInitialized]);
 
   const getCenterElement = (container: HTMLDivElement | null, items: number[]) => {
     if (container) {
@@ -207,12 +213,10 @@ const TimePickerTry = forwardRef<
     }
   }, [isInputMinuteChanged]);
 
-
-
   return (
     <div className='flex flex-col'>
-   <Modal className='w-full sm:w-[360px]' dismiss isOpen={isOpen} onClose={() => onClose}>
-        <ModalHeader onClick={() => onClose(false)}>Pilih Waktu</ModalHeader>
+   <Modal className='w-full sm:w-[360px]' isOpen={isOpen} setOpen={onClose}>
+        <ModalHeader setOpen={onClose} dismiss>Pilih Waktu</ModalHeader>
         <ModalBody>
             <div className="flex flex-row items-center justify-center">
             {/* Hour Picker */}

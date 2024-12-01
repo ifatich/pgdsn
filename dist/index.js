@@ -919,20 +919,31 @@ var modalHeaderVariant = (0, import_class_variance_authority7.cva)("", {
     dismiss: false
   }
 });
-var Modal = (0, import_react14.forwardRef)(({ className, children, dismiss, isOpen, onClose, ...props }, ref) => {
+var ModalContext = (0, import_react14.createContext)(void 0);
+function getModalContext() {
+  let context = (0, import_react14.useContext)(ModalContext);
+  if (context === void 0) {
+    throw Error("Modal undefined");
+  }
+  return context;
+}
+var Modal = (0, import_react14.forwardRef)(({ className, children, isOpen, setOpen, ...props }, ref) => {
   const [animationState, setAnimationState] = (0, import_react14.useState)(false);
+  const [isModalOpen, setModalOpen] = (0, import_react14.useState)(false);
   (0, import_react14.useEffect)(() => {
     if (isOpen) {
-      setAnimationState(true);
+      setModalOpen(true);
+      setTimeout(() => setAnimationState(true), 200);
       preventBodyScroll();
-    } else if (animationState) {
-      handleClose();
+    } else {
+      setAnimationState(false);
+      setTimeout(() => setModalOpen(false), 200);
     }
     return () => restoreBodyScroll();
-  }, [isOpen, animationState]);
+  }, [isOpen]);
   function handleClose() {
     setAnimationState(false);
-    if (onClose) setTimeout(() => onClose(), 200);
+    setOpen(false);
   }
   function preventBodyScroll() {
     const scrollY = window.scrollY;
@@ -946,8 +957,8 @@ var Modal = (0, import_react14.forwardRef)(({ className, children, dismiss, isOp
     document.body.style.top = "";
     window.scrollTo(0, scrollY);
   }
-  if (!isOpen && !animationState) return null;
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "fixed inset-0 flex items-center justify-center", children: [
+  if (isModalOpen === false) return null;
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ModalContext.Provider, { value: { animationState, setAnimationState }, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "fixed inset-0 flex items-center justify-center", children: [
     /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
       "div",
       {
@@ -958,45 +969,50 @@ var Modal = (0, import_react14.forwardRef)(({ className, children, dismiss, isOp
         ...props
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
       "div",
       {
         ref,
         role: "modal",
-        className: cn("modal", animationState ? "animation-enter" : "animation-exit", className),
+        className: cn("modal", animationState ? "animation-enter" : "animation-exit", "sm:w-[360px]", className),
         ...props,
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
-            "svg",
-            {
-              onClick: handleClose,
-              className: cn(modalHeaderVariant({ dismiss })),
-              width: "24",
-              height: "24",
-              viewBox: "0 0 24 24",
-              fill: "none",
-              xmlns: "http://www.w3.org/2000/svg",
-              children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("g", { id: "filled=false", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
-                "path",
-                {
-                  id: "Combined Shape",
-                  fillRule: "evenodd",
-                  clipRule: "evenodd",
-                  d: "M17.0219 6.27576C17.4969 5.88357 18.2013 5.90971 18.6458 6.3542C19.1181 6.82646 19.1181 7.59215 18.6458 8.06441L14.2102 12.5L18.6458 16.9356C19.1181 17.4079 19.1181 18.1735 18.6458 18.6458C18.2013 19.0903 17.4969 19.1164 17.0219 18.7242L16.9356 18.6458L12.5 14.2102L8.06441 18.6458L7.97814 18.7242C7.50308 19.1164 6.79868 19.0903 6.3542 18.6458C5.88193 18.1735 5.88193 17.4079 6.3542 16.9356L10.7898 12.5L6.3542 8.06441C5.88193 7.59215 5.88193 6.82646 6.3542 6.3542C6.79868 5.90971 7.50308 5.88357 7.97814 6.27576L8.06441 6.3542L12.5 10.7898L16.9356 6.3542L17.0219 6.27576Z",
-                  fill: "#58585B"
-                }
-              ) })
-            }
-          ),
-          children
-        ]
+        children
+      }
+    )
+  ] }) });
+});
+Modal.displayName = "modal";
+var ModalHeader = (0, import_react14.forwardRef)(({ className, setOpen, dismiss, children, ...props }, ref) => {
+  const { animationState, setAnimationState } = getModalContext();
+  function handleClose() {
+    setAnimationState(false);
+    setOpen(false);
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: cn("modal-header", import_react14.Children.count(children) == 0 && "border-b-0 pb-0"), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h4", { className: cn("w-full"), ref, ...props, children }),
+    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+      "svg",
+      {
+        onClick: handleClose,
+        className: cn(modalHeaderVariant({ dismiss })),
+        width: "24",
+        height: "24",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        xmlns: "http://www.w3.org/2000/svg",
+        children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("g", { id: "filled=false", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+          "path",
+          {
+            id: "Combined Shape",
+            fillRule: "evenodd",
+            clipRule: "evenodd",
+            d: "M17.0219 6.27576C17.4969 5.88357 18.2013 5.90971 18.6458 6.3542C19.1181 6.82646 19.1181 7.59215 18.6458 8.06441L14.2102 12.5L18.6458 16.9356C19.1181 17.4079 19.1181 18.1735 18.6458 18.6458C18.2013 19.0903 17.4969 19.1164 17.0219 18.7242L16.9356 18.6458L12.5 14.2102L8.06441 18.6458L7.97814 18.7242C7.50308 19.1164 6.79868 19.0903 6.3542 18.6458C5.88193 18.1735 5.88193 17.4079 6.3542 16.9356L10.7898 12.5L6.3542 8.06441C5.88193 7.59215 5.88193 6.82646 6.3542 6.3542C6.79868 5.90971 7.50308 5.88357 7.97814 6.27576L8.06441 6.3542L12.5 10.7898L16.9356 6.3542L17.0219 6.27576Z",
+            fill: "#58585B"
+          }
+        ) })
       }
     )
   ] });
-});
-Modal.displayName = "modal";
-var ModalHeader = (0, import_react14.forwardRef)(({ className, ...props }, ref) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h4", { ref, ...props, className: cn("modal-header") });
 });
 ModalHeader.displayName = "ModalHeader";
 var ModalBody = (0, import_react14.forwardRef)(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { ref, className: cn("modal-body"), ...props }));
@@ -1454,14 +1470,20 @@ var TimePickerTry = (0, import_react20.forwardRef)(({ className, isOpen, onClose
       alert(`Selected time: ${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`);
     }
   }
+  const [hasInitialized, setHasInitialized] = (0, import_react20.useState)(false);
   (0, import_react20.useEffect)(() => {
-    if (hourContainerRef.current) {
-      hourContainerRef.current.scrollTop = (currentHour + hours.length - 2) * itemHeight;
+    if (isOpen) {
+      if (hourContainerRef.current) {
+        hourContainerRef.current.scrollTop = (currentHour + hours.length - 2) * itemHeight;
+      }
+      if (minuteContainerRef.current) {
+        minuteContainerRef.current.scrollTop = (currentMinute + minutes.length - 2) * itemHeight;
+      }
+      setHasInitialized(true);
+    } else {
+      setHasInitialized(false);
     }
-    if (minuteContainerRef.current) {
-      minuteContainerRef.current.scrollTop = (currentMinute + minutes.length - 2) * itemHeight;
-    }
-  }, []);
+  }, [isOpen, hasInitialized]);
   const getCenterElement = (container, items) => {
     if (container) {
       const { scrollTop, clientHeight } = container;
@@ -1593,8 +1615,8 @@ var TimePickerTry = (0, import_react20.forwardRef)(({ className, isOpen, onClose
       setInputMinuteChangedEnter(false);
     }
   }, [isInputMinuteChanged]);
-  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "flex flex-col", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(Modal, { className: "w-full sm:w-[360px]", dismiss: true, isOpen, onClose: () => onClose, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(ModalHeader, { onClick: () => onClose(false), children: "Pilih Waktu" }),
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "flex flex-col", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(Modal, { className: "w-full sm:w-[360px]", isOpen, setOpen: onClose, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(ModalHeader, { setOpen: onClose, dismiss: true, children: "Pilih Waktu" }),
     /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(ModalBody, { children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "flex flex-row items-center justify-center", children: [
       /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
         "div",
@@ -2018,7 +2040,7 @@ var InputFile = (0, import_react24.forwardRef)(({ className, file, setFile, chil
   function handleRemoveFile() {
     setFile(void 0);
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "file-container", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: cn("file-container", className), children: [
     /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
       "div",
       {

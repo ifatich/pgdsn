@@ -1,8 +1,9 @@
 import { forwardRef, useState, useRef } from "react";
 import { ErrorText, HelperText } from "../../ui/helper-text";
+import { cn } from "../../../lib/utils";
 
 interface InputFileProps{
-     variant?: "image" | "default";
+     variant?: "image" | "document";
      fileSize? : number;
      file: File | undefined;
      setFile : (file: File | undefined) => void;
@@ -40,7 +41,7 @@ const InputFile = forwardRef<
   }
 
   return (
-    <div className="file-container">
+    <div className={cn("file-container", className)}>
         <div
         className={
             !(variant === "image") && 

@@ -432,9 +432,17 @@ export default function Home() {
                     <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
                         File Picker
                     </div>
-                    <InputGroup>
-                        <InputFile file={file} setFile={setFile} ></InputFile>
-                    </InputGroup>
+                    <div className="flex flex-row gap-9">
+                      <InputGroup className="w-full">
+                          <InputFile variant="image" file={file} setFile={setFile} ></InputFile>
+                      </InputGroup>
+
+                      <InputGroup>
+                        <InputFile variant="document" file={file} setFile={setFile} ></InputFile>
+                      </InputGroup>
+
+                    </div>
+                    
                 </div>
 
                 <div className="col-span-6">
@@ -455,11 +463,10 @@ export default function Home() {
             </div>
             
             <div className="modal-group gap-4 flex flex-col p-4 ">
-                {
-                    isModalOpen &&
-                    <Modal dismiss={true} onClose={()=> setModalOpen(!isModalOpen)} isOpen={isModalOpen}>
+               
+                    <Modal setOpen={setModalOpen} isOpen={isModalOpen}>
 
-                        <ModalHeader> Pilih Pembayaran </ModalHeader>
+                        <ModalHeader className="border-none" dismiss setOpen={setModalOpen}>Konfirmasi</ModalHeader>
 
                         <ModalBody>
                             <img src="https://reactjs.org/logo-og.png" alt="" />
@@ -480,11 +487,11 @@ export default function Home() {
 
                         <ModalFooter>
                             <Button variant={'secondary'} size={'md'}>Open Mobile Toast</Button>
-                            <Button variant={'primary'} size={'md'}>Open Mobile Toast</Button>
+                            <Button variant={'primary'} size={'md'} onClick={() => setModalOpen(false)}>Open Mobile Toast</Button>
                         </ModalFooter>
 
                     </Modal>
-                }
+       
                 <input
                     type="text"
                     value={value}

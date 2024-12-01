@@ -7,6 +7,10 @@
     .accordion-item{
         @apply rounded-md bg-white border border-black-20 flex flex-col ;
 
+        &:hover{
+            @apply cursor-pointer
+        }
+
         .accordion-header{
             @apply flex flex-row gap-3 p-3;
 

@@ -143,7 +143,7 @@
             @apply bg-black-20 border-r-black-40
         }
     }
-
+    
     .unit-input-right {
         @apply bg-black-10 px-3 py-2 rounded-r-md right-0 border-l border-l-black-20 text-black-60 w-[100px] text-center;
 
@@ -153,6 +153,6 @@
     }
 
     .input-group{
-        @apply flex flex-col
+        @apply flex flex-col w-full
     }
 }

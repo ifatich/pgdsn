@@ -131,12 +131,16 @@ declare const List: react.ForwardRefExoticComponent<HTMLAttributes<HTMLOListElem
 interface ModalProps {
     children: React.ReactNode;
     isOpen: boolean;
-    onClose: () => void;
+    setOpen: (isOpen: boolean) => void;
 }
-declare const Modal: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & ModalProps & VariantProps<(props?: ({
+declare const Modal: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & ModalProps & react.RefAttributes<HTMLDivElement>>;
+interface ModalHeaderProps {
+    setOpen: (isOpen: boolean) => void;
+    children?: React.ReactNode;
+}
+declare const ModalHeader: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLHeadingElement> & ModalHeaderProps & VariantProps<(props?: ({
     dismiss?: boolean | null | undefined;
 } & class_variance_authority_dist_types.ClassProp) | undefined) => string> & react.RefAttributes<HTMLDivElement>>;
-declare const ModalHeader: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLHeadingElement> & react.RefAttributes<HTMLDivElement>>;
 declare const ModalBody: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLHeadingElement> & react.RefAttributes<HTMLDivElement>>;
 declare const ModalFooter: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLHeadingElement> & react.RefAttributes<HTMLDivElement>>;
 
@@ -205,7 +209,7 @@ interface DropdownProps {
 declare const Dropdown: React.FC<DropdownProps>;
 
 interface InputFileProps {
-    variant?: "image" | "default";
+    variant?: "image" | "document";
     fileSize?: number;
     file: File | undefined;
     setFile: (file: File | undefined) => void;

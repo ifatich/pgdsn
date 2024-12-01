@@ -15,6 +15,10 @@
             input{
                 @apply absolute w-full h-full opacity-0 top-0 left-0;
 
+                &:hover{
+                    @apply cursor-pointer;
+                }
+
                 &.input-visible{
                     @apply block;
                 }
