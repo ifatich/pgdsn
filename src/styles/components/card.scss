@@ -1,29 +1,48 @@
 @layer components {
-    .card {
-        @apply rounded-lg border bg-card text-card-foreground shadow-sm;
 
-        &__header {
-            @apply flex flex-col p-6 mb-3;
+    .card {
+        @apply rounded-lg border bg-card text-card-foreground shadow-sm overflow-hidden;
+
+        &.card-feature{
+
+            .card__header {
+                @apply flex flex-col p-6;
+            }
+
+            .card__content {
+                @apply p-6 pt-0;
+            }
+    
+            .card__footer {
+                @apply flex items-center p-6 pt-0 mt-3;
+            }
         }
 
+        &.card-default{
+            .card__header {
+                @apply flex flex-col;
+            }
+    
+            .card__content {
+                @apply p-4;
+            }
+    
+            .card__footer {
+                @apply flex items-center px-4 pb-4;
+            }
+        }
+      
+
         &__title {
-            @apply text-epsilon font-bold tracking-tight;
+            @apply text-kappa font-bold tracking-tight mb-2;
         }
 
         &__description {
-            @apply text-omicron font-regular text-foreground-tertiary;
+            @apply text-sigma font-regular text-foreground-tertiary;
 
             &--highlight {
                 @apply text-omicron font-bold text-primary-on-text;
             }
-        }
-
-        &__content {
-            @apply p-6 pt-0;
-        }
-
-        &__footer {
-            @apply flex items-center p-6 pt-0 mt-3;
         }
     }
 }

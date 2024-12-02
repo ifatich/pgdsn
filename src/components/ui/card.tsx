@@ -1,14 +1,29 @@
+import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "../../lib/utils"
 import { forwardRef, type HTMLAttributes } from "react"
 
+const cardVariant = cva("card", {
+    variants: {
+        variant: {
+            default: "card-default",
+            feature: "card-feature"
+        },
+    },
+    defaultVariants: {
+        variant: "default"
+    }
+}
+)
 
-const Card = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(({
+
+const Card = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement> & {variant? : "default" | "feature"}>(({
+    variant,
     className,
     ...props
 }, ref) => (
     <div
         ref={ref}
-        className={cn("card", className)}
+        className={cn(cardVariant({variant}), className)}
         {...props}
     />
 ))

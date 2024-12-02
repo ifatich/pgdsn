@@ -50,6 +50,18 @@ interface ButtonPropsType extends ButtonHTMLAttributes<HTMLButtonElement>, Varia
 }
 declare const Button: react.ForwardRefExoticComponent<ButtonPropsType & react.RefAttributes<HTMLButtonElement>>;
 
+declare const Card: react.ForwardRefExoticComponent<HTMLAttributes<HTMLDivElement> & {
+    variant?: "default" | "feature";
+} & react.RefAttributes<HTMLDivElement>>;
+declare const CardHeader: react.ForwardRefExoticComponent<HTMLAttributes<HTMLDivElement> & react.RefAttributes<HTMLDivElement>>;
+declare const CardTitle: react.ForwardRefExoticComponent<HTMLAttributes<HTMLHeadingElement> & react.RefAttributes<HTMLParagraphElement>>;
+interface CardDescriptionPropsType extends HTMLAttributes<HTMLParagraphElement> {
+    highlight?: boolean;
+}
+declare const CardDescription: react.ForwardRefExoticComponent<CardDescriptionPropsType & react.RefAttributes<HTMLParagraphElement>>;
+declare const CardContent: react.ForwardRefExoticComponent<HTMLAttributes<HTMLDivElement> & react.RefAttributes<HTMLDivElement>>;
+declare const CardFooter: react.ForwardRefExoticComponent<HTMLAttributes<HTMLDivElement> & react.RefAttributes<HTMLDivElement>>;
+
 interface CheckProps {
     id: string;
     name: string;
@@ -59,6 +71,13 @@ interface CheckProps {
     className?: string;
 }
 declare const Check: react__default.FC<CheckProps>;
+interface BoxProps {
+    title: string;
+    subtitle?: string;
+    onClick?: (checked: boolean) => void;
+}
+type CheckBoxProps = CheckProps & BoxProps;
+declare const CheckBox: react__default.FC<CheckBoxProps>;
 
 interface DatePickerProps {
     selectedDateString: string;
@@ -76,7 +95,6 @@ interface DialogOverlayProps extends DialogProps {
 }
 declare const DialogOverlay: react.ForwardRefExoticComponent<DialogOverlayProps & react.RefAttributes<HTMLDivElement>>;
 interface DialogContentProps extends DialogProps {
-    onClose?: () => void;
 }
 declare const DialogContent: react.ForwardRefExoticComponent<DialogContentProps & react.RefAttributes<HTMLDivElement>>;
 declare const DialogClose: react.ForwardRefExoticComponent<Omit<react.DetailedHTMLProps<react.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, "ref"> & react.RefAttributes<HTMLButtonElement>>;
@@ -260,4 +278,4 @@ interface InputTextProps {
 }
 declare const InputShortText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLInputElement> & InputTextProps & react.RefAttributes<HTMLInputElement>>;
 
-export { AccordionBody, AccordionGroup, AccordionHeader, AccordionItem, Badge, Breadcumb, Button, Check, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputFile, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, TabGroup, TabItem, Table, TimePicker, TimePickerTry, Toast, ToastDescription, ToastTitle, inputVariants };
+export { AccordionBody, AccordionGroup, AccordionHeader, AccordionItem, Badge, Breadcumb, Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Check, CheckBox, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputFile, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, TabGroup, TabItem, Table, TimePicker, TimePickerTry, Toast, ToastDescription, ToastTitle, inputVariants };

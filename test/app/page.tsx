@@ -7,7 +7,14 @@ import {
     AccordionItem,
     Badge,
     Button,
+    Card,
+    CardHeader,
+    CardFooter,
+    CardTitle,
+    CardDescription,
+    CardContent,
     Check,
+    CheckBox,
     DatePicker,
     Dialog,
     DialogBody,
@@ -295,18 +302,6 @@ export default function Home() {
                         </div>
                         <ProgressBar value={15}></ProgressBar>
                     </div>
-                    <div className="bg-white rounded-md shadow-md p-4 border-black-20 border">
-                        <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
-                            Checkbox
-                        </div>
-                        <Check
-                            id="candidates"
-                            name="candidates"
-                            checked={isChecked}
-                            onChange={(checked) => setIsChecked(checked)}
-                            disabled={false}
-                        />
-                    </div>
                 </div>
 
                 <div className="col-span-12 bg-white rounded-md shadow-md p-4 border-black-20 border">
@@ -366,7 +361,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="col-span-12 bg-white rounded-md shadow-md p-4 border-black-20 border">
+                <div className="col-span-6 bg-white rounded-md shadow-md p-4 border-black-20 border">
                     <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
                         Accordion
                     </div>
@@ -398,6 +393,76 @@ export default function Home() {
                             </AccordionBody>
                         </AccordionItem>
                     </AccordionGroup> 
+                </div>
+
+                <div className="col-span-12 bg-white rounded-md shadow-md p-4 border-black-20 border flex flex-col gap-3">
+                    <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
+                        Card
+                    </div>
+                    <div className="flex flex-row gap-3">
+                    <Card variant="feature" className="w-full h-fit">
+                        <CardHeader>
+                            <img className="rounded-full w-12 h-12 object-cover " src="https://reactjs.org/logo-og.png" alt="Logo"/>
+                        </CardHeader>
+                        <CardContent>
+                            <CardTitle>Karir</CardTitle>
+                            <CardDescription>
+                              Bangun perekonomian masyarakat Indonesia melalui kemampuanmu bersama Pegadaian. Indonesia melalui kemampuanmu 
+                            </CardDescription>
+                        </CardContent>
+                    </Card>
+
+                    <Card variant="default" className="w-full">
+                        <CardHeader>
+                            <img className="h-[180px] object-cover" src="https://bucket.pegadaian.co.id/design-system-salt-bucket/assets/images/banner.png" alt="Logo"></img>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="text-[14px] opacity-25 mb-4">08 November 2024</div>
+                            <CardTitle>Karir</CardTitle>
+                            <CardDescription>
+                              Bangun perekonomian masyarakat Indonesia melalui kemampuanmu bersama Pegadaian. Indonesia melalui kemampuanmu 
+                            </CardDescription>
+                        </CardContent>
+                        <CardFooter>
+                          <Button className="w-full">ClickHere</Button>
+                        </CardFooter>
+                    </Card>
+                    </div>
+                    
+                </div>
+
+                <div className="col-span-6 bg-white rounded-md shadow-md p-4 border-black-20 border flex flex-col gap-3">
+                    <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
+                        Checkbox
+                    </div>
+                    <Check
+                            id="candidates"
+                            name="candidates"
+                            checked={isChecked}
+                            onChange={(checked) => setIsChecked(checked)}
+                            disabled={false}
+                        />
+
+                          <CheckBox 
+                              id="candidates2"
+                              name="candidates"
+                              checked={isChecked}
+                              onChange={(checked) => setIsChecked(checked)}
+                              onClick={setIsChecked}
+                              disabled={false}
+                              title="Ini adalah Checkbox1"
+                              subtitle="Ini adalah Checkbox1"
+                          />
+                          <CheckBox 
+                                id="candidates1"
+                                name="candidates"
+                                checked={isChecked}
+                                onChange={(checked) => setIsChecked(checked)}
+                                onClick={setIsChecked}
+                                disabled={true}
+                                title="Ini adalah Checkbox2"
+                            />
+
                 </div>
 
                 <div className="col-span-12 bg-white rounded-md shadow-md p-4 border-black-20 border">
@@ -432,7 +497,7 @@ export default function Home() {
                     <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
                         File Picker
                     </div>
-                    <div className="flex flex-row gap-9">
+                    <div className="flex sm:flex-row flex-col gap-9">
                       <InputGroup className="w-full">
                           <InputFile variant="image" file={file} setFile={setFile} ></InputFile>
                       </InputGroup>
@@ -444,6 +509,7 @@ export default function Home() {
                     </div>
                     
                 </div>
+
 
                 <div className="col-span-6">
                     <Button onClick={openDialog}>Buka Dialog</Button>

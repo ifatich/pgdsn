@@ -5,6 +5,7 @@ export { Breadcumb } from "./ui/breadcumb";
 export { Button } from "./ui/button";
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from "./ui/card";
 export { Check } from "./ui/check";
+export { CheckBox } from "./ui/check";
 export { DatePicker } from "./ui/date";
 export { Dialog, DialogOverlay, DialogClose, DialogContent, DialogHeader, DialogFooter, DialogTitle, DialogDescription, DialogBody } from "./ui/dialog";
 export { ErrorText, HelperText } from "./ui/helper-text";

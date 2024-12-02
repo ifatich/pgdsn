@@ -37,7 +37,14 @@ __export(src_exports, {
   Badge: () => Badge,
   Breadcumb: () => Breadcumb,
   Button: () => Button,
+  Card: () => Card,
+  CardContent: () => CardContent,
+  CardDescription: () => CardDescription,
+  CardFooter: () => CardFooter,
+  CardHeader: () => CardHeader,
+  CardTitle: () => CardTitle,
   Check: () => Check,
+  CheckBox: () => CheckBox,
   DatePicker: () => DatePicker,
   Dialog: () => Dialog,
   DialogBody: () => DialogBody,
@@ -338,16 +345,32 @@ var Button = (0, import_react4.forwardRef)(({
 Button.displayName = "Button";
 
 // src/components/ui/card.tsx
+var import_class_variance_authority3 = require("class-variance-authority");
 var import_react5 = require("react");
 var import_jsx_runtime5 = require("react/jsx-runtime");
+var cardVariant = (0, import_class_variance_authority3.cva)(
+  "card",
+  {
+    variants: {
+      variant: {
+        default: "card-default",
+        feature: "card-feature"
+      }
+    },
+    defaultVariants: {
+      variant: "default"
+    }
+  }
+);
 var Card = (0, import_react5.forwardRef)(({
+  variant,
   className,
   ...props
 }, ref) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
   "div",
   {
     ref,
-    className: cn("card", className),
+    className: cn(cardVariant({ variant }), className),
     ...props
   }
 ));
@@ -435,8 +458,8 @@ var Check = ({
         name,
         type: "checkbox",
         className: `peer h-6 w-6 cursor-pointer transition-all appearance-none rounded-md border border-slate-300
-                        ${checked ? "z-10 border-lime-50" : "bg-white"} 
-                        ${disabled ? "opacity-50 cursor-not-allowed" : "hover:border-lime-50"}
+                        ${checked ? "z-10" : "bg-white"} 
+                        ${disabled ? "opacity-50 cursor-not-allowed" : "hover:border-lime-60"}
                     `,
         checked,
         onChange: handleCheckboxChange,
@@ -449,9 +472,10 @@ var Check = ({
         className: "absolute bg-lime-50 rounded",
         width: "20",
         height: "20",
-        viewBox: "0 0 20 20",
+        viewBox: "-2 -2 24 24",
         fill: "none",
         xmlns: "http://www.w3.org/2000/svg",
+        preserveAspectRatio: "xMidYMid meet",
         children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
           "path",
           {
@@ -464,6 +488,51 @@ var Check = ({
       }
     )
   ] }) });
+};
+var CheckBox = ({
+  id,
+  name,
+  checked = false,
+  onChange,
+  disabled = false,
+  className = "",
+  subtitle,
+  title,
+  onClick
+}) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(
+    "div",
+    {
+      className: cn(
+        "checkbox",
+        checked && !disabled ? "border-lime-50 bg-lime-10" : "border-black-20",
+        className
+      ),
+      onClick: () => {
+        if (onClick && !disabled) onClick(!checked);
+      },
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+          Check,
+          {
+            id,
+            name,
+            checked: !disabled && checked,
+            onChange: (checked2) => {
+              if (onChange && !disabled) {
+                onChange(checked2);
+              }
+            },
+            disabled
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex flex-col gap-[2px]", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: `checkbox-title ${disabled ? "text-black-60" : "text-black-80"}`, children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { className: `checkbox-subtitle ${disabled ? "text-black-50" : "text-black-60"}`, children: subtitle })
+        ] })
+      ]
+    }
+  );
 };
 
 // src/components/ui/date.tsx
@@ -770,10 +839,10 @@ var HelperText = (0, import_react9.forwardRef)(({ className, children, active, .
 });
 
 // src/components/ui/infotip.tsx
-var import_class_variance_authority3 = require("class-variance-authority");
+var import_class_variance_authority4 = require("class-variance-authority");
 var import_react10 = require("react");
 var import_jsx_runtime10 = require("react/jsx-runtime");
-var infotipVariants = (0, import_class_variance_authority3.cva)(
+var infotipVariants = (0, import_class_variance_authority4.cva)(
   "infotip",
   {
     variants: {
@@ -827,10 +896,10 @@ var InfoTipDescription = (0, import_react10.forwardRef)(({ className, ...props }
 InfoTipDescription.displayName = "InfoTipDescription";
 
 // src/components/ui/input.tsx
-var import_class_variance_authority4 = require("class-variance-authority");
+var import_class_variance_authority5 = require("class-variance-authority");
 var import_react11 = require("react");
 var import_jsx_runtime11 = require("react/jsx-runtime");
-var inputVariants = (0, import_class_variance_authority4.cva)("input", {
+var inputVariants = (0, import_class_variance_authority5.cva)("input", {
   variants: {
     inputSize: {
       md: "input--md",
@@ -861,10 +930,10 @@ var InputGroup = (0, import_react11.forwardRef)(({ className, children, title, .
 });
 
 // src/components/ui/label.tsx
-var import_class_variance_authority5 = require("class-variance-authority");
+var import_class_variance_authority6 = require("class-variance-authority");
 var import_react12 = require("react");
 var import_jsx_runtime12 = require("react/jsx-runtime");
-var labelVariants = (0, import_class_variance_authority5.cva)("form__label");
+var labelVariants = (0, import_class_variance_authority6.cva)("form__label");
 var Label = (0, import_react12.forwardRef)(({
   className,
   ...props
@@ -872,10 +941,10 @@ var Label = (0, import_react12.forwardRef)(({
 Label.displayName = "Label";
 
 // src/components/ui/list.tsx
-var import_class_variance_authority6 = require("class-variance-authority");
+var import_class_variance_authority7 = require("class-variance-authority");
 var import_react13 = require("react");
 var import_jsx_runtime13 = require("react/jsx-runtime");
-var listVariants = (0, import_class_variance_authority6.cva)("list", {
+var listVariants = (0, import_class_variance_authority7.cva)("list", {
   variants: {
     size: {
       sm: "text-sm",
@@ -905,10 +974,10 @@ var List = (0, import_react13.forwardRef)(
 List.displayName = "List";
 
 // src/components/ui/modal.tsx
-var import_class_variance_authority7 = require("class-variance-authority");
+var import_class_variance_authority8 = require("class-variance-authority");
 var import_react14 = require("react");
 var import_jsx_runtime14 = require("react/jsx-runtime");
-var modalHeaderVariant = (0, import_class_variance_authority7.cva)("", {
+var modalHeaderVariant = (0, import_class_variance_authority8.cva)("", {
   variants: {
     dismiss: {
       true: "modal-dismiss",
@@ -1705,9 +1774,9 @@ var TimePickerTry = (0, import_react20.forwardRef)(({ className, isOpen, onClose
 
 // src/components/ui/toast.tsx
 var import_react21 = require("react");
-var import_class_variance_authority8 = require("class-variance-authority");
+var import_class_variance_authority9 = require("class-variance-authority");
 var import_jsx_runtime21 = require("react/jsx-runtime");
-var toastVariants = (0, import_class_variance_authority8.cva)(
+var toastVariants = (0, import_class_variance_authority9.cva)(
   "toast",
   {
     variants: {
@@ -2040,7 +2109,7 @@ var InputFile = (0, import_react24.forwardRef)(({ className, file, setFile, chil
   function handleRemoveFile() {
     setFile(void 0);
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: cn("file-container", className), children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "file-container", children: [
     /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
       "div",
       {
@@ -2059,8 +2128,10 @@ var InputFile = (0, import_react24.forwardRef)(({ className, file, setFile, chil
           ),
           file === void 0 ? variant === "image" ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: "https://ifatich4.github.io/img/ico-image-upload.1e0a3166.svg", alt: "Upload Icon" }) : /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "input-empty-all-instruction", children: [
             /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("svg", { xmlns: "http://www.w3.org/2000/svg", width: "20", height: "20", viewBox: "0 0 20 20", fill: "none", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M10.1635 2.62254C9.91883 2.441 9.57161 2.46117 9.34972 2.68306L5.18306 6.84972L5.12254 6.91982C4.941 7.1645 4.96117 7.51172 5.18306 7.73361L5.25316 7.79412C5.49783 7.97567 5.84505 7.9555 6.06694 7.73361L9.16667 4.63412V11.875L9.17237 11.9598C9.21376 12.2649 9.47525 12.5 9.79167 12.5C10.1368 12.5 10.4167 12.2202 10.4167 11.875V4.63412L13.5164 7.73361L13.5865 7.79412C13.8312 7.97567 14.1784 7.9555 14.4003 7.73361C14.6444 7.48953 14.6444 7.0938 14.4003 6.84972L10.2336 2.68306L10.1635 2.62254ZM16.8571 12.0833C17.1826 12.0833 17.4516 12.3185 17.4941 12.6235L17.5 12.7083V16.875C17.5 17.1914 17.2582 17.4529 16.9444 17.4943L16.8571 17.5H3.14286C2.8174 17.5 2.54844 17.2649 2.50587 16.9598L2.5 16.875V12.7083C2.5 12.3632 2.78782 12.0833 3.14286 12.0833C3.46831 12.0833 3.73728 12.3185 3.77985 12.6235L3.78571 12.7083V16.25H16.2143V12.7083C16.2143 12.3919 16.4561 12.1304 16.7699 12.089L16.8571 12.0833Z", fill: "#00AB4E" }) }),
-            "Tarik file ke sini atau ",
-            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { children: "pilih dari perangkat" })
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { children: [
+              "Tarik file ke sini atau ",
+              /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("strong", { children: "pilih dari perangkat" })
+            ] })
           ] }) : variant === "image" ? /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "input-filled-image", children: [
             /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "close-button", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { className: "w-full h-full rounded-md", src: "https://ifatich4.github.io/img/cross.f902232a.svg", alt: "", onClick: handleRemoveFile }) }),
             /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { className: "object-cover w-full h-full rounded-md", src: file ? URL.createObjectURL(file) : "", alt: "Choosen File" })
@@ -2156,7 +2227,14 @@ var InputNumber = (0, import_react26.forwardRef)(({ className, placeholder, setE
   Badge,
   Breadcumb,
   Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
   Check,
+  CheckBox,
   DatePicker,
   Dialog,
   DialogBody,

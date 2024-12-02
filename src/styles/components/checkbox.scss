@@ -1,0 +1,29 @@
+@layer components {
+    .checkbox{
+        @apply flex flex-row gap-2 border p-3 rounded-md ;
+
+        &:hover{
+            @apply border border-lime-50 cursor-pointer;
+
+            &:has(:disabled){
+                @apply border-black-20 cursor-not-allowed;
+
+                .checkbox-title{
+                    @apply text-black-60;
+                }
+            }
+
+            .checkbox-title{
+                @apply text-lime-60;
+            }
+        }
+
+        .checkbox-title{
+            @apply text-omicron;
+        }
+
+        .checkbox-subtitle{
+            @apply text-omega;
+        }
+    }
+}

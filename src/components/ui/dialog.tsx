@@ -59,7 +59,7 @@ const DialogOverlay = forwardRef<ElementRef<"div">, DialogOverlayProps>(({
 DialogOverlay.displayName = "DialogOverlay"
 
 interface DialogContentProps extends DialogProps {
-    onClose?: () => void;
+  
 }
 
 const DialogContent = forwardRef<ElementRef<"div">, DialogContentProps>(({

@@ -9,7 +9,14 @@ import {
     Badge,
     Breadcumb,
     Button,
+    Card,
+    CardHeader,
+    CardFooter,
+    CardTitle,
+    CardDescription,
+    CardContent,
     Check,
+    CheckBox,
     DatePicker,
     Dialog,
     DialogBody,
@@ -64,7 +71,14 @@ export {
     Breadcumb,
     
     // C
+    Card,
+    CardHeader,
+    CardFooter,
+    CardTitle,
+    CardDescription,
+    CardContent,
     Check,
+    CheckBox,
 
     // D
     Dialog,

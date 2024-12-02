@@ -26,5 +26,6 @@
 @import "/components/progress-bar.scss";
 @import "/components/accordion.scss";
 @import "/components/tab.scss";
+@import "/components/checkbox.scss";
 @import "/components/custom/file.scss";
 
