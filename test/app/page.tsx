@@ -35,6 +35,7 @@ import {
     ModalFooter,
     ModalHeader,
     ProgressBar,
+    Radio,
     TabGroup,
     TabItem,
     Table,
@@ -68,6 +69,7 @@ export default function Home() {
     const [inputValue2, setInputValue2] = useState("")
     const [file, setFile] = useState<File | undefined>(undefined);
     const [isChecked, setIsChecked] = useState(false);
+    const [isCheckeds, setIsCheckeds] = useState<string | null>(null);
     const [value, setValue] = useState('');
     const tabItem = ["Konvensional", "Syariah", "Menu"];
 
@@ -300,10 +302,27 @@ export default function Home() {
                             Checkbox
                         </div>
                         <Check
+                            className="mb-3"
                             id="candidates"
                             name="candidates"
                             checked={isChecked}
                             onChange={(checked) => setIsChecked(checked)}
+                            disabled={false}
+                        />
+                        <Label>Radio</Label>
+                        <Radio
+                            id="candidate1" // Unique ID
+                            name="candidateGroup" // Shared name for the group
+                            checked={isCheckeds === 'candidate1'} // Check if this radio's value is selected
+                            onChange={(checked) => setIsCheckeds(checked ? 'candidate1' : null)} // Update state with the selected value or null
+                            disabled={false}
+                        />
+                        <Radio
+                            className="mt-3"
+                            id="candidate2" // Unique ID
+                            name="candidateGroup" // Shared name for the group
+                            checked={isCheckeds === 'candidate2'} // Check if this radio's value is selected
+                            onChange={(checked) => setIsCheckeds(checked ? 'candidate2' : null)} // Update state with the selected value or null
                             disabled={false}
                         />
                     </div>

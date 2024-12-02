@@ -3073,6 +3073,9 @@ textarea {
 .rounded {
   border-radius: 0.25rem;
 }
+.rounded-full {
+  border-radius: 9999px;
+}
 .rounded-md {
   border-radius: calc(var(--radius) - 2px);
 }
