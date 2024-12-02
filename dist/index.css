@@ -3133,6 +3133,9 @@ textarea {
 .rounded {
   border-radius: 0.25rem;
 }
+.rounded-full {
+  border-radius: 9999px;
+}
 .rounded-md {
   border-radius: calc(var(--radius) - 2px);
 }
@@ -3399,6 +3402,10 @@ textarea {
   bottom: 1.5rem;
   left: auto;
   z-index: 10;
+}
+.hover\:border-lime-50:hover {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--lime-50) / var(--tw-border-opacity));
 }
 .hover\:border-lime-60:hover {
   --tw-border-opacity: 1;

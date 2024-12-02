@@ -42,6 +42,7 @@ import {
     ModalFooter,
     ModalHeader,
     ProgressBar,
+    Radio,
     TabGroup,
     TabItem,
     Table,
@@ -75,6 +76,7 @@ export default function Home() {
     const [inputValue2, setInputValue2] = useState("")
     const [file, setFile] = useState<File | undefined>(undefined);
     const [isChecked, setIsChecked] = useState(false);
+    const [isCheckeds, setIsCheckeds] = useState<string | null>(null);
     const [value, setValue] = useState('');
     const tabItem = ["Konvensional", "Syariah", "Menu"];
 
@@ -460,8 +462,29 @@ export default function Home() {
                                 onChange={(checked) => setIsChecked(checked)}
                                 onClick={setIsChecked}
                                 disabled={true}
-                                title="Ini adalah Checkbox2"
+                                title="Ini adalah Disabled Checkbox"
                             />
+
+                </div>
+                <div className="col-span-6 bg-white rounded-md shadow-md p-4 border-black-20 border flex flex-col gap-3">
+                    <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
+                        Radio
+                    </div>
+                    <Radio
+                            id="candidate1" // Unique ID
+                            name="candidateGroup" // Shared name for the group
+                            checked={isCheckeds === 'candidate1'} // Check if this radio's value is selected
+                            onChange={(checked: any) => setIsCheckeds(checked ? 'candidate1' : null)} // Update state with the selected value or null
+                            disabled={false}
+                        />
+                        <Radio
+                            className="mt-3"
+                            id="candidate2" // Unique ID
+                            name="candidateGroup" // Shared name for the group
+                            checked={isCheckeds === 'candidate2'} // Check if this radio's value is selected
+                            onChange={(checked: any) => setIsCheckeds(checked ? 'candidate2' : null)} // Update state with the selected value or null
+                            disabled={false}
+                        />
 
                 </div>
 

@@ -168,6 +168,16 @@ interface ProgressBarProps {
 }
 declare const ProgressBar: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & ProgressBarProps & react.RefAttributes<HTMLDivElement>>;
 
+interface RadioProps {
+    id: string;
+    name: string;
+    checked?: boolean;
+    onChange?: (checked: boolean) => void;
+    disabled?: boolean;
+    className?: string;
+}
+declare const Radio: react__default.FC<RadioProps>;
+
 interface TabGroupProps extends React.HTMLAttributes<HTMLDivElement> {
     activeTabIndex: number;
     setActiveTabIndex: (index: number) => void;
@@ -278,4 +288,4 @@ interface InputTextProps {
 }
 declare const InputShortText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLInputElement> & InputTextProps & react.RefAttributes<HTMLInputElement>>;
 
-export { AccordionBody, AccordionGroup, AccordionHeader, AccordionItem, Badge, Breadcumb, Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Check, CheckBox, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputFile, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, TabGroup, TabItem, Table, TimePicker, TimePickerTry, Toast, ToastDescription, ToastTitle, inputVariants };
+export { AccordionBody, AccordionGroup, AccordionHeader, AccordionItem, Badge, Breadcumb, Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Check, CheckBox, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputFile, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, Radio, TabGroup, TabItem, Table, TimePicker, TimePickerTry, Toast, ToastDescription, ToastTitle, inputVariants };
