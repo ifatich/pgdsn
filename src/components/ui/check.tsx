@@ -112,7 +112,6 @@ const CheckBox: React.FC<CheckBoxProps> = ({
             </div>
         </div>
     )
-
 }
 
 export { Check, CheckBox };

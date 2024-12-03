@@ -968,13 +968,17 @@ body {
 }
 .btn--default:hover,
 .btn--primary:hover {
-  --tw-brightness: brightness(.9);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--lime-60) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--text-white) / var(--tw-text-opacity));
 }
 .btn--default:active,
 .btn--primary:active {
-  --tw-brightness: brightness(.85);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--lime-60) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--text-white) / var(--tw-text-opacity));
 }
 .btn--destructive {
   --tw-bg-opacity: 1;
@@ -1001,21 +1005,25 @@ body {
   background-color: hsl(var(--primary) / 10%);
 }
 .btn--secondary {
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--lime-50) / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
-  background-color: hsl(var(--secondary) / var(--tw-bg-opacity));
+  background-color: hsl(var(--text-white) / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
-  color: hsl(var(--secondary-foreground) / var(--tw-text-opacity));
-  transition-property: filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+  color: hsl(var(--lime-50) / var(--tw-text-opacity));
 }
 .btn--secondary:hover {
-  --tw-brightness: brightness(.95);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--lime-60) / var(--tw-border-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-60) / var(--tw-text-opacity));
 }
 .btn--secondary:active {
-  --tw-brightness: brightness(.9);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--lime-60) / var(--tw-border-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-60) / var(--tw-text-opacity));
 }
 .btn--ghost {
   border-width: 0px;
@@ -1038,24 +1046,62 @@ body {
   background-color: hsl(var(--foreground) / 20%);
 }
 .btn--link {
-  height: 100% !important;
-  width: -moz-fit-content;
-  width: fit-content;
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-  padding-left: 0.25rem !important;
-  padding-right: 0.25rem !important;
+  height: 100%;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
   font-size: var(--16-omicron);
   line-height: var(--16-omicron-line-height);
   --tw-text-opacity: 1;
   color: hsl(var(--primary-on-text) / var(--tw-text-opacity));
 }
 .btn--link:hover {
-  color: hsl(var(--primary) / 90%);
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-50) / var(--tw-text-opacity));
+}
+.btn--link:focus {
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-60) / var(--tw-text-opacity));
 }
 .btn--link:active {
-  background-color: hsl(var(--primary) / 10%);
-  color: hsl(var(--primary) / 90%);
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-60) / var(--tw-text-opacity));
+}
+.btn--neutral {
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--black-50) / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--text-white) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--black-60) / var(--tw-text-opacity));
+}
+.btn--neutral:hover {
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-50) / var(--tw-text-opacity));
+}
+.btn--neutral:focus {
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-60) / var(--tw-text-opacity));
+}
+.btn--neutral:active {
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-60) / var(--tw-text-opacity));
+}
+.btn--tertiary {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--text-white) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-50) / var(--tw-text-opacity));
+}
+.btn--tertiary:hover {
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-60) / var(--tw-text-opacity));
+}
+.btn--tertiary:active {
+  --tw-text-opacity: 1;
+  color: hsl(var(--lime-60) / var(--tw-text-opacity));
 }
 .btn--sm {
   height: 1.75rem;
@@ -1200,6 +1246,10 @@ body {
 }
 .btn--block {
   width: 100%;
+}
+.btn--fit {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .btn span {
   font-size: inherit;
