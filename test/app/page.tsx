@@ -42,6 +42,7 @@ import {
     ModalFooter,
     ModalHeader,
     ProgressBar,
+    RadioBox,
     Radio,
     TabGroup,
     TabItem,
@@ -76,7 +77,7 @@ export default function Home() {
     const [inputValue2, setInputValue2] = useState("")
     const [file, setFile] = useState<File | undefined>(undefined);
     const [isChecked, setIsChecked] = useState(false);
-    const [isCheckeds, setIsCheckeds] = useState<string | null>(null);
+    const [selectedRadio, setSelectedRadio] = useState<string | null>(null);
     const [value, setValue] = useState('');
     const tabItem = ["Konvensional", "Syariah", "Menu"];
 
@@ -397,7 +398,7 @@ export default function Home() {
                     </AccordionGroup> 
                 </div>
 
-                <div className="col-span-12 bg-white rounded-md shadow-md p-4 border-black-20 border flex flex-col gap-3">
+                <div className="col-span-6 bg-white rounded-md shadow-md p-4 border-black-20 border flex flex-col gap-3">
                     <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
                         Card
                     </div>
@@ -461,7 +462,7 @@ export default function Home() {
                                 checked={isChecked}
                                 onChange={(checked) => setIsChecked(checked)}
                                 onClick={setIsChecked}
-                                disabled={true}
+                                disabled={false}
                                 title="Ini adalah Disabled Checkbox"
                             />
 
@@ -470,22 +471,37 @@ export default function Home() {
                     <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
                         Radio
                     </div>
-                    <Radio
-                            id="candidate1" // Unique ID
-                            name="candidateGroup" // Shared name for the group
-                            checked={isCheckeds === 'candidate1'} // Check if this radio's value is selected
-                            onChange={(checked: any) => setIsCheckeds(checked ? 'candidate1' : null)} // Update state with the selected value or null
-                            disabled={false}
-                        />
-                        <Radio
-                            className="mt-3"
-                            id="candidate2" // Unique ID
-                            name="candidateGroup" // Shared name for the group
-                            checked={isCheckeds === 'candidate2'} // Check if this radio's value is selected
-                            onChange={(checked: any) => setIsCheckeds(checked ? 'candidate2' : null)} // Update state with the selected value or null
-                            disabled={false}
-                        />
+                    <div className="">
+                      <Radio
+                              id="candidate1" // Unique ID
+                              name="candidateGroup" // Shared name for the group
+                              checked={selectedRadio === 'candidate1'} // Check if this radio's value is selected
+                              onChange={(checked) => setSelectedRadio('candidate1')} // Update state with the selected value or null
+                              disabled={false}
+                          />
+                          <RadioBox
+                              className="mt-3"
+                              id="candidate2" // Unique ID
+                              name="candidateGroup" // Shared name for the group
+                              checked={selectedRadio === 'candidate2'} // Check if this radio's value is selected
+                              onChange={(checked) => setSelectedRadio('candidate2')} // Update state with the selected value or null
+                              disabled={false}
+                              title="Candidate 1"
+                          />
 
+                          <RadioBox
+                            className="mt-3"
+                            id="candidate3" // Unique ID
+                            name="candidateGroup" // Shared name for the group
+                            checked={selectedRadio === 'candidate3'} // Check if this radio's value is selected
+                            onChange={(checked: any) => setSelectedRadio('candidate3')} // Update state with the selected value or null
+                            disabled={false}
+                            title="Candidate 2"
+                            subtitle="ini adalah kandidat 2"
+                          >
+                          </RadioBox>
+                    </div>
+                      
                 </div>
 
                 <div className="col-span-12 bg-white rounded-md shadow-md p-4 border-black-20 border">

@@ -15,7 +15,7 @@ export { Label } from "./ui/label";
 export { List } from "./ui/list";
 export { Modal, ModalBody, ModalFooter, ModalHeader } from "./ui/modal";
 export { ProgressBar } from "./ui/progress-bar";
-export { Radio } from "./ui/radio";
+export { Radio, RadioBox } from "./ui/radio";
 export { TabGroup, TabItem } from "./ui/tabs";
 export { Table } from "./ui/table";
 export { TimePicker } from "./ui/timepicker";

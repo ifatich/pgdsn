@@ -49,4 +49,58 @@ const Radio: React.FC<RadioProps> = ({
     );
 };
 
-export { Radio };
+interface BoxProps {
+    title: string;
+    subtitle?: string;
+    onClick? : (checked: boolean) => void;
+  }
+
+type RadioBoxProps = RadioProps & BoxProps;
+
+const RadioBox: React.FC<RadioBoxProps> = ({
+    id,
+    name,
+    checked = false,
+    onChange,
+    disabled = false,
+    className = '',
+    subtitle,
+    title,
+    onClick
+}, 
+) => {
+    const handleClick = () => {
+        if (!disabled && onChange) {
+          onChange(true); // Set to true because this is the selected radio.
+        }
+      };
+    
+      return (
+        <div
+          className={cn(
+            'checkbox',
+            checked && !disabled ? 'border-lime-50 bg-lime-10' : 'border-black-20',
+            className
+          )}
+          onClick={handleClick}
+        >
+          <Radio
+            id={id}
+            name={name} // Ensures proper grouping by `name`
+            checked={checked}
+            onChange={(newChecked) => {
+              if (onChange && !disabled) {
+                onChange(newChecked);
+              }
+            }}
+            disabled={disabled}
+          />
+          <div className="flex flex-col gap-[2px]">
+            <div className={`checkbox-title ${disabled ? 'text-black-60' : 'text-black-80'}`}>{title}</div>
+            <div className={`checkbox-subtitle ${disabled ? 'text-black-50' : 'text-black-60'}`}>{subtitle}</div>
+          </div>
+        </div>
+      );
+}
+
+export { Radio, RadioBox};

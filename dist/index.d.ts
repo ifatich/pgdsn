@@ -71,12 +71,12 @@ interface CheckProps {
     className?: string;
 }
 declare const Check: react__default.FC<CheckProps>;
-interface BoxProps {
+interface BoxProps$1 {
     title: string;
     subtitle?: string;
     onClick?: (checked: boolean) => void;
 }
-type CheckBoxProps = CheckProps & BoxProps;
+type CheckBoxProps = CheckProps & BoxProps$1;
 declare const CheckBox: react__default.FC<CheckBoxProps>;
 
 interface DatePickerProps {
@@ -177,6 +177,13 @@ interface RadioProps {
     className?: string;
 }
 declare const Radio: react__default.FC<RadioProps>;
+interface BoxProps {
+    title: string;
+    subtitle?: string;
+    onClick?: (checked: boolean) => void;
+}
+type RadioBoxProps = RadioProps & BoxProps;
+declare const RadioBox: react__default.FC<RadioBoxProps>;
 
 interface TabGroupProps extends React.HTMLAttributes<HTMLDivElement> {
     activeTabIndex: number;
@@ -288,4 +295,4 @@ interface InputTextProps {
 }
 declare const InputShortText: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLInputElement> & InputProps & InputHTMLAttributes<HTMLInputElement> & InputTextProps & react.RefAttributes<HTMLInputElement>>;
 
-export { AccordionBody, AccordionGroup, AccordionHeader, AccordionItem, Badge, Breadcumb, Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Check, CheckBox, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputFile, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, Radio, TabGroup, TabItem, Table, TimePicker, TimePickerTry, Toast, ToastDescription, ToastTitle, inputVariants };
+export { AccordionBody, AccordionGroup, AccordionHeader, AccordionItem, Badge, Breadcumb, Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Check, CheckBox, DatePicker, Dialog, DialogBody, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, Dropdown, ErrorText, HelperText, InfoTipDescription, InfoTipTitle, Infotip, Input, InputFile, InputGroup, InputLongText, InputNumber, InputSearch, InputShortText, Label, List, Modal, ModalBody, ModalFooter, ModalHeader, ProgressBar, Radio, RadioBox, TabGroup, TabItem, Table, TimePicker, TimePickerTry, Toast, ToastDescription, ToastTitle, inputVariants };

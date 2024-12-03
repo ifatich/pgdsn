@@ -48,6 +48,7 @@ import {
     ModalHeader,
     ProgressBar,
     Radio,
+    RadioBox,
     TabGroup,
     TabItem,
     Table,
@@ -144,6 +145,7 @@ export {
 
     // R
     Radio,
+    RadioBox,
 
     // S
 

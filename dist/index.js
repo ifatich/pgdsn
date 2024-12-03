@@ -76,6 +76,7 @@ __export(src_exports, {
   ModalHeader: () => ModalHeader,
   ProgressBar: () => ProgressBar,
   Radio: () => Radio,
+  RadioBox: () => RadioBox,
   TabGroup: () => TabGroup,
   TabItem: () => TabItem,
   Table: () => Table,
@@ -1131,6 +1132,54 @@ var Radio = ({
     ),
     checked && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("svg", { className: "absolute rounded-full", width: "24", height: "24", viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("path", { "fill-rule": "evenodd", "clip-rule": "evenodd", d: "M12 24C18.6274 24 24 18.6274 24 12C24 5.37256 18.6274 0 12 0C5.37256 0 0 5.37256 0 12C0 18.6274 5.37256 24 12 24ZM12 17C14.7614 17 17 14.7615 17 12C17 9.23853 14.7614 7 12 7C9.23859 7 7 9.23853 7 12C7 14.7615 9.23859 17 12 17Z", fill: "#009E3D" }) })
   ] }) });
+};
+var RadioBox = ({
+  id,
+  name,
+  checked = false,
+  onChange,
+  disabled = false,
+  className = "",
+  subtitle,
+  title,
+  onClick
+}) => {
+  const handleClick = () => {
+    if (!disabled && onChange) {
+      onChange(true);
+    }
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+    "div",
+    {
+      className: cn(
+        "checkbox",
+        checked && !disabled ? "border-lime-50 bg-lime-10" : "border-black-20",
+        className
+      ),
+      onClick: handleClick,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+          Radio,
+          {
+            id,
+            name,
+            checked,
+            onChange: (newChecked) => {
+              if (onChange && !disabled) {
+                onChange(newChecked);
+              }
+            },
+            disabled
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-col gap-[2px]", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: `checkbox-title ${disabled ? "text-black-60" : "text-black-80"}`, children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: `checkbox-subtitle ${disabled ? "text-black-50" : "text-black-60"}`, children: subtitle })
+        ] })
+      ]
+    }
+  );
 };
 
 // src/components/ui/tabs.tsx
@@ -2303,6 +2352,7 @@ var InputNumber = (0, import_react27.forwardRef)(({ className, placeholder, setE
   ModalHeader,
   ProgressBar,
   Radio,
+  RadioBox,
   TabGroup,
   TabItem,
   Table,
