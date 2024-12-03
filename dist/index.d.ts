@@ -38,7 +38,7 @@ interface BreadcumbProps {
 declare const Breadcumb: react.ForwardRefExoticComponent<react.HTMLAttributes<HTMLDivElement> & BreadcumbProps & react.RefAttributes<HTMLDivElement>>;
 
 declare const buttonVariants: (props?: ({
-    variant?: "link" | "default" | "primary" | "destructive" | "outline" | "secondary" | "ghost" | "ghost-fab" | null | undefined;
+    variant?: "link" | "default" | "primary" | "destructive" | "outline" | "secondary" | "ghost" | "ghost-fab" | "neutral" | "tertiary" | null | undefined;
     size?: "undefined" | "icon" | "md" | "sm" | "lg" | "xl" | "icon-sm" | "icon-md" | "icon-lg" | "icon-xl" | "fab" | null | undefined;
     display?: "block" | "inline" | null | undefined;
     fixedSize?: boolean | null | undefined;

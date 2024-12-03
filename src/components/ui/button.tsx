@@ -21,8 +21,10 @@ const buttonVariants = cva("btn", {
             destructive: "btn--destructive",
             outline: "btn--outline",
             secondary: "btn--secondary",
-            ghost: "btn--ghost",
-            "ghost-fab": "btn--ghost-fab",
+            ghost:  "btn--ghost",
+                    "ghost-fab": "btn--ghost-fab",
+            neutral: "btn--neutral",
+            tertiary: "btn--tertiary",
             link: "btn--link"
         },
         size: {
@@ -39,7 +41,7 @@ const buttonVariants = cva("btn", {
             undefined: ""
         },
         display: {
-            inline: "",
+            inline: "btn--fit",
             block: "btn--block"
         },
         fixedSize: {

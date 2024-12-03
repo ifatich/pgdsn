@@ -14,11 +14,11 @@
             @apply bg-primary text-primary-foreground transition-[filter];
 
             &:hover {
-                @apply brightness-[.9];
+                @apply text-white bg-lime-60;
             }
 
             &:active {
-                @apply brightness-[.85];
+                @apply text-white bg-lime-60;
             }
         }
 
@@ -47,14 +47,14 @@
         }
 
         &--secondary {
-            @apply bg-secondary text-secondary-foreground transition-[filter];
+            @apply bg-white text-lime-50 border-lime-50 border;
 
             &:hover {
-                @apply brightness-95;
+                @apply text-lime-60 border-lime-60;
             }
 
             &:active {
-                @apply brightness-90;
+                @apply text-lime-60 border-lime-60;
             }
         }
 
@@ -83,14 +83,46 @@
         }
 
         &--link {
-            @apply text-omicron text-primary-on-text !py-0 !px-1 !h-full w-fit;
+            @apply text-omicron text-primary-on-text py-0 px-1 h-full;
 
             &:hover {
-                @apply text-primary/[90%];
+                @apply text-lime-50;
+            }
+
+            &:focus {
+                @apply text-lime-60;
             }
 
             &:active {
-                @apply bg-primary/[10%] text-primary/[90%];
+                @apply text-lime-60;
+            }
+        }
+
+        &--neutral {
+            @apply bg-white text-black-60 border-black-50 border;
+
+            &:hover {
+                @apply text-lime-50;
+            }
+
+            &:focus {
+                @apply text-lime-60;
+            }
+
+            &:active {
+                @apply text-lime-60;
+            }
+        }
+
+        &--tertiary {
+            @apply bg-white text-lime-50;
+
+            &:hover {
+                @apply text-lime-60;
+            }
+
+            &:active {
+                @apply text-lime-60;
             }
         }
 
@@ -184,6 +216,10 @@
 
         &--block {
             @apply w-full;
+        }
+
+        &--fit {
+            @apply w-fit;
         }
 
         span {

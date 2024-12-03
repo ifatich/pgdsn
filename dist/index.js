@@ -267,6 +267,8 @@ var buttonVariants = (0, import_class_variance_authority2.cva)("btn", {
       secondary: "btn--secondary",
       ghost: "btn--ghost",
       "ghost-fab": "btn--ghost-fab",
+      neutral: "btn--neutral",
+      tertiary: "btn--tertiary",
       link: "btn--link"
     },
     size: {
@@ -283,7 +285,7 @@ var buttonVariants = (0, import_class_variance_authority2.cva)("btn", {
       undefined: ""
     },
     display: {
-      inline: "",
+      inline: "btn--fit",
       block: "btn--block"
     },
     fixedSize: {

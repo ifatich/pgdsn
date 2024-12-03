@@ -173,16 +173,31 @@ export default function Home() {
 
 
     return (
-        <main className="flex flex-col w-full bg-black-10">
+        <main className="bg-black-10 p-4 lg: px-72 py-4">
 
-            <div className="grid grid-cols-1 sm:grid-cols-12 px-4 lg:grid-cols-12 lg:px-40 gap-6">
+            <div className="grid grid-flow-row-dense grid-cols-1 lg:grid-cols-2 gap-4">
 
-                <div className="col-span-12 gap-4 flex flex-row py-4">
-                    <Button onClick={()=> setModalOpen(true)} variant="primary">Open Modal</Button>
-                    <Button onClick={()=> setTimePickerOpen(true)} variant="primary">Open TimePicker</Button>
+                <div className="col-span-1 bg-red rounded-md shadow-md p-4 border-black-20 border">
+                    <div className="text-alpha text-black-20 font-bold mb-4">Button Trigger Modal</div>
+                    <div className="infotips-group gap-4 flex flex-col">
+                        <Button onClick={()=> setModalOpen(true)} variant="primary">Open Modal</Button>
+                        <Button onClick={()=> setTimePickerOpen(true)} variant="primary">Open TimePicker</Button>
+                    </div>
                 </div>
 
-                <div className="col-span-6 bg-white rounded-md shadow-md p-4 border-black-20 border">
+                <div className="col-span-1 bg-red rounded-md shadow-md p-4 border-black-20 border">
+                    <div className="text-alpha text-black-20 font-bold mb-4">Button</div>
+                    <div className="infotips-group gap-4 flex flex-col">
+                        <Button variant="primary" display="block">Button Varian Primary</Button>
+                        <Button variant="secondary" display="block">Button Varian Secondary</Button>
+                        <Button variant="destructive" display="block">Button Varian Destructive</Button>
+                        <Button variant="neutral" display="block">Button Varian Neutral</Button>
+                        <Button variant="tertiary" display="block">Button Varian Tertiary</Button>
+                        <Button variant="link">Button Varian Link</Button>
+                    </div>
+                </div>
+
+                <div className="col-span-1 bg-white rounded-md shadow-md p-4 border-black-20 border">
                     <div className="text-alpha text-black-20 font-bold mb-4">Infotips</div>
                     <div className="infotips-group gap-4 flex flex-col">
                         <Infotip variant={'error'} dismiss={true}>
@@ -215,8 +230,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="col-span-6 bg-white rounded-md shadow-md p-4 border-black-20 border">
-                    
+                <div className="col-span-1 bg-white rounded-md shadow-md p-4 border-black-20 border">
                     <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
                         Toast
                         <Button onClick={()=> setToastOpenInfo(true)} variant={'primary'} size={'md'}>Open Toast</Button>
@@ -254,86 +268,86 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="col-span-12 space-y-4 ">
-                    <div className="bg-white rounded-md shadow-md p-4 border-black-20 border">
-                        <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
-                            Badge
-                            <Button onClick={()=> setBadgeOpen(true)} variant="primary">Open Badge</Button>
-                        </div>
-                        <div className="flex flex-row flex-wrap gap-3">
-                            <Badge variant="green" isBadgeOpen={true}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path fillRule="evenodd" clipRule="evenodd"
-                                    d="M10 5C9.21299 5 8.57269 5.71144 8.57269 6.5859C8.57269 7.02714 8.73572 7.42685 8.99836 7.71459C8.77096 8.88605 7.83126 9.76659 6.70994 9.76659C6.01727 9.76659 5.39389 9.43061 4.96491 8.89762C5.20633 8.61345 5.3545 8.23048 5.3545 7.80978C5.3545 6.93532 4.71432 6.22388 3.92731 6.22388C3.1403 6.22388 2.5 6.93532 2.5 7.80978C2.5 8.56765 2.98095 9.20308 3.62153 9.35904C3.77344 10.7517 4.095 12.5092 4.77554 13.7044V15.1681C4.77554 15.4392 4.9733 15.6589 5.21729 15.6589H10.0001H14.7827C15.0267 15.6589 15.2245 15.4392 15.2245 15.1681V13.7045C15.905 12.5093 16.2265 10.7516 16.3784 9.35893C17.019 9.203 17.5 8.56757 17.5 7.80978C17.5 6.93532 16.8597 6.22388 16.0727 6.22388C15.2857 6.22388 14.6455 6.93532 14.6455 7.80978C14.6455 8.23044 14.7937 8.61339 15.0351 8.89755C14.6061 9.43059 13.9828 9.76659 13.2901 9.76659C12.1688 9.76659 11.229 8.88613 11.0016 7.71475C11.1986 7.49892 11.3396 7.22009 11.3977 6.90798C11.4171 6.80395 11.4273 6.69622 11.4273 6.5859C11.4273 6.32977 11.3724 6.08763 11.2749 5.87325C11.0397 5.35575 10.5566 5.00005 10.0001 5H10Z" />
-                                </svg>
-                                Badge Blue
-                                </Badge>
-                                <Badge variant="red" isBadgeOpen={true}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path fillRule="evenodd" clipRule="evenodd"
-                                    d="M10 5C9.21299 5 8.57269 5.71144 8.57269 6.5859C8.57269 7.02714 8.73572 7.42685 8.99836 7.71459C8.77096 8.88605 7.83126 9.76659 6.70994 9.76659C6.01727 9.76659 5.39389 9.43061 4.96491 8.89762C5.20633 8.61345 5.3545 8.23048 5.3545 7.80978C5.3545 6.93532 4.71432 6.22388 3.92731 6.22388C3.1403 6.22388 2.5 6.93532 2.5 7.80978C2.5 8.56765 2.98095 9.20308 3.62153 9.35904C3.77344 10.7517 4.095 12.5092 4.77554 13.7044V15.1681C4.77554 15.4392 4.9733 15.6589 5.21729 15.6589H10.0001H14.7827C15.0267 15.6589 15.2245 15.4392 15.2245 15.1681V13.7045C15.905 12.5093 16.2265 10.7516 16.3784 9.35893C17.019 9.203 17.5 8.56757 17.5 7.80978C17.5 6.93532 16.8597 6.22388 16.0727 6.22388C15.2857 6.22388 14.6455 6.93532 14.6455 7.80978C14.6455 8.23044 14.7937 8.61339 15.0351 8.89755C14.6061 9.43059 13.9828 9.76659 13.2901 9.76659C12.1688 9.76659 11.229 8.88613 11.0016 7.71475C11.1986 7.49892 11.3396 7.22009 11.3977 6.90798C11.4171 6.80395 11.4273 6.69622 11.4273 6.5859C11.4273 6.32977 11.3724 6.08763 11.2749 5.87325C11.0397 5.35575 10.5566 5.00005 10.0001 5H10Z" />
-                                </svg>
-                                Badge Blue
-                                </Badge>
-                                <Badge variant="orange" isBadgeOpen={true}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path fillRule="evenodd" clipRule="evenodd"
-                                    d="M10 5C9.21299 5 8.57269 5.71144 8.57269 6.5859C8.57269 7.02714 8.73572 7.42685 8.99836 7.71459C8.77096 8.88605 7.83126 9.76659 6.70994 9.76659C6.01727 9.76659 5.39389 9.43061 4.96491 8.89762C5.20633 8.61345 5.3545 8.23048 5.3545 7.80978C5.3545 6.93532 4.71432 6.22388 3.92731 6.22388C3.1403 6.22388 2.5 6.93532 2.5 7.80978C2.5 8.56765 2.98095 9.20308 3.62153 9.35904C3.77344 10.7517 4.095 12.5092 4.77554 13.7044V15.1681C4.77554 15.4392 4.9733 15.6589 5.21729 15.6589H10.0001H14.7827C15.0267 15.6589 15.2245 15.4392 15.2245 15.1681V13.7045C15.905 12.5093 16.2265 10.7516 16.3784 9.35893C17.019 9.203 17.5 8.56757 17.5 7.80978C17.5 6.93532 16.8597 6.22388 16.0727 6.22388C15.2857 6.22388 14.6455 6.93532 14.6455 7.80978C14.6455 8.23044 14.7937 8.61339 15.0351 8.89755C14.6061 9.43059 13.9828 9.76659 13.2901 9.76659C12.1688 9.76659 11.229 8.88613 11.0016 7.71475C11.1986 7.49892 11.3396 7.22009 11.3977 6.90798C11.4171 6.80395 11.4273 6.69622 11.4273 6.5859C11.4273 6.32977 11.3724 6.08763 11.2749 5.87325C11.0397 5.35575 10.5566 5.00005 10.0001 5H10Z" />
-                                </svg>
-                                Badge Blue
-                                </Badge>
-                                <Badge variant="blue" isBadgeOpen={isBadgeOpen} dismiss={true} setBadgeOpen={()=> setBadgeOpen(!isBadgeOpen)}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path fillRule="evenodd" clipRule="evenodd"
-                                    d="M10 5C9.21299 5 8.57269 5.71144 8.57269 6.5859C8.57269 7.02714 8.73572 7.42685 8.99836 7.71459C8.77096 8.88605 7.83126 9.76659 6.70994 9.76659C6.01727 9.76659 5.39389 9.43061 4.96491 8.89762C5.20633 8.61345 5.3545 8.23048 5.3545 7.80978C5.3545 6.93532 4.71432 6.22388 3.92731 6.22388C3.1403 6.22388 2.5 6.93532 2.5 7.80978C2.5 8.56765 2.98095 9.20308 3.62153 9.35904C3.77344 10.7517 4.095 12.5092 4.77554 13.7044V15.1681C4.77554 15.4392 4.9733 15.6589 5.21729 15.6589H10.0001H14.7827C15.0267 15.6589 15.2245 15.4392 15.2245 15.1681V13.7045C15.905 12.5093 16.2265 10.7516 16.3784 9.35893C17.019 9.203 17.5 8.56757 17.5 7.80978C17.5 6.93532 16.8597 6.22388 16.0727 6.22388C15.2857 6.22388 14.6455 6.93532 14.6455 7.80978C14.6455 8.23044 14.7937 8.61339 15.0351 8.89755C14.6061 9.43059 13.9828 9.76659 13.2901 9.76659C12.1688 9.76659 11.229 8.88613 11.0016 7.71475C11.1986 7.49892 11.3396 7.22009 11.3977 6.90798C11.4171 6.80395 11.4273 6.69622 11.4273 6.5859C11.4273 6.32977 11.3724 6.08763 11.2749 5.87325C11.0397 5.35575 10.5566 5.00005 10.0001 5H10Z" />
-                                </svg>
-                                Badge Blue
+                <div className="col-span-1 bg-white rounded-md shadow-md p-4 border-black-20 border">
+                    <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
+                        Badge
+                        <Button onClick={()=> setBadgeOpen(true)} variant="primary">Open Badge</Button>
+                    </div>
+                    <div className="flex flex-row flex-wrap gap-3">
+                        <Badge variant="green" isBadgeOpen={true}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path fillRule="evenodd" clipRule="evenodd"
+                                d="M10 5C9.21299 5 8.57269 5.71144 8.57269 6.5859C8.57269 7.02714 8.73572 7.42685 8.99836 7.71459C8.77096 8.88605 7.83126 9.76659 6.70994 9.76659C6.01727 9.76659 5.39389 9.43061 4.96491 8.89762C5.20633 8.61345 5.3545 8.23048 5.3545 7.80978C5.3545 6.93532 4.71432 6.22388 3.92731 6.22388C3.1403 6.22388 2.5 6.93532 2.5 7.80978C2.5 8.56765 2.98095 9.20308 3.62153 9.35904C3.77344 10.7517 4.095 12.5092 4.77554 13.7044V15.1681C4.77554 15.4392 4.9733 15.6589 5.21729 15.6589H10.0001H14.7827C15.0267 15.6589 15.2245 15.4392 15.2245 15.1681V13.7045C15.905 12.5093 16.2265 10.7516 16.3784 9.35893C17.019 9.203 17.5 8.56757 17.5 7.80978C17.5 6.93532 16.8597 6.22388 16.0727 6.22388C15.2857 6.22388 14.6455 6.93532 14.6455 7.80978C14.6455 8.23044 14.7937 8.61339 15.0351 8.89755C14.6061 9.43059 13.9828 9.76659 13.2901 9.76659C12.1688 9.76659 11.229 8.88613 11.0016 7.71475C11.1986 7.49892 11.3396 7.22009 11.3977 6.90798C11.4171 6.80395 11.4273 6.69622 11.4273 6.5859C11.4273 6.32977 11.3724 6.08763 11.2749 5.87325C11.0397 5.35575 10.5566 5.00005 10.0001 5H10Z" />
+                            </svg>
+                            Badge Blue
                             </Badge>
-                        </div>
-                    </div>
-                    <div className="bg-white rounded-md shadow-md p-4 border-black-20 border">
-                        <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
-                            Progress Bar
-                        </div>
-                        <ProgressBar value={15}></ProgressBar>
-                    </div>
-                    <div className="bg-white rounded-md shadow-md p-4 border-black-20 border">
-                        <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
-                            Checkbox
-                        </div>
-                        <Check
-                            className="mb-3"
-                            id="candidates"
-                            name="candidates"
-                            checked={isChecked}
-                            onChange={(checked) => setIsChecked(checked)}
-                            disabled={false}
-                        />
-                        <Label>Radio</Label>
-                        <Radio
-                            id="candidate1" // Unique ID
-                            name="candidateGroup" // Shared name for the group
-                            checked={isCheckeds === 'candidate1'} // Check if this radio's value is selected
-                            onChange={(checked) => setIsCheckeds(checked ? 'candidate1' : null)} // Update state with the selected value or null
-                            disabled={false}
-                        />
-                        <Radio
-                            className="mt-3"
-                            id="candidate2" // Unique ID
-                            name="candidateGroup" // Shared name for the group
-                            checked={isCheckeds === 'candidate2'} // Check if this radio's value is selected
-                            onChange={(checked) => setIsCheckeds(checked ? 'candidate2' : null)} // Update state with the selected value or null
-                            disabled={false}
-                        />
+                            <Badge variant="red" isBadgeOpen={true}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path fillRule="evenodd" clipRule="evenodd"
+                                d="M10 5C9.21299 5 8.57269 5.71144 8.57269 6.5859C8.57269 7.02714 8.73572 7.42685 8.99836 7.71459C8.77096 8.88605 7.83126 9.76659 6.70994 9.76659C6.01727 9.76659 5.39389 9.43061 4.96491 8.89762C5.20633 8.61345 5.3545 8.23048 5.3545 7.80978C5.3545 6.93532 4.71432 6.22388 3.92731 6.22388C3.1403 6.22388 2.5 6.93532 2.5 7.80978C2.5 8.56765 2.98095 9.20308 3.62153 9.35904C3.77344 10.7517 4.095 12.5092 4.77554 13.7044V15.1681C4.77554 15.4392 4.9733 15.6589 5.21729 15.6589H10.0001H14.7827C15.0267 15.6589 15.2245 15.4392 15.2245 15.1681V13.7045C15.905 12.5093 16.2265 10.7516 16.3784 9.35893C17.019 9.203 17.5 8.56757 17.5 7.80978C17.5 6.93532 16.8597 6.22388 16.0727 6.22388C15.2857 6.22388 14.6455 6.93532 14.6455 7.80978C14.6455 8.23044 14.7937 8.61339 15.0351 8.89755C14.6061 9.43059 13.9828 9.76659 13.2901 9.76659C12.1688 9.76659 11.229 8.88613 11.0016 7.71475C11.1986 7.49892 11.3396 7.22009 11.3977 6.90798C11.4171 6.80395 11.4273 6.69622 11.4273 6.5859C11.4273 6.32977 11.3724 6.08763 11.2749 5.87325C11.0397 5.35575 10.5566 5.00005 10.0001 5H10Z" />
+                            </svg>
+                            Badge Blue
+                            </Badge>
+                            <Badge variant="orange" isBadgeOpen={true}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path fillRule="evenodd" clipRule="evenodd"
+                                d="M10 5C9.21299 5 8.57269 5.71144 8.57269 6.5859C8.57269 7.02714 8.73572 7.42685 8.99836 7.71459C8.77096 8.88605 7.83126 9.76659 6.70994 9.76659C6.01727 9.76659 5.39389 9.43061 4.96491 8.89762C5.20633 8.61345 5.3545 8.23048 5.3545 7.80978C5.3545 6.93532 4.71432 6.22388 3.92731 6.22388C3.1403 6.22388 2.5 6.93532 2.5 7.80978C2.5 8.56765 2.98095 9.20308 3.62153 9.35904C3.77344 10.7517 4.095 12.5092 4.77554 13.7044V15.1681C4.77554 15.4392 4.9733 15.6589 5.21729 15.6589H10.0001H14.7827C15.0267 15.6589 15.2245 15.4392 15.2245 15.1681V13.7045C15.905 12.5093 16.2265 10.7516 16.3784 9.35893C17.019 9.203 17.5 8.56757 17.5 7.80978C17.5 6.93532 16.8597 6.22388 16.0727 6.22388C15.2857 6.22388 14.6455 6.93532 14.6455 7.80978C14.6455 8.23044 14.7937 8.61339 15.0351 8.89755C14.6061 9.43059 13.9828 9.76659 13.2901 9.76659C12.1688 9.76659 11.229 8.88613 11.0016 7.71475C11.1986 7.49892 11.3396 7.22009 11.3977 6.90798C11.4171 6.80395 11.4273 6.69622 11.4273 6.5859C11.4273 6.32977 11.3724 6.08763 11.2749 5.87325C11.0397 5.35575 10.5566 5.00005 10.0001 5H10Z" />
+                            </svg>
+                            Badge Blue
+                            </Badge>
+                            <Badge variant="blue" isBadgeOpen={isBadgeOpen} dismiss={true} setBadgeOpen={()=> setBadgeOpen(!isBadgeOpen)}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path fillRule="evenodd" clipRule="evenodd"
+                                d="M10 5C9.21299 5 8.57269 5.71144 8.57269 6.5859C8.57269 7.02714 8.73572 7.42685 8.99836 7.71459C8.77096 8.88605 7.83126 9.76659 6.70994 9.76659C6.01727 9.76659 5.39389 9.43061 4.96491 8.89762C5.20633 8.61345 5.3545 8.23048 5.3545 7.80978C5.3545 6.93532 4.71432 6.22388 3.92731 6.22388C3.1403 6.22388 2.5 6.93532 2.5 7.80978C2.5 8.56765 2.98095 9.20308 3.62153 9.35904C3.77344 10.7517 4.095 12.5092 4.77554 13.7044V15.1681C4.77554 15.4392 4.9733 15.6589 5.21729 15.6589H10.0001H14.7827C15.0267 15.6589 15.2245 15.4392 15.2245 15.1681V13.7045C15.905 12.5093 16.2265 10.7516 16.3784 9.35893C17.019 9.203 17.5 8.56757 17.5 7.80978C17.5 6.93532 16.8597 6.22388 16.0727 6.22388C15.2857 6.22388 14.6455 6.93532 14.6455 7.80978C14.6455 8.23044 14.7937 8.61339 15.0351 8.89755C14.6061 9.43059 13.9828 9.76659 13.2901 9.76659C12.1688 9.76659 11.229 8.88613 11.0016 7.71475C11.1986 7.49892 11.3396 7.22009 11.3977 6.90798C11.4171 6.80395 11.4273 6.69622 11.4273 6.5859C11.4273 6.32977 11.3724 6.08763 11.2749 5.87325C11.0397 5.35575 10.5566 5.00005 10.0001 5H10Z" />
+                            </svg>
+                            Badge Blue
+                        </Badge>
                     </div>
                 </div>
 
-                <div className="col-span-12 bg-white rounded-md shadow-md p-4 border-black-20 border">
+                <div className="col-span-1 bg-white rounded-md shadow-md p-4 border-black-20 border">
+                    <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
+                        Progress Bar
+                    </div>
+                    <ProgressBar value={15}></ProgressBar>
+                </div>
+
+                <div className="col-span-1 bg-white rounded-md shadow-md p-4 border-black-20 border">
+                    <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
+                        Checkbox
+                    </div>
+                    <Check
+                        className="mb-3"
+                        id="candidates"
+                        name="candidates"
+                        checked={isChecked}
+                        onChange={(checked) => setIsChecked(checked)}
+                        disabled={false}
+                    />
+                    <Label>Radio</Label>
+                    <Radio
+                        id="candidate1" // Unique ID
+                        name="candidateGroup" // Shared name for the group
+                        checked={isCheckeds === 'candidate1'} // Check if this radio's value is selected
+                        onChange={(checked) => setIsCheckeds(checked ? 'candidate1' : null)} // Update state with the selected value or null
+                        disabled={false}
+                    />
+                    <Radio
+                        className="mt-3"
+                        id="candidate2" // Unique ID
+                        name="candidateGroup" // Shared name for the group
+                        checked={isCheckeds === 'candidate2'} // Check if this radio's value is selected
+                        onChange={(checked) => setIsCheckeds(checked ? 'candidate2' : null)} // Update state with the selected value or null
+                        disabled={false}
+                    />
+                </div>
+
+                <div className="col-span-1 bg-white rounded-md shadow-md p-4 border-black-20 border">
                     <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
                         Input Field
                     </div>
 
-                    <div className="columns-2 space-y-9">
+                    <div className="columns-1 lg:columns-2 space-y-9">
                         {/* <TimePicker />   */} 
                         {/* Time Picker Content */}
 
@@ -385,7 +399,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="col-span-12 bg-white rounded-md shadow-md p-4 border-black-20 border">
+                <div className="col-span-1 bg-white rounded-md shadow-md p-4 border-black-20 border">
                     <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
                         Accordion
                     </div>
@@ -419,7 +433,7 @@ export default function Home() {
                     </AccordionGroup> 
                 </div>
 
-                <div className="col-span-12 bg-white rounded-md shadow-md p-4 border-black-20 border">
+                <div className="col-span-1 bg-white rounded-md shadow-md p-4 border-black-20 border">
                     <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
                         Data Table
                     </div>
@@ -430,7 +444,7 @@ export default function Home() {
                     /> 
                 </div>
 
-                <div className="col-span-12 bg-white rounded-md shadow-md p-4 border-black-20 border">
+                <div className="col-span-1 bg-white rounded-md shadow-md p-4 border-black-20 border">
                     <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
                         Tab Menu
                     </div>
@@ -447,11 +461,11 @@ export default function Home() {
                     {activeTab}
                 </div>
 
-                <div className="col-span-12 bg-white rounded-md shadow-md p-4 border-black-20 border">
+                <div className="col-span-1 bg-white rounded-md shadow-md p-4 border-black-20 border">
                     <div className="text-alpha text-black-20 font-bold mb-4 flex flex-row justify-between items-center">
                         File Picker
                     </div>
-                    <div className="flex flex-row gap-9">
+                    <div className="flex flex-col lg:flex-row gap-9">
                       <InputGroup className="w-full">
                           <InputFile variant="image" file={file} setFile={setFile} ></InputFile>
                       </InputGroup>
@@ -461,10 +475,9 @@ export default function Home() {
                       </InputGroup>
 
                     </div>
-                    
                 </div>
 
-                <div className="col-span-6">
+                <div className="col-span-1">
                     <Button onClick={openDialog}>Buka Dialog</Button>
                     <Dialog open={isOpen}> 
                         <DialogHeader onClose={closeDialog}>
