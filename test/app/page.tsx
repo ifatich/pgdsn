@@ -405,8 +405,6 @@ export default function Home() {
                     </div>
 
                     <div className="columns-1 lg:columns-2 space-y-9">
-                        {/* <TimePicker />   */} 
-                        {/* Time Picker Content */}
 
                         <TimePickerTry onClose={setTimePickerOpen} isOpen={isTimePickerOpen}></TimePickerTry>
 
@@ -611,8 +609,8 @@ export default function Home() {
                         </ModalBody>
 
                         <ModalFooter>
-                            <Button variant={'secondary'} size={'md'}>Open Mobile Toast</Button>
-                            <Button variant={'primary'} size={'md'} onClick={() => setModalOpen(false)}>Open Mobile Toast</Button>
+                            <Button className="w-full" variant={'secondary'} size={'md'}>Open Mobile Toast</Button>
+                            <Button className="w-full" variant={'primary'} size={'md'} onClick={() => setModalOpen(false)}>Open Mobile Toast</Button>
                         </ModalFooter>
 
                     </Modal>

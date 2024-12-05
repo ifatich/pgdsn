@@ -27,5 +27,6 @@
 @import "/components/accordion.scss";
 @import "/components/tab.scss";
 @import "/components/checkbox.scss";
+@import "/components/radio.scss";
 @import "/components/custom/file.scss";
 

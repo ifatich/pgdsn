@@ -1,0 +1,29 @@
+@layer components {
+    .radio{
+        @apply flex flex-row gap-2 border p-3 rounded-md ;
+
+        &:hover{
+            @apply border border-lime-50 cursor-pointer;
+
+            &:has(:disabled){
+                @apply border-black-20 cursor-not-allowed;
+
+                .radio-title{
+                    @apply text-black-60;
+                }
+            }
+
+            .radio-title{
+                @apply text-lime-60;
+            }
+        }
+
+        .radio-title{
+            @apply text-omicron;
+        }
+
+        .radio-subtitle{
+            @apply text-omega;
+        }
+    }
+}

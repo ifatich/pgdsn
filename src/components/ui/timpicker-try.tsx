@@ -324,7 +324,7 @@ useEffect(() => {
             </div>
         </ModalBody>
         <ModalFooter>
-            <Button onClick={handleGetTime} variant={'primary'} size={'md'}>Tetapkan</Button>
+            <Button className='w-full' onClick={handleGetTime} variant={'primary'} size={'md'}>Tetapkan</Button>
         </ModalFooter>
    </Modal>
         

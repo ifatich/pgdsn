@@ -108,7 +108,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
             </Check>
             <div className="flex flex-col gap-[2px]">
                 <div className={`checkbox-title ${disabled? "text-black-60" : "text-black-80"}`}>{title}</div>
-                <div className={`checkbox-subtitle ${disabled? "text-black-50" : "text-black-60"}`}>{subtitle}</div>
+                <div className={`checkbox-subtitle ${disabled? "text-black-50" : "text-black-60"} ${!subtitle && "hidden"}`}>{subtitle}</div>
             </div>
         </div>
     )

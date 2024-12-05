@@ -78,13 +78,13 @@ const RadioBox: React.FC<RadioBoxProps> = ({
       return (
         <div
           className={cn(
-            'checkbox',
+            'radio',
             checked && !disabled ? 'border-lime-50 bg-lime-10' : 'border-black-20',
             className
           )}
           onClick={handleClick}
         >
-          <Radio
+          <Radio    
             id={id}
             name={name} // Ensures proper grouping by `name`
             checked={checked}
@@ -96,8 +96,8 @@ const RadioBox: React.FC<RadioBoxProps> = ({
             disabled={disabled}
           />
           <div className="flex flex-col gap-[2px]">
-            <div className={`checkbox-title ${disabled ? 'text-black-60' : 'text-black-80'}`}>{title}</div>
-            <div className={`checkbox-subtitle ${disabled ? 'text-black-50' : 'text-black-60'}`}>{subtitle}</div>
+            <div className={`radio-title ${disabled ? 'text-black-60' : 'text-black-80'}`}>{title}</div>
+            <div className={`radio-subtitle ${disabled ? 'text-black-50' : 'text-black-60'} ${!subtitle && "hidden"}`}>{subtitle}</div>
           </div>
         </div>
       );
